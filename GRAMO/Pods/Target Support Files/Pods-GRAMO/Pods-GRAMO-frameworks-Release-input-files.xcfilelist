@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-GRAMO/Pods-GRAMO-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework
+${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework
+${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework

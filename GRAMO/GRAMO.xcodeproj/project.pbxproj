@@ -13,6 +13,8 @@
 		EF2239F925CD847900BFB5BC /* infoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F625CD847800BFB5BC /* infoListVC.swift */; };
 		EF2239FA25CD847900BFB5BC /* infoAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F725CD847800BFB5BC /* infoAddVC.swift */; };
 		EF2239FB25CD847900BFB5BC /* infoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F825CD847800BFB5BC /* infoTableViewCell.swift */; };
+		EF223A1E25CD903000BFB5BC /* SideMenuNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF223A1C25CD903000BFB5BC /* SideMenuNav.swift */; };
+		EF223A1F25CD903000BFB5BC /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF223A1D25CD903000BFB5BC /* SideMenuVC.swift */; };
 		EF766C6B25CA8E4700DECE25 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF766C6A25CA8E4700DECE25 /* TestModel.swift */; };
 		EF766C7025CA8E7800DECE25 /* TestNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF766C6F25CA8E7800DECE25 /* TestNetworking.swift */; };
 		EF766C7925CA8F6A00DECE25 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7525CA8F5D00DECE25 /* NotoSansKR-Black.otf */; };
@@ -36,6 +38,8 @@
 		EF2239F625CD847800BFB5BC /* infoListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoListVC.swift; sourceTree = "<group>"; };
 		EF2239F725CD847800BFB5BC /* infoAddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoAddVC.swift; sourceTree = "<group>"; };
 		EF2239F825CD847800BFB5BC /* infoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoTableViewCell.swift; sourceTree = "<group>"; };
+		EF223A1C25CD903000BFB5BC /* SideMenuNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuNav.swift; sourceTree = "<group>"; };
+		EF223A1D25CD903000BFB5BC /* SideMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		EF766C6A25CA8E4700DECE25 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		EF766C6F25CA8E7800DECE25 /* TestNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetworking.swift; sourceTree = "<group>"; };
 		EF766C7325CA8F5D00DECE25 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 				EF2239F725CD847800BFB5BC /* infoAddVC.swift */,
 				EF2239F625CD847800BFB5BC /* infoListVC.swift */,
 				EF2239F825CD847800BFB5BC /* infoTableViewCell.swift */,
+				EF223A1C25CD903000BFB5BC /* SideMenuNav.swift */,
+				EF223A1D25CD903000BFB5BC /* SideMenuVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -280,9 +286,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF223A1E25CD903000BFB5BC /* SideMenuNav.swift in Sources */,
 				EFABF72425CA8C1800E69CC4 /* ViewController.swift in Sources */,
 				EF2239FB25CD847900BFB5BC /* infoTableViewCell.swift in Sources */,
 				EF766C7025CA8E7800DECE25 /* TestNetworking.swift in Sources */,
+				EF223A1F25CD903000BFB5BC /* SideMenuVC.swift in Sources */,
 				EF2239FA25CD847900BFB5BC /* infoAddVC.swift in Sources */,
 				EFABF72025CA8C1800E69CC4 /* AppDelegate.swift in Sources */,
 				EF2239F125CD846000BFB5BC /* infoListModel.swift in Sources */,

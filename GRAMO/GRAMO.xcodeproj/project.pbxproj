@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		B322413D00D974EC60F376D7 /* Pods_GRAMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */; };
+		EF2239F125CD846000BFB5BC /* infoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F025CD846000BFB5BC /* infoListModel.swift */; };
+		EF2239F425CD846900BFB5BC /* info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF2239F325CD846900BFB5BC /* info.storyboard */; };
+		EF2239F925CD847900BFB5BC /* infoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F625CD847800BFB5BC /* infoListVC.swift */; };
+		EF2239FA25CD847900BFB5BC /* infoAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F725CD847800BFB5BC /* infoAddVC.swift */; };
+		EF2239FB25CD847900BFB5BC /* infoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F825CD847800BFB5BC /* infoTableViewCell.swift */; };
 		EF766C6B25CA8E4700DECE25 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF766C6A25CA8E4700DECE25 /* TestModel.swift */; };
 		EF766C7025CA8E7800DECE25 /* TestNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF766C6F25CA8E7800DECE25 /* TestNetworking.swift */; };
 		EF766C7925CA8F6A00DECE25 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7525CA8F5D00DECE25 /* NotoSansKR-Black.otf */; };
@@ -26,6 +31,11 @@
 /* Begin PBXFileReference section */
 		9A4F5BAE346346B91B6B2835 /* Pods-GRAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.debug.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.debug.xcconfig"; sourceTree = "<group>"; };
 		B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GRAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF2239F025CD846000BFB5BC /* infoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoListModel.swift; sourceTree = "<group>"; };
+		EF2239F325CD846900BFB5BC /* info.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = info.storyboard; sourceTree = "<group>"; };
+		EF2239F625CD847800BFB5BC /* infoListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoListVC.swift; sourceTree = "<group>"; };
+		EF2239F725CD847800BFB5BC /* infoAddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoAddVC.swift; sourceTree = "<group>"; };
+		EF2239F825CD847800BFB5BC /* infoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoTableViewCell.swift; sourceTree = "<group>"; };
 		EF766C6A25CA8E4700DECE25 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		EF766C6F25CA8E7800DECE25 /* TestNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetworking.swift; sourceTree = "<group>"; };
 		EF766C7325CA8F5D00DECE25 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
@@ -77,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				EFABF72525CA8C1800E69CC4 /* Main.storyboard */,
+				EF2239F325CD846900BFB5BC /* info.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -85,6 +96,9 @@
 			isa = PBXGroup;
 			children = (
 				EFABF72325CA8C1800E69CC4 /* ViewController.swift */,
+				EF2239F725CD847800BFB5BC /* infoAddVC.swift */,
+				EF2239F625CD847800BFB5BC /* infoListVC.swift */,
+				EF2239F825CD847800BFB5BC /* infoTableViewCell.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -101,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				EF766C6A25CA8E4700DECE25 /* TestModel.swift */,
+				EF2239F025CD846000BFB5BC /* infoListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -205,6 +220,7 @@
 			files = (
 				EF766C8325CA8F7800DECE25 /* NotoSansKR-Thin.otf in Resources */,
 				EF766C7D25CA8F7000DECE25 /* NotoSansKR-Light.otf in Resources */,
+				EF2239F425CD846900BFB5BC /* info.storyboard in Resources */,
 				EFABF72C25CA8C1900E69CC4 /* LaunchScreen.storyboard in Resources */,
 				EF766C7F25CA8F7200DECE25 /* NotoSansKR-Medium.otf in Resources */,
 				EFABF72925CA8C1900E69CC4 /* Assets.xcassets in Resources */,
@@ -265,8 +281,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFABF72425CA8C1800E69CC4 /* ViewController.swift in Sources */,
+				EF2239FB25CD847900BFB5BC /* infoTableViewCell.swift in Sources */,
 				EF766C7025CA8E7800DECE25 /* TestNetworking.swift in Sources */,
+				EF2239FA25CD847900BFB5BC /* infoAddVC.swift in Sources */,
 				EFABF72025CA8C1800E69CC4 /* AppDelegate.swift in Sources */,
+				EF2239F125CD846000BFB5BC /* infoListModel.swift in Sources */,
+				EF2239F925CD847900BFB5BC /* infoListVC.swift in Sources */,
 				EF766C6B25CA8E4700DECE25 /* TestModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

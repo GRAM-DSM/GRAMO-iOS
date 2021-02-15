@@ -9,6 +9,8 @@ import UIKit
 
 class infoAddVC: UIViewController, UITextViewDelegate {
     
+    @IBOutlet weak var nameLabel : UILabel!
+    @IBOutlet weak var dateLabel : UILabel!
     @IBOutlet weak var infoTitle: UITextView!
     @IBOutlet weak var infoDetail: UITextView!
 
@@ -19,7 +21,15 @@ class infoAddVC: UIViewController, UITextViewDelegate {
         textViewDidBeginEditing(infoDetail)
         textViewDidEndEditing(infoTitle)
         textViewDidEndEditing(infoDetail)
-
+        
+        let date = DateFormatter()
+        date.dateFormat = "yyyy년 MM월 dd일"
+        let currentDate = date.string(from: Date())
+        dateLabel.text = currentDate
+        
+        if dateLabel.adjustsFontSizeToFitWidth == false {
+            dateLabel.adjustsFontSizeToFitWidth = true
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -34,6 +44,16 @@ class infoAddVC: UIViewController, UITextViewDelegate {
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         }
+        
+        let title = infoTitle.text!
+        let detail = infoDetail.text!
+        let date = dateLabel.text!
+        
+        let item : InfoList = InfoList(writer: "장서영", date: date, infotTitle: title, infoDetail: detail)
+        
+        infoList.append(item)
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
     func placeholderSetting() {

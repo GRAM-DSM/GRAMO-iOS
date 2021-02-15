@@ -21,9 +21,13 @@ class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "list cell", for: indexPath) as! infoTableViewCell
         
-        cell.dateLabel?.text = infoList[indexPath.row].date
-        cell.infoTitleLabel?.text = infoList[indexPath.row].title
-        cell.infoDetailLabel?.text = infoList[indexPath.row].subtitle
+        let date = DateFormatter()
+        date.dateFormat = "yyyy년 MM월 dd일"
+        let currentDate = date.string(from: Date())
+        cell.dateLabel.text = currentDate
+        
+        cell.infoTitleLabel?.text = infoList[indexPath.row].infoDetail
+        cell.infoDetailLabel?.text = infoList[indexPath.row].infoDetail
         
         return cell
     }
@@ -35,7 +39,13 @@ class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableView.delegate = self
         tableView.rowHeight = 120
 
+       
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
 

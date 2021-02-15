@@ -8,7 +8,16 @@
 import Foundation
 
 struct InfoList {
+    var writer = String()
     var date = String()
-    var title = String()
-    var subtitle = String()
+    var infotTitle = String()
+    var infoDetail = String()
+    
+    init(writer: String, date: String,
+         infotTitle: String, infoDetail: String){
+        self.writer = writer
+        self.date = date
+        self.infotTitle = infotTitle
+        self.infoDetail = infoDetail
+    }
 }

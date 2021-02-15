@@ -1,13 +1,13 @@
 //
-//  SideMenuVCViewController.swift
+//  homeworkAssignedVC.swift
 //  GRAMO
 //
-//  Created by 장서영 on 2021/02/05.
+//  Created by 장서영 on 2021/02/09.
 //
 
 import UIKit
 
-class SideMenuVC: UIViewController {
+class homeworkAssignedVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

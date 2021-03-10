@@ -21,9 +21,7 @@ class SignUpVC: UIViewController {
     
     @IBOutlet weak var dropDownBtn: UIButton!
     
-    @IBOutlet weak var failEmailLabel: UILabel! // 중복된 이메일
-    @IBOutlet weak var failCheckLabel: UILabel! // 인증번호
-    @IBOutlet weak var failPasswordLabel: UILabel! // 비밀번호 일치
+    @IBOutlet weak var failLabel: UILabel!
     
     let dropDown = DropDown()
     var selection: String = ""
@@ -64,6 +62,8 @@ class SignUpVC: UIViewController {
             self.postSignUp(name: self.nameTxtField.text!, email: self.emailTxtField.text!, password: self.pwTxtField.text!, major: self.majorTextField.text!)
             
         } else {
+            failLabel.text = "인증번호가 일치하지 않습니다"
+            
             return
             
         }
@@ -115,7 +115,7 @@ class SignUpVC: UIViewController {
                     
                     })
                 
-                    self.failPasswordLabel.textColor = UIColor.red
+                    self.failLabel.text = "비밀번호가 일치하지 않습니다"
                     
                 }
             }
@@ -134,7 +134,7 @@ class SignUpVC: UIViewController {
             default:
                 print("이메일 실패")
                 
-                self.failEmailLabel.textColor = UIColor.red
+                self.failLabel.text = "중복된 이메일 입니다"
                 
             }
             

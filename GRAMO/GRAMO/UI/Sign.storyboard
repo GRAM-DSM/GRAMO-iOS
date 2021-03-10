@@ -288,25 +288,11 @@
                                     <action selector="checkBtn:" destination="L3a-Rd-mH2" eventType="touchUpInside" id="D5P-Qm-fu8"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="중복된 이메일 입니다" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yva-3B-O2g">
-                                <rect key="frame" x="133" y="531" width="124" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yva-3B-O2g">
+                                <rect key="frame" x="24" y="531" width="342" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="인증번호가 일치하지 않습니다" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6M-JY-5iJ">
-                                <rect key="frame" x="107" y="531" width="176" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="비밀번호가 일치하지 않습니다" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p21-MA-7MY">
-                                <rect key="frame" x="107" y="531" width="176" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.99813598390000002" green="0.0068380823360000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -320,9 +306,7 @@
                         <outlet property="checkTxtField" destination="lU1-bO-psC" id="Hof-yc-sSl"/>
                         <outlet property="dropDownBtn" destination="CAf-DX-4Pm" id="nRt-71-sRt"/>
                         <outlet property="emailTxtField" destination="aHV-u2-RtQ" id="fMb-fu-stf"/>
-                        <outlet property="failCheckLabel" destination="t6M-JY-5iJ" id="efV-Rb-Yrb"/>
-                        <outlet property="failEmailLabel" destination="yva-3B-O2g" id="4kp-cf-fld"/>
-                        <outlet property="failPasswordLabel" destination="p21-MA-7MY" id="dqN-Hp-VEB"/>
+                        <outlet property="failLabel" destination="yva-3B-O2g" id="JSc-Tu-pX8"/>
                         <outlet property="majorTextField" destination="KaH-0Q-edz" id="Vk3-M0-Q7V"/>
                         <outlet property="nameTxtField" destination="Pf9-Vc-ee9" id="gWO-T7-y3c"/>
                         <outlet property="pwConformTxtField" destination="wgl-X8-BkN" id="grL-Cz-DlN"/>
@@ -331,7 +315,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSH-4M-db2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1897" y="89"/>
+            <point key="canvasLocation" x="1896.9230769230769" y="88.862559241706151"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="J8d-3N-Kss">

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54A84E4A25F87B2F00AFF3A5 /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54A84E4925F87B2F00AFF3A5 /* Sign.storyboard */; };
+		54A84E4E25F87BBC00AFF3A5 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A84E4D25F87BBC00AFF3A5 /* SignInVC.swift */; };
+		54A84E5225F87BFF00AFF3A5 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A84E5125F87BFF00AFF3A5 /* SignUpVC.swift */; };
 		B322413D00D974EC60F376D7 /* Pods_GRAMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */; };
 		EF01EF8E25D2949C0030C91E /* homeworkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF01EF8D25D2949C0030C91E /* homeworkVC.swift */; };
 		EF01EF9125D294A30030C91E /* homework.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF01EF9025D294A30030C91E /* homework.storyboard */; };
@@ -45,6 +48,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		54A84E4925F87B2F00AFF3A5 /* Sign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
+		54A84E4D25F87BBC00AFF3A5 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		54A84E5125F87BFF00AFF3A5 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		9A4F5BAE346346B91B6B2835 /* Pods-GRAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.debug.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.debug.xcconfig"; sourceTree = "<group>"; };
 		B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GRAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF01EF8D25D2949C0030C91E /* homeworkVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeworkVC.swift; sourceTree = "<group>"; };
@@ -98,6 +104,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54A84E4C25F87BA400AFF3A5 /* Sign */ = {
+			isa = PBXGroup;
+			children = (
+				54A84E4D25F87BBC00AFF3A5 /* SignInVC.swift */,
+				54A84E5125F87BFF00AFF3A5 /* SignUpVC.swift */,
+			);
+			path = Sign;
+			sourceTree = "<group>";
+		};
 		5C7A04D6A7943944DCEE033E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +156,7 @@
 				EFABF72525CA8C1800E69CC4 /* Main.storyboard */,
 				EF2239F325CD846900BFB5BC /* info.storyboard */,
 				EF01EF9025D294A30030C91E /* homework.storyboard */,
+				54A84E4925F87B2F00AFF3A5 /* Sign.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -149,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				EFABF72325CA8C1800E69CC4 /* ViewController.swift */,
+				54A84E4C25F87BA400AFF3A5 /* Sign */,
 				EF89101625D29969002023CD /* info */,
 				EF89101925D299B1002023CD /* SideMenu */,
 				EF89101725D2997E002023CD /* homework */,
@@ -313,6 +330,7 @@
 				EF01EF9125D294A30030C91E /* homework.storyboard in Resources */,
 				EF766C7F25CA8F7200DECE25 /* NotoSansKR-Medium.otf in Resources */,
 				EFABF72925CA8C1900E69CC4 /* Assets.xcassets in Resources */,
+				54A84E4A25F87B2F00AFF3A5 /* Sign.storyboard in Resources */,
 				EFABF72725CA8C1800E69CC4 /* Main.storyboard in Resources */,
 				EF766C7925CA8F6A00DECE25 /* NotoSansKR-Black.otf in Resources */,
 				EF766C8125CA8F7500DECE25 /* NotoSansKR-Regular.otf in Resources */,
@@ -371,6 +389,7 @@
 			files = (
 				EF36AE3C25DAA2F9005D4570 /* SecondSectionTableViewCell.swift in Sources */,
 				EF36AE4725DAAC8D005D4570 /* SecondSectionModel.swift in Sources */,
+				54A84E4E25F87BBC00AFF3A5 /* SignInVC.swift in Sources */,
 				EF89101C25D29A2F002023CD /* homeworkAddVC.swift in Sources */,
 				EF223A1E25CD903000BFB5BC /* SideMenuNav.swift in Sources */,
 				EFABF72425CA8C1800E69CC4 /* ViewController.swift in Sources */,
@@ -381,6 +400,7 @@
 				EF89102025D2C52D002023CD /* homeworkAllocatorVC.swift in Sources */,
 				EF36AE3F25DAA30D005D4570 /* ThirdSectionTableViewCell.swift in Sources */,
 				EF36AE4425DAAC82005D4570 /* FirstSectionModel.swift in Sources */,
+				54A84E5225F87BFF00AFF3A5 /* SignUpVC.swift in Sources */,
 				EF223A1F25CD903000BFB5BC /* SideMenuVC.swift in Sources */,
 				EF2239FA25CD847900BFB5BC /* infoAddVC.swift in Sources */,
 				EFABF72025CA8C1800E69CC4 /* AppDelegate.swift in Sources */,

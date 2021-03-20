@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct InfoList {
+struct InfoList: Codable {
     var writer = String()
     var date = String()
     var infotTitle = String()

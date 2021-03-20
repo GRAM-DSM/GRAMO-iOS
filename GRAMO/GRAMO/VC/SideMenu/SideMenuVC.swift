@@ -16,7 +16,7 @@ class SideMenuVC: UIViewController {
     }
     
     @IBAction func info(_ sender : UIButton) {
-        let vc = infoListVC()
+        let vc = (storyboard?.instantiateViewController(identifier: "homework")) as! homeworkListVC
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

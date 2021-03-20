@@ -26,7 +26,7 @@ class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let currentDate = date.string(from: Date())
         cell.dateLabel.text = currentDate
         
-        cell.infoTitleLabel?.text = infoList[indexPath.row].infoDetail
+        cell.infoTitleLabel?.text = infoList[indexPath.row].infotTitle
         cell.infoDetailLabel?.text = infoList[indexPath.row].infoDetail
         
         return cell

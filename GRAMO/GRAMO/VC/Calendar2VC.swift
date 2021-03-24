@@ -11,6 +11,7 @@ import FSCalendar
 class Calendar2VC: UIViewController {
     @IBOutlet var calendar: FSCalendar!
     
+    let formatter = DateFormatter()
     var events = [Date]()
     
     override func viewDidLoad() {
@@ -45,16 +46,19 @@ class Calendar2VC: UIViewController {
     }
     
     func setUpEvents() {
-        let formatter = DateFormatter()
-        
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy-MM-dd"
         
         let xmas = formatter.date(from: "2021-12-25")
         let sampledate = formatter.date(from: "2021-08-22")
-        let today = formatter.date(from: "2021-03-19")
+        let today = formatter.date(from: "2021-03-22")
         
         events = [xmas!, sampledate!, today!]
+        
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print(formatter.string(from: date) + " 선택됨")
         
     }
     

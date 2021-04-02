@@ -7,14 +7,31 @@
 
 import UIKit
 
-class DetailViewController: ViewController {
-    var date: String = ""
+class DetailViewController: ViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var picuTableView: UITableView!
+    let cellIdentifier: String = "picuCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(date)
+        self.picuTableView.dataSource = self
+        self.picuTableView.delegate = self
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let picuCell: PICUTableViewCell = tableView.dequeueReusableCell(withIdentifier: picuCell, for: indexPath) as! PICUTableViewCell
+        
+        let text: String = "Test"
+        
+        return picuCell
         
     }
 
 }
+

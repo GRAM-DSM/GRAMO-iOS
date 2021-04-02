@@ -13,6 +13,7 @@ class Calendar2VC: UIViewController {
     
     let formatter = DateFormatter()
     var events = [Date]()
+    let httpClient = HTTPClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +56,18 @@ class Calendar2VC: UIViewController {
         
         events = [xmas!, sampledate!, today!]
         
+        httpClient.post(.getCalendarList).responseJSON(completionHandler: {(response) in
+            switch response.response?.statusCode {
+            case 200 :
+                print("리스트 불러오기 성공")
+                        
+            default :
+                print("리스트 불러오기 실패")
+                        
+            }
+            
+        })
+        
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -76,6 +89,18 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
         }
         
     }
+    
+//    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+//        guard let modalPresentView = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
+//
+//        // 날짜를 원하는 형식으로 저장하기 위한 방법입니다.
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        modalPresentView.date = dateFormatter.string(from: date)
+//
+//        self.present(modalPresentView, animated: true, completion: nil)
+//
+//    }
     
 }
 

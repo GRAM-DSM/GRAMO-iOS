@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		546F625025F8D04A006DE88A /* Calendar2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546F624F25F8D04A006DE88A /* Calendar2.storyboard */; };
 		546F625325F8D142006DE88A /* Calendar2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546F625225F8D142006DE88A /* Calendar2VC.swift */; };
+		548F4BB92611DB8D00A93433 /* PICUTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548F4BB82611DB8D00A93433 /* PICUTableViewCell.swift */; };
 		54BCBF4C26036B8200B44447 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BCBF4B26036B8200B44447 /* DetailViewController.swift */; };
 		B322413D00D974EC60F376D7 /* Pods_GRAMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */; };
 		EF01EF8E25D2949C0030C91E /* homeworkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF01EF8D25D2949C0030C91E /* homeworkVC.swift */; };
@@ -48,8 +49,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5428120E260B52EF00870F94 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		546F624F25F8D04A006DE88A /* Calendar2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar2.storyboard; sourceTree = "<group>"; };
 		546F625225F8D142006DE88A /* Calendar2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar2VC.swift; sourceTree = "<group>"; };
+		548F4BB82611DB8D00A93433 /* PICUTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PICUTableViewCell.swift; sourceTree = "<group>"; };
 		54BCBF4B26036B8200B44447 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9A4F5BAE346346B91B6B2835 /* Pods-GRAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.debug.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.debug.xcconfig"; sourceTree = "<group>"; };
 		B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GRAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +107,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		548F4BBB2611DB9300A93433 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				548F4BB82611DB8D00A93433 /* PICUTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		5C7A04D6A7943944DCEE033E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +249,7 @@
 		EFABF71E25CA8C1800E69CC4 /* GRAMO */ = {
 			isa = PBXGroup;
 			children = (
+				548F4BBB2611DB9300A93433 /* Cell */,
 				EF766C6925CA8E1A00DECE25 /* Model */,
 				EF766C6725CA8E0400DECE25 /* VC */,
 				EF766C6825CA8E0A00DECE25 /* Networking */,
@@ -252,6 +264,7 @@
 				EF766C7625CA8F5D00DECE25 /* NotoSansKR-Medium.otf */,
 				EF766C7325CA8F5D00DECE25 /* NotoSansKR-Regular.otf */,
 				EF766C7825CA8F5D00DECE25 /* NotoSansKR-Thin.otf */,
+				5428120E260B52EF00870F94 /* Roboto-Medium.ttf */,
 			);
 			path = GRAMO;
 			sourceTree = "<group>";
@@ -379,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				548F4BB92611DB8D00A93433 /* PICUTableViewCell.swift in Sources */,
 				EF36AE3C25DAA2F9005D4570 /* SecondSectionTableViewCell.swift in Sources */,
 				EF36AE4725DAAC8D005D4570 /* SecondSectionModel.swift in Sources */,
 				54BCBF4C26036B8200B44447 /* DetailViewController.swift in Sources */,

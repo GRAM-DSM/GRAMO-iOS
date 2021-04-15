@@ -9,23 +9,23 @@ import Foundation
 import Alamofire
 
 public enum NetworkingAPI{
-    case getCalendarList
-    case getPlan(_ date : String)
-    case createPlan(_ content : String, _ title: String, _ date: String)
-    case deletePlan(_ planId : String)
-    case getPICU(_ date : String)
-    case createPICU(_ description : String, _ date : String)
-    case deletePICU(_ picuId : String)
+    case getCalendarList(_ date: String)
+    case getPlan(_ date: String)
+    case createPlan(_ content: String, _ title: String, _ date: String)
+    case deletePlan(_ planId: String)
+    case getPICU(_ date: String)
+    case createPICU(_ description: String, _ date: String)
+    case deletePICU(_ picuId: String)
     
     var path : String {
         switch self {
-        case .getCalendarList :
+        case .getCalendarList:
             return "calendar"
                     
-        case .getPlan, .createPlan, .deletePlan :
+        case .getPlan, .createPlan, .deletePlan:
             return "calendar/plan"
             
-        case .getPICU, .createPICU, .deletePICU :
+        case .getPICU, .createPICU, .deletePICU:
             return "calendar/picu"
             
         }
@@ -41,12 +41,17 @@ public enum NetworkingAPI{
         
         guard let token = UserDefault.string(forKey: "justToken") else { return nil }
         
-        return ["Authorization" : "Bearer" + token]
+        // return ["Authorization" : "Bearer" + token]
+        return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxODQ3Mzc2MywianRpIjoiNmQ5ZDM5OGUtZmQzNS00OTA3LTk3OTAtNDk4OGQ0ZmJmMDgwIiwibmJmIjoxNjE4NDczNzYzLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoidGVzdGlvc0BnbWFpbC5jb20iLCJleHAiOjE2MTg1NjAxNjN9.qb-AGRWRo0dFTpjWfHF_7LK6Br0OqGhSS1Jw1kmWIfk"]
         
     }
     
-    var parameters: [String : Any]{
+    var parameters: [String: Any] {
         switch self {
+        case .getCalendarList(let date):
+            print(["date": date])
+            return ["date": date]
+            
         case .getPlan(let date):
             print(["date": date])
             return ["date": date]

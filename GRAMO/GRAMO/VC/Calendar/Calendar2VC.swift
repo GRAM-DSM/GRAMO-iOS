@@ -11,6 +11,9 @@ import FSCalendar
 class Calendar2VC: UIViewController {
     @IBOutlet var calendar: FSCalendar!
     
+    private var calendarModel : [Calendar] = [Calendar]()
+    private var getCalenderListModel : Calendar = Calendar(getCalendarList: [GetCalendarList(date: "Sample", picuCount: 1, planCount: 1)])
+    
     let formatter = DateFormatter()
     var events = [Date]()
     let httpClient = HTTPClient()
@@ -31,15 +34,15 @@ class Calendar2VC: UIViewController {
     
     func customCalendar() {
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0 // 옆에 이상한거 제거
-        calendar.appearance.headerDateFormat = "M월" // 헤더
+        calendar.appearance.headerDateFormat = "YYYY년 M월" // 헤더
         calendar.headerHeight = 85 // 헤더 크기
         calendar.locale = Locale(identifier: "ko_KR") // 요일 한글
         calendar.appearance.weekdayTextColor = .black // 요일 색
         calendar.appearance.headerTitleColor = .black // 헤더 색
         calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 16)
         calendar.appearance.eventDefaultColor = .red // 이벤트 색
-        calendar.appearance.todaySelectionColor = .white // 오늘 선택 색
-        
+        // calendar.appearance.todaySelectionColor = .white // 오늘 선택 색
+        calendar.appearance.titleWeekendColor = .red // 주말 색
         
         // 스와이프 스크롤 방향 ( 버티칼로 스와이프 설정하면 좌측 우측 상단 다음달 표시 없어짐, 호리젠탈은 보임 )
         calendar.scrollDirection = .vertical
@@ -50,20 +53,20 @@ class Calendar2VC: UIViewController {
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy-MM-dd"
         
-        let xmas = formatter.date(from: "2021-12-25")
-        let sampledate = formatter.date(from: "2021-08-22")
-        let today = formatter.date(from: "2021-03-22")
+        let today = formatter.date(from: "2021-04-15")
+        let birthday = formatter.date(from: "2021-09-03")
         
-        events = [xmas!, sampledate!, today!]
+        events = [today!, birthday!]
         
-        httpClient.post(.getCalendarList).responseJSON(completionHandler: {(response) in
+        httpClient.get(.getCalendarList("2021-04-15")).responseJSON(completionHandler: {(response) in
             switch response.response?.statusCode {
-            case 200 :
+            case 200:
                 print("리스트 불러오기 성공")
-                        
-            default :
+                
+            default:
+                print(response.response?.statusCode)
                 print("리스트 불러오기 실패")
-                        
+            
             }
             
         })
@@ -90,9 +93,22 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
         
     }
     
+    // 숫자 글자로 바꾸기
+    func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
+        switch formatter.string(from: date) {
+        case "2021-09-03":
+            return "Bir"
+        
+        default:
+            return nil
+                
+        }
+        
+    }
+    
 //    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
 //        guard let modalPresentView = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
-//
+
 //        // 날짜를 원하는 형식으로 저장하기 위한 방법입니다.
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.dateFormat = "yyyy-MM-dd"

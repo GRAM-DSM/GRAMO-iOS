@@ -8,11 +8,19 @@
 import UIKit
 
 class PICUTableViewCell: UITableViewCell {
-    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var nameLabel: UILabel!
     @IBOutlet var detailLabel: UILabel!
+    @IBOutlet var detailTextView: UITextView!
+    
+    static let picuCellIdentifier: String = "picuCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
         
     }
 
@@ -22,3 +30,4 @@ class PICUTableViewCell: UITableViewCell {
     }
 
 }
+

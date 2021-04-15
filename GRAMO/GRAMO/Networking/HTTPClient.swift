@@ -17,7 +17,7 @@ protocol HTTPClientProvider {
 }
 
 class HTTPClient: HTTPClientProvider {
-    let baseURI = "211.38.86.92:8081/"
+    let baseURI = "http://211.38.86.92:8001/"
     
     func get(_ api: NetworkingAPI) -> DataRequest {
         return AF.request(baseURI + api.path,

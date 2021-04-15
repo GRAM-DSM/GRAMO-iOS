@@ -7,12 +7,7 @@
 
 import UIKit
 
-var firstSection = [FirstSection]()
-var secondSection = [SecondSection]()
-var thirdSection = [ThirdSection]()
-
 class homeworkListVC: UIViewController/* ,UITableViewDelegate, UITableViewDataSource*/ {
-    
     @IBOutlet weak var assignedTableView : UITableView!
     @IBOutlet weak var allocatorTableView: UITableView!
     @IBOutlet weak var submittedTableVIew: UITableView!

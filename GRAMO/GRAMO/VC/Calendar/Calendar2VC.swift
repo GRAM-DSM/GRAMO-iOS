@@ -11,8 +11,7 @@ import FSCalendar
 class Calendar2VC: UIViewController {
     @IBOutlet var calendar: FSCalendar!
     
-    private var calendarModel : [Calendar] = [Calendar]()
-    private var getCalenderListModel : Calendar = Calendar(getCalendarList: [GetCalendarList(date: "Sample", picuCount: 1, planCount: 1)])
+    private var getCalenderListModel: GetCalendarList = GetCalendarList(date: "Sample", picuCount: 1, planCount: 1)
     
     let formatter = DateFormatter()
     var events = [Date]()
@@ -53,19 +52,33 @@ class Calendar2VC: UIViewController {
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy-MM-dd"
         
-        let today = formatter.date(from: "2021-04-15")
+        let today = formatter.date(from: "2021-04-18")
         let birthday = formatter.date(from: "2021-09-03")
         
         events = [today!, birthday!]
         
-        httpClient.get(.getCalendarList("2021-04-15")).responseJSON(completionHandler: {(response) in
+        httpClient.get(.getCalendarList("2021-04-18")).responseJSON(completionHandler: {(response) in
             switch response.response?.statusCode {
             case 200:
-                print("리스트 불러오기 성공")
+                do {
+                    print("OK - Send notice list successfully.")
+                    
+                    let data = response.data
+                    let model = try JSONDecoder().decode([GetCalendarList].self, from: data!)
+                    
+                    print(self.getCalenderListModel.date)
+                    
+                } catch {
+                    print("Error: \(error)")
+                    
+                }
+                
+            case 404:
+                print("404 : NOT FOUND - Notice does not exist.")
                 
             default:
                 print(response.response?.statusCode)
-                print("리스트 불러오기 실패")
+                print(response.error)
             
             }
             

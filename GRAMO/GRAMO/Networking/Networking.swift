@@ -19,8 +19,9 @@ public enum NetworkingAPI{
     
     var path : String {
         switch self {
-        case .getCalendarList:
-            return "calendar"
+        case .getCalendarList(let date):
+            print("path에서 \(date)")
+            return "calendar?date=\(date)"
                     
         case .getPlan, .createPlan, .deletePlan:
             return "calendar/plan"
@@ -42,7 +43,7 @@ public enum NetworkingAPI{
         guard let token = UserDefault.string(forKey: "justToken") else { return nil }
         
         // return ["Authorization" : "Bearer" + token]
-        return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxODQ3Mzc2MywianRpIjoiNmQ5ZDM5OGUtZmQzNS00OTA3LTk3OTAtNDk4OGQ0ZmJmMDgwIiwibmJmIjoxNjE4NDczNzYzLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoidGVzdGlvc0BnbWFpbC5jb20iLCJleHAiOjE2MTg1NjAxNjN9.qb-AGRWRo0dFTpjWfHF_7LK6Br0OqGhSS1Jw1kmWIfk"]
+        return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxODcxOTI5NSwianRpIjoiMmI5Y2RmY2MtZTdlNi00NWIwLTlkY2YtOTdjODNlNjVhZTgyIiwibmJmIjoxNjE4NzE5Mjk1LCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoidGVzdGlvc0BnbWFpbC5jb20iLCJleHAiOjE2MTg4MDU2OTV9.lPVT3bHpeEzwA5cjTvUaBZvTgwKnFOyOBYi3lW8gJKg"]
         
     }
     

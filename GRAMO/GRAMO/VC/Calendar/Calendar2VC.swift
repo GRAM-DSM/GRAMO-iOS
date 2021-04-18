@@ -11,7 +11,7 @@ import FSCalendar
 class Calendar2VC: UIViewController {
     @IBOutlet var calendar: FSCalendar!
     
-    private var getCalenderListModel: GetCalendarList = GetCalendarList(date: "Sample", picuCount: 1, planCount: 1)
+    private var getCalendarListModel: [GetCalendarList] = []
     
     let formatter = DateFormatter()
     var events = [Date]()
@@ -65,8 +65,23 @@ class Calendar2VC: UIViewController {
                     
                     let data = response.data
                     let model = try JSONDecoder().decode([GetCalendarList].self, from: data!)
+                    var num: Int = 0
                     
-                    print(self.getCalenderListModel.date)
+                    self.getCalendarListModel = model
+                    
+                    for _ in self.getCalendarListModel {
+                        if self.getCalendarListModel[num].picuCount != 0 || self.getCalendarListModel[num].planCount != 0 {
+                            let event = self.formatter.date(from: self.getCalendarListModel[num].date)
+                            
+                            self.events.append(event!)
+                            
+                        }
+                        
+                        num += 1
+                        
+                    }
+                    
+                    self.calendar.reloadData()
                     
                 } catch {
                     print("Error: \(error)")

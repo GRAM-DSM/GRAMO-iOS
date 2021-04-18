@@ -7,11 +7,6 @@
 
 import Foundation
 
-//struct Calendar: Codable {
-//    var calendar = [GetCalendarList?]()
-//
-//}
-
 struct GetCalendarList: Codable {
     var date = String()
     var picuCount = Int()

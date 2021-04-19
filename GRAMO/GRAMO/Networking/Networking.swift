@@ -43,7 +43,7 @@ public enum NetworkingAPI{
         guard let token = UserDefault.string(forKey: "justToken") else { return nil }
         
         // return ["Authorization" : "Bearer" + token]
-        return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxODcxOTI5NSwianRpIjoiMmI5Y2RmY2MtZTdlNi00NWIwLTlkY2YtOTdjODNlNjVhZTgyIiwibmJmIjoxNjE4NzE5Mjk1LCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoidGVzdGlvc0BnbWFpbC5jb20iLCJleHAiOjE2MTg4MDU2OTV9.lPVT3bHpeEzwA5cjTvUaBZvTgwKnFOyOBYi3lW8gJKg"]
+        return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxODgyNDAzOCwianRpIjoiMjM2YTRlMzctOGUxZi00ZTI0LWI1ODktNzg1YjFlYjc3YjVkIiwibmJmIjoxNjE4ODI0MDM4LCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiY2tkZHlkMTIwMkBkYXVtLm5ldCIsImV4cCI6MTYxODkxMDQzOH0.34BkbduSRgU3cPW-oAmNCrjnCLK4GAbY0KGsbYj4w-Q"]
         
     }
     

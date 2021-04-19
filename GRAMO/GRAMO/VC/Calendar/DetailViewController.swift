@@ -7,13 +7,15 @@
 
 import UIKit
 
-
 class DetailViewController: ViewController {
     @IBOutlet weak var picuTableView: UITableView!
     @IBOutlet weak var specialTableView: UITableView!
     
+    let httpClient = HTTPClient()
+    
     var sampleData1: [String] = []
     var sampleData2: [String] = []
+    var date = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,32 @@ class DetailViewController: ViewController {
         
         self.picuTableView.rowHeight = 48
         self.specialTableView.rowHeight = 66
+        
+        httpClient.get(.getPlan(date)).responseJSON(completionHandler: {(response) in
+            switch response.response?.statusCode {
+            case 200:
+                do {
+                    print("OK - Send notice list successfully.")
+                    print(date)
+                    
+                } catch {
+                    print("Error: \(error)")
+                    
+                }
+                
+            case 403:
+                print("403 : Token Token Token Token")
+                
+            case 404:
+                print("404 : NOT FOUND - Notice does not exist.")
+                
+            default:
+                print(response.response?.statusCode)
+                print(response.error)
+            
+            }
+            
+        })
 
     }
     

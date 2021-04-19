@@ -88,6 +88,9 @@ class Calendar2VC: UIViewController {
                     
                 }
                 
+            case 403:
+                print("403 : Token Token Token Token")
+                
             case 404:
                 print("404 : NOT FOUND - Notice does not exist.")
                 
@@ -101,10 +104,10 @@ class Calendar2VC: UIViewController {
         
     }
     
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print(formatter.string(from: date) + " 선택됨")
-        
-    }
+//    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+//        print(formatter.string(from: date) + " 선택됨")
+//        
+//    }
     
 }
 
@@ -129,22 +132,24 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
         
         default:
             return nil
-                
+        
         }
         
     }
     
-//    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-//        guard let modalPresentView = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print(formatter.string(from: date) + " 선택됨")
+        
+        guard let modalPresentView = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
 
-//        // 날짜를 원하는 형식으로 저장하기 위한 방법입니다.
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
-//        modalPresentView.date = dateFormatter.string(from: date)
-//
-//        self.present(modalPresentView, animated: true, completion: nil)
-//
-//    }
+        // 날짜를 원하는 형식으로 저장하기 위한 방법입니다.
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        modalPresentView.date = dateFormatter.string(from: date)
+
+        self.present(modalPresentView, animated: true, completion: nil)
+
+    }
     
 }
 

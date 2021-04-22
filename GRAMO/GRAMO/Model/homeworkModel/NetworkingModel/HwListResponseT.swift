@@ -9,23 +9,25 @@ import Foundation
 
 struct Hwteacher: Codable {
     var homeworkId = Int()
+    var studentName = String()
     var teacherName = String()
+    var title = String()
+    var description = String()
+    var major = String()
     var startDate = String()
     var endDate = String()
-    var title = String()
-    var isRejected = String()
-    var major = String()
-    var description = String()
+    var isRejected = Bool()
     
-    init(homeworkId: Int, teacherName: String, startDate: String, endDate: String,
-         title: String, isRejected:String, major: String, description: String) {
+    init(homeworkId: Int, studentName: String, teacherName: String, startDate: String, endDate: String,
+         title: String, isRejected: Bool, major: String, description: String) {
         self.homeworkId = homeworkId
+        self.studentName = studentName
         self.teacherName = teacherName
+        self.title = title
+        self.description = description
+        self.major = major
         self.startDate = startDate
         self.endDate = endDate
-        self.title = title
         self.isRejected = isRejected
-        self.major = major
-        self.description = description
     }
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 struct HomeworkContent: Codable{
-    
+    var homeworkContent : [HwContent] = [HwContent]()
 }

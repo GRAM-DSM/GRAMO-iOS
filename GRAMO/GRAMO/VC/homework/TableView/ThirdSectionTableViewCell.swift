@@ -20,8 +20,8 @@ class ThirdSectionTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        listView.layer.cornerRadius = 3.0
-        listView.layer.shadowOpacity = 2.0
+        listView.layer.cornerRadius = 20.0
+        listView.layer.shadowOpacity = 0.2
         // Initialization code
     }
 

@@ -18,7 +18,7 @@ protocol HTTPClientProvider {
 class HTTPClient : HTTPClientProvider {
     
     let baseURI = String()
-
+    
     func get(_ api: NetworkingAPI) -> DataRequest {
         return AF.request(baseURI + api.path, method: .get, parameters: api.parameter, encoding: URLEncoding.default, headers: api.header, interceptor: nil)
     }

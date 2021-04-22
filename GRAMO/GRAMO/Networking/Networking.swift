@@ -58,28 +58,28 @@ enum NetworkingAPI {
             return baseURIHw + "/homework/reject/\(homeworkId)"
         case .getUserList:
             return baseURIHw + "/user/list"
-        
+            
         }
     }
     
     var header: HTTPHeaders? {
         switch self {
         default:
-            return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxODMwMDMxMCwianRpIjoiMzFmZmY0MjItYzQ4OS00ZDk1LWEwN2QtYjBlMmUxZTc4ODEwIiwibmJmIjoxNjE4MzAwMzEwLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoidGVzdGlvc0BnbWFpbC5jb20iLCJleHAiOjE2MTgzODY3MTB9.8mcy-vd7vCAVL39a0fOrx5ax4F1CAX7JfZGr5OyDxEU"]
+            return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxODk3MTQ4MiwianRpIjoiYzkxMjYzMjUtYzgyZi00Yjk5LTgzYmUtZmIwZTdiYmU4NjA5IiwibmJmIjoxNjE4OTcxNDgyLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoidGVzdGlvc0BnbWFpbC5jb20iLCJleHAiOjE2MTkwNTc4ODJ9.m5rlsqs3N7wgGqeUjA--lODtGWGTCj8Tg0Ed2MXguCU"]
         }
         
-//        let accessToken : String = "access_token"
-//                    let userDefault = UserDefaults.standard
-//                    userDefault.set(accessToken, forKey: "access_token")
-//                    userDefault.synchronize( )
-//                    guard let token = userDefault.string(forKey: "access_token") else { return nil }
-//                    return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxODMwMDMxMCwianRpIjoiMzFmZmY0MjItYzQ4OS00ZDk1LWEwN2QtYjBlMmUxZTc4ODEwIiwibmJmIjoxNjE4MzAwMzEwLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoidGVzdGlvc0BnbWFpbC5jb20iLCJleHAiOjE2MTgzODY3MTB9.8mcy-vd7vCAVL39a0fOrx5ax4F1CAX7JfZGr5OyDxEU"]
+        //        let accessToken : String = "access_token"
+        //                    let userDefault = UserDefaults.standard
+        //                    userDefault.set(accessToken, forKey: "access_token")
+        //                    userDefault.synchronize( )
+        //                    guard let token = userDefault.string(forKey: "access_token") else { return nil }
+        //                    return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxODMwMDMxMCwianRpIjoiMzFmZmY0MjItYzQ4OS00ZDk1LWEwN2QtYjBlMmUxZTc4ODEwIiwibmJmIjoxNjE4MzAwMzEwLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoidGVzdGlvc0BnbWFpbC5jb20iLCJleHAiOjE2MTgzODY3MTB9.8mcy-vd7vCAVL39a0fOrx5ax4F1CAX7JfZGr5OyDxEU"]
     }
     
     var parameter: [String:Any] {
         switch self {
-//        case .getNoticeList(let off_set, let limit_num):
-            
+        //        case .getNoticeList(let off_set, let limit_num):
+        
         case .getNoticeDetail(let id):
             return ["id":id]
         case .createNotice(let title, let content):

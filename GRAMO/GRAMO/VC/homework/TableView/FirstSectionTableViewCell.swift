@@ -14,6 +14,8 @@ class FirstSectionTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel : UILabel!
     @IBOutlet weak var titleLabel : UILabel!
     @IBOutlet weak var detailLabel : UILabel!
+    @IBOutlet weak var endDateLabel : UILabel!
+    @IBOutlet weak var majorLabel : UILabel!
     
     @IBOutlet weak var listView: UIView!
     

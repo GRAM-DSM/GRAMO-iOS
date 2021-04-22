@@ -22,7 +22,8 @@ class DetailViewController: ViewController {
     var planDescriptionArray: [String] = [""]
     
     var date = String()
-    var tellMeYesOrNo: Bool = true
+    var tellMeYesOrNo1: Bool = true
+    var tellMeYesOrNo2: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,15 +45,6 @@ class DetailViewController: ViewController {
         self.picuTableView.rowHeight = 48
         self.specialTableView.rowHeight = 66
 
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if self.tellMeYesOrNo {
-            self.picuTableView.reloadData()
-            self.specialTableView.reloadData()
-            
-        }
-        
     }
     
     @IBAction func touchUpPicuAddBtn(_ sender: UIButton) {
@@ -102,19 +94,24 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 case 200:
                     do {
                         print("OK - Send notice list successfully. - getPICU")
-                        print(self.date)
                         
                         let data = response.data
                         let model = try JSONDecoder().decode([GetPICU].self, from: data!)
+                        var num: Int = 0
                         
                         self.getPICU = model
                         
-                        if self.getPICU.count >= indexPath.row + 1 {
-                            self.picuUserNameArray.append(self.getPICU[indexPath.row].userName)
-                            self.picuDescriptionArray.append(self.getPICU[indexPath.row].description)
+                        if self.tellMeYesOrNo1 {
+                            for _ in self.getPICU {
+                                self.picuUserNameArray.append(self.getPICU[num].userName)
+                                self.picuDescriptionArray.append(self.getPICU[num].description)
+                                
+                                num += 1
+                                
+                            }
                             
-                        } else {
-                            self.tellMeYesOrNo = false
+                            self.tellMeYesOrNo1 = false
+                            self.picuTableView.reloadData()
                             
                         }
                         
@@ -162,12 +159,19 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                         
                         let data = response.data
                         let model = try JSONDecoder().decode([GetPlan].self, from: data!)
+                        var num: Int = 0
                         
                         self.getPlan = model
                         
-                        if self.getPlan.count >= indexPath.row + 1 {
-                            self.planTitleArray.append(self.getPlan[indexPath.row].title)
-                            self.planDescriptionArray.append(self.getPlan[indexPath.row].description)
+                        if self.tellMeYesOrNo2 {
+                            for _ in self.getPlan {
+                                self.planTitleArray.append(self.getPlan[indexPath.row].title)
+                                self.planDescriptionArray.append(self.getPlan[indexPath.row].description)
+                                
+                            }
+                            
+                            self.tellMeYesOrNo2 = false
+                            self.specialTableView.reloadData()
                             
                         }
                         
@@ -211,7 +215,6 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(picuUserNameArray)
         if tableView.tag == 1 {
             print("PICU : \(picuUserNameArray.count)")
             return picuUserNameArray.count

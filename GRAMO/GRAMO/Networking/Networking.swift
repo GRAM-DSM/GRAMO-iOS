@@ -49,9 +49,9 @@ enum NetworkingAPI {
         case .getHwContent(let homeworkId):
             return baseURIHw + "/homework/\(homeworkId)"
         case .createHw:
-            return baseURIHw + "/homework/detail"
-        case .deleteHw(let detailId):
             return baseURIHw + "/homework"
+        case .deleteHw(let detailId):
+            return baseURIHw + "/homework/\(detailId)"
         case .submitHw(let homeworkId):
             return baseURIHw + "/homework/\(homeworkId)"
         case .rejectHw(let homeworkId):
@@ -65,7 +65,7 @@ enum NetworkingAPI {
     var header: HTTPHeaders? {
         switch self {
         default:
-            return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxODk3MTQ4MiwianRpIjoiYzkxMjYzMjUtYzgyZi00Yjk5LTgzYmUtZmIwZTdiYmU4NjA5IiwibmJmIjoxNjE4OTcxNDgyLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoidGVzdGlvc0BnbWFpbC5jb20iLCJleHAiOjE2MTkwNTc4ODJ9.m5rlsqs3N7wgGqeUjA--lODtGWGTCj8Tg0Ed2MXguCU"]
+            return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxOTA4ODQ0OCwianRpIjoiMmNkYmUwMTMtOWZkNi00MDIwLThjNWQtZDg1OGRjMTliZGNhIiwibmJmIjoxNjE5MDg4NDQ4LCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoidGVzdGlvc0BnbWFpbC5jb20iLCJleHAiOjE2MTkxNzQ4NDh9.MM8Vj1u0gQ-ER6a1N3UeyavEXlBKQ_mhAkfnl_OjbXU"]
         }
         
         //        let accessToken : String = "access_token"

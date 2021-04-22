@@ -33,7 +33,7 @@ class HTTPClient: HTTPClientProvider {
         return AF.request(baseURI + api.path,
                           method: .post,
                           parameters: api.parameters,
-                          encoding: URLEncoding.default,
+                          encoding: JSONEncoding.prettyPrinted,
                           headers: api.headers,
                           interceptor: nil)
         

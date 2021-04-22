@@ -49,7 +49,7 @@ public enum NetworkingAPI{
         guard let token = UserDefault.string(forKey: "justToken") else { return nil }
         
         // return ["Authorization" : "Bearer" + token]
-        return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxOTAxMTkzNywianRpIjoiYWRhNTgzMDYtOTk2MS00YzA0LTk3N2UtN2MzOWY5YjYwZWNmIiwibmJmIjoxNjE5MDExOTM3LCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiY2tkZHlkMTIwMkBkYXVtLm5ldCIsImV4cCI6MTYxOTA5ODMzN30.UeO0IWElVbu9BmFW5KeA6Wt72juT_9EdGZX_9TlzeAM"]
+        return [ "Content-Type" : "application/json", "Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxOTAxMTkzNywianRpIjoiYWRhNTgzMDYtOTk2MS00YzA0LTk3N2UtN2MzOWY5YjYwZWNmIiwibmJmIjoxNjE5MDExOTM3LCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiY2tkZHlkMTIwMkBkYXVtLm5ldCIsImV4cCI6MTYxOTA5ODMzN30.UeO0IWElVbu9BmFW5KeA6Wt72juT_9EdGZX_9TlzeAM"]
         
     }
     

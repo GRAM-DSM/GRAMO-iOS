@@ -13,10 +13,12 @@ struct PICUListResponse: Codable {
 }
 
 struct GetPICU: Codable {
+    var picuId = Int()
     var userName = String()
     var description = String()
     
-    init (userName: String, description: String) {
+    init (picuId: Int, userName: String, description: String) {
+        self.picuId = picuId
         self.userName = userName
         self.description = description
         

@@ -16,6 +16,7 @@ class DetailViewController: ViewController {
     private var getPlan: [GetPlan] = []
     private var getPICU: [GetPICU] = []
     
+    var picuIdArray: [Int] = [0]
     var picuUserNameArray: [String] = [""]
     var picuDescriptionArray: [String] = [""]
     var planTitleArray: [String] = [""]
@@ -32,12 +33,10 @@ class DetailViewController: ViewController {
         self.picuTableView.delegate = self
         self.picuTableView.tag = 1
         
+        
         self.specialTableView.dataSource = self
         self.specialTableView.delegate = self
         self.specialTableView.tag = 2
-        
-//        picuTableView.rowHeight = UITableView.automaticDimension
-//        picuTableView.estimatedRowHeight = 48
 
 //        specialTableView.rowHeight = UITableView.automaticDimension
 //        specialTableView.estimatedRowHeight = 66
@@ -48,7 +47,35 @@ class DetailViewController: ViewController {
     }
     
     @IBAction func touchUpPicuAddBtn(_ sender: UIButton) {
-        httpClient.post(.createPICU("박동행 돼지", date)).responseJSON(completionHandler: {(response) in
+        let cell = picuTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PICUTableViewCell
+        
+        print(cell.detailTextView.text)
+        
+        httpClient.post(.createPICU(cell.detailTextView?.text ?? "", date)).responseJSON(completionHandler: {(response) in
+            switch response.response?.statusCode {
+            case 201:
+                print("OK - Send notice list successfully. - createPICU")
+                    
+                self.dismiss(animated: true, completion: nil)
+                
+            case 403:
+                print("403 : Token Token Token Token - createPICU")
+                    
+            case 404:
+                print("404 : NOT FOUND - Notice does not exist. - createPICU")
+                    
+            default:
+                print(response.response?.statusCode)
+                print(response.error)
+                    
+            }
+                
+        })
+        
+    }
+    
+    @IBAction func touchUpSpecialAddBtn(_ sender: UIButton) {
+        httpClient.post(.createPlan("안녕하세요", "반갑습니다", date)).responseJSON(completionHandler: {(response) in
             switch response.response?.statusCode {
             case 200:
                 do {
@@ -76,11 +103,6 @@ class DetailViewController: ViewController {
         })
         
     }
-    
-    @IBAction func touchUpSpecialAddBtn(_ sender: UIButton) {
-        
-        
-    }
 
 }
 
@@ -103,6 +125,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                         
                         if self.tellMeYesOrNo1 {
                             for _ in self.getPICU {
+                                self.picuIdArray.append(self.getPICU[num].picuId)
                                 self.picuUserNameArray.append(self.getPICU[num].userName)
                                 self.picuDescriptionArray.append(self.getPICU[num].description)
                                 

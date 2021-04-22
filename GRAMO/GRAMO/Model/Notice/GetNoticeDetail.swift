@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct GetNoticeDetail {
-    var notice = [noticeDetail]()
+struct GetNoticeDetail: Codable {
+    var notice : noticeDetail 
 }

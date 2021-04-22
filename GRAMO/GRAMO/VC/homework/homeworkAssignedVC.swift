@@ -17,9 +17,13 @@ class homeworkAssignedVC: UIViewController {
     @IBOutlet weak var contentTxt: UITextView!
     @IBOutlet weak var submitButton: UIButton!
     
+    var httpClient = HTTPClient()
+    var model : [HwContent] = [HwContent]()
+    var id = Int()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getContent(id)
         // Do any additional setup after loading the view.
     }
     
@@ -32,14 +36,55 @@ class homeworkAssignedVC: UIViewController {
     }
     
     
-    @IBAction func selectDate(_ sender: UITextField){
-        
-    }
-    
     @IBAction func submitButton(_ sender: UIButton){
+        submitHw(id)
+    }
+    
+    func getContent(_ id: Int) {
+        print("GetContent 호출됨")
+        httpClient.get(NetworkingAPI.getHwContent(id)).responseJSON {(res) in
+            print(res.data)
+            switch res.response?.statusCode {
+            case 200 :
+                do{
+                    print("OK")
+                    let data = res.data
+                    let model = try JSONDecoder().decode(HwContent.self, from: data!)
+                    self.selectDeadLineTxt.text = model.endDate
+                    self.dateLabel.text = model.startDate
+                    self.nameLabel.text = model.teacherName
+                    self.majorButton.setTitle(model.major, for: .normal)
+                    self.titleTxt.text = model.title
+                    self.contentTxt.text = model.description
+                }
+                catch{
+                    print("error: \(error)")
+                }
+                
+            case 400 : print("400 - BAD REQUEST")
+            case 401 : print("401 - Unauthorized")
+            case 404 : print("404 - NOT FOUND")
+            default : print(res.response?.statusCode)
+                
+            }
+        }
         
     }
     
+    func submitHw(_ id : Int) {
+        print("submit 호출됨")
+        httpClient.patch(NetworkingAPI.submitHw(id)).responseJSON {(res) in
+            switch res.response?.statusCode {
+            case 201 :
+                print("Created")
+                self.navigationController?.popViewController(animated: true)
+            case 400 : print("400 - BAD REQUEST")
+            case 401 : print("401 - Unauthorized")
+            case 404 : print("404 - NOT FOUND")
+            default : print(res.response?.statusCode)
+            }
+        }
+    }
     
     
     /*

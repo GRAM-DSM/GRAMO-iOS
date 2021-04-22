@@ -13,25 +13,31 @@ class infoAddVC: UIViewController, UITextViewDelegate {
     @IBOutlet weak var dateLabel : UILabel!
     @IBOutlet weak var infoTitle: UITextView!
     @IBOutlet weak var infoDetail: UITextView!
-
+    
+    let httpClient = HTTPClient()
+    var infoList = [InfoList]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        placeholderSetting()
-        textViewDidBeginEditing(infoTitle)
-        textViewDidBeginEditing(infoDetail)
-        textViewDidEndEditing(infoTitle)
-        textViewDidEndEditing(infoDetail)
+        
+        if dateLabel.adjustsFontSizeToFitWidth == false {
+            dateLabel.adjustsFontSizeToFitWidth = true
+        }
         
         let date = DateFormatter()
         date.dateFormat = "yyyy년 MM월 dd일"
         let currentDate = date.string(from: Date())
         dateLabel.text = currentDate
         
-        if dateLabel.adjustsFontSizeToFitWidth == false {
-            dateLabel.adjustsFontSizeToFitWidth = true
-        }
-        // Do any additional setup after loading the view.
+        placeholderSetting()
+        textViewDidBeginEditing(infoTitle)
+        textViewDidBeginEditing(infoDetail)
+        textViewDidEndEditing(infoTitle)
+        textViewDidEndEditing(infoDetail)
+        
+        
     }
+    
     
     @IBAction func cancel(_ sender : UIBarButtonItem){
         self.navigationController?.popViewController(animated: true)
@@ -52,8 +58,22 @@ class infoAddVC: UIViewController, UITextViewDelegate {
         let item : InfoList = InfoList(writer: "장서영", date: date, infotTitle: title, infoDetail: detail)
         
         infoList.append(item)
+        createNotice()
         
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func createNotice() {
+        print("포스트 호출됨")
+        httpClient.post(NetworkingAPI.createNotice(infoTitle.text, infoDetail.text)).responseJSON{(res) in
+            switch res.response?.statusCode{
+            case 200: print("SUCCESS")
+                self.navigationController?.popViewController(animated: true)
+            default: print("Create")
+                print(res.response?.statusCode)
+                
+            }
+        }
     }
     
     func placeholderSetting() {
@@ -82,20 +102,21 @@ class infoAddVC: UIViewController, UITextViewDelegate {
                 textView.text = "내용을 입력하세요"
                 textView.textColor = UIColor.lightGray
             }
-           
+            
             
         }
     }
     
-
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

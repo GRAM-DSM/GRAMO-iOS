@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct PlanListResponse: Codable {
-    var getPlan = [GetPlan]()
-    
-}
-
 struct GetPlan: Codable {
     var planId = Int()
     var title = String()

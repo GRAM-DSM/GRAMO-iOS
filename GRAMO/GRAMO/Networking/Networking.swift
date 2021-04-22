@@ -17,16 +17,22 @@ public enum NetworkingAPI{
     case createPICU(_ description: String, _ date: String)
     case deletePICU(_ picuId: String)
     
-    var path : String {
+    var path: String {
         switch self {
         case .getCalendarList(let date):
             print("path에서 \(date)")
             return "calendar?date=\(date)"
                     
-        case .getPlan, .createPlan, .deletePlan:
+        case .getPlan(let date):
+            return "calendar/plan/\(date)"
+            
+        case .createPlan, .deletePlan:
             return "calendar/plan"
             
-        case .getPICU, .createPICU, .deletePICU:
+        case .getPICU(let date):
+            return "calendar/picu/\(date)"
+            
+        case .createPICU, .deletePICU:
             return "calendar/picu"
             
         }
@@ -43,17 +49,13 @@ public enum NetworkingAPI{
         guard let token = UserDefault.string(forKey: "justToken") else { return nil }
         
         // return ["Authorization" : "Bearer" + token]
-        return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxODgyNDAzOCwianRpIjoiMjM2YTRlMzctOGUxZi00ZTI0LWI1ODktNzg1YjFlYjc3YjVkIiwibmJmIjoxNjE4ODI0MDM4LCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiY2tkZHlkMTIwMkBkYXVtLm5ldCIsImV4cCI6MTYxODkxMDQzOH0.34BkbduSRgU3cPW-oAmNCrjnCLK4GAbY0KGsbYj4w-Q"]
+        return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxOTAxMTkzNywianRpIjoiYWRhNTgzMDYtOTk2MS00YzA0LTk3N2UtN2MzOWY5YjYwZWNmIiwibmJmIjoxNjE5MDExOTM3LCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiY2tkZHlkMTIwMkBkYXVtLm5ldCIsImV4cCI6MTYxOTA5ODMzN30.UeO0IWElVbu9BmFW5KeA6Wt72juT_9EdGZX_9TlzeAM"]
         
     }
     
     var parameters: [String: Any] {
         switch self {
         case .getCalendarList(let date):
-            print(["date": date])
-            return ["date": date]
-            
-        case .getPlan(let date):
             print(["date": date])
             return ["date": date]
             
@@ -81,8 +83,8 @@ public enum NetworkingAPI{
             return [:]
             
         }
-        
+    
     }
-        
+    
 }
 

@@ -51,17 +51,14 @@ class Calendar2VC: UIViewController {
     func setUpEvents() {
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy-MM-dd"
+        let current_date_string = formatter.string(from: Date())
         
-        let today = formatter.date(from: "2021-04-18")
-        let birthday = formatter.date(from: "2021-09-03")
-        
-        events = [today!, birthday!]
-        
-        httpClient.get(.getCalendarList("2021-04-18")).responseJSON(completionHandler: {(response) in
+        httpClient.get(.getCalendarList(current_date_string)).responseJSON(completionHandler: {(response) in
             switch response.response?.statusCode {
             case 200:
                 do {
-                    print("OK - Send notice list successfully.")
+                    print("OK - Send notice list successfully. - getCalendarList")
+                    print(current_date_string)
                     
                     let data = response.data
                     let model = try JSONDecoder().decode([GetCalendarList].self, from: data!)
@@ -89,10 +86,10 @@ class Calendar2VC: UIViewController {
                 }
                 
             case 403:
-                print("403 : Token Token Token Token")
+                print("403 : Token Token Token Token - getCalendarList")
                 
             case 404:
-                print("404 : NOT FOUND - Notice does not exist.")
+                print("404 : NOT FOUND - Notice does not exist. - getCalendarList")
                 
             default:
                 print(response.response?.statusCode)
@@ -103,11 +100,6 @@ class Calendar2VC: UIViewController {
         })
         
     }
-    
-//    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-//        print(formatter.string(from: date) + " 선택됨")
-//        
-//    }
     
 }
 
@@ -127,7 +119,7 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
     // 숫자 글자로 바꾸기
     func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
         switch formatter.string(from: date) {
-        case "2021-09-03":
+        case "2021-09-03", "2022-09-03":
             return "Bir"
         
         default:
@@ -142,7 +134,6 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
         
         guard let modalPresentView = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
 
-        // 날짜를 원하는 형식으로 저장하기 위한 방법입니다.
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         modalPresentView.date = dateFormatter.string(from: date)

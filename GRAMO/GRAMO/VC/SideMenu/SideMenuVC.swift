@@ -32,6 +32,10 @@ class SideMenuVC: UIViewController {
     @IBAction func withdrawal(_ sender: UIButton){
         
     }
+    
+    func getProfile(){
+        
+    }
 
     /*
     // MARK: - Navigation

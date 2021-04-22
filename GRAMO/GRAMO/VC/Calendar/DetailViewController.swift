@@ -13,14 +13,12 @@ class DetailViewController: ViewController {
     
     let httpClient = HTTPClient()
     
-    private var getPlan: [GetPlan] = []
-    private var getPICU: [GetPICU] = []
+    private var getPlan = [GetPlan]()
+    private var picu = [GetPICU]()
     
-    var picuIdArray: [Int] = [0]
-    var picuUserNameArray: [String] = [""]
-    var picuDescriptionArray: [String] = [""]
-    var planTitleArray: [String] = [""]
-    var planDescriptionArray: [String] = [""]
+    var picdArray = [GetPICU]()
+    var planTitleArray = [String]()
+    var planDescriptionArray = [String]()
     
     var date = String()
     var tellMeYesOrNo1: Bool = true
@@ -29,27 +27,16 @@ class DetailViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.picuTableView.dataSource = self
-        self.picuTableView.delegate = self
-        self.picuTableView.tag = 1
+        appendMetadata()
+        getPICU()
+        setTableView()
         
-        
-        self.specialTableView.dataSource = self
-        self.specialTableView.delegate = self
-        self.specialTableView.tag = 2
-
-//        specialTableView.rowHeight = UITableView.automaticDimension
-//        specialTableView.estimatedRowHeight = 66
-        
-        self.picuTableView.rowHeight = 48
-        self.specialTableView.rowHeight = 66
-
     }
     
     @IBAction func touchUpPicuAddBtn(_ sender: UIButton) {
         let cell = picuTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PICUTableViewCell
         
-        print(cell.detailTextView.text)
+        print(cell.detailTextView.text)3
         
         httpClient.post(.createPICU(cell.detailTextView?.text ?? "", date)).responseJSON(completionHandler: {(response) in
             switch response.response?.statusCode {
@@ -103,71 +90,73 @@ class DetailViewController: ViewController {
         })
         
     }
+    
+    func getPICU(){
+        httpClient.get(.getPICU(date)).responseJSON(completionHandler: {(response) in
+            switch response.response?.statusCode {
+            case 200:
+                do {
+                    print("OK - Send notice list successfully. - getPICU")
+                    
+                    let data = response.data
+                    let model = try JSONDecoder().decode([GetPICU].self, from: data!)
+                    
+                    self.picu = model
+                    self.picuTableView.reloadData()
+                        
+                    }
+                    
+                } catch {
+                    print("Error: \(error)")
+                    
+                }
+                
+            case 403:
+                print("403 : Token Token Token Token - getPICU")
+                
+            case 404:
+                print("404 : NOT FOUND - Notice does not exist. - getPICU")
+                
+            default:
+                print(response.response?.statusCode)
+                print(response.error)
+            }
+        })
+    }
+
+    func appendMetadata(){
+        picu.append(GetPICU(picuId: 0, userName: "정창용", description: "사유를 적어주세요"))
+    }
 
 }
 
+// MARK:- table view
 extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func setTableView(){
+        self.picuTableView.dataSource = self
+        self.picuTableView.delegate = self
+        self.picuTableView.tag = 1
+        
+        
+        self.specialTableView.dataSource = self
+        self.specialTableView.delegate = self
+        self.specialTableView.tag = 2
+
+//      specialTableView.rowHeight = UITableView.automaticDimension
+//      specialTableView.estimatedRowHeight = 66
+        
+        self.picuTableView.rowHeight = 48
+        self.specialTableView.rowHeight = 66
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 1 {
             let picuCell: PICUTableViewCell = tableView.dequeueReusableCell(withIdentifier: PICUTableViewCell.picuCellIdentifier, for: indexPath) as! PICUTableViewCell
             
-            httpClient.get(.getPICU(date)).responseJSON(completionHandler: {(response) in
-                switch response.response?.statusCode {
-                case 200:
-                    do {
-                        print("OK - Send notice list successfully. - getPICU")
-                        
-                        let data = response.data
-                        let model = try JSONDecoder().decode([GetPICU].self, from: data!)
-                        var num: Int = 0
-                        
-                        self.getPICU = model
-                        
-                        if self.tellMeYesOrNo1 {
-                            for _ in self.getPICU {
-                                self.picuIdArray.append(self.getPICU[num].picuId)
-                                self.picuUserNameArray.append(self.getPICU[num].userName)
-                                self.picuDescriptionArray.append(self.getPICU[num].description)
-                                
-                                num += 1
-                                
-                            }
-                            
-                            self.tellMeYesOrNo1 = false
-                            self.picuTableView.reloadData()
-                            
-                        }
-                        
-                        if indexPath.row == 0 {
-                            picuCell.nameLabel?.text = "정창용"
-                            picuCell.detailLabel?.text = ""
-                            picuCell.detailTextView?.text = "사유를 적어주세요"
-                            
-                        } else {
-                            picuCell.nameLabel?.text = self.picuUserNameArray[indexPath.row]
-                            picuCell.detailLabel?.text = self.picuDescriptionArray[indexPath.row]
-                            picuCell.detailTextView?.text = ""
-                            
-                        }
-                        
-                    } catch {
-                        print("Error: \(error)")
-                        
-                    }
-                    
-                case 403:
-                    print("403 : Token Token Token Token - getPICU")
-                    
-                case 404:
-                    print("404 : NOT FOUND - Notice does not exist. - getPICU")
-                    
-                default:
-                    print(response.response?.statusCode)
-                    print(response.error)
-                
-                }
-                
-            })
+            picuCell.nameLabel?.text = self.picu[indexPath.row].userName
+            picuCell.detailLabel?.text = self.picu[indexPath.row].description
+            picuCell.detailTextView?.text = ""
             
             return picuCell
             
@@ -199,9 +188,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                         }
                         
                         if indexPath.row == 0 {
-                            specialCell.titleLabel?.text = ""
-                            specialCell.detailLabel?.text = ""
-                            specialCell.titleTextView?.text = "어떤 특별한 일인가요?"
+                            specialCell.titleTextView.place = "어떤 특별한 일인가요?"
                             specialCell.detailTextView?.text = "특별한 일의 설명을 적어주세요"
                             
                         } else {
@@ -239,8 +226,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView.tag == 1 {
-            print("PICU : \(picuUserNameArray.count)")
-            return picuUserNameArray.count
+            print("PICU : \(picu.count)")
+            return picu.count
 
         }
         

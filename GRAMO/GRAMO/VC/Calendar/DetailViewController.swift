@@ -275,12 +275,9 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         planTableView.dataSource = self
         planTableView.delegate = self
         planTableView.tag = 2
-
-        planTableView.rowHeight = UITableView.automaticDimension
-        planTableView.estimatedRowHeight = 66
         
         picuTableView.rowHeight = 48
-        // planTableView.rowHeight = 66
+        planTableView.rowHeight = 66
         
     }
     

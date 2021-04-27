@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: PICUTableViewCell
 class PICUTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var detailLabel: UILabel!
@@ -16,6 +17,10 @@ class PICUTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        detailTextView.delegate = self
+        
+        placeholderSetting()
         
     }
     
@@ -28,6 +33,34 @@ class PICUTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
+    
+    func placeholderSetting() {
+        detailTextView.text = "사유를 적어주세요"
+        detailTextView.textColor = UIColor.lightGray
+            
+    }
 
+}
+
+// MARK: UITextView
+extension PICUTableViewCell: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+                
+        }
+        
+    }
+        
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "사유를 적어주세요"
+            textView.textColor = UIColor.lightGray
+                
+        }
+            
+    }
+    
 }
 

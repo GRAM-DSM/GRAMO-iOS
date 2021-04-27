@@ -23,7 +23,6 @@ class DetailViewController: ViewController, UITextViewDelegate {
     public var date = String()
     
     override func viewDidLoad() {
-        let cell = picuTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PICUTableViewCell
         super.viewDidLoad()
         
         setTableView()
@@ -31,9 +30,6 @@ class DetailViewController: ViewController, UITextViewDelegate {
         getPICU()
         getPlan()
         initRefresh()
-        placeholderSetting()
-        textViewDidBeginEditing(cell.detailTextView)
-        textViewDidEndEditing(cell.detailTextView)
 
     }
     
@@ -49,7 +45,7 @@ class DetailViewController: ViewController, UITextViewDelegate {
             switch response.response?.statusCode {
             case 201:
                 print("OK - Send notice list successfully. - createPICU")
-                self.getPICU()
+                self.dismiss(animated: true, completion: nil)
                 self.showToast(message: "PICU 등록 성공!")
                 
             case 400:
@@ -78,7 +74,7 @@ class DetailViewController: ViewController, UITextViewDelegate {
             switch response.response?.statusCode {
             case 201:
                 print("OK - Send notice list successfully. - createPlan")
-                self.getPlan()
+                self.dismiss(animated: true, completion: nil)
                 self.showToast(message: "Plan 등록 성공!")
                 
             case 400:
@@ -119,33 +115,6 @@ class DetailViewController: ViewController, UITextViewDelegate {
         })
         
     }
-    
-    func placeholderSetting() {
-        let cell = picuTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PICUTableViewCell
-        
-        cell.detailTextView.text = "사유를 적어주세요"
-        cell.detailTextView.textColor = UIColor.lightGray
-        
-    }
-        
-        
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.text = nil
-            textView.textColor = UIColor.black
-            
-        }
-        
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "사유를 적어주세요"
-            textView.textColor = UIColor.lightGray
-            
-        }
-        
-    }
 
 }
 
@@ -160,11 +129,11 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             
             if indexPath.row == 0 {
                 picuCell.detailLabel?.text = ""
-                picuCell.detailTextView?.text = self.picu[indexPath.row].description
+                picuCell.detailTextView?.text = picu[indexPath.row].description
                 
             } else {
                 picuCell.detailLabel?.text = self.picu[indexPath.row].description
-                picuCell.detailTextView?.text = ""
+                picuCell.detailTextView?.text.removeAll()
                 
                 picuCell.detailTextView?.isSelectable = false
                 
@@ -178,14 +147,14 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 planCell.titleLabel?.text = ""
                 planCell.detailLabel?.text = ""
-                planCell.titleTextView?.text = self.plan[indexPath.row].title
+                planCell.titleTextView?.text = self.plan[indexPath.row].description
                 planCell.detailTextView?.text = self.plan[indexPath.row].description
                 
             } else {
                 planCell.titleLabel?.text = self.plan[indexPath.row].title
                 planCell.detailLabel?.text = self.plan[indexPath.row].description
                 planCell.titleTextView?.text = ""
-                planCell.detailTextView?.text = ""
+                planCell.detailTextView?.text  = ""
                 
                 planCell.titleTextView.isSelectable = false
                 planCell.detailTextView.isSelectable = false

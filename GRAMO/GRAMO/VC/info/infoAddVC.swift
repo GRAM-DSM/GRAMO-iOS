@@ -19,6 +19,7 @@ class infoAddVC: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBar()
         
         if dateLabel.adjustsFontSizeToFitWidth == false {
             dateLabel.adjustsFontSizeToFitWidth = true
@@ -67,8 +68,15 @@ class infoAddVC: UIViewController, UITextViewDelegate {
         print("포스트 호출됨")
         httpClient.post(NetworkingAPI.createNotice(infoTitle.text, infoDetail.text)).responseJSON{(res) in
             switch res.response?.statusCode{
-            case 200: print("SUCCESS")
-                self.navigationController?.popViewController(animated: true)
+            case 200:
+                do {
+                    print("SUCCESS")
+                    self.navigationController?.popViewController(animated: true)
+                }
+                catch {
+                    print("error\(error)")
+                }
+                
             default: print("Create")
                 print(res.response?.statusCode)
                 
@@ -105,6 +113,13 @@ class infoAddVC: UIViewController, UITextViewDelegate {
             
             
         }
+    }
+    
+    func setNavigationBar(){
+        let bar:UINavigationBar! =  self.navigationController?.navigationBar
+        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        bar.shadowImage = UIImage()
+        bar.backgroundColor = UIColor.clear
     }
     
     

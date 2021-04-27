@@ -7,8 +7,6 @@
 
 import UIKit
 
-var nationalTableView : UITableView!
-
 class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
@@ -17,6 +15,9 @@ class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private var getListModel: [Notice] = [Notice]()
     private var listModel : GetNoticeList = GetNoticeList()
     
+    var off_set : Int = 0
+    var limit_num : Int = 10
+    var nextPage = Bool()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listModel.notice.count
@@ -51,9 +52,29 @@ class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.viewDidLoad()
         tableView.rowHeight = 130
         
-        nationalTableView = tableView
+        getList()
+        
+        setNavigationBar()
+        
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
         // Do any additional setup after loading the view.
     }
+    
+    
+    @objc func pullToRefresh(_ sender: Any) {
+        getList()
+        tableView.endUpdates()
+        tableView.refreshControl?.endRefreshing()
+    }
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        secondGetList()
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -64,19 +85,18 @@ class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func getList(){
         print("호출됨")
-        httpClient.get(NetworkingAPI.getNoticeList(1, 100)).responseJSON{(response) in
+        httpClient.get(NetworkingAPI.getNoticeList(0, 10)).responseJSON{(response) in
             print(response.data)
             switch response.response?.statusCode{
-            case 200: print("OK - Send notice list successfully.")
+            case 200: 
                 do{
-                    guard let data = response.data else {return}
-                    guard let model = try? JSONDecoder().decode(GetNoticeList.self, from: data) else {return}
-                    print(model.notice)
+                    print("OK - Send notice list successfully.")
+                    let data = response.data
+                    let model = try JSONDecoder().decode(GetNoticeList.self, from: data!)
+                    self.nextPage = model.next_page
                     self.listModel.notice.removeAll()
                     self.listModel.notice.append(contentsOf: model.notice)
                     self.tableView.reloadData()
-                    print("reloadData")
-                    
                 }
                 catch{
                     print("error")
@@ -87,6 +107,60 @@ class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
         }
     }
+    
+    func getOffSet()-> Int {
+        self.off_set += self.limit_num
+        return off_set
+    }
+    
+    func secondGetList() {
+        print("두번째 불러오기 호출됨")
+        getOffSet()
+        print(nextPage)
+        print(self.off_set, self.limit_num)
+        if nextPage == true {
+            httpClient.get(NetworkingAPI.getNoticeList(off_set, limit_num)).responseJSON{(response) in
+                print(response.data)
+                print(self.off_set, self.limit_num)
+                switch response.response?.statusCode{
+                case 200:
+                    do{
+                        print("OK - Send notice list successfully.")
+                        let data = response.data
+                        let model = try JSONDecoder().decode(GetNoticeList.self, from: data!)
+                        self.nextPage = model.next_page
+//                        self.listModel.notice.removeAll()
+                        self.listModel.notice.append(contentsOf: model.notice)
+                        self.tableView.reloadData()
+                        
+                    }
+                    catch{
+                        print("error")
+                        print(error)
+                    }
+                case 404: print("404 : NOT FOUND - Notice does not exist.")
+                default: print(response.response?.statusCode)
+                }
+            }
+        }
+
+        else {
+            let alert = UIAlertController(title: "더 이상 불러올 공지사항이 없습니다.", message: nil, preferredStyle: UIAlertController.Style.alert)
+            let cancelAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
+            present(alert, animated: true, completion: nil)
+        }
+        
+    }
+
+    
+    func setNavigationBar(){
+        let bar:UINavigationBar! =  self.navigationController?.navigationBar
+        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        bar.shadowImage = UIImage()
+        bar.backgroundColor = UIColor.clear
+    }
+    
     
     
     

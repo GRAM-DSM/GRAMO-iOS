@@ -65,7 +65,7 @@ enum NetworkingAPI {
     var header: HTTPHeaders? {
         switch self {
         default:
-            return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxOTA4ODQ0OCwianRpIjoiMmNkYmUwMTMtOWZkNi00MDIwLThjNWQtZDg1OGRjMTliZGNhIiwibmJmIjoxNjE5MDg4NDQ4LCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoidGVzdGlvc0BnbWFpbC5jb20iLCJleHAiOjE2MTkxNzQ4NDh9.MM8Vj1u0gQ-ER6a1N3UeyavEXlBKQ_mhAkfnl_OjbXU"]
+            return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxOTUxMDA1MCwianRpIjoiNTk2YzkwMmYtNDIwNC00ZWZkLWI0ZGMtYjI0YmVkY2IyMWIxIiwibmJmIjoxNjE5NTEwMDUwLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiY2hhbmd4QGdtYWlsLmNvbSIsImV4cCI6MTYxOTU5NjQ1MH0.WHcfLQ06j8953edGLColVALvLmbr__eNDzYLYhzfLVs"]
         }
         
         //        let accessToken : String = "access_token"

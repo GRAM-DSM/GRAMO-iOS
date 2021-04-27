@@ -17,9 +17,10 @@ struct HwContent: Codable {
     var major = String()
     var teacherName = String()
     var studentName = String()
+    var isMine = Bool()
     
     init(homeworkId: Int, title: String, description: String, startDate: String, endDate: String,
-         isRejected: Bool, major: String, teacherName: String, studentName: String) {
+         isRejected: Bool, major: String, teacherName: String, studentName: String, isMine: Bool) {
         self.homeworkId = homeworkId
         self.title = title
         self.description = description
@@ -28,5 +29,6 @@ struct HwContent: Codable {
         self.isRejected = isRejected
         self.major = major
         self.teacherName = teacherName
+        self.isMine = isMine
     }
 }

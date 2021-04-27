@@ -9,5 +9,6 @@ import Foundation
 
 struct GetNoticeList: Codable {
     var notice : [Notice] = [Notice]()
+    var next_page = Bool()
 }
 

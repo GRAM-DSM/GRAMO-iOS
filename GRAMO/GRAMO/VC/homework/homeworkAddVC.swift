@@ -32,6 +32,10 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        deadLinetTxt.layer.cornerRadius = 8
+        allocatorButton.layer.cornerRadius = 8
+        
         createDatePicker()
         
         if dateLabel.adjustsFontSizeToFitWidth == false {
@@ -42,6 +46,12 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
         date.dateFormat = "yyyy년 MM월 dd일"
         let currentDate = date.string(from: Date())
         dateLabel.text = currentDate
+        
+        placeholderSetting()
+        textViewDidBeginEditing(detailTxtView)
+        textViewDidEndEditing(detailTxtView)
+        setNavigationBar()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -50,11 +60,22 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
+        if titleTxt.textColor == UIColor.lightGray || detailTxtView.textColor == UIColor.lightGray {
+            let alert = UIAlertController(title: "제목 또는 내용을 입력해주세요.", message: nil, preferredStyle: UIAlertController.Style.alert)
+            let cancelAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        }
         addHw()
     }
     
     @IBAction func selectMajor(_ sender: UIButton){
         let dropdown = DropDown()
+        
+        DropDown.appearance().backgroundColor = UIColor.white
+        DropDown.appearance().selectionBackgroundColor = UIColor.lightGray
+        DropDown.appearance().textColor = UIColor.black
+        
         dropdown.dataSource = ["iOS", "안드로이드", "서버", "디자인"]
         dropdown.show()
         dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -70,7 +91,9 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
                 print("TTI YONG")
             }
         }
-        //dropdown.bottomOffset = CGPoint(x: 0, y:(dropdown.anchorView?.plainView.bounds.height)!)
+        
+        dropdown.anchorView = selectMajorButton
+        
     }
     
     @IBAction func selectAllocator(_ sender: UIButton){
@@ -93,12 +116,19 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
                     }
                     
                     let dropDown = DropDown()
+                    
+                    DropDown.appearance().backgroundColor = UIColor.white
+                    DropDown.appearance().selectionBackgroundColor = UIColor.lightGray
+                    DropDown.appearance().textColor = UIColor.black
+                    
                     dropDown.dataSource = studentItems
                     dropDown.show()
                     dropDown.selectionAction = {[unowned self] (index: Int, item: String) in
                         allocatorButton.setTitle("\(item)", for: .normal)
                         self.studentEmail = model.userInfoResponses[index].email
                     }
+                    
+                    dropDown.anchorView = allocatorButton
                     
                 }
                 catch {
@@ -130,6 +160,13 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
             textView.text = "내용을 입력하세요"
             textView.textColor = UIColor.lightGray
         }
+    }
+    
+    func setNavigationBar(){
+        let bar:UINavigationBar! =  self.navigationController?.navigationBar
+        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        bar.shadowImage = UIImage()
+        bar.backgroundColor = UIColor.clear
     }
     
     func createDatePicker() {
@@ -186,7 +223,7 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
                     print("error: \(error)")
                 }
             case 400 : print("400 - BAD REQUEST")
-            case 404 : print("404 - NOT FOUND")
+            case 404 : print("404 - NOT FOUND createHw")
             default : print(res.response?.statusCode)
             }
         }

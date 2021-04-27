@@ -25,15 +25,21 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        assignedTableView.rowHeight = 120
+        setNavigationBar()
+        
+        assignedTableView.rowHeight = 130
         assignedTableView.tag = 1
         
-        allocatorTableView.rowHeight = 120
+        allocatorTableView.rowHeight = 130
         allocatorTableView.tag = 2
         
-        submittedTableVIew.rowHeight = 120
+        submittedTableVIew.rowHeight = 130
         submittedTableVIew.tag = 3
         
+        assignedTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        allocatorTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        submittedTableVIew.separatorStyle = UITableViewCell.SeparatorStyle.none
+
         getAssView()
         getOrdView()
         getSubView()
@@ -102,11 +108,15 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             let finalDate = date.components(separatedBy: ["-", ":"," "])
             let formattedDate = finalDate[0] + "년 " + finalDate[1] + "월 " + finalDate[2] + "일"
             
+            let enddate = hwTeachherModel[indexPath.row].endDate
+            let finalDate2 = enddate.components(separatedBy: ["-", ":"," "])
+            let formattedDate2 = finalDate2[0] + "년 " + finalDate2[1] + "월 " + finalDate2[2] + "일"
+            
             cell.myNameLabel.text = hwTeachherModel[indexPath.row].teacherName
             cell.dateLabel.text = formattedDate
             cell.detailLabel.text = hwTeachherModel[indexPath.row].description
             cell.titleLabel.text = hwTeachherModel[indexPath.row].title
-            cell.endDateLabel.text = hwTeachherModel[indexPath.row].endDate
+            cell.endDateLabel.text = formattedDate2
             cell.majorLabel.text = hwTeachherModel[indexPath.row].major
             
             return cell
@@ -119,12 +129,15 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             let finalDate = date.components(separatedBy: ["-", ":"," "])
             let formattedDate = finalDate[0] + "년 " + finalDate[1] + "월 " + finalDate[2] + "일"
             
+            let enddate = hwOrderdModel[indexPath.row].endDate
+            let finalDate2 = enddate.components(separatedBy: ["-", ":"," "])
+            let formattedDate2 = finalDate2[0] + "년 " + finalDate2[1] + "월 " + finalDate2[2] + "일"
+            
             cell.recipientName.text = hwOrderdModel[indexPath.row].studentName
-            print(cell.recipientName.text)
             cell.dateLabel.text = formattedDate
             cell.detailLabel.text = hwOrderdModel[indexPath.row].description
             cell.titleLabel.text = hwOrderdModel[indexPath.row].title
-            cell.endDateLabel.text = hwOrderdModel[indexPath.row].endDate
+            cell.endDateLabel.text = formattedDate2
             cell.majorLabel.text = hwOrderdModel[indexPath.row].major
             
             return cell
@@ -137,11 +150,15 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             let finalDate = date.components(separatedBy: ["-", ":"," "])
             let formattedDate = finalDate[0] + "년 " + finalDate[1] + "월 " + finalDate[2] + "일"
             
-            cell.myNameLabel.text = hwStudentModel[indexPath.row].studentName
+            let enddate = hwStudentModel[indexPath.row].endDate
+            let finalDate2 = enddate.components(separatedBy: ["-", ":"," "])
+            let formattedDate2 = finalDate2[0] + "년 " + finalDate2[1] + "월 " + finalDate2[2] + "일"
+            
+            cell.myNameLabel.text = hwStudentModel[indexPath.row].teacherName
             cell.dateLabel.text = formattedDate
             cell.detailLabel.text = hwStudentModel[indexPath.row].description
             cell.titleLabel.text = hwStudentModel[indexPath.row].title
-            cell.endDateLabel.text = hwStudentModel[indexPath.row].endDate
+            cell.endDateLabel.text = formattedDate2
             cell.majorLabel.text = hwStudentModel[indexPath.row].major
             
             
@@ -168,7 +185,7 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
                 
             case 400 : print("400 - BAD REQUEST")
-            case 404 : print("404 - NOT FOUND")
+            case 404 : print("404 - NOT FOUND assign")
             default : print(response.response?.statusCode)
             }
         }
@@ -194,7 +211,7 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
                 
             case 400: print("400 - BAD REQUEST")
-            case 404 : print("404 - NOT FOUND")
+            case 404 : print("404 - NOT FOUND submit")
             default : print(response.response?.statusCode)
             }
         }
@@ -219,10 +236,17 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
                 
             case 400 : print("400 - BAD REQUEST")
-            case 404 : print("404 - NOT FOUND")
+            case 404 : print("404 - NOT FOUND order")
             default : print(response.response?.statusCode)
             }
         }
+    }
+    
+    func setNavigationBar(){
+        let bar:UINavigationBar! =  self.navigationController?.navigationBar
+        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        bar.shadowImage = UIImage()
+        bar.backgroundColor = UIColor.clear
     }
     
     /*

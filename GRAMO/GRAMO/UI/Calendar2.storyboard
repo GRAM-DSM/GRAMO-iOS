@@ -94,6 +94,9 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqr-uR-NiY">
                                                     <rect key="frame" x="64" y="11" width="50" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="t5h-hv-0W1"/>
+                                                    </constraints>
                                                     <attributedString key="attributedText">
                                                         <fragment content="누구냐">
                                                             <attributes>
@@ -104,7 +107,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5W-kD-PvW">
-                                                    <rect key="frame" x="130" y="6" width="206" height="26"/>
+                                                    <rect key="frame" x="125" y="6" width="241" height="26"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="26" id="eBR-hn-Yi2"/>
@@ -121,10 +124,7 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeX-Vs-ePe">
-                                                    <rect key="frame" x="130" y="14" width="206" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="206" id="CSD-n1-6p0"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="130" y="14" width="236" height="20"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content=" ">
                                                             <attributes>
@@ -139,14 +139,14 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="yeX-Vs-ePe" secondAttribute="bottom" constant="14" id="2E3-vd-wI7"/>
-                                                <constraint firstItem="d5W-kD-PvW" firstAttribute="leading" secondItem="Jqr-uR-NiY" secondAttribute="trailing" constant="16" id="2cP-51-mKt"/>
-                                                <constraint firstAttribute="trailing" secondItem="yeX-Vs-ePe" secondAttribute="trailing" constant="54" id="3Uc-0Z-5xo"/>
+                                                <constraint firstItem="d5W-kD-PvW" firstAttribute="leading" secondItem="Jqr-uR-NiY" secondAttribute="trailing" constant="11" id="2cP-51-mKt"/>
+                                                <constraint firstAttribute="trailing" secondItem="yeX-Vs-ePe" secondAttribute="trailing" constant="24" id="3Uc-0Z-5xo"/>
                                                 <constraint firstItem="Jqr-uR-NiY" firstAttribute="top" secondItem="f6M-aX-fhi" secondAttribute="top" constant="11" id="5PS-yW-NY0"/>
                                                 <constraint firstItem="yeX-Vs-ePe" firstAttribute="leading" secondItem="Jqr-uR-NiY" secondAttribute="trailing" constant="16" id="A3D-Zp-ekd"/>
                                                 <constraint firstItem="yeX-Vs-ePe" firstAttribute="top" secondItem="f6M-aX-fhi" secondAttribute="top" constant="14" id="Kra-HP-uk9"/>
                                                 <constraint firstItem="Gsw-Px-aKm" firstAttribute="top" secondItem="f6M-aX-fhi" secondAttribute="top" constant="8" id="QLO-mC-VUy"/>
                                                 <constraint firstItem="Jqr-uR-NiY" firstAttribute="leading" secondItem="Gsw-Px-aKm" secondAttribute="trailing" constant="8" id="RsR-xC-lmd"/>
-                                                <constraint firstAttribute="trailing" secondItem="d5W-kD-PvW" secondAttribute="trailing" constant="54" id="TGO-8I-db0"/>
+                                                <constraint firstAttribute="trailing" secondItem="d5W-kD-PvW" secondAttribute="trailing" constant="24" id="TGO-8I-db0"/>
                                                 <constraint firstItem="Gsw-Px-aKm" firstAttribute="leading" secondItem="f6M-aX-fhi" secondAttribute="leading" constant="24" id="Tmy-Qx-ug6"/>
                                                 <constraint firstAttribute="bottom" secondItem="Gsw-Px-aKm" secondAttribute="bottom" constant="8" id="eEr-K4-iLW"/>
                                                 <constraint firstAttribute="bottom" secondItem="Jqr-uR-NiY" secondAttribute="bottom" constant="11" id="kEf-x3-Qd6"/>

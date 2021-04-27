@@ -26,12 +26,15 @@ class DetailViewController: ViewController {
         super.viewDidLoad()
         
         setTableView()
-        appendMetadata()
+        appendMetadata(num: 0)
         getPICU()
         getPlan()
         initRefresh()
-        
-        overrideUserInterfaceStyle = .light
+
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
 
     }
     
@@ -42,9 +45,8 @@ class DetailViewController: ViewController {
             switch response.response?.statusCode {
             case 201:
                 print("OK - Send notice list successfully. - createPICU")
-                self.dismiss(animated: true, completion: nil)
-                
-                
+                self.getPICU()
+                self.showToast(message: "PICU 등록 성공!")
                 
             case 403:
                 print("403 : Token Token Token Token - createPICU")
@@ -69,11 +71,9 @@ class DetailViewController: ViewController {
             switch response.response?.statusCode {
             case 201:
                 do {
-                    print("OK - Send notice list successfully. - createPICU")
-                    self.dismiss(animated: true, completion: nil)
-                    
-                    guard let vc = self.storyboard?.instantiateViewController(identifier: "Calendar2VC") as? Calendar2VC else { return }
-                    vc.calendar.reloadData()
+                    print("OK - Send notice list successfully. - createPlan")
+                    self.getPlan()
+                    self.showToast(message: "Plan 등록 성공!")
                     
                 } catch {
                     print("Error: \(error)")
@@ -81,10 +81,10 @@ class DetailViewController: ViewController {
                 }
                 
             case 403:
-                print("403 : Token Token Token Token - createPICU")
+                print("403 : Token Token Token Token - createPlan")
                 
             case 404:
-                print("404 : NOT FOUND - Notice does not exist. - createPICU")
+                print("404 : NOT FOUND - Notice does not exist. - createPlan")
                 
             default:
                 print(response.response?.statusCode)
@@ -92,6 +92,26 @@ class DetailViewController: ViewController {
                 
             }
             
+        })
+        
+    }
+    
+    func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) { let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = font
+        toastLabel.textAlignment = .center
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10
+        toastLabel.clipsToBounds = true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 10.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+            
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        
         })
         
     }
@@ -139,6 +159,11 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 planCell.detailTextView.isSelectable = false
             
             }
+            
+//            if planCell.detailLabel.text!.count > 30 {
+//                planTableView.rowHeight = 66
+//
+//            }
 
             return planCell
 
@@ -173,14 +198,16 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                             self.picu.remove(at: indexPath.row)
                             tableView.deleteRows(at: [indexPath], with: .fade)
                             
-                            let vc = self.storyboard?.instantiateViewController(identifier: "Calendar2VC") as? Calendar2VC
-                            vc!.calendar.reloadData()
+                            self.showToast(message: "PICU 삭제 성공!")
 
                         } catch {
                             print("Error: \(error)")
 
                         }
-
+                        
+                    case 401:
+                        self.showToast(message: "권한이 없습니다")
+                        
                     case 403:
                         print("403 : Token Token Token Token - getPICU")
                     
@@ -210,13 +237,15 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                             self.plan.remove(at: indexPath.row)
                             tableView.deleteRows(at: [indexPath], with: .fade)
                             
-                            guard let vc = self.storyboard?.instantiateViewController(identifier: "Calendar2VC") as? Calendar2VC else { return }
-                            vc.calendar.reloadData()
+                            self.showToast(message: "Plan 삭제 성공!")
 
                         } catch {
                             print("Error: \(error)")
 
                         }
+                        
+                    case 401:
+                        self.showToast(message: "권한이 없습니다")
 
                     case 403:
                         print("403 : Token Token Token Token - getPICU")
@@ -247,17 +276,27 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         planTableView.delegate = self
         planTableView.tag = 2
 
-//        specialTableView.rowHeight = UITableView.automaticDimension
-//        specialTableView.estimatedRowHeight = 66
+        planTableView.rowHeight = UITableView.automaticDimension
+        planTableView.estimatedRowHeight = 66
         
         picuTableView.rowHeight = 48
-        planTableView.rowHeight = 66
+        // planTableView.rowHeight = 66
         
     }
     
-    func appendMetadata() {
-        picu.append(GetPICU(picuId: 0, userName: "정창용", description: "사유를 적어주세요"))
-        plan.append(GetPlan(planId: 0, title: "어떤 특별한 일인가요?", description: "특별한 일의 설명을 적어주세요"))
+    func appendMetadata(num: Int) {
+        switch num {
+        case 1:
+            picu.append(GetPICU(picuId: 0, userName: "정창용", description: "사유를 적어주세요"))
+            
+        case 2:
+            plan.append(GetPlan(planId: 0, title: "어떤 특별한 일인가요?", description: "특별한 일의 설명을 적어주세요"))
+            
+        default:
+            picu.append(GetPICU(picuId: 0, userName: "정창용", description: "사유를 적어주세요"))
+            plan.append(GetPlan(planId: 0, title: "어떤 특별한 일인가요?", description: "특별한 일의 설명을 적어주세요"))
+            
+        }
     
     }
     
@@ -271,6 +310,10 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                     let data = response.data
                     let model = try JSONDecoder().decode([GetPICU].self, from: data!)
 
+                    self.picu.removeAll()
+                    
+                    self.appendMetadata(num: 1)
+                    
                     self.picu.append(contentsOf: model)
                     self.picuTableView.reloadData()
 
@@ -278,7 +321,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                     print("Error: \(error)")
 
                 }
-
+                
             case 403:
                 print("403 : Token Token Token Token - getPICU")
             
@@ -305,6 +348,10 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                     let data = response.data
                     let model = try JSONDecoder().decode([GetPlan].self, from: data!)
 
+                    self.plan.removeAll()
+                    
+                    self.appendMetadata(num: 2)
+                    
                     self.plan.append(contentsOf: model)
                     self.planTableView.reloadData()
 
@@ -347,14 +394,14 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     @objc func picuUpdateUI(refresh: UIRefreshControl) {
         refresh.endRefreshing()
         
-        picuTableView.reloadData()
+        getPICU()
         
     }
     
     @objc func planUpdateUI(refresh: UIRefreshControl) {
         refresh.endRefreshing()
         
-        planTableView.reloadData()
+        getPlan()
         
     }
     

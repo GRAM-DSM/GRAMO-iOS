@@ -25,12 +25,19 @@ class Calendar2VC: UIViewController {
         setUpCalendar()
         setUpEvents()
         
-        overrideUserInterfaceStyle = .light
+    }
+    
+    override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            setUpEvents()
+            
+        }
         
     }
     
 }
 
+// MARK: Calendar
 extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
     // 이벤트 표시 개수
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
@@ -68,14 +75,6 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
 
         self.present(modalPresentView, animated: true, completion: nil)
 
-    }
-    
-    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        if motion == .motionShake {
-            setUpEvents()
-            
-        }
-        
     }
     
     func setUpCalendar() {
@@ -122,11 +121,11 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
                     
                     self.getCalendarListModel = model
                     
+                    self.events.removeAll()
+                    
                     for _ in self.getCalendarListModel {
                         if self.getCalendarListModel[num].picuCount != 0 || self.getCalendarListModel[num].planCount != 0 {
-                            let event = self.formatter.date(from: self.getCalendarListModel[num].date)
-                            
-                            self.events.append(event!)
+                            self.events.append(self.formatter.date(from: self.getCalendarListModel[num].date)!)
                             
                         }
                         

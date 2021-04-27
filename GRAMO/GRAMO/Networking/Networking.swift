@@ -20,8 +20,7 @@ public enum NetworkingAPI{
     var path: String {
         switch self {
         case .getCalendarList(let date):
-            print("path에서 \(date)")
-            return "calendar?date=\(date)"
+            return "calendar/\(date)"
             
         case .getPICU(let date):
             return "calendar/picu/\(date)"
@@ -55,7 +54,7 @@ public enum NetworkingAPI{
         guard let token = UserDefault.string(forKey: "justToken") else { return nil }
         
         // return ["Authorization" : "Bearer" + token]
-        return [ "Content-Type" : "application/json", "Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxOTI3NDA3MCwianRpIjoiMjcyZTdiM2MtYzA1Ny00MTFhLWExODItZTA5MmQ5MmY1Y2JjIiwibmJmIjoxNjE5Mjc0MDcwLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiY2tkZHlkMTIwMkBkYXVtLm5ldCIsImV4cCI6MTYxOTM2MDQ3MH0.Zetexxxq4-pQVXXPECqiLwXM_xRSbrVhnXk1nLQliLQ"]
+        return [ "Content-Type" : "application/json", "Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxOTUxMDA1MCwianRpIjoiNTk2YzkwMmYtNDIwNC00ZWZkLWI0ZGMtYjI0YmVkY2IyMWIxIiwibmJmIjoxNjE5NTEwMDUwLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiY2hhbmd4QGdtYWlsLmNvbSIsImV4cCI6MTYxOTU5NjQ1MH0.WHcfLQ06j8953edGLColVALvLmbr__eNDzYLYhzfLVs"]
         
     }
     

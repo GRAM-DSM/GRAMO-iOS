@@ -16,21 +16,8 @@
 		54BCBF4C26036B8200B44447 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BCBF4B26036B8200B44447 /* DetailViewController.swift */; };
 		54FE42C9261C2E00004C5D9B /* SpecialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FE42C8261C2E00004C5D9B /* SpecialTableViewCell.swift */; };
 		B322413D00D974EC60F376D7 /* Pods_GRAMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */; };
-		EF01EF8E25D2949C0030C91E /* homeworkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF01EF8D25D2949C0030C91E /* homeworkVC.swift */; };
-		EF01EF9125D294A30030C91E /* homework.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF01EF9025D294A30030C91E /* homework.storyboard */; };
-		EF2239F125CD846000BFB5BC /* infoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F025CD846000BFB5BC /* infoListModel.swift */; };
-		EF2239F425CD846900BFB5BC /* info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF2239F325CD846900BFB5BC /* info.storyboard */; };
-		EF2239F925CD847900BFB5BC /* infoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F625CD847800BFB5BC /* infoListVC.swift */; };
-		EF2239FA25CD847900BFB5BC /* infoAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F725CD847800BFB5BC /* infoAddVC.swift */; };
-		EF2239FB25CD847900BFB5BC /* infoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F825CD847800BFB5BC /* infoTableViewCell.swift */; };
-		EF223A1E25CD903000BFB5BC /* SideMenuNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF223A1C25CD903000BFB5BC /* SideMenuNav.swift */; };
-		EF223A1F25CD903000BFB5BC /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF223A1D25CD903000BFB5BC /* SideMenuVC.swift */; };
-		EF36AE3925DAA2E7005D4570 /* FirstSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF36AE3825DAA2E7005D4570 /* FirstSectionTableViewCell.swift */; };
-		EF36AE3C25DAA2F9005D4570 /* SecondSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF36AE3B25DAA2F9005D4570 /* SecondSectionTableViewCell.swift */; };
-		EF36AE3F25DAA30D005D4570 /* ThirdSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF36AE3E25DAA30D005D4570 /* ThirdSectionTableViewCell.swift */; };
 		EF4416C725E942ED0074F6FC /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4416C625E942ED0074F6FC /* HTTPClient.swift */; };
 		EF4416CA25E942F30074F6FC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4416C925E942F30074F6FC /* Networking.swift */; };
-		EF766C6B25CA8E4700DECE25 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF766C6A25CA8E4700DECE25 /* TestModel.swift */; };
 		EF766C7025CA8E7800DECE25 /* TestNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF766C6F25CA8E7800DECE25 /* TestNetworking.swift */; };
 		EF766C7925CA8F6A00DECE25 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7525CA8F5D00DECE25 /* NotoSansKR-Black.otf */; };
 		EF766C7B25CA8F6D00DECE25 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7425CA8F5D00DECE25 /* NotoSansKR-Bold.otf */; };
@@ -38,10 +25,6 @@
 		EF766C7F25CA8F7200DECE25 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7625CA8F5D00DECE25 /* NotoSansKR-Medium.otf */; };
 		EF766C8125CA8F7500DECE25 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7325CA8F5D00DECE25 /* NotoSansKR-Regular.otf */; };
 		EF766C8325CA8F7800DECE25 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7825CA8F5D00DECE25 /* NotoSansKR-Thin.otf */; };
-		EF89101C25D29A2F002023CD /* homeworkAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89101B25D29A2F002023CD /* homeworkAddVC.swift */; };
-		EF89102025D2C52D002023CD /* homeworkAllocatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89101F25D2C52D002023CD /* homeworkAllocatorVC.swift */; };
-		EF89102325D2C54D002023CD /* homeworkAssignedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89102225D2C54D002023CD /* homeworkAssignedVC.swift */; };
-		EF89102625D2C5A2002023CD /* homeworkListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89102525D2C5A2002023CD /* homeworkListVC.swift */; };
 		EFABF72025CA8C1800E69CC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFABF71F25CA8C1800E69CC4 /* AppDelegate.swift */; };
 		EFABF72425CA8C1800E69CC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFABF72325CA8C1800E69CC4 /* ViewController.swift */; };
 		EFABF72725CA8C1800E69CC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFABF72525CA8C1800E69CC4 /* Main.storyboard */; };
@@ -61,21 +44,8 @@
 		54FE42C8261C2E00004C5D9B /* SpecialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialTableViewCell.swift; sourceTree = "<group>"; };
 		9A4F5BAE346346B91B6B2835 /* Pods-GRAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.debug.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.debug.xcconfig"; sourceTree = "<group>"; };
 		B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GRAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF01EF8D25D2949C0030C91E /* homeworkVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeworkVC.swift; sourceTree = "<group>"; };
-		EF01EF9025D294A30030C91E /* homework.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = homework.storyboard; sourceTree = "<group>"; };
-		EF2239F025CD846000BFB5BC /* infoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoListModel.swift; sourceTree = "<group>"; };
-		EF2239F325CD846900BFB5BC /* info.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = info.storyboard; sourceTree = "<group>"; };
-		EF2239F625CD847800BFB5BC /* infoListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoListVC.swift; sourceTree = "<group>"; };
-		EF2239F725CD847800BFB5BC /* infoAddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoAddVC.swift; sourceTree = "<group>"; };
-		EF2239F825CD847800BFB5BC /* infoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoTableViewCell.swift; sourceTree = "<group>"; };
-		EF223A1C25CD903000BFB5BC /* SideMenuNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuNav.swift; sourceTree = "<group>"; };
-		EF223A1D25CD903000BFB5BC /* SideMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
-		EF36AE3825DAA2E7005D4570 /* FirstSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSectionTableViewCell.swift; sourceTree = "<group>"; };
-		EF36AE3B25DAA2F9005D4570 /* SecondSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSectionTableViewCell.swift; sourceTree = "<group>"; };
-		EF36AE3E25DAA30D005D4570 /* ThirdSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdSectionTableViewCell.swift; sourceTree = "<group>"; };
 		EF4416C625E942ED0074F6FC /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		EF4416C925E942F30074F6FC /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		EF766C6A25CA8E4700DECE25 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		EF766C6F25CA8E7800DECE25 /* TestNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetworking.swift; sourceTree = "<group>"; };
 		EF766C7325CA8F5D00DECE25 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		EF766C7425CA8F5D00DECE25 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
@@ -83,10 +53,6 @@
 		EF766C7625CA8F5D00DECE25 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		EF766C7725CA8F5D00DECE25 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		EF766C7825CA8F5D00DECE25 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
-		EF89101B25D29A2F002023CD /* homeworkAddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeworkAddVC.swift; sourceTree = "<group>"; };
-		EF89101F25D2C52D002023CD /* homeworkAllocatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeworkAllocatorVC.swift; sourceTree = "<group>"; };
-		EF89102225D2C54D002023CD /* homeworkAssignedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeworkAssignedVC.swift; sourceTree = "<group>"; };
-		EF89102525D2C5A2002023CD /* homeworkListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeworkListVC.swift; sourceTree = "<group>"; };
 		EFABF71C25CA8C1800E69CC4 /* GRAMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GRAMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFABF71F25CA8C1800E69CC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFABF72325CA8C1800E69CC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -154,22 +120,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EF36AE3725DAA285005D4570 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-				EF36AE3825DAA2E7005D4570 /* FirstSectionTableViewCell.swift */,
-				EF36AE3B25DAA2F9005D4570 /* SecondSectionTableViewCell.swift */,
-				EF36AE3E25DAA30D005D4570 /* ThirdSectionTableViewCell.swift */,
-			);
-			path = TableView;
-			sourceTree = "<group>";
-		};
 		EF766C6625CA8DF900DECE25 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				EFABF72525CA8C1800E69CC4 /* Main.storyboard */,
-				EF2239F325CD846900BFB5BC /* info.storyboard */,
-				EF01EF9025D294A30030C91E /* homework.storyboard */,
 				546F624F25F8D04A006DE88A /* Calendar2.storyboard */,
 			);
 			path = UI;
@@ -180,9 +134,6 @@
 			children = (
 				EFABF72325CA8C1800E69CC4 /* ViewController.swift */,
 				5472443B261F0C28007C1F43 /* Calendar */,
-				EF89101625D29969002023CD /* info */,
-				EF89101925D299B1002023CD /* SideMenu */,
-				EF89101725D2997E002023CD /* homework */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -195,47 +146,6 @@
 				EF4416C925E942F30074F6FC /* Networking.swift */,
 			);
 			path = Networking;
-			sourceTree = "<group>";
-		};
-		EF766C6925CA8E1A00DECE25 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				EF766C6A25CA8E4700DECE25 /* TestModel.swift */,
-				EF2239F025CD846000BFB5BC /* infoListModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		EF89101625D29969002023CD /* info */ = {
-			isa = PBXGroup;
-			children = (
-				EF2239F725CD847800BFB5BC /* infoAddVC.swift */,
-				EF2239F625CD847800BFB5BC /* infoListVC.swift */,
-				EF2239F825CD847800BFB5BC /* infoTableViewCell.swift */,
-			);
-			path = info;
-			sourceTree = "<group>";
-		};
-		EF89101725D2997E002023CD /* homework */ = {
-			isa = PBXGroup;
-			children = (
-				EF01EF8D25D2949C0030C91E /* homeworkVC.swift */,
-				EF36AE3725DAA285005D4570 /* TableView */,
-				EF89102525D2C5A2002023CD /* homeworkListVC.swift */,
-				EF89101B25D29A2F002023CD /* homeworkAddVC.swift */,
-				EF89101F25D2C52D002023CD /* homeworkAllocatorVC.swift */,
-				EF89102225D2C54D002023CD /* homeworkAssignedVC.swift */,
-			);
-			path = homework;
-			sourceTree = "<group>";
-		};
-		EF89101925D299B1002023CD /* SideMenu */ = {
-			isa = PBXGroup;
-			children = (
-				EF223A1C25CD903000BFB5BC /* SideMenuNav.swift */,
-				EF223A1D25CD903000BFB5BC /* SideMenuVC.swift */,
-			);
-			path = SideMenu;
 			sourceTree = "<group>";
 		};
 		EFABF71325CA8C1700E69CC4 = {
@@ -261,7 +171,6 @@
 			children = (
 				546EFCDD2625842C001EC9CB /* API */,
 				548F4BBB2611DB9300A93433 /* Cell */,
-				EF766C6925CA8E1A00DECE25 /* Model */,
 				EF766C6725CA8E0400DECE25 /* VC */,
 				EF766C6825CA8E0A00DECE25 /* Networking */,
 				EF766C6625CA8DF900DECE25 /* UI */,
@@ -341,10 +250,8 @@
 			files = (
 				EF766C8325CA8F7800DECE25 /* NotoSansKR-Thin.otf in Resources */,
 				EF766C7D25CA8F7000DECE25 /* NotoSansKR-Light.otf in Resources */,
-				EF2239F425CD846900BFB5BC /* info.storyboard in Resources */,
 				546F625025F8D04A006DE88A /* Calendar2.storyboard in Resources */,
 				EFABF72C25CA8C1900E69CC4 /* LaunchScreen.storyboard in Resources */,
-				EF01EF9125D294A30030C91E /* homework.storyboard in Resources */,
 				EF766C7F25CA8F7200DECE25 /* NotoSansKR-Medium.otf in Resources */,
 				EFABF72925CA8C1900E69CC4 /* Assets.xcassets in Resources */,
 				EFABF72725CA8C1800E69CC4 /* Main.storyboard in Resources */,
@@ -405,31 +312,16 @@
 			files = (
 				546EFCE226258883001EC9CB /* GetCalenderList.swift in Sources */,
 				548F4BB92611DB8D00A93433 /* PICUTableViewCell.swift in Sources */,
-				EF36AE3C25DAA2F9005D4570 /* SecondSectionTableViewCell.swift in Sources */,
 				546EFCDF26258694001EC9CB /* GetPlan.swift in Sources */,
 				54BCBF4C26036B8200B44447 /* DetailViewController.swift in Sources */,
-				EF89101C25D29A2F002023CD /* homeworkAddVC.swift in Sources */,
-				EF223A1E25CD903000BFB5BC /* SideMenuNav.swift in Sources */,
 				EFABF72425CA8C1800E69CC4 /* ViewController.swift in Sources */,
-				EF2239FB25CD847900BFB5BC /* infoTableViewCell.swift in Sources */,
 				EF4416C725E942ED0074F6FC /* HTTPClient.swift in Sources */,
 				EF4416CA25E942F30074F6FC /* Networking.swift in Sources */,
 				EF766C7025CA8E7800DECE25 /* TestNetworking.swift in Sources */,
-				EF89102025D2C52D002023CD /* homeworkAllocatorVC.swift in Sources */,
-				EF36AE3F25DAA30D005D4570 /* ThirdSectionTableViewCell.swift in Sources */,
-				EF223A1F25CD903000BFB5BC /* SideMenuVC.swift in Sources */,
-				EF2239FA25CD847900BFB5BC /* infoAddVC.swift in Sources */,
 				542603762626D8F0008AE0B8 /* GetPICU.swift in Sources */,
 				54FE42C9261C2E00004C5D9B /* SpecialTableViewCell.swift in Sources */,
 				EFABF72025CA8C1800E69CC4 /* AppDelegate.swift in Sources */,
-				EF2239F125CD846000BFB5BC /* infoListModel.swift in Sources */,
 				546F625325F8D142006DE88A /* Calendar2VC.swift in Sources */,
-				EF36AE3925DAA2E7005D4570 /* FirstSectionTableViewCell.swift in Sources */,
-				EF01EF8E25D2949C0030C91E /* homeworkVC.swift in Sources */,
-				EF2239F925CD847900BFB5BC /* infoListVC.swift in Sources */,
-				EF89102325D2C54D002023CD /* homeworkAssignedVC.swift in Sources */,
-				EF766C6B25CA8E4700DECE25 /* TestModel.swift in Sources */,
-				EF89102625D2C5A2002023CD /* homeworkListVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

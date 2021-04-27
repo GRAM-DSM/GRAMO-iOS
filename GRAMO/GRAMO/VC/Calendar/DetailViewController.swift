@@ -46,7 +46,6 @@ class DetailViewController: ViewController, UITextViewDelegate {
             case 201:
                 print("OK - Send notice list successfully. - createPICU")
                 self.dismiss(animated: true, completion: nil)
-                self.showToast(message: "PICU 등록 성공!")
                 
             case 400:
                 self.showToast(message: "권한 없음")
@@ -75,7 +74,6 @@ class DetailViewController: ViewController, UITextViewDelegate {
             case 201:
                 print("OK - Send notice list successfully. - createPlan")
                 self.dismiss(animated: true, completion: nil)
-                self.showToast(message: "Plan 등록 성공!")
                 
             case 400:
                 self.showToast(message: "권한 없음")

@@ -112,15 +112,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="26" id="eBR-hn-Yi2"/>
                                                     </constraints>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="사유를 적어주세요">
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.56470823290000005" green="0.56469887500000004" blue="0.56471127269999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <font key="NSFont" size="14" name="NotoSansKR-Regular"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                    <attributedString key="attributedText"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeX-Vs-ePe">

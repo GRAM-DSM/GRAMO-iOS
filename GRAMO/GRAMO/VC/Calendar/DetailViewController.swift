@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: DetailViewController
-class DetailViewController: ViewController {
+class DetailViewController: ViewController, UITextViewDelegate {
     @IBOutlet weak var picuTableView: UITableView!
     @IBOutlet weak var planTableView: UITableView!
     
@@ -23,6 +23,7 @@ class DetailViewController: ViewController {
     public var date = String()
     
     override func viewDidLoad() {
+        let cell = picuTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PICUTableViewCell
         super.viewDidLoad()
         
         setTableView()
@@ -30,6 +31,9 @@ class DetailViewController: ViewController {
         getPICU()
         getPlan()
         initRefresh()
+        placeholderSetting()
+        textViewDidBeginEditing(cell.detailTextView)
+        textViewDidEndEditing(cell.detailTextView)
 
     }
     
@@ -47,6 +51,9 @@ class DetailViewController: ViewController {
                 print("OK - Send notice list successfully. - createPICU")
                 self.getPICU()
                 self.showToast(message: "PICU 등록 성공!")
+                
+            case 400:
+                self.showToast(message: "권한 없음")
                 
             case 403:
                 print("403 : Token Token Token Token - createPICU")
@@ -70,15 +77,12 @@ class DetailViewController: ViewController {
         httpClient.post(.createPlan(cell.detailTextView?.text ?? "", cell.titleTextView?.text ?? "", date)).responseJSON(completionHandler: {(response) in
             switch response.response?.statusCode {
             case 201:
-                do {
-                    print("OK - Send notice list successfully. - createPlan")
-                    self.getPlan()
-                    self.showToast(message: "Plan 등록 성공!")
-                    
-                } catch {
-                    print("Error: \(error)")
-                    
-                }
+                print("OK - Send notice list successfully. - createPlan")
+                self.getPlan()
+                self.showToast(message: "Plan 등록 성공!")
+                
+            case 400:
+                self.showToast(message: "권한 없음")
                 
             case 403:
                 print("403 : Token Token Token Token - createPlan")
@@ -115,6 +119,33 @@ class DetailViewController: ViewController {
         })
         
     }
+    
+    func placeholderSetting() {
+        let cell = picuTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PICUTableViewCell
+        
+        cell.detailTextView.text = "사유를 적어주세요"
+        cell.detailTextView.textColor = UIColor.lightGray
+        
+    }
+        
+        
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+            
+        }
+        
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "사유를 적어주세요"
+            textView.textColor = UIColor.lightGray
+            
+        }
+        
+    }
 
 }
 
@@ -124,6 +155,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         if tableView.tag == 1 {
             let picuCell: PICUTableViewCell = tableView.dequeueReusableCell(withIdentifier: PICUTableViewCell.picuCellIdentifier, for: indexPath) as! PICUTableViewCell
             
+            print(self.picu)
             picuCell.nameLabel?.text = self.picu[indexPath.row].userName
             
             if indexPath.row == 0 {
@@ -159,11 +191,6 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 planCell.detailTextView.isSelectable = false
             
             }
-            
-//            if planCell.detailLabel.text!.count > 30 {
-//                planTableView.rowHeight = 66
-//
-//            }
 
             return planCell
 
@@ -192,18 +219,12 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 httpClient.delete(.deletePICU(self.picu[indexPath.row].picuId)).responseJSON(completionHandler: {(response) in
                     switch response.response?.statusCode {
                     case 200:
-                        do {
-                            print("OK - Send notice list successfully. - getPICU")
+                        print("OK - Send notice list successfully. - getPICU")
                             
-                            self.picu.remove(at: indexPath.row)
-                            tableView.deleteRows(at: [indexPath], with: .fade)
+                        self.picu.remove(at: indexPath.row)
+                        tableView.deleteRows(at: [indexPath], with: .fade)
                             
-                            self.showToast(message: "PICU 삭제 성공!")
-
-                        } catch {
-                            print("Error: \(error)")
-
-                        }
+                        self.showToast(message: "PICU 삭제 성공!")
                         
                     case 401:
                         self.showToast(message: "권한이 없습니다")
@@ -231,18 +252,12 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 httpClient.delete(.deletePlan(self.plan[indexPath.row].planId)).responseJSON(completionHandler: {(response) in
                     switch response.response?.statusCode {
                     case 200:
-                        do {
-                            print("OK - Send notice list successfully. - getPICU")
+                        print("OK - Send notice list successfully. - getPICU")
                             
-                            self.plan.remove(at: indexPath.row)
-                            tableView.deleteRows(at: [indexPath], with: .fade)
+                        self.plan.remove(at: indexPath.row)
+                        tableView.deleteRows(at: [indexPath], with: .fade)
                             
-                            self.showToast(message: "Plan 삭제 성공!")
-
-                        } catch {
-                            print("Error: \(error)")
-
-                        }
+                        self.showToast(message: "Plan 삭제 성공!")
                         
                     case 401:
                         self.showToast(message: "권한이 없습니다")

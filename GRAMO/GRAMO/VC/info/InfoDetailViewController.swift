@@ -7,10 +7,8 @@
 
 import UIKit
 
-class infoDetailVC: UIViewController {
+class InfoDetailViewController: UIViewController {
     
-    //    @IBOutlet weak var background: UIView!
-    //    @IBOutlet weak var modalView: UIView!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -41,24 +39,18 @@ class infoDetailVC: UIViewController {
     }
     
     func detailNotice(_ value: Int){
-        print("Detail 호출됨")
         httpclient.get(NetworkingAPI.getNoticeDetail(value)).responseJSON {(res) in
-            print(res.data)
             switch res.response?.statusCode{
-            case 200: print("OK")
+            case 200:
                 do{
                     guard let data = res.data else {return}
                     guard let model = try? JSONDecoder().decode(GetNoticeDetail.self, from: data) else { return}
                     self.nameLabel.text = model.notice.name
-                    var date = model.notice.created_at
-                    var arr = date.components(separatedBy: ["-", ":", " "])
-                    var finalDate = arr[0] + "년 " + arr[1] + "월 " + arr[2] + "일"
-                    self.dateLabel.text = finalDate
+                    self.dateLabel.text = self.formatStartDate(model.notice.created_at)
                     self.titleTxt.text = model.notice.title
                     self.detailTxt.text = model.notice.content
                 }
                 catch{
-                    print("error")
                     print(error)
                 }
             case 404: print("404 - Not Found")
@@ -68,13 +60,12 @@ class infoDetailVC: UIViewController {
     }
     
     func deleteNotice(_ value: Int){
-        print("Delete 호출됨")
         httpclient.delete(NetworkingAPI.deleteNotice(value)).responseJSON{(res) in
             switch res.response?.statusCode{
             case 200:
-                print("Delete notice successfully.")
                 self.dismiss(animated: true)
-            case 403: print("403 - Forbidden")
+            case 403:
+                print("403 - Forbidden")
                 let alert = UIAlertController(title: "권한이 없습니다.", message: "타인의 게시물을 삭제할 수 없습니다.", preferredStyle: UIAlertController.Style.alert)
                 let cancelAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
                 alert.addAction(cancelAction)
@@ -85,12 +76,6 @@ class infoDetailVC: UIViewController {
         }
     }
     
-    func setNavigationBar(){
-        let bar:UINavigationBar! =  self.navigationController?.navigationBar
-        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        bar.shadowImage = UIImage()
-        bar.backgroundColor = UIColor.clear
-    }
     /*
      // MARK: - Navigation
      

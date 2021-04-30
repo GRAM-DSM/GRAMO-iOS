@@ -7,7 +7,7 @@
 
 import UIKit
 
-class infoAddVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+class InfoAddViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var nameLabel : UILabel!
     @IBOutlet weak var dateLabel : UILabel!
@@ -31,8 +31,6 @@ class infoAddVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
         dateLabel.text = currentDate
         
         placeholderSetting()
-        textViewDidBeginEditing(infoDetail)
-        textViewDidEndEditing(infoDetail)
         
         infoTitle.delegate = self
         infoDetail.delegate = self
@@ -66,20 +64,17 @@ class infoAddVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     }
     
     func createNotice() {
-        print("포스트 호출됨")
         httpClient.post(NetworkingAPI.createNotice(infoTitle.text!, infoDetail.text)).responseJSON{(res) in
             switch res.response?.statusCode{
             case 200:
                 do {
-                    print("SUCCESS")
                     self.navigationController?.popViewController(animated: true)
                 }
                 catch {
                     print("error\(error)")
                 }
                 
-            default: print("Create")
-                print(res.response?.statusCode)
+            default: print(res.response?.statusCode)
                 
             }
         }
@@ -105,34 +100,26 @@ class infoAddVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
                 textView.textColor = UIColor.lightGray
             }
         }
-            
-    }
-    
-    
-    func setNavigationBar(){
-        let bar:UINavigationBar! =  self.navigationController?.navigationBar
-        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        bar.shadowImage = UIImage()
-        bar.backgroundColor = UIColor.clear
+        
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let currentText = textView.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
-     
+        
         let changedText = currentText.replacingCharacters(in: stringRange, with: text)
-     
+        
         return changedText.count <= 1000
     }
     
     @objc func textDidChange(_ notification: Notification) {
         if let textField = notification.object as? UITextField {
             if let text = textField.text {
-
+                
                 if text.count > 50 {
                     textField.resignFirstResponder()
                 }
-
+                
                 if text.count >= 50 {
                     let index = text.index(text.startIndex, offsetBy: 50)
                     let newString = text[text.startIndex..<index]

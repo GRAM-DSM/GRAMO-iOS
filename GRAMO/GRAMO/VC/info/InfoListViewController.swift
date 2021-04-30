@@ -7,7 +7,8 @@
 
 import UIKit
 
-class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class InfoListViewContoller
+: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,7 +25,7 @@ class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "list cell", for: indexPath) as! infoTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "list cell", for: indexPath) as! InfoTableViewCell
         
         let date = listModel.notice[indexPath.row].created_at
         let finalDate = date.components(separatedBy: ["-", ":"," "])
@@ -40,10 +41,9 @@ class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "infoDetailVC") as? infoDetailVC else { return }
+        guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "infoDetailVC") as? InfoDetailViewController else { return }
         
         detailVC.id = listModel.notice[indexPath.row].id
-        print(listModel.notice[indexPath.row].id)
         self.present(detailVC, animated: true)
         
     }
@@ -57,7 +57,7 @@ class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         setNavigationBar()
         
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-
+        
         
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
@@ -84,13 +84,10 @@ class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func getList(){
-        print("호출됨")
         httpClient.get(NetworkingAPI.getNoticeList(0, 10)).responseJSON{(response) in
-            print(response.data)
             switch response.response?.statusCode{
             case 200: 
                 do{
-                    print("OK - Send notice list successfully.")
                     let data = response.data
                     let model = try JSONDecoder().decode(GetNoticeList.self, from: data!)
                     self.nextPage = model.next_page
@@ -99,7 +96,6 @@ class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     self.tableView.reloadData()
                 }
                 catch{
-                    print("error")
                     print(error)
                 }
             case 404: print("404 : NOT FOUND - Notice does not exist.")
@@ -114,28 +110,21 @@ class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func secondGetList() {
-        print("두번째 불러오기 호출됨")
         getOffSet()
-        print(nextPage)
-        print(self.off_set, self.limit_num)
         if nextPage == true {
             httpClient.get(NetworkingAPI.getNoticeList(off_set, limit_num)).responseJSON{(response) in
-                print(response.data)
-                print(self.off_set, self.limit_num)
                 switch response.response?.statusCode{
                 case 200:
                     do{
-                        print("OK - Send notice list successfully.")
                         let data = response.data
                         let model = try JSONDecoder().decode(GetNoticeList.self, from: data!)
                         self.nextPage = model.next_page
-//                        self.listModel.notice.removeAll()
+                        //                        self.listModel.notice.removeAll()
                         self.listModel.notice.append(contentsOf: model.notice)
                         self.tableView.reloadData()
                         
                     }
                     catch{
-                        print("error")
                         print(error)
                     }
                 case 404: print("404 : NOT FOUND - Notice does not exist.")
@@ -143,7 +132,7 @@ class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 }
             }
         }
-
+        
         else {
             let alert = UIAlertController(title: "더 이상 불러올 공지사항이 없습니다.", message: nil, preferredStyle: UIAlertController.Style.alert)
             let cancelAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
@@ -152,16 +141,6 @@ class infoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
         
     }
-
-    
-    func setNavigationBar(){
-        let bar:UINavigationBar! =  self.navigationController?.navigationBar
-        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        bar.shadowImage = UIImage()
-        bar.backgroundColor = UIColor.clear
-    }
-    
-    
     
     
     /*

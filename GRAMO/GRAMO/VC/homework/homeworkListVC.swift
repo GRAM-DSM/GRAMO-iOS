@@ -7,13 +7,15 @@
 
 import UIKit
 
-class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var assignedTableView : UITableView!
     @IBOutlet weak var allocatorTableView: UITableView!
     @IBOutlet weak var submittedTableVIew: UITableView!
     
     let httpclient = HTTPClient()
+    
+   
     
     private var hwTeachherModel : [HwStudent] = [HwStudent]()
     
@@ -54,13 +56,13 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.assignedTableView.reloadData()
         self.allocatorTableView.reloadData()
         self.submittedTableVIew.reloadData()
-        
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if tableView.tag == 1{
-            guard let assignVC = self.storyboard?.instantiateViewController(withIdentifier: "homeworkAssignedVC") as? homeworkAssignedVC else {return}
+            guard let assignVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeworkAssignedVC") as? HomeworkAssignedVC else {return}
             
             assignVC.id = hwTeachherModel[indexPath.row].homeworkId
             print(hwTeachherModel[indexPath.row].homeworkId)
@@ -69,7 +71,7 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         if tableView.tag == 2{
-            guard let orderVC = self.storyboard?.instantiateViewController(withIdentifier: "homeworkOrderedVC") as? homeworkOrderedVC else {return}
+            guard let orderVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeworkOrderedVC") as? HomeworkOrderedVC else {return}
             
             orderVC.id = hwOrderdModel[indexPath.row].homeworkId
             print(hwOrderdModel[indexPath.row].homeworkId)
@@ -93,7 +95,6 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             return hwStudentModel.count
         }
         
-        print("numberOfRowsInSection Error")
         return 3
         
     }
@@ -105,19 +106,15 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as! FirstSectionTableViewCell
             
             let date = hwTeachherModel[indexPath.row].startDate
-            let finalDate = date.components(separatedBy: ["-", ":"," "])
-            let formattedDate = finalDate[0] + "년 " + finalDate[1] + "월 " + finalDate[2] + "일"
-            
             let enddate = hwTeachherModel[indexPath.row].endDate
-            let finalDate2 = enddate.components(separatedBy: ["-", ":"," "])
-            let formattedDate2 = finalDate2[0] + "년 " + finalDate2[1] + "월 " + finalDate2[2] + "일"
+            let major = hwTeachherModel[indexPath.row].major
             
             cell.myNameLabel.text = hwTeachherModel[indexPath.row].teacherName
-            cell.dateLabel.text = formattedDate
+            cell.dateLabel.text = formatStartDate(date)
             cell.detailLabel.text = hwTeachherModel[indexPath.row].description
             cell.titleLabel.text = hwTeachherModel[indexPath.row].title
-            cell.endDateLabel.text = formattedDate2
-            cell.majorLabel.text = hwTeachherModel[indexPath.row].major
+            cell.endDateLabel.text = formatEndDate(enddate)
+            cell.majorLabel.text = setMajor(major)
             
             return cell
         }
@@ -126,19 +123,15 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2") as! SecondSectionTableViewCell
             
             let date = hwOrderdModel[indexPath.row].startDate
-            let finalDate = date.components(separatedBy: ["-", ":"," "])
-            let formattedDate = finalDate[0] + "년 " + finalDate[1] + "월 " + finalDate[2] + "일"
-            
             let enddate = hwOrderdModel[indexPath.row].endDate
-            let finalDate2 = enddate.components(separatedBy: ["-", ":"," "])
-            let formattedDate2 = finalDate2[0] + "년 " + finalDate2[1] + "월 " + finalDate2[2] + "일"
+            let major = hwOrderdModel[indexPath.row].major
             
             cell.recipientName.text = hwOrderdModel[indexPath.row].studentName
-            cell.dateLabel.text = formattedDate
+            cell.dateLabel.text = formatStartDate(date)
             cell.detailLabel.text = hwOrderdModel[indexPath.row].description
             cell.titleLabel.text = hwOrderdModel[indexPath.row].title
-            cell.endDateLabel.text = formattedDate2
-            cell.majorLabel.text = hwOrderdModel[indexPath.row].major
+            cell.endDateLabel.text = formatEndDate(enddate)
+            cell.majorLabel.text = setMajor(major)
             
             return cell
         }
@@ -147,35 +140,36 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3") as! ThirdSectionTableViewCell
             
             let date = hwStudentModel[indexPath.row].startDate
-            let finalDate = date.components(separatedBy: ["-", ":"," "])
-            let formattedDate = finalDate[0] + "년 " + finalDate[1] + "월 " + finalDate[2] + "일"
-            
             let enddate = hwStudentModel[indexPath.row].endDate
-            let finalDate2 = enddate.components(separatedBy: ["-", ":"," "])
-            let formattedDate2 = finalDate2[0] + "년 " + finalDate2[1] + "월 " + finalDate2[2] + "일"
+            let major = hwStudentModel[indexPath.row].major
             
             cell.myNameLabel.text = hwStudentModel[indexPath.row].teacherName
-            cell.dateLabel.text = formattedDate
+            cell.dateLabel.text = formatStartDate(date)
             cell.detailLabel.text = hwStudentModel[indexPath.row].description
             cell.titleLabel.text = hwStudentModel[indexPath.row].title
-            cell.endDateLabel.text = formattedDate2
-            cell.majorLabel.text = hwStudentModel[indexPath.row].major
-            
+            cell.endDateLabel.text = formatEndDate(enddate)
+            cell.majorLabel.text = setMajor(major)
             
             return cell
         }
+        
+    }
+    
+    
+    func setNavigationBar(){
+        let bar:UINavigationBar! =  self.navigationController?.navigationBar
+        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        bar.shadowImage = UIImage()
+        bar.backgroundColor = UIColor.clear
     }
     
     func getAssView() {
-        httpclient.get(NetworkingAPI.getAssHwList).responseJSON{(response) in
-//            print(response.data)
+        httpclient.get(NetworkingAPI.getAssHomeworkList).responseJSON{(response) in
             switch response.response?.statusCode{
             case 200:
                 do {
-                    print("OK first")
                     let data = response.data
                     let model = try JSONDecoder().decode([HwStudent].self, from: data!)
-//                    print(model)
                     self.hwTeachherModel.removeAll()
                     self.hwTeachherModel.append(contentsOf: model)
                     self.assignedTableView.reloadData()
@@ -192,16 +186,14 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func getSubView(){
-        httpclient.get(NetworkingAPI.getSubHwList).responseJSON{(response) in
+        httpclient.get(NetworkingAPI.getSubHomeworkList).responseJSON{(response) in
             switch response.response?.statusCode{
             case 200:
                 do{
-                    print("OK second")
                     let decoder = JSONDecoder()
                     decoder.dataDecodingStrategy = .base64
                     let data = response.data
                     let model = try decoder.decode([HwStudent].self, from: data!)
-//                    print(model)
                     self.hwStudentModel.removeAll()
                     self.hwStudentModel.append(contentsOf: model)
                     self.submittedTableVIew.reloadData()
@@ -219,14 +211,12 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func getOrdView() {
-        httpclient.get(NetworkingAPI.getOrdHwList).responseJSON{(response) in
+        httpclient.get(NetworkingAPI.getOrdHomeworkList).responseJSON{(response) in
             switch response.response?.statusCode{
             case 200 :
                 do {
-                    print("OK third")
                     let data = response.data
                     let model = try JSONDecoder().decode([HwStudent].self, from: data!)
-//                    print(model)
                     self.hwOrderdModel.removeAll()
                     self.hwOrderdModel.append(contentsOf: model)
                     self.allocatorTableView.reloadData()
@@ -241,14 +231,7 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
-    
-    func setNavigationBar(){
-        let bar:UINavigationBar! =  self.navigationController?.navigationBar
-        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        bar.shadowImage = UIImage()
-        bar.backgroundColor = UIColor.clear
-    }
-    
+     
     /*
      // MARK: - Navigation
      
@@ -260,3 +243,4 @@ class homeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
      */
     
 }
+

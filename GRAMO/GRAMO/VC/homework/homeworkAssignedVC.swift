@@ -7,14 +7,14 @@
 
 import UIKit
 
-class homeworkAssignedVC: UIViewController {
+class HomeworkAssignedVC: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var majorButton: UIButton!
-    @IBOutlet weak var selectDeadLineTxt: UITextField!
-    @IBOutlet weak var titleTxt: UITextField!
-    @IBOutlet weak var contentTxt: UITextView!
+    @IBOutlet weak var selectDeadLineTextField: UITextField!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var submitButton: UIButton!
     
     var httpClient = HTTPClient()
@@ -23,7 +23,6 @@ class homeworkAssignedVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectDeadLineTxt.layer.cornerRadius = 8
         setNavigationBar()
         getContent(id)
         // Do any additional setup after loading the view.
@@ -51,7 +50,7 @@ class homeworkAssignedVC: UIViewController {
     
     func getContent(_ id: Int) {
         print("GetContent 호출됨")
-        httpClient.get(NetworkingAPI.getHwContent(id)).responseJSON {(res) in
+        httpClient.get(NetworkingAPI.getHomeworkContent(id)).responseJSON {(res) in
             print(id)
             print(res.data)
             switch res.response?.statusCode {
@@ -61,20 +60,12 @@ class homeworkAssignedVC: UIViewController {
                     let data = res.data
                     let model = try JSONDecoder().decode(HwContent.self, from: data!)
                     
-                    let date = model.startDate
-                    let finalDate = date.components(separatedBy: ["-", ":"," "])
-                    let formattedDate = finalDate[0] + "년 " + finalDate[1] + "월 " + finalDate[2] + "일"
-                    
-                    let endDate = model.endDate
-                    let finalDate2 = endDate.components(separatedBy: ["-", ":"," "])
-                    let formattedDate2 = finalDate2[0] + "년 " + finalDate2[1] + "월 " + finalDate2[2] + "일까지"
-                    
-                    self.selectDeadLineTxt.text = formattedDate2
-                    self.dateLabel.text = formattedDate
+                    self.selectDeadLineTextField.text = self.formatEndDate(model.endDate)
+                    self.dateLabel.text = self.formatStartDate(model.startDate)
                     self.nameLabel.text = model.teacherName
-                    self.majorButton.setTitle(model.major, for: .normal)
-                    self.titleTxt.text = model.title
-                    self.contentTxt.text = model.description
+                    self.majorButton.setTitle(self.setMajor(model.major), for: .normal)
+                    self.titleTextField.text = model.title
+                    self.contentTextView.text = model.description
                 }
                 catch{
                     print("error: \(error)")
@@ -92,7 +83,7 @@ class homeworkAssignedVC: UIViewController {
     
     func submitHw(_ id : Int) {
         print("submit 호출됨")
-        httpClient.patch(NetworkingAPI.submitHw(id)).responseJSON {(res) in
+        httpClient.patch(NetworkingAPI.submitHomework(id)).responseJSON {(res) in
             switch res.response?.statusCode {
             case 201 :
                 print("Created")

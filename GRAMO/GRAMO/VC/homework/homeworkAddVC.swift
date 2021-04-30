@@ -9,14 +9,14 @@ import UIKit
 import DropDown
 import Alamofire
 
-class homeworkAddVC: UIViewController, UITextViewDelegate {
+class HomeworkAddVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var selectMajorButton: UIButton!
-    @IBOutlet weak var deadLinetTxt: UITextField!
+    @IBOutlet weak var deadLinetTextField: UITextField!
     @IBOutlet weak var allocatorButton: UIButton!
-    @IBOutlet weak var titleTxt: UITextField!
-    @IBOutlet weak var detailTxtView: UITextView!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var detailTextView: UITextView!
     
     let datePicker = UIDatePicker()
     
@@ -33,8 +33,8 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        deadLinetTxt.layer.cornerRadius = 8
-        allocatorButton.layer.cornerRadius = 8
+        titleTextField.delegate = self
+        detailTextView.delegate = self
         
         createDatePicker()
         
@@ -48,9 +48,11 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
         dateLabel.text = currentDate
         
         placeholderSetting()
-        textViewDidBeginEditing(detailTxtView)
-        textViewDidEndEditing(detailTxtView)
+        textViewDidBeginEditing(detailTextView)
+        textViewDidEndEditing(detailTextView)
         setNavigationBar()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_ :)), name: UITextField.textDidChangeNotification, object: titleTextField)
         
         // Do any additional setup after loading the view.
     }
@@ -60,13 +62,13 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
-        if titleTxt.textColor == UIColor.lightGray || detailTxtView.textColor == UIColor.lightGray {
+        if titleTextField.textColor == UIColor.lightGray || detailTextView.textColor == UIColor.lightGray {
             let alert = UIAlertController(title: "제목 또는 내용을 입력해주세요.", message: nil, preferredStyle: UIAlertController.Style.alert)
             let cancelAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         }
-        addHw()
+        addHomework()
     }
     
     @IBAction func selectMajor(_ sender: UIButton){
@@ -98,14 +100,11 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
     
     @IBAction func selectAllocator(_ sender: UIButton){
         httpclient.get(NetworkingAPI.getUserList).responseJSON { [self](res) in
-            print(res.data)
             switch res.response?.statusCode{
             case 200 :
                 do {
-                    print("Major OK")
                     let data = res.data
                     let model = try JSONDecoder().decode(User.self, from: data!)
-                    print(model.userInfoResponses)
                     self.userListModel.userInfoResponses.removeAll()
                     self.userListModel.userInfoResponses.append(contentsOf: model.userInfoResponses)
                     
@@ -132,7 +131,6 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
                     
                 }
                 catch {
-                    print("error")
                     print(error)
                 }
             case 401 : print("401 - Unauthorized")
@@ -143,9 +141,9 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
         
     }
     func placeholderSetting() {
-        detailTxtView.delegate = self
-        detailTxtView.text = "내용을 입력하세요"
-        detailTxtView.textColor = UIColor.lightGray
+        detailTextView.delegate = self
+        detailTextView.text = "내용을 입력하세요"
+        detailTextView.textColor = UIColor.lightGray
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -171,7 +169,7 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
     
     func createDatePicker() {
         
-        deadLinetTxt.textAlignment = .center
+        deadLinetTextField.textAlignment = .center
         
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -179,9 +177,9 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
         toolBar.setItems([doneButton], animated: true)
         
-        deadLinetTxt.inputAccessoryView = toolBar
+        deadLinetTextField.inputAccessoryView = toolBar
         
-        deadLinetTxt.inputView = datePicker
+        deadLinetTextField.inputView = datePicker
         
         datePicker.preferredDatePickerStyle = .wheels
         
@@ -197,26 +195,22 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
         formatter.timeStyle = .none
         
         formatter.dateFormat = "yyyy년 MM월 dd일"
-        deadLinetTxt.text = formatter.string(from: datePicker.date)
+        deadLinetTextField.text = formatter.string(from: datePicker.date)
         
         let requestFormatter = DateFormatter()
         requestFormatter.dateFormat = "yyyy-MM-dd"
         
         requestDate = requestFormatter.string(from: datePicker.date)
         
-        print(requestDate)
-        
         self.view.endEditing(true)
     }
     
-    func addHw() {
-        print("addHw")
-        print(studentEmail)
-        httpclient.post(NetworkingAPI.createHw(requestMajor, requestDate, studentEmail, detailTxtView.text!, titleTxt.text!)).responseJSON{(res) in
+    
+    func addHomework() {
+        httpclient.post(NetworkingAPI.createHomework(requestMajor, requestDate, studentEmail, detailTextView.text!, titleTextField.text!)).responseJSON{(res) in
             switch res.response?.statusCode{
             case 201 :
                 do{
-                    print("OK - CREATED")
                     self.navigationController?.popViewController(animated: true)
                 }
                 catch {
@@ -229,6 +223,32 @@ class homeworkAddVC: UIViewController, UITextViewDelegate {
         }
     }
     
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+     
+        let changedText = currentText.replacingCharacters(in: stringRange, with: text)
+     
+        return changedText.count <= 1000
+    }
+    
+    @objc func textDidChange(_ notification: Notification) {
+        if let textField = notification.object as? UITextField {
+            if let text = textField.text {
+
+                if text.count > 50 {
+                    textField.resignFirstResponder()
+                }
+
+                if text.count >= 50 {
+                    let index = text.index(text.startIndex, offsetBy: 50)
+                    let newString = text[text.startIndex..<index]
+                    textField.text = String(newString)
+                }
+            }
+        }
+    }
     
     
     /*

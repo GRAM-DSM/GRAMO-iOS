@@ -9,7 +9,7 @@ import UIKit
 import DropDown
 import Alamofire
 
-class HomeworkAddVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var selectMajorButton: UIButton!
@@ -160,13 +160,6 @@ class HomeworkAddVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
         }
     }
     
-    func setNavigationBar(){
-        let bar:UINavigationBar! =  self.navigationController?.navigationBar
-        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        bar.shadowImage = UIImage()
-        bar.backgroundColor = UIColor.clear
-    }
-    
     func createDatePicker() {
         
         deadLinetTextField.textAlignment = .center
@@ -223,24 +216,24 @@ class HomeworkAddVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
         }
     }
     
-
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let currentText = textView.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
-     
+        
         let changedText = currentText.replacingCharacters(in: stringRange, with: text)
-     
+        
         return changedText.count <= 1000
     }
     
     @objc func textDidChange(_ notification: Notification) {
         if let textField = notification.object as? UITextField {
             if let text = textField.text {
-
+                
                 if text.count > 50 {
                     textField.resignFirstResponder()
                 }
-
+                
                 if text.count >= 50 {
                     let index = text.index(text.startIndex, offsetBy: 50)
                     let newString = text[text.startIndex..<index]

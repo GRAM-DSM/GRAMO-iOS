@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeworkListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var assignedTableView : UITableView!
     @IBOutlet weak var allocatorTableView: UITableView!
@@ -15,7 +15,7 @@ class HomeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     let httpclient = HTTPClient()
     
-   
+    
     
     private var hwTeachherModel : [HwStudent] = [HwStudent]()
     
@@ -41,7 +41,7 @@ class HomeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         assignedTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         allocatorTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         submittedTableVIew.separatorStyle = UITableViewCell.SeparatorStyle.none
-
+        
         getAssView()
         getOrdView()
         getSubView()
@@ -62,19 +62,17 @@ class HomeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if tableView.tag == 1{
-            guard let assignVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeworkAssignedVC") as? HomeworkAssignedVC else {return}
+            guard let assignVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeworkAssignedVC") as? HomeworkAssignedViewController else {return}
             
             assignVC.id = hwTeachherModel[indexPath.row].homeworkId
-            print(hwTeachherModel[indexPath.row].homeworkId)
             self.navigationController?.pushViewController(assignVC, animated: true)
             
         }
         
         if tableView.tag == 2{
-            guard let orderVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeworkOrderedVC") as? HomeworkOrderedVC else {return}
+            guard let orderVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeworkOrderedVC") as? HomeworkOrderedViewController else {return}
             
             orderVC.id = hwOrderdModel[indexPath.row].homeworkId
-            print(hwOrderdModel[indexPath.row].homeworkId)
             self.navigationController?.pushViewController(orderVC, animated: true)
         }
         
@@ -156,12 +154,12 @@ class HomeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    func setNavigationBar(){
-        let bar:UINavigationBar! =  self.navigationController?.navigationBar
-        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        bar.shadowImage = UIImage()
-        bar.backgroundColor = UIColor.clear
-    }
+    //    func setNavigationBar(){
+    //        let bar:UINavigationBar! =  self.navigationController?.navigationBar
+    //        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+    //        bar.shadowImage = UIImage()
+    //        bar.backgroundColor = UIColor.clear
+    //    }
     
     func getAssView() {
         httpclient.get(NetworkingAPI.getAssHomeworkList).responseJSON{(response) in
@@ -231,7 +229,7 @@ class HomeworkListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
-     
+    
     /*
      // MARK: - Navigation
      

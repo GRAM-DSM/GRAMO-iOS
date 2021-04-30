@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeworkOrderedVC: UIViewController {
+class HomeworkOrderedViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -70,21 +70,12 @@ class HomeworkOrderedVC: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func setNavigationBar(){
-        let bar:UINavigationBar! =  self.navigationController?.navigationBar
-        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        bar.shadowImage = UIImage()
-        bar.backgroundColor = UIColor.clear
-    }
     
     func getContent(_ id: Int) {
-        print("GetContent 호출됨")
         httpClient.get(NetworkingAPI.getHomeworkContent(id)).responseJSON {(res) in
-            print(res.data)
             switch res.response?.statusCode {
             case 200 :
                 do{
-                    print("OK")
                     let data = res.data
                     let model = try JSONDecoder().decode(HwContent.self, from: data!)
                     
@@ -111,11 +102,9 @@ class HomeworkOrderedVC: UIViewController {
     
     
     func deleteHomework(_ id : Int) {
-        print("delete 호출됨")
         httpClient.delete(NetworkingAPI.deleteHomework(id)).responseJSON {(res) in
             switch res.response?.statusCode {
             case 200 :
-                print("OK")
                 self.navigationController?.popViewController(animated: true)
             case 400 : print("400 - BAD REQUEST")
             case 401 : print("401 - Unauthorized")
@@ -126,11 +115,9 @@ class HomeworkOrderedVC: UIViewController {
     }
     
     func rejectedHomework(_ id: Int){
-        print("rejected 호출됨")
         httpClient.patch(NetworkingAPI.rejectHomework(id)).responseJSON {(res) in
             switch res.response?.statusCode {
             case 201 :
-                print("OK")
                 self.navigationController?.popViewController(animated: true)
             case 400 : print("400 - BAD REQUEST")
             case 401 : print("401 - Unauthorized")
@@ -142,19 +129,19 @@ class HomeworkOrderedVC: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             default : print(res.response?.statusCode)
             }
+        }
+        
+        
+        
+        /*
+         // MARK: - Navigation
+         
+         // In a storyboard-based application, you will often want to do a little preparation before navigation
+         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         // Get the new view controller using segue.destination.
+         // Pass the selected object to the new view controller.
+         }
+         */
+        
     }
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-}
 }

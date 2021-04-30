@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeworkAssignedVC: UIViewController {
+class HomeworkAssignedViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -41,22 +41,11 @@ class HomeworkAssignedVC: UIViewController {
         submitHw(id)
     }
     
-    func setNavigationBar(){
-        let bar:UINavigationBar! =  self.navigationController?.navigationBar
-        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        bar.shadowImage = UIImage()
-        bar.backgroundColor = UIColor.clear
-    }
-    
     func getContent(_ id: Int) {
-        print("GetContent 호출됨")
         httpClient.get(NetworkingAPI.getHomeworkContent(id)).responseJSON {(res) in
-            print(id)
-            print(res.data)
             switch res.response?.statusCode {
             case 200 :
                 do{
-                    print("OK")
                     let data = res.data
                     let model = try JSONDecoder().decode(HwContent.self, from: data!)
                     
@@ -82,11 +71,9 @@ class HomeworkAssignedVC: UIViewController {
     }
     
     func submitHw(_ id : Int) {
-        print("submit 호출됨")
         httpClient.patch(NetworkingAPI.submitHomework(id)).responseJSON {(res) in
             switch res.response?.statusCode {
             case 201 :
-                print("Created")
                 self.navigationController?.popViewController(animated: true)
             case 400 : print("400 - BAD REQUEST")
             case 401 : print("401 - Unauthorized")

@@ -16,20 +16,20 @@ class SideMenuVC: UIViewController {
     }
     
     func setNavigationBar(){
-        let bar:UINavigationBar! =  self.navigationController?.navigationBar
+        let bar:UINavigationBar! =  navigationController?.navigationBar
         bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         bar.shadowImage = UIImage()
         bar.backgroundColor = UIColor.clear
     }
     
     @IBAction func info(_ sender : UIButton) {
-        let vc = (storyboard?.instantiateViewController(identifier: "homework")) as! homeworkListVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = (storyboard?.instantiateViewController(identifier: "homework")) as! HomeworkListVC
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func homework(_ sender: UIButton) {
-        let vc = homeworkListVC()
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = HomeworkListVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func logOut(_ sender: UIButton){

@@ -7,11 +7,11 @@
 
 import UIKit
 
-class infoAddVC: UIViewController, UITextViewDelegate {
+class infoAddVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var nameLabel : UILabel!
     @IBOutlet weak var dateLabel : UILabel!
-    @IBOutlet weak var infoTitle: UITextView!
+    @IBOutlet weak var infoTitle: UITextField!
     @IBOutlet weak var infoDetail: UITextView!
     
     let httpClient = HTTPClient()
@@ -31,12 +31,13 @@ class infoAddVC: UIViewController, UITextViewDelegate {
         dateLabel.text = currentDate
         
         placeholderSetting()
-        textViewDidBeginEditing(infoTitle)
         textViewDidBeginEditing(infoDetail)
-        textViewDidEndEditing(infoTitle)
         textViewDidEndEditing(infoDetail)
         
+        infoTitle.delegate = self
+        infoDetail.delegate = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_ :)), name: UITextField.textDidChangeNotification, object: infoTitle)
     }
     
     
@@ -45,7 +46,7 @@ class infoAddVC: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func plus(_ sender : UIBarButtonItem){
-        if infoTitle.textColor == UIColor.lightGray && infoDetail.textColor == UIColor.lightGray {
+        if infoTitle.text == nil && infoDetail.textColor == UIColor.lightGray {
             let alert = UIAlertController(title: "제목 또는 내용을 입력해주세요.", message: nil, preferredStyle: UIAlertController.Style.alert)
             let cancelAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
             alert.addAction(cancelAction)
@@ -66,7 +67,7 @@ class infoAddVC: UIViewController, UITextViewDelegate {
     
     func createNotice() {
         print("포스트 호출됨")
-        httpClient.post(NetworkingAPI.createNotice(infoTitle.text, infoDetail.text)).responseJSON{(res) in
+        httpClient.post(NetworkingAPI.createNotice(infoTitle.text!, infoDetail.text)).responseJSON{(res) in
             switch res.response?.statusCode{
             case 200:
                 do {
@@ -85,11 +86,8 @@ class infoAddVC: UIViewController, UITextViewDelegate {
     }
     
     func placeholderSetting() {
-        infoTitle.delegate = self
         infoDetail.delegate = self
-        infoTitle.text = "제목을 입력하세요"
         infoDetail.text = "내용을 입력하세요"
-        infoTitle.textColor = UIColor.lightGray
         infoDetail.textColor = UIColor.lightGray
     }
     
@@ -102,18 +100,14 @@ class infoAddVC: UIViewController, UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            if textView == infoTitle{
-                textView.text = "제목을 입력하세요"
-                textView.textColor = UIColor.lightGray
-            }
             if textView == infoDetail{
                 textView.text = "내용을 입력하세요"
                 textView.textColor = UIColor.lightGray
             }
-            
-            
         }
+            
     }
+    
     
     func setNavigationBar(){
         let bar:UINavigationBar! =  self.navigationController?.navigationBar
@@ -122,7 +116,31 @@ class infoAddVC: UIViewController, UITextViewDelegate {
         bar.backgroundColor = UIColor.clear
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+     
+        let changedText = currentText.replacingCharacters(in: stringRange, with: text)
+     
+        return changedText.count <= 1000
+    }
     
+    @objc func textDidChange(_ notification: Notification) {
+        if let textField = notification.object as? UITextField {
+            if let text = textField.text {
+
+                if text.count > 50 {
+                    textField.resignFirstResponder()
+                }
+
+                if text.count >= 50 {
+                    let index = text.index(text.startIndex, offsetBy: 50)
+                    let newString = text[text.startIndex..<index]
+                    textField.text = String(newString)
+                }
+            }
+        }
+    }
     
     /*
      // MARK: - Navigation

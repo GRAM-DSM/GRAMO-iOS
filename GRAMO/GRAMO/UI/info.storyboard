@@ -16,10 +16,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Info ListVC-->
+        <!--Info List View Contoller-->
         <scene sceneID="SSg-Af-uEb">
             <objects>
-                <viewController id="3HL-PO-bgB" customClass="infoListVC" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3HL-PO-bgB" customClass="InfoListViewContoller" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vFl-ux-5Bm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,6 +91,14 @@
                                                         <constraint firstItem="bhG-ES-oOR" firstAttribute="top" secondItem="urh-az-U0u" secondAttribute="bottom" constant="8" symbolic="YES" id="xoi-2X-9Dl"/>
                                                         <constraint firstItem="urh-az-U0u" firstAttribute="top" secondItem="y45-Sy-tXJ" secondAttribute="top" constant="31" id="zNa-u9-Vwb"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                            <real key="value" value="0.20000000000000001"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -147,10 +155,10 @@
             </objects>
             <point key="canvasLocation" x="1156.521739130435" y="78.348214285714278"/>
         </scene>
-        <!--Info AddVC-->
+        <!--Info Add View Controller-->
         <scene sceneID="hxi-0N-EDa">
             <objects>
-                <viewController id="dCh-Il-b45" customClass="infoAddVC" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dCh-Il-b45" customClass="InfoAddViewController" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rfJ-Z4-y6J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -233,10 +241,10 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="77.678571428571431"/>
         </scene>
-        <!--Info DetailVC-->
+        <!--Info Detail View Controller-->
         <scene sceneID="0se-QT-Mcs">
             <objects>
-                <viewController storyboardIdentifier="infoDetailVC" id="ubr-L2-ccd" customClass="infoDetailVC" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="infoDetailVC" id="ubr-L2-ccd" customClass="InfoDetailViewController" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bqh-ru-3Vu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -377,10 +385,10 @@
             </objects>
             <point key="canvasLocation" x="1157" y="-609"/>
         </scene>
-        <!--Side MenuVC-->
+        <!--Side Menu View Controller-->
         <scene sceneID="eK5-Ne-sQt">
             <objects>
-                <viewController storyboardIdentifier="SideMenuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ou6-TS-ObX" customClass="SideMenuVC" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SideMenuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ou6-TS-ObX" customClass="SideMenuViewController" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g06-GP-vyL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

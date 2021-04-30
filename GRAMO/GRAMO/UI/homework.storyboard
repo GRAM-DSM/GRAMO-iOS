@@ -16,10 +16,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Homework ListVC-->
+        <!--Homework List View Controller-->
         <scene sceneID="bhI-2y-IGP">
             <objects>
-                <viewController id="URG-j8-qBQ" customClass="HomeworkListVC" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="URG-j8-qBQ" customClass="HomeworkListViewController" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bLL-AI-yZw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -453,10 +453,10 @@
             </objects>
             <point key="canvasLocation" x="1097.1014492753625" y="119.86607142857142"/>
         </scene>
-        <!--Homework AssignedVC-->
+        <!--Homework Assigned View Controller-->
         <scene sceneID="4QC-9H-f0R">
             <objects>
-                <viewController storyboardIdentifier="HomeworkAssignedVC" id="RFV-YO-Rcw" customClass="HomeworkAssignedVC" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeworkAssignedVC" id="RFV-YO-Rcw" customClass="HomeworkAssignedViewController" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hr6-jN-TUz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -592,10 +592,10 @@
             </objects>
             <point key="canvasLocation" x="1097" y="800"/>
         </scene>
-        <!--Homework AddVC-->
+        <!--Homework Add View Controller-->
         <scene sceneID="MYs-n0-KrW">
             <objects>
-                <viewController id="Ac2-tS-bR4" customClass="HomeworkAddVC" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ac2-tS-bR4" customClass="HomeworkAddViewController" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3a2-7k-GKn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -779,10 +779,10 @@
             </objects>
             <point key="canvasLocation" x="1097" y="-588"/>
         </scene>
-        <!--Side MenuVC-->
+        <!--Side Menu View Controller-->
         <scene sceneID="hmG-c3-uDk">
             <objects>
-                <viewController storyboardIdentifier="SideMenuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qPu-9g-0ci" customClass="SideMenuVC" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SideMenuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qPu-9g-0ci" customClass="SideMenuViewController" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c0g-Jb-t68">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -876,10 +876,10 @@
             </objects>
             <point key="canvasLocation" x="1899" y="-588"/>
         </scene>
-        <!--Homework OrderedVC-->
+        <!--Homework Ordered View Controller-->
         <scene sceneID="mSV-6b-Kqq">
             <objects>
-                <viewController storyboardIdentifier="HomeworkOrderedVC" id="3lM-R8-duz" customClass="HomeworkOrderedVC" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeworkOrderedVC" id="3lM-R8-duz" customClass="HomeworkOrderedViewController" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MSt-o3-U7X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

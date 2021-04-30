@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FirstSection {
+struct FirstSection: Codable {
     var myName1 = String()
     var date1 = String()
     var title1 = String()

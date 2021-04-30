@@ -14,13 +14,12 @@ class ThirdSectionTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel : UILabel!
     @IBOutlet weak var titleLabel : UILabel!
     @IBOutlet weak var detailLabel : UILabel!
-    
+    @IBOutlet weak var endDateLabel : UILabel!
+    @IBOutlet weak var majorLabel : UILabel!
     @IBOutlet weak var listView : UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        listView.layer.cornerRadius = 3.0
-        listView.layer.shadowOpacity = 2.0
         // Initialization code
     }
 

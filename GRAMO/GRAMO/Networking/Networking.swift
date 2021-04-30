@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 let baseURINotice = "http://13.209.8.210:5000/"
-let baseURIHw = "http://211.38.86.92:8001"
+let baseURIHomework = "http://211.38.86.92:8001"
 
 
 enum NetworkingAPI {
@@ -18,16 +18,16 @@ enum NetworkingAPI {
     case createNotice(_ title: String, _ content: String)
     case deleteNotice(_ id: Int)
     
-    case getAssHwList
-    case getSubHwList
-    case getOrdHwList
+    case getAssHomeworkList
+    case getSubHomeworkList
+    case getOrdHomeworkList
     
-    case getHwContent(_ homeworkId: Int)
-    case createHw(_ major: String, _ endDate: String, _ studentEmail: String, _ description: String, _ title: String)
-    case deleteHw(_ detailId: Int)
+    case getHomeworkContent(_ homeworkId: Int)
+    case createHomework(_ major: String, _ endDate: String, _ studentEmail: String, _ description: String, _ title: String)
+    case deleteHomework(_ detailId: Int)
     
-    case submitHw(_ homeworkId: Int)
-    case rejectHw(_ homeworkId: Int)
+    case submitHomework(_ homeworkId: Int)
+    case rejectHomework(_ homeworkId: Int)
     
     case getUserList
     
@@ -40,24 +40,24 @@ enum NetworkingAPI {
             return baseURINotice + "/notice"
         case .getNoticeDetail(let id), .deleteNotice(let id):
             return baseURINotice + "/notice/\(id)"
-        case .getAssHwList:
-            return baseURIHw + "/homework/assign"
-        case .getSubHwList:
-            return baseURIHw + "/homework/submit"
-        case .getOrdHwList:
-            return baseURIHw + "/homework/order"
-        case .getHwContent(let homeworkId):
-            return baseURIHw + "/homework/\(homeworkId)"
-        case .createHw:
-            return baseURIHw + "/homework"
-        case .deleteHw(let detailId):
-            return baseURIHw + "/homework/\(detailId)"
-        case .submitHw(let homeworkId):
-            return baseURIHw + "/homework/\(homeworkId)"
-        case .rejectHw(let homeworkId):
-            return baseURIHw + "/homework/reject/\(homeworkId)"
+        case .getAssHomeworkList:
+            return baseURIHomework + "/homework/assign"
+        case .getSubHomeworkList:
+            return baseURIHomework + "/homework/submit"
+        case .getOrdHomeworkList:
+            return baseURIHomework + "/homework/order"
+        case .getHomeworkContent(let homeworkId):
+            return baseURIHomework + "/homework/\(homeworkId)"
+        case .createHomework:
+            return baseURIHomework + "/homework"
+        case .deleteHomework(let detailId):
+            return baseURIHomework + "/homework/\(detailId)"
+        case .submitHomework(let homeworkId):
+            return baseURIHomework + "/homework/\(homeworkId)"
+        case .rejectHomework(let homeworkId):
+            return baseURIHomework + "/homework/reject/\(homeworkId)"
         case .getUserList:
-            return baseURIHw + "/user/list"
+            return baseURIHomework + "/user/list"
             
         }
     }
@@ -65,7 +65,7 @@ enum NetworkingAPI {
     var header: HTTPHeaders? {
         switch self {
         default:
-            return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxOTUxMDA1MCwianRpIjoiNTk2YzkwMmYtNDIwNC00ZWZkLWI0ZGMtYjI0YmVkY2IyMWIxIiwibmJmIjoxNjE5NTEwMDUwLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiY2hhbmd4QGdtYWlsLmNvbSIsImV4cCI6MTYxOTU5NjQ1MH0.WHcfLQ06j8953edGLColVALvLmbr__eNDzYLYhzfLVs"]
+            return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxOTc1ODk4NCwianRpIjoiMDkwN2I2ODgtZDE0Zi00M2E5LWE5N2QtYWRlMGEzNmJkNWRlIiwibmJmIjoxNjE5NzU4OTg0LCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiY2hhbmd4QGdtYWlsLmNvbSIsImV4cCI6MTYxOTg0NTM4NH0.UADO8tWQ8jpiG56bjRTUrYXmlouiW08MHK_XBfpm66M"]
         }
         
         //        let accessToken : String = "access_token"
@@ -84,15 +84,15 @@ enum NetworkingAPI {
             return ["id":id]
         case .createNotice(let title, let content):
             return ["title":title, "content":content]
-        case .getHwContent(let homeworkId):
+        case .getHomeworkContent(let homeworkId):
             return ["homeworkId":homeworkId]
-        case .createHw(let major, let endDate, let studentEmail, let description, let title):
+        case .createHomework(let major, let endDate, let studentEmail, let description, let title):
             return ["major":major, "endDate":endDate, "studentEmail":studentEmail, "description":description, "title":title]
-        case .deleteHw(let deleteId):
+        case .deleteHomework(let deleteId):
             return ["deleteId":deleteId]
-        case .submitHw(let homeworkId):
+        case .submitHomework(let homeworkId):
             return ["homeworkId":homeworkId]
-        case .rejectHw(let homeworkId):
+        case .rejectHomework(let homeworkId):
             return ["homeworkId":homeworkId]
         default : return [:]
         }

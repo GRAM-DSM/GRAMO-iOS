@@ -7,7 +7,7 @@
 
 import UIKit
 
-class infoTableViewCell: UITableViewCell {
+class InfoTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var writersName: UILabel!

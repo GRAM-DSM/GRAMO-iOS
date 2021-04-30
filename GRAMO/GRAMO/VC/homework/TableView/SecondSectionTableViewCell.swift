@@ -22,8 +22,6 @@ class SecondSectionTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        listView.layer.cornerRadius = 20.0
-        listView.layer.shadowOpacity = 0.2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

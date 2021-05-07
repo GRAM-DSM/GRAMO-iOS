@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kbc-0p-b0P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SDv-rc-icV">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -45,18 +45,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kKU-Fc-Jkr">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="   이메일을 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kKU-Fc-Jkr">
                                 <rect key="frame" x="24" y="415" width="342" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oy9-XZ-njZ">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="   비밀번호를 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oy9-XZ-njZ">
                                 <rect key="frame" x="24" y="479" width="342" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yhn-w1-pu4">
@@ -74,7 +74,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <action selector="didTapLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TTr-zn-mc9"/>
+                                    <action selector="didTapLoginBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XQb-3C-gSz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TLo-my-rlc">
@@ -91,7 +91,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue destination="L3a-Rd-mH2" kind="show" id="nJg-ar-hpq"/>
+                                    <segue destination="L3a-Rd-mH2" kind="show" id="2Xm-WY-KPR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e8a-FM-wWK">
@@ -131,59 +131,70 @@
                     <connections>
                         <outlet property="emailTxtField" destination="kKU-Fc-Jkr" id="0GV-mc-9JH"/>
                         <outlet property="failLabel" destination="gFA-hu-vFB" id="2vf-iF-B2f"/>
-                        <outlet property="loginButton" destination="yhn-w1-pu4" id="F2l-9X-Quh"/>
                         <outlet property="pwTxtField" destination="Oy9-XZ-njZ" id="XZI-mK-xvL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="958.46153846153845" y="88.862559241706151"/>
+            <point key="canvasLocation" x="1887.6923076923076" y="88.862559241706151"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="Ifo-c4-y6Z">
             <objects>
-                <viewController id="L3a-Rd-mH2" customClass="SignUpVC" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUpVC" id="L3a-Rd-mH2" customClass="SignUpVC" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N5p-HL-hgf">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pf9-Vc-ee9">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  이름을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pf9-Vc-ee9">
                                 <rect key="frame" x="24" y="159" width="342" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="    분야를 선택해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KaH-0Q-edz">
-                                <rect key="frame" x="24" y="223" width="342" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="textColor" red="0.56470823290000005" green="0.56469887500000004" blue="0.56471127269999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lU1-bO-psC">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  인증번호를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lU1-bO-psC">
                                 <rect key="frame" x="24" y="351" width="342" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-u2-RtQ">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  이메일을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-u2-RtQ">
                                 <rect key="frame" x="24" y="287" width="342" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FUG-Mo-9Qu">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  비밀번호를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FUG-Mo-9Qu">
                                 <rect key="frame" x="24" y="415" width="342" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wgl-X8-BkN">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PJZ-qS-1tm">
+                                <rect key="frame" x="24" y="223" width="342" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qg4-x0-JMr">
+                                        <rect key="frame" x="8" y="14" width="120" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="분야를 선택해주세요">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.56470823290000005" green="0.56469887500000004" blue="0.56471127269999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <font key="NSFont" size="14" name="NotoSansKR-Regular"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  비밀번호를 다시 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wgl-X8-BkN">
                                 <rect key="frame" x="24" y="479" width="342" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -193,7 +204,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUU-Ur-3CA">
                                 <rect key="frame" x="24" y="583" width="342" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.56470823290000005" green="0.56469887500000004" blue="0.56471127269999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.069310732190000002" green="0.17266207929999999" blue="0.30589929220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="회원가입">
@@ -249,7 +260,7 @@
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" image="chevron.down" catalog="system"/>
                                 <connections>
-                                    <action selector="dropDownBtn:" destination="L3a-Rd-mH2" eventType="touchUpInside" id="Ne5-qI-B1x"/>
+                                    <action selector="didTapDropDownBtn:" destination="L3a-Rd-mH2" eventType="touchUpInside" id="Ne5-qI-B1x"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v2R-7r-GdV">
@@ -285,7 +296,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <action selector="checkBtn:" destination="L3a-Rd-mH2" eventType="touchUpInside" id="D5P-Qm-fu8"/>
+                                    <action selector="checkEmailBtn:" destination="L3a-Rd-mH2" eventType="touchUpInside" id="D5P-Qm-fu8"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yva-3B-O2g">
@@ -307,7 +318,7 @@
                         <outlet property="dropDownBtn" destination="CAf-DX-4Pm" id="nRt-71-sRt"/>
                         <outlet property="emailTxtField" destination="aHV-u2-RtQ" id="fMb-fu-stf"/>
                         <outlet property="failLabel" destination="yva-3B-O2g" id="JSc-Tu-pX8"/>
-                        <outlet property="majorTextField" destination="KaH-0Q-edz" id="Vk3-M0-Q7V"/>
+                        <outlet property="majorLabel" destination="qg4-x0-JMr" id="BUz-i6-5rV"/>
                         <outlet property="nameTxtField" destination="Pf9-Vc-ee9" id="gWO-T7-y3c"/>
                         <outlet property="pwConformTxtField" destination="wgl-X8-BkN" id="grL-Cz-DlN"/>
                         <outlet property="pwTxtField" destination="FUG-Mo-9Qu" id="sX1-tn-1Tp"/>
@@ -315,24 +326,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSH-4M-db2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1896.9230769230769" y="88.862559241706151"/>
+            <point key="canvasLocation" x="2826.1538461538462" y="88.862559241706151"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="J8d-3N-Kss">
+        <scene sceneID="E7O-Fs-nQ8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="kbc-0p-b0P" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="SDv-rc-icV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0m9-Gj-ND7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ake-kU-SGL">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="RJy-Ce-LWQ"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="jdo-Ii-JsZ"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iKq-lK-yyY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VWA-dh-udk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29.23076923076923" y="88.862559241706151"/>
+            <point key="canvasLocation" x="958.46153846153845" y="88.862559241706151"/>
         </scene>
     </scenes>
     <resources>

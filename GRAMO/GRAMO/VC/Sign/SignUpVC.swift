@@ -9,37 +9,45 @@ import UIKit
 import DropDown
 
 class SignUpVC: UIViewController {
-    // 프로퍼티
     @IBOutlet weak var nameTxtField: UITextField!
-    @IBOutlet weak var pwTxtField: UITextField!
-    @IBOutlet weak var pwConformTxtField: UITextField!
-    @IBOutlet weak var majorTextField: UITextField!
-    @IBOutlet weak var authenticationBtn: UIButton!
-    @IBOutlet weak var checkBtn: UIButton!
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var checkTxtField: UITextField!
+    @IBOutlet weak var pwTxtField: UITextField!
+    @IBOutlet weak var pwConformTxtField: UITextField!
     
+    @IBOutlet weak var authenticationBtn: UIButton!
+    @IBOutlet weak var checkBtn: UIButton!
     @IBOutlet weak var dropDownBtn: UIButton!
     
+    @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var failLabel: UILabel!
     
-    let dropDown = DropDown()
-    var selection: String = ""
-    let httpClient = HTTPClient()
-    var emailTrue: Bool = false
+    private let dropDown = DropDown()
+    private let httpClient = HTTPClient()
     
-    @IBAction func dropDownBtn(_ sender: UIButton) {
-        dropDown.dataSource = ["iOS 개발자", "안드로이드 개발자", "서버 개발자", "디자이너"]
+    var trueEmail: Bool = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        dropDown.width = 342 // 넓이
-        dropDown.anchorView = dropDownBtn // 버튼에
-        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!) // 버튼 아래
-        // dropDown.
-        dropDown.textFont = UIFont.systemFont(ofSize: 14) // 폰트 사이즈
-        dropDown.selectionBackgroundColor = UIColor.white // 배경색
-        dropDown.cellHeight = 40 // 높이
+        customTxtField(nameTxtField)
+        customTxtField(pwTxtField)
+        customTxtField(pwConformTxtField)
+        customTxtField(emailTxtField)
+        customTxtField(checkTxtField)
         
-        dropDown.show()
+        customBtn(authenticationBtn)
+        customBtn(checkBtn)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func didTapDropDownBtn(_ sender: UIButton) {
+        var selection = String()
+        
+        customDropDown()
         
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             print("선택한 아이템 : \(item)")
@@ -47,85 +55,79 @@ class SignUpVC: UIViewController {
             
             selection = item
             
-            majorTextField.text = "    \(selection)"
-            majorTextField.textColor = UIColor.black
+            majorLabel.text = "\(selection)"
+            majorLabel.textColor = UIColor.black
             
             self.dropDown.clearSelection()
-            
         }
-        
     }
     
-    // 회원가입 버튼을 눌렀을 때 액션
     @IBAction func signUpBtn(_ sender: UIButton) {
-        if emailTrue == true {
-            self.postSignUp(name: self.nameTxtField.text!, email: self.emailTxtField.text!, password: self.pwTxtField.text!, major: self.majorTextField.text!)
-            
-        } else {
-            failLabel.text = "인증번호가 일치하지 않습니다"
-            
-            return
-            
-        }
-        
+        postSignUp(name: nameTxtField.text!, email: emailTxtField.text!, password: pwTxtField.text!, major: majorLabel.text!)
     }
     
     @IBAction func getSendEmailBtn(_ sender: UIButton) {
-        self.getSendEmail(email: self.emailTxtField.text!)
-        
+        getSendEmail(email: self.emailTxtField.text!)
     }
     
-    @IBAction func checkBtn(_ sender: UIButton) {
-        self.putCheckEmailAuthenticationCode(code: self.checkTxtField.text!)
-        
+    @IBAction func checkEmailBtn(_ sender: UIButton) {
+        putCheckEmailAuthenticationCode(code: self.checkTxtField.text!)
     }
     
-    func postSignUp(name : String, email : String, password : String, major : String){
+    @IBAction func didTapExitButton(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+        
+        self.navigationController?.popViewController(animated : true)
+    }
+    
+    func postSignUp(name : String, email : String, password : String, major : String) {
         guard let conformPwd = pwConformTxtField.text else { return }
         
-        httpClient.post(.SignUp(name, email, password, major)).responseJSON(completionHandler: {
-            reponse in
-            switch reponse.response?.statusCode {
-            case 201:
-                print("회원가입 성공")
-                
-                self.navigationController?.popViewController(animated: true)
+        if trueEmail == true {
+            httpClient.post(.signUp(name, email, password, major)).responseJSON(completionHandler: {(response) in
+                switch response.response?.statusCode {
+                case 201:
+                    print("회원가입 성공")
                     
-            default:
-                print("회원가입 실패")
-                
-                if password != conformPwd {
-                    UIView.animate(withDuration: 0.2, animations: {
-                        self.pwTxtField.frame.origin.x -= 10
-                        self.pwConformTxtField.frame.origin.x -= 10
+                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated : true)
+                        
+                case 404:
+                    print("회원가입 실패")
                     
-                        }, completion: { _ in
+                    if password != conformPwd {
                         UIView.animate(withDuration: 0.2, animations: {
-                            self.pwTxtField.frame.origin.x += 20
-                            self.pwConformTxtField.frame.origin.x += 20
+                            self.pwTxtField.frame.origin.x -= 10
+                            self.pwConformTxtField.frame.origin.x -= 10
                         
                             }, completion: { _ in
                             UIView.animate(withDuration: 0.2, animations: {
-                                self.pwTxtField.frame.origin.x -= 10
-                                self.pwConformTxtField.frame.origin.x -= 10
+                                self.pwTxtField.frame.origin.x += 20
+                                self.pwConformTxtField.frame.origin.x += 20
                             
+                                }, completion: { _ in
+                                UIView.animate(withDuration: 0.2, animations: {
+                                    self.pwTxtField.frame.origin.x -= 10
+                                    self.pwConformTxtField.frame.origin.x -= 10
+                                })
                             })
-                        
                         })
                     
-                    })
-                
-                    self.failLabel.text = "비밀번호가 일치하지 않습니다"
+                        self.failLabel.text = "비밀번호가 일치하지 않습니다"
+                    }
                     
+                default:
+                    print(response.response?.statusCode)
+                    print(response.error)
                 }
-            }
-            
-        })
+            })
+        }
         
+        failLabel.text = "인증번호가 일치하지 않습니다"
     }
     
     func getSendEmail(email : String) {
-        httpClient.get(.SendEmail(email)).responseJSON(completionHandler: {
+        httpClient.get(.sendEmail(email)).responseJSON(completionHandler: {
             reponse in
             switch reponse.response?.statusCode {
             case 200:
@@ -135,64 +137,60 @@ class SignUpVC: UIViewController {
                 print("이메일 실패")
                 
                 self.failLabel.text = "중복된 이메일 입니다"
-                
             }
-            
         })
-        
     }
     
     func putCheckEmailAuthenticationCode(code : String) {
-        httpClient.put(.CheckEmailAuthenticationCode(code)).responseJSON(completionHandler: {
+        httpClient.put(.checkEmailCode(code)).responseJSON(completionHandler: {
             reponse in
             switch reponse.response?.statusCode {
             case 200:
                 print("이메일 인증 성공")
-                self.emailTrue = true
+                self.trueEmail = true
                 
             default:
                 print("이메일 인증 실패")
-                
             }
-            
         })
-        
-    }
-
-    // viewDidLoad
-    // Return Key addTarget
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        nameTxtField.addTarget(self, action: #selector(didEndOnExit), for: UIControl.Event.editingDidEndOnExit)
-        pwTxtField.addTarget(self, action: #selector(didEndOnExit), for: UIControl.Event.editingDidEndOnExit)
-        pwConformTxtField.addTarget(self, action: #selector(didEndOnExit), for: UIControl.Event.editingDidEndOnExit)
-        
-        authenticationBtn.layer.cornerRadius = 8
-        checkBtn.layer.cornerRadius = 8
-        
-    }
-        
-        
-    // 나가는 함수
-    @IBAction func didTapExitButton(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil) // 화면 내리기
-        
-        self.navigationController?.popViewController(animated : true)
-        
-    }
-        
-    // 키보드 내리기 함수
-    @objc func didEndOnExit(_ sender: UITextField) {
-        if nameTxtField.isFirstResponder {
-            pwTxtField.becomeFirstResponder()
-            
-        } else if pwTxtField.isFirstResponder {
-            pwConformTxtField.becomeFirstResponder()
-            
-        }
-        
     }
     
+    func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) {
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width / 2 - 75, y: self.view.frame.size.height - 100, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = font
+        toastLabel.textAlignment = .center
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10
+        toastLabel.clipsToBounds = true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 10.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
+    }
+    
+    func customTxtField(_ txtField: UITextField) {
+        txtField.font = UIFont(name: "NotoSansKR-Regular", size: 14)
+    }
+    
+    func customDropDown() {
+        dropDown.dataSource = ["iOS 개발자", "안드로이드 개발자", "서버 개발자", "디자이너"]
+        
+        dropDown.width = 342
+        dropDown.cellHeight = 40
+        dropDown.anchorView = dropDownBtn
+        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+        dropDown.textFont = UIFont.systemFont(ofSize: 14)
+        dropDown.selectionBackgroundColor = UIColor.white
+        
+        dropDown.show()
+    }
+    
+    func customBtn(_ btn: UIButton) {
+        btn.layer.cornerRadius = 8
+    }
 }
-

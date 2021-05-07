@@ -8,31 +8,37 @@
 import Foundation
 import Alamofire
 
-public enum NetworkingAPI{
-    case Login(_ email : String, _ password : String)
-    case refreshToken
-    case SignUp(_ name : String, _ email : String, _ password : String, _ major : String)
-    case SendEmail(_ email : String)
-    case CheckEmailAuthenticationCode(_ code : String)
+public enum NetworkingAPI {
+    case signIn(_ email : String, _ password : String)
+    case logout
+    case tokenRefresh
+    case withDrawel
+    case signUp(_ name : String, _ email : String, _ password : String, _ major : String)
+    case sendEmail(_ email : String)
+    case checkEmailCode(_ code : String)
     
     var path : String {
         switch self {
-        case .Login, .refreshToken :
-            return "auth"
+        case .signIn, .tokenRefresh, .logout:
+            return "/auth"
             
-        case .SignUp, .SendEmail, .CheckEmailAuthenticationCode :
-            return "email"
+        case .withDrawel:
+            return "/withdrawel"
             
+        case .signUp:
+            return "/signup"
+            
+        case .sendEmail:
+            return "/sendemail"
+            
+        case .checkEmailCode:
+            return "/checkcode"
         }
-        
     }
     
     var headers: HTTPHeaders? {
         switch self {
-        case .Login, .SignUp, .SendEmail, .CheckEmailAuthenticationCode:
-            return nil
-            
-        case .refreshToken:
+        case .tokenRefresh:
             let refreshToken : String = "token"
             let UserDefault = UserDefaults.standard
             UserDefault.set(refreshToken, forKey: "refreshToken")
@@ -41,48 +47,39 @@ public enum NetworkingAPI{
             return ["Authorization" : "Bearer" + token]
             
         default:
-            let defaultToken : String = "accessToken"
+            let justToken: String = "token"
             let UserDefault = UserDefaults.standard
-            UserDefault.set(defaultToken, forKey: "accessToken")
+                    
+            UserDefault.set(justToken, forKey: "justToken")
             UserDefault.synchronize()
-            guard let token = UserDefault.string(forKey: "accessToken") else { return nil }
-            let headers = [
-                "Authorization" : String (format : "Bearer : @%", token
-                
-                )
-                
-            ]
-            
-        return ["Authorization" : "Bearer" + token]
-            
+                    
+            guard let token = UserDefault.string(forKey: "justToken") else { return nil }
+                    
+            // return ["Authorization" : "Bearer" + token]
+            return ["Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxOTUxMDA1MCwianRpIjoiNTk2YzkwMmYtNDIwNC00ZWZkLWI0ZGMtYjI0YmVkY2IyMWIxIiwibmJmIjoxNjE5NTEwMDUwLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiY2hhbmd4QGdtYWlsLmNvbSIsImV4cCI6MTYxOTU5NjQ1MH0.WHcfLQ06j8953edGLColVALvLmbr__eNDzYLYhzfLVs"]
         }
-        
     }
     
     var parameters: [String : Any]{
         switch self {
-        case .Login(let email, let password):
+        case .signIn(let email, let password):
             print(["email": email, "password": password])
             return ["email": email, "password": password]
             
-        case .SignUp(let name, let email, let password, let major):
+        case .signUp(let name, let email, let password, let major):
             print(["name": name, "email": email, "password": password, "major" : major])
             return ["name": name, "email" : email, "password" : password, "major" : major]
             
-        case .CheckEmailAuthenticationCode(let code):
+        case .checkEmailCode(let code):
             print(["code": code])
             return ["code": code]
             
-        case .SendEmail(let email):
+        case .sendEmail(let email):
             print(["email": email])
             return ["email": email]
             
         default:
             return [:]
-            
         }
-        
     }
-        
 }
-

@@ -13,11 +13,10 @@ protocol HTTPClientProvider {
     func post(_ api: NetworkingAPI) -> DataRequest
     func put(_ api: NetworkingAPI) -> DataRequest
     func delete(_ api: NetworkingAPI) -> DataRequest
-    
 }
 
 class HTTPClient: HTTPClientProvider {
-    let baseURI = "211.38.86.92:8081/"
+    let baseURI = "http://13.209.8.210:5000"
     
     func get(_ api: NetworkingAPI) -> DataRequest {
         return AF.request(baseURI + api.path,
@@ -26,17 +25,15 @@ class HTTPClient: HTTPClientProvider {
                           encoding: JSONEncoding.prettyPrinted,
                           headers: api.headers,
                           interceptor: nil)
-        
     }
     
     func post(_ api: NetworkingAPI) -> DataRequest {
         return AF.request(baseURI + api.path,
                           method: .post,
                           parameters: api.parameters,
-                          encoding: URLEncoding.default,
+                          encoding: JSONEncoding.prettyPrinted,
                           headers: api.headers,
                           interceptor: nil)
-        
     }
 
     func put(_ api: NetworkingAPI) -> DataRequest {
@@ -46,7 +43,6 @@ class HTTPClient: HTTPClientProvider {
                           encoding: JSONEncoding.prettyPrinted,
                           headers: api.headers,
                           interceptor: nil)
-        
     }
     
     func delete(_ api: NetworkingAPI) -> DataRequest {
@@ -56,8 +52,5 @@ class HTTPClient: HTTPClientProvider {
                           encoding: JSONEncoding.prettyPrinted,
                           headers: api.headers,
                           interceptor: nil)
-        
     }
-
 }
-

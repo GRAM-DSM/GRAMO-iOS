@@ -9,15 +9,15 @@ import Foundation
 import Alamofire
 
 public enum NetworkingAPI {
-    case signIn(_ email : String, _ password : String)
+    case signIn(_ email: String, _ password: String)
     case logout
     case tokenRefresh
     case withDrawel
-    case signUp(_ name : String, _ email : String, _ password : String, _ major : String)
-    case sendEmail(_ email : String)
-    case checkEmailCode(_ code : String)
+    case signUp(_ name: String, _ email: String, _ password: String, _ major: String)
+    case sendEmail(_ email: String)
+    case checkEmailCode(_ email: String, _ code: Int)
     
-    var path : String {
+    var path: String {
         switch self {
         case .signIn, .tokenRefresh, .logout:
             return "/auth"
@@ -60,7 +60,7 @@ public enum NetworkingAPI {
         }
     }
     
-    var parameters: [String : Any]{
+    var parameters: [String: Any] {
         switch self {
         case .signIn(let email, let password):
             print(["email": email, "password": password])
@@ -70,13 +70,13 @@ public enum NetworkingAPI {
             print(["name": name, "email": email, "password": password, "major" : major])
             return ["name": name, "email" : email, "password" : password, "major" : major]
             
-        case .checkEmailCode(let code):
-            print(["code": code])
-            return ["code": code]
-            
         case .sendEmail(let email):
             print(["email": email])
             return ["email": email]
+            
+        case .checkEmailCode(let email, let code):
+            print(["email": email, "code": code])
+            return ["email": email, "code": code]
             
         default:
             return [:]

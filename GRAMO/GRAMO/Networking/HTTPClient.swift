@@ -22,7 +22,7 @@ class HTTPClient: HTTPClientProvider {
         return AF.request(baseURI + api.path,
                           method: .get,
                           parameters: api.parameters,
-                          encoding: JSONEncoding.prettyPrinted,
+                          encoding: URLEncoding.default,
                           headers: api.headers,
                           interceptor: nil)
     }

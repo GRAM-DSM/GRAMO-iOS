@@ -26,6 +26,7 @@ class SignUpVC: UIViewController {
     private let httpClient = HTTPClient()
     
     var trueEmail: Bool = false
+    var trueMajor: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,20 +59,22 @@ class SignUpVC: UIViewController {
             majorLabel.text = "\(selection)"
             majorLabel.textColor = UIColor.black
             
-            self.dropDown.clearSelection()
+            dropDown.clearSelection()
+            
+            trueMajor = true
         }
     }
     
     @IBAction func signUpBtn(_ sender: UIButton) {
-        postSignUp(name: nameTxtField.text!, email: emailTxtField.text!, password: pwTxtField.text!, major: majorLabel.text!)
+        postSignUp(name: nameTxtField.text!, email: emailTxtField.text!, password: pwTxtField.text!, major: selectMajor(majorLabel))
     }
     
     @IBAction func getSendEmailBtn(_ sender: UIButton) {
-        getSendEmail(email: self.emailTxtField.text!)
+        postSendEmail(email: self.emailTxtField.text!)
     }
     
     @IBAction func checkEmailBtn(_ sender: UIButton) {
-        putCheckEmailAuthenticationCode(code: self.checkTxtField.text!)
+        postCheckEmailAuthenticationCode(email: self.emailTxtField.text!, code: Int(self.checkTxtField.text!)!)
     }
     
     @IBAction func didTapExitButton(_ sender: UIButton) {
@@ -83,93 +86,89 @@ class SignUpVC: UIViewController {
     func postSignUp(name : String, email : String, password : String, major : String) {
         guard let conformPwd = pwConformTxtField.text else { return }
         
-        if trueEmail == true {
-            httpClient.post(.signUp(name, email, password, major)).responseJSON(completionHandler: {(response) in
-                switch response.response?.statusCode {
-                case 201:
-                    print("회원가입 성공")
-                    
-                    self.dismiss(animated: true, completion: nil)
-                    self.navigationController?.popViewController(animated : true)
+        if trueMajor == true {
+            if trueEmail == true {
+                httpClient.post(.signUp(name, email, password, major)).responseJSON(completionHandler: {(response) in
+                    switch response.response?.statusCode {
+                    case 200:
+                        self.dismiss(animated: true, completion: nil)
+                        self.navigationController?.popViewController(animated : true)
+                            
+                    case 409:
+                        print("This email is already in use. - postSignIn")
                         
-                case 404:
-                    print("회원가입 실패")
-                    
-                    if password != conformPwd {
-                        UIView.animate(withDuration: 0.2, animations: {
-                            self.pwTxtField.frame.origin.x -= 10
-                            self.pwConformTxtField.frame.origin.x -= 10
-                        
-                            }, completion: { _ in
+                        if password != conformPwd {
                             UIView.animate(withDuration: 0.2, animations: {
-                                self.pwTxtField.frame.origin.x += 20
-                                self.pwConformTxtField.frame.origin.x += 20
+                                self.pwTxtField.frame.origin.x -= 10
+                                self.pwConformTxtField.frame.origin.x -= 10
                             
                                 }, completion: { _ in
                                 UIView.animate(withDuration: 0.2, animations: {
-                                    self.pwTxtField.frame.origin.x -= 10
-                                    self.pwConformTxtField.frame.origin.x -= 10
+                                    self.pwTxtField.frame.origin.x += 20
+                                    self.pwConformTxtField.frame.origin.x += 20
+                                
+                                    }, completion: { _ in
+                                    UIView.animate(withDuration: 0.2, animations: {
+                                        self.pwTxtField.frame.origin.x -= 10
+                                        self.pwConformTxtField.frame.origin.x -= 10
+                                    })
                                 })
                             })
-                        })
-                    
-                        self.failLabel.text = "비밀번호가 일치하지 않습니다"
+                        
+                            self.failLabel.text = "비밀번호가 일치하지 않습니다"
+                        }
+                        
+                    default:
+                        print(response.response?.statusCode)
+                        print(response.error)
                     }
-                    
-                default:
-                    print(response.response?.statusCode)
-                    print(response.error)
-                }
-            })
+                })
+            } else {
+                failLabel.text = "인증번호가 일치하지 않습니다"
+            }
+        } else {
+            failLabel.text = "분야를 선택해주세요"
         }
-        
-        failLabel.text = "인증번호가 일치하지 않습니다"
     }
     
-    func getSendEmail(email : String) {
-        httpClient.get(.sendEmail(email)).responseJSON(completionHandler: {
-            reponse in
-            switch reponse.response?.statusCode {
+    func postSendEmail(email : String) {
+        httpClient.post(.sendEmail(email)).responseJSON(completionHandler: {(response) in
+            switch response.response?.statusCode {
             case 200:
-                print("이메일 성공")
+                self.failLabel.text = ""
                 
-            default:
-                print("이메일 실패")
+            case 409:
+                print("This email is already in use. - postSendEmail")
                 
                 self.failLabel.text = "중복된 이메일 입니다"
-            }
-        })
-    }
-    
-    func putCheckEmailAuthenticationCode(code : String) {
-        httpClient.put(.checkEmailCode(code)).responseJSON(completionHandler: {
-            reponse in
-            switch reponse.response?.statusCode {
-            case 200:
-                print("이메일 인증 성공")
-                self.trueEmail = true
                 
             default:
-                print("이메일 인증 실패")
+                print(response.response?.statusCode)
+                print(response.error)
             }
         })
     }
     
-    func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) {
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width / 2 - 75, y: self.view.frame.size.height - 100, width: 150, height: 35))
-        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        toastLabel.textColor = UIColor.white
-        toastLabel.font = font
-        toastLabel.textAlignment = .center
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10
-        toastLabel.clipsToBounds = true
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 10.0, delay: 0.1, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
+    func postCheckEmailAuthenticationCode(email: String, code: Int) {
+        httpClient.post(.checkEmailCode(email, code)).responseJSON(completionHandler: {(response) in
+            switch response.response?.statusCode {
+            case 200:
+                self.failLabel.text = ""
+                self.trueEmail = true
+                
+            case 404:
+                print("This email does not exist. - postCheckEmailAuthenticationCode")
+                self.failLabel.text = "올바른 이메일이 아닙니다"
+                
+                
+            case 409:
+                print("Email and code does not match. - postCheckEmailAuthenticationCode")
+                self.failLabel.text = "인증번호가 일치하지 않습니다"
+                
+            default:
+                print(response.response?.statusCode)
+                print(response.error)
+            }
         })
     }
     
@@ -192,5 +191,24 @@ class SignUpVC: UIViewController {
     
     func customBtn(_ btn: UIButton) {
         btn.layer.cornerRadius = 8
+    }
+    
+    func selectMajor(_ label: UILabel) -> String {
+        switch label.text! {
+        case "iOS 개발자":
+            return "IOS"
+            
+        case "안드로이드 개발자":
+            return "ANDROID"
+            
+        case "서버 개발자":
+            return "BACKEND"
+        
+        case "디자이너":
+            return "DESIGN"
+            
+        default:
+            return ""
+        }
     }
 }

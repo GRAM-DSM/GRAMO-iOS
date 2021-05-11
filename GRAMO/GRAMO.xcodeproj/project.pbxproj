@@ -7,7 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		542603762626D8F0008AE0B8 /* GetPICU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542603752626D8F0008AE0B8 /* GetPICU.swift */; };
+		546EFCDF26258694001EC9CB /* GetPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546EFCDE26258694001EC9CB /* GetPlan.swift */; };
+		546EFCE226258883001EC9CB /* GetCalenderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546EFCE126258883001EC9CB /* GetCalenderList.swift */; };
+		546F625025F8D04A006DE88A /* Calendar2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546F624F25F8D04A006DE88A /* Calendar2.storyboard */; };
+		546F625325F8D142006DE88A /* Calendar2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546F625225F8D142006DE88A /* Calendar2VC.swift */; };
+		548F4BB92611DB8D00A93433 /* PICUTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548F4BB82611DB8D00A93433 /* PICUTableViewCell.swift */; };
+		54BCBF4C26036B8200B44447 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BCBF4B26036B8200B44447 /* DetailViewController.swift */; };
+		54FE42C9261C2E00004C5D9B /* SpecialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FE42C8261C2E00004C5D9B /* SpecialTableViewCell.swift */; };
 		B322413D00D974EC60F376D7 /* Pods_GRAMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */; };
+<<<<<<< HEAD
+=======
 		EF01EF9125D294A30030C91E /* homework.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF01EF9025D294A30030C91E /* homework.storyboard */; };
 		EF2239F125CD846000BFB5BC /* infoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F025CD846000BFB5BC /* infoListModel.swift */; };
 		EF2239F425CD846900BFB5BC /* info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF2239F325CD846900BFB5BC /* info.storyboard */; };
@@ -21,9 +31,9 @@
 		EF36AE3F25DAA30D005D4570 /* ThirdSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF36AE3E25DAA30D005D4570 /* ThirdSectionTableViewCell.swift */; };
 		EF36AE4725DAAC8D005D4570 /* SecondSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF36AE4625DAAC8D005D4570 /* SecondSectionModel.swift */; };
 		EF36AE4A25DAACA8005D4570 /* ThirdSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF36AE4925DAACA8005D4570 /* ThirdSectionModel.swift */; };
+>>>>>>> main
 		EF4416C725E942ED0074F6FC /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4416C625E942ED0074F6FC /* HTTPClient.swift */; };
 		EF4416CA25E942F30074F6FC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4416C925E942F30074F6FC /* Networking.swift */; };
-		EF766C6B25CA8E4700DECE25 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF766C6A25CA8E4700DECE25 /* TestModel.swift */; };
 		EF766C7025CA8E7800DECE25 /* TestNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF766C6F25CA8E7800DECE25 /* TestNetworking.swift */; };
 		EF766C7925CA8F6A00DECE25 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7525CA8F5D00DECE25 /* NotoSansKR-Black.otf */; };
 		EF766C7B25CA8F6D00DECE25 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7425CA8F5D00DECE25 /* NotoSansKR-Bold.otf */; };
@@ -31,10 +41,13 @@
 		EF766C7F25CA8F7200DECE25 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7625CA8F5D00DECE25 /* NotoSansKR-Medium.otf */; };
 		EF766C8125CA8F7500DECE25 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7325CA8F5D00DECE25 /* NotoSansKR-Regular.otf */; };
 		EF766C8325CA8F7800DECE25 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7825CA8F5D00DECE25 /* NotoSansKR-Thin.otf */; };
+<<<<<<< HEAD
+=======
 		EF89101C25D29A2F002023CD /* HomeworkAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89101B25D29A2F002023CD /* HomeworkAddViewController.swift */; };
 		EF89102025D2C52D002023CD /* HomeworkOrderedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89101F25D2C52D002023CD /* HomeworkOrderedViewController.swift */; };
 		EF89102325D2C54D002023CD /* HomeworkAssignedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89102225D2C54D002023CD /* HomeworkAssignedViewController.swift */; };
 		EF89102625D2C5A2002023CD /* HomeworkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89102525D2C5A2002023CD /* HomeworkListViewController.swift */; };
+>>>>>>> main
 		EFABF72025CA8C1800E69CC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFABF71F25CA8C1800E69CC4 /* AppDelegate.swift */; };
 		EFABF72425CA8C1800E69CC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFABF72325CA8C1800E69CC4 /* ViewController.swift */; };
 		EFABF72725CA8C1800E69CC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFABF72525CA8C1800E69CC4 /* Main.storyboard */; };
@@ -44,8 +57,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		542603752626D8F0008AE0B8 /* GetPICU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPICU.swift; sourceTree = "<group>"; };
+		5428120E260B52EF00870F94 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		546EFCDE26258694001EC9CB /* GetPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlan.swift; sourceTree = "<group>"; };
+		546EFCE126258883001EC9CB /* GetCalenderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCalenderList.swift; sourceTree = "<group>"; };
+		546F624F25F8D04A006DE88A /* Calendar2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar2.storyboard; sourceTree = "<group>"; };
+		546F625225F8D142006DE88A /* Calendar2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar2VC.swift; sourceTree = "<group>"; };
+		548F4BB82611DB8D00A93433 /* PICUTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PICUTableViewCell.swift; sourceTree = "<group>"; };
+		54BCBF4B26036B8200B44447 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		54FE42C8261C2E00004C5D9B /* SpecialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialTableViewCell.swift; sourceTree = "<group>"; };
 		9A4F5BAE346346B91B6B2835 /* Pods-GRAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.debug.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.debug.xcconfig"; sourceTree = "<group>"; };
 		B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GRAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+<<<<<<< HEAD
+=======
 		EF01EF9025D294A30030C91E /* homework.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = homework.storyboard; sourceTree = "<group>"; };
 		EF2239F025CD846000BFB5BC /* infoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoListModel.swift; sourceTree = "<group>"; };
 		EF2239F325CD846900BFB5BC /* info.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = info.storyboard; sourceTree = "<group>"; };
@@ -59,9 +83,9 @@
 		EF36AE3E25DAA30D005D4570 /* ThirdSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdSectionTableViewCell.swift; sourceTree = "<group>"; };
 		EF36AE4625DAAC8D005D4570 /* SecondSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecondSectionModel.swift; path = CustomTableViewCell/SecondSectionModel.swift; sourceTree = "<group>"; };
 		EF36AE4925DAACA8005D4570 /* ThirdSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThirdSectionModel.swift; path = CustomTableViewCell/ThirdSectionModel.swift; sourceTree = "<group>"; };
+>>>>>>> main
 		EF4416C625E942ED0074F6FC /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		EF4416C925E942F30074F6FC /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		EF766C6A25CA8E4700DECE25 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		EF766C6F25CA8E7800DECE25 /* TestNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetworking.swift; sourceTree = "<group>"; };
 		EF766C7325CA8F5D00DECE25 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		EF766C7425CA8F5D00DECE25 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
@@ -69,10 +93,13 @@
 		EF766C7625CA8F5D00DECE25 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		EF766C7725CA8F5D00DECE25 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		EF766C7825CA8F5D00DECE25 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
 		EF89101B25D29A2F002023CD /* HomeworkAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworkAddViewController.swift; sourceTree = "<group>"; };
 		EF89101F25D2C52D002023CD /* HomeworkOrderedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworkOrderedViewController.swift; sourceTree = "<group>"; };
 		EF89102225D2C54D002023CD /* HomeworkAssignedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworkAssignedViewController.swift; sourceTree = "<group>"; };
 		EF89102525D2C5A2002023CD /* HomeworkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworkListViewController.swift; sourceTree = "<group>"; };
+>>>>>>> main
 		EFABF71C25CA8C1800E69CC4 /* GRAMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GRAMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFABF71F25CA8C1800E69CC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFABF72325CA8C1800E69CC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +128,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		546EFCDD2625842C001EC9CB /* API */ = {
+			isa = PBXGroup;
+			children = (
+				546EFCE126258883001EC9CB /* GetCalenderList.swift */,
+				546EFCDE26258694001EC9CB /* GetPlan.swift */,
+				542603752626D8F0008AE0B8 /* GetPICU.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		5472443B261F0C28007C1F43 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				546F625225F8D142006DE88A /* Calendar2VC.swift */,
+				54BCBF4B26036B8200B44447 /* DetailViewController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		548F4BBB2611DB9300A93433 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				548F4BB82611DB8D00A93433 /* PICUTableViewCell.swift */,
+				54FE42C8261C2E00004C5D9B /* SpecialTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		5C7A04D6A7943944DCEE033E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,37 +168,22 @@
 		6D70CAE5132F91EBC6A84930 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		EF36AE3725DAA285005D4570 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-				EF36AE3825DAA2E7005D4570 /* FirstSectionTableViewCell.swift */,
-				EF36AE3B25DAA2F9005D4570 /* SecondSectionTableViewCell.swift */,
-				EF36AE3E25DAA30D005D4570 /* ThirdSectionTableViewCell.swift */,
-			);
-			path = TableView;
-			sourceTree = "<group>";
-		};
-		EF36AE4225DAAC60005D4570 /* homeworkModel */ = {
-			isa = PBXGroup;
-			children = (
+=======
 				EF36AE4625DAAC8D005D4570 /* SecondSectionModel.swift */,
 				EFD10624264A959200A6E10C /* FirstSectionModel.swift */,
 				EF36AE4925DAACA8005D4570 /* ThirdSectionModel.swift */,
+>>>>>>> main
 			);
-			path = homeworkModel;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		EF766C6625CA8DF900DECE25 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				EFABF72525CA8C1800E69CC4 /* Main.storyboard */,
-				EF2239F325CD846900BFB5BC /* info.storyboard */,
-				EF01EF9025D294A30030C91E /* homework.storyboard */,
+				546F624F25F8D04A006DE88A /* Calendar2.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -152,9 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				EFABF72325CA8C1800E69CC4 /* ViewController.swift */,
-				EF89101625D29969002023CD /* info */,
-				EF89101925D299B1002023CD /* SideMenu */,
-				EF89101725D2997E002023CD /* homework */,
+				5472443B261F0C28007C1F43 /* Calendar */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -169,6 +207,8 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
+=======
 		EF766C6925CA8E1A00DECE25 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +251,7 @@
 			path = SideMenu;
 			sourceTree = "<group>";
 		};
+>>>>>>> main
 		EFABF71325CA8C1700E69CC4 = {
 			isa = PBXGroup;
 			children = (
@@ -232,7 +273,8 @@
 		EFABF71E25CA8C1800E69CC4 /* GRAMO */ = {
 			isa = PBXGroup;
 			children = (
-				EF766C6925CA8E1A00DECE25 /* Model */,
+				546EFCDD2625842C001EC9CB /* API */,
+				548F4BBB2611DB9300A93433 /* Cell */,
 				EF766C6725CA8E0400DECE25 /* VC */,
 				EF766C6825CA8E0A00DECE25 /* Networking */,
 				EF766C6625CA8DF900DECE25 /* UI */,
@@ -246,6 +288,7 @@
 				EF766C7625CA8F5D00DECE25 /* NotoSansKR-Medium.otf */,
 				EF766C7325CA8F5D00DECE25 /* NotoSansKR-Regular.otf */,
 				EF766C7825CA8F5D00DECE25 /* NotoSansKR-Thin.otf */,
+				5428120E260B52EF00870F94 /* Roboto-Medium.ttf */,
 			);
 			path = GRAMO;
 			sourceTree = "<group>";
@@ -323,9 +366,8 @@
 			files = (
 				EF766C8325CA8F7800DECE25 /* NotoSansKR-Thin.otf in Resources */,
 				EF766C7D25CA8F7000DECE25 /* NotoSansKR-Light.otf in Resources */,
-				EF2239F425CD846900BFB5BC /* info.storyboard in Resources */,
+				546F625025F8D04A006DE88A /* Calendar2.storyboard in Resources */,
 				EFABF72C25CA8C1900E69CC4 /* LaunchScreen.storyboard in Resources */,
-				EF01EF9125D294A30030C91E /* homework.storyboard in Resources */,
 				EF766C7F25CA8F7200DECE25 /* NotoSansKR-Medium.otf in Resources */,
 				EFABF72925CA8C1900E69CC4 /* Assets.xcassets in Resources */,
 				EFABF72725CA8C1800E69CC4 /* Main.storyboard in Resources */,
@@ -384,15 +426,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
+				546EFCE226258883001EC9CB /* GetCalenderList.swift in Sources */,
+				548F4BB92611DB8D00A93433 /* PICUTableViewCell.swift in Sources */,
+				546EFCDF26258694001EC9CB /* GetPlan.swift in Sources */,
+				54BCBF4C26036B8200B44447 /* DetailViewController.swift in Sources */,
+=======
 				EF36AE3C25DAA2F9005D4570 /* SecondSectionTableViewCell.swift in Sources */,
 				EF36AE4725DAAC8D005D4570 /* SecondSectionModel.swift in Sources */,
 				EF89101C25D29A2F002023CD /* HomeworkAddViewController.swift in Sources */,
 				EF223A1E25CD903000BFB5BC /* SideMenuNavigationController.swift in Sources */,
+>>>>>>> main
 				EFABF72425CA8C1800E69CC4 /* ViewController.swift in Sources */,
-				EF2239FB25CD847900BFB5BC /* infoTableViewCell.swift in Sources */,
 				EF4416C725E942ED0074F6FC /* HTTPClient.swift in Sources */,
 				EF4416CA25E942F30074F6FC /* Networking.swift in Sources */,
 				EF766C7025CA8E7800DECE25 /* TestNetworking.swift in Sources */,
+<<<<<<< HEAD
+				542603762626D8F0008AE0B8 /* GetPICU.swift in Sources */,
+				54FE42C9261C2E00004C5D9B /* SpecialTableViewCell.swift in Sources */,
+				EFABF72025CA8C1800E69CC4 /* AppDelegate.swift in Sources */,
+				546F625325F8D142006DE88A /* Calendar2VC.swift in Sources */,
+=======
 				EF89102025D2C52D002023CD /* HomeworkOrderedViewController.swift in Sources */,
 				EF36AE3F25DAA30D005D4570 /* ThirdSectionTableViewCell.swift in Sources */,
 				EFD10625264A959200A6E10C /* FirstSectionModel.swift in Sources */,
@@ -406,6 +460,7 @@
 				EF89102325D2C54D002023CD /* HomeworkAssignedViewController.swift in Sources */,
 				EF766C6B25CA8E4700DECE25 /* TestModel.swift in Sources */,
 				EF89102625D2C5A2002023CD /* HomeworkListViewController.swift in Sources */,
+>>>>>>> main
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,12 +609,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FSLGTDRXYN;
 				INFOPLIST_FILE = GRAMO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = JSY.GRAMO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Gram.GRAMO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -573,12 +629,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FSLGTDRXYN;
 				INFOPLIST_FILE = GRAMO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = JSY.GRAMO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Gram.GRAMO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -9,7 +9,6 @@ import Foundation
 
 struct PICUListResponse: Codable {
     var getPICU = [GetPICU]()
-    
 }
 
 struct GetPICU: Codable {
@@ -21,8 +20,5 @@ struct GetPICU: Codable {
         self.picuId = picuId
         self.userName = userName
         self.description = description
-        
     }
-    
 }
-

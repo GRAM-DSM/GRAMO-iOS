@@ -16,8 +16,5 @@ struct GetCalendarList: Codable {
         self.date = date
         self.picuCount = picuCount
         self.planCount = planCount
-        
     }
-    
 }
-

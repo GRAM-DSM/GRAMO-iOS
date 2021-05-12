@@ -7,7 +7,6 @@
 
 import UIKit
 
-// MARK: DetailViewController
 class DetailViewController: ViewController, UITextViewDelegate {
     @IBOutlet weak var picuTableView: UITableView!
     @IBOutlet weak var planTableView: UITableView!
@@ -30,12 +29,10 @@ class DetailViewController: ViewController, UITextViewDelegate {
         getPICU()
         getPlan()
         initRefresh()
-
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
-
     }
     
     @IBAction func touchUpPicuAddBtn(_ sender: UIButton) {
@@ -59,11 +56,8 @@ class DetailViewController: ViewController, UITextViewDelegate {
             default:
                 print(response.response?.statusCode)
                 print(response.error)
-                    
             }
-            
         })
-        
     }
     
     @IBAction func touchUpSpecialAddBtn(_ sender: UIButton) {
@@ -87,14 +81,15 @@ class DetailViewController: ViewController, UITextViewDelegate {
             default:
                 print(response.response?.statusCode)
                 print(response.error)
-                
             }
-            
         })
-        
     }
     
-    func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) { let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+    func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) {
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width / 2 - 75,
+                                               y: self.view.frame.size.height - 100,
+                                               width: 150,
+                                               height: 35))
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
         toastLabel.font = font
@@ -106,14 +101,10 @@ class DetailViewController: ViewController, UITextViewDelegate {
         self.view.addSubview(toastLabel)
         UIView.animate(withDuration: 10.0, delay: 0.1, options: .curveEaseOut, animations: {
             toastLabel.alpha = 0.0
-            
         }, completion: {(isCompleted) in
             toastLabel.removeFromSuperview()
-        
         })
-        
     }
-
 }
 
 // MARK: tableView
@@ -128,17 +119,14 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 picuCell.detailLabel?.text = ""
                 picuCell.detailTextView?.text = picu[indexPath.row].description
-                
             } else {
                 picuCell.detailLabel?.text = self.picu[indexPath.row].description
                 picuCell.detailTextView?.text.removeAll()
                 
                 picuCell.detailTextView?.isSelectable = false
-                
             }
             
             return picuCell
-            
         } else {
             let planCell: SpecialTableViewCell = tableView.dequeueReusableCell(withIdentifier: SpecialTableViewCell.specialCellIdentifier, for: indexPath) as! SpecialTableViewCell
             
@@ -147,7 +135,6 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 planCell.detailLabel?.text = ""
                 planCell.titleTextView?.text = self.plan[indexPath.row].description
                 planCell.detailTextView?.text = self.plan[indexPath.row].description
-                
             } else {
                 planCell.titleLabel?.text = self.plan[indexPath.row].title
                 planCell.detailLabel?.text = self.plan[indexPath.row].description
@@ -156,28 +143,22 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 
                 planCell.titleTextView.isSelectable = false
                 planCell.detailTextView.isSelectable = false
-            
             }
 
             return planCell
-
         }
-
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView.tag == 1 {
             return picu.count
-
         }
         
         if tableView.tag == 2 {
             return plan.count
-
         }
 
         return 0
-
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -205,13 +186,9 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                     default:
                         print(response.response?.statusCode)
                         print(response.error)
-                    
                     }
-                    
                 })
-                
             }
-            
         }
         
         if tableView.tag == 2 {
@@ -238,15 +215,10 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                     default:
                         print(response.response?.statusCode)
                         print(response.error)
-                    
                     }
-                    
                 })
-                
             }
-            
         }
-        
     }
     
     func setTableView() {
@@ -260,7 +232,6 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         
         picuTableView.rowHeight = 48
         planTableView.rowHeight = 66
-        
     }
     
     func appendMetadata(num: Int) {
@@ -274,9 +245,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         default:
             picu.append(GetPICU(picuId: 0, userName: "정창용", description: "사유를 적어주세요"))
             plan.append(GetPlan(planId: 0, title: "어떤 특별한 일인가요?", description: "특별한 일의 설명을 적어주세요"))
-            
         }
-    
     }
     
     func getPICU() {
@@ -295,10 +264,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                     
                     self.picu.append(contentsOf: model)
                     self.picuTableView.reloadData()
-
                 } catch {
                     print("Error: \(error)")
-
                 }
                 
             case 403:
@@ -310,11 +277,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             default:
                 print(response.response?.statusCode)
                 print(response.error)
-            
             }
-            
         })
-            
     }
     
     func getPlan() {
@@ -333,10 +297,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                     
                     self.plan.append(contentsOf: model)
                     self.planTableView.reloadData()
-
                 } catch {
                     print("Error: \(error)")
-
                 }
 
             case 403:
@@ -348,11 +310,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             default:
                 print(response.response?.statusCode)
                 print(response.error)
-            
             }
-            
         })
-        
     }
     
     func initRefresh() {
@@ -367,22 +326,17 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         
         picuTableView.refreshControl = picuRefresh
         planTableView.refreshControl = planRefresh
-        
     }
     
     @objc func picuUpdateUI(refresh: UIRefreshControl) {
         refresh.endRefreshing()
         
         getPICU()
-        
     }
     
     @objc func planUpdateUI(refresh: UIRefreshControl) {
         refresh.endRefreshing()
         
         getPlan()
-        
     }
-    
 }
-

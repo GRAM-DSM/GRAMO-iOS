@@ -8,7 +8,6 @@
 import UIKit
 import FSCalendar
 
-// MARK: Calendar2VC
 class Calendar2VC: UIViewController {
     @IBOutlet var calendar: FSCalendar!
     
@@ -24,17 +23,13 @@ class Calendar2VC: UIViewController {
         
         setUpCalendar()
         setUpEvents()
-        
     }
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             setUpEvents()
-            
         }
-        
     }
-    
 }
 
 // MARK: Calendar
@@ -43,12 +38,9 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         if self.events.contains(date) {
             return 1
-            
         } else {
             return 0
-            
         }
-        
     }
     
     // 숫자 글자로 바꾸기
@@ -59,9 +51,7 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
         
         default:
             return nil
-        
         }
-        
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -74,7 +64,6 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
         modalPresentView.date = dateFormatter.string(from: date)
 
         self.present(modalPresentView, animated: true, completion: nil)
-
     }
     
     func setUpCalendar() {
@@ -95,7 +84,6 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
         
         // 스와이프 스크롤 방향 ( 버티칼로 스와이프 설정하면 좌측 우측 상단 다음달 표시 없어짐, 호리젠탈은 보임 )
         calendar.scrollDirection = .vertical
-        
     }
     
     func setUpEvents() {
@@ -104,7 +92,6 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
         let current_date_string = formatter.string(from: Date())
         
         getCalendarList(date: current_date_string)
-                
     }
     
     func getCalendarList(date: String) {
@@ -126,18 +113,14 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
                     for _ in self.getCalendarListModel {
                         if self.getCalendarListModel[num].picuCount != 0 || self.getCalendarListModel[num].planCount != 0 {
                             self.events.append(self.formatter.date(from: self.getCalendarListModel[num].date)!)
-                            
                         }
                         
                         num += 1
-                        
                     }
                     
                     self.calendar.reloadData()
-                    
                 } catch {
                     print("Error: \(error)")
-                    
                 }
                 
             case 403:
@@ -149,12 +132,7 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
             default:
                 print(response.response?.statusCode)
                 print(response.error)
-            
             }
-            
         })
-
     }
-    
 }
-

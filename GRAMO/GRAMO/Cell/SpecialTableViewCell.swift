@@ -7,7 +7,6 @@
 
 import UIKit
 
-// MARK: SpecialTableViewCell
 class SpecialTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
@@ -23,17 +22,14 @@ class SpecialTableViewCell: UITableViewCell {
         detailTextView.delegate = self
         
         placeholderSetting()
-        
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
     }
     
     func placeholderSetting() {
@@ -41,9 +37,7 @@ class SpecialTableViewCell: UITableViewCell {
         titleTextView.textColor = UIColor.lightGray
         detailTextView.text = "특별한 일의 설명을 적어주세요"
         detailTextView.textColor = UIColor.lightGray
-            
     }
-
 }
 
 // MARK: UITextView
@@ -52,9 +46,7 @@ extension SpecialTableViewCell: UITextViewDelegate {
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
             textView.textColor = UIColor.black
-                
         }
-        
     }
         
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -67,13 +59,7 @@ extension SpecialTableViewCell: UITextViewDelegate {
             if textView == detailTextView {
                 textView.text = "특별한 일의 설명을 적어주세요"
                 textView.textColor = UIColor.lightGray
-                
             }
-                
         }
-            
     }
-    
 }
-
-

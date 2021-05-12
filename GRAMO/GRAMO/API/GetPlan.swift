@@ -16,8 +16,5 @@ struct GetPlan: Codable {
         self.planId = planId
         self.title = title
         self.description = description
-        
     }
-    
 }
-

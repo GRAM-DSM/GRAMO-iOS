@@ -7,7 +7,6 @@
 
 import UIKit
 
-// MARK: PICUTableViewCell
 class PICUTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var detailLabel: UILabel!
@@ -21,25 +20,20 @@ class PICUTableViewCell: UITableViewCell {
         detailTextView.delegate = self
         
         placeholderSetting()
-        
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-    }
+}
     
     func placeholderSetting() {
         detailTextView.text = "사유를 적어주세요"
         detailTextView.textColor = UIColor.lightGray
-            
     }
-
 }
 
 // MARK: UITextView
@@ -48,19 +42,13 @@ extension PICUTableViewCell: UITextViewDelegate {
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
             textView.textColor = UIColor.black
-                
         }
-        
     }
         
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "사유를 적어주세요"
             textView.textColor = UIColor.lightGray
-                
         }
-            
     }
-    
 }
-

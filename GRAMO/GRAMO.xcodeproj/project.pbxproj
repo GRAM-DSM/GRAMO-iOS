@@ -16,14 +16,9 @@
 		54BCBF4C26036B8200B44447 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BCBF4B26036B8200B44447 /* DetailViewController.swift */; };
 		54FE42C9261C2E00004C5D9B /* SpecialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FE42C8261C2E00004C5D9B /* SpecialTableViewCell.swift */; };
 		B322413D00D974EC60F376D7 /* Pods_GRAMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */; };
-<<<<<<< HEAD
-=======
-		EF01EF9125D294A30030C91E /* homework.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF01EF9025D294A30030C91E /* homework.storyboard */; };
 		EF2239F125CD846000BFB5BC /* infoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F025CD846000BFB5BC /* infoListModel.swift */; };
-		EF2239F425CD846900BFB5BC /* info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF2239F325CD846900BFB5BC /* info.storyboard */; };
 		EF2239F925CD847900BFB5BC /* InfoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F625CD847800BFB5BC /* InfoListViewController.swift */; };
 		EF2239FA25CD847900BFB5BC /* InfoAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F725CD847800BFB5BC /* InfoAddViewController.swift */; };
-		EF2239FB25CD847900BFB5BC /* infoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2239F825CD847800BFB5BC /* infoTableViewCell.swift */; };
 		EF223A1E25CD903000BFB5BC /* SideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF223A1C25CD903000BFB5BC /* SideMenuNavigationController.swift */; };
 		EF223A1F25CD903000BFB5BC /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF223A1D25CD903000BFB5BC /* SideMenuViewController.swift */; };
 		EF36AE3925DAA2E7005D4570 /* FirstSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF36AE3825DAA2E7005D4570 /* FirstSectionTableViewCell.swift */; };
@@ -31,25 +26,19 @@
 		EF36AE3F25DAA30D005D4570 /* ThirdSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF36AE3E25DAA30D005D4570 /* ThirdSectionTableViewCell.swift */; };
 		EF36AE4725DAAC8D005D4570 /* SecondSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF36AE4625DAAC8D005D4570 /* SecondSectionModel.swift */; };
 		EF36AE4A25DAACA8005D4570 /* ThirdSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF36AE4925DAACA8005D4570 /* ThirdSectionModel.swift */; };
->>>>>>> main
 		EF4416C725E942ED0074F6FC /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4416C625E942ED0074F6FC /* HTTPClient.swift */; };
 		EF4416CA25E942F30074F6FC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4416C925E942F30074F6FC /* Networking.swift */; };
-		EF766C7025CA8E7800DECE25 /* TestNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF766C6F25CA8E7800DECE25 /* TestNetworking.swift */; };
 		EF766C7925CA8F6A00DECE25 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7525CA8F5D00DECE25 /* NotoSansKR-Black.otf */; };
 		EF766C7B25CA8F6D00DECE25 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7425CA8F5D00DECE25 /* NotoSansKR-Bold.otf */; };
 		EF766C7D25CA8F7000DECE25 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7725CA8F5D00DECE25 /* NotoSansKR-Light.otf */; };
 		EF766C7F25CA8F7200DECE25 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7625CA8F5D00DECE25 /* NotoSansKR-Medium.otf */; };
 		EF766C8125CA8F7500DECE25 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7325CA8F5D00DECE25 /* NotoSansKR-Regular.otf */; };
 		EF766C8325CA8F7800DECE25 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7825CA8F5D00DECE25 /* NotoSansKR-Thin.otf */; };
-<<<<<<< HEAD
-=======
 		EF89101C25D29A2F002023CD /* HomeworkAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89101B25D29A2F002023CD /* HomeworkAddViewController.swift */; };
 		EF89102025D2C52D002023CD /* HomeworkOrderedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89101F25D2C52D002023CD /* HomeworkOrderedViewController.swift */; };
 		EF89102325D2C54D002023CD /* HomeworkAssignedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89102225D2C54D002023CD /* HomeworkAssignedViewController.swift */; };
 		EF89102625D2C5A2002023CD /* HomeworkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89102525D2C5A2002023CD /* HomeworkListViewController.swift */; };
->>>>>>> main
 		EFABF72025CA8C1800E69CC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFABF71F25CA8C1800E69CC4 /* AppDelegate.swift */; };
-		EFABF72425CA8C1800E69CC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFABF72325CA8C1800E69CC4 /* ViewController.swift */; };
 		EFABF72725CA8C1800E69CC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFABF72525CA8C1800E69CC4 /* Main.storyboard */; };
 		EFABF72925CA8C1900E69CC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFABF72825CA8C1900E69CC4 /* Assets.xcassets */; };
 		EFABF72C25CA8C1900E69CC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFABF72A25CA8C1900E69CC4 /* LaunchScreen.storyboard */; };
@@ -68,14 +57,9 @@
 		54FE42C8261C2E00004C5D9B /* SpecialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialTableViewCell.swift; sourceTree = "<group>"; };
 		9A4F5BAE346346B91B6B2835 /* Pods-GRAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.debug.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.debug.xcconfig"; sourceTree = "<group>"; };
 		B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GRAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-<<<<<<< HEAD
-=======
-		EF01EF9025D294A30030C91E /* homework.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = homework.storyboard; sourceTree = "<group>"; };
 		EF2239F025CD846000BFB5BC /* infoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoListModel.swift; sourceTree = "<group>"; };
-		EF2239F325CD846900BFB5BC /* info.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = info.storyboard; sourceTree = "<group>"; };
 		EF2239F625CD847800BFB5BC /* InfoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoListViewController.swift; sourceTree = "<group>"; };
 		EF2239F725CD847800BFB5BC /* InfoAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoAddViewController.swift; sourceTree = "<group>"; };
-		EF2239F825CD847800BFB5BC /* infoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoTableViewCell.swift; sourceTree = "<group>"; };
 		EF223A1C25CD903000BFB5BC /* SideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuNavigationController.swift; sourceTree = "<group>"; };
 		EF223A1D25CD903000BFB5BC /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		EF36AE3825DAA2E7005D4570 /* FirstSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -83,35 +67,24 @@
 		EF36AE3E25DAA30D005D4570 /* ThirdSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdSectionTableViewCell.swift; sourceTree = "<group>"; };
 		EF36AE4625DAAC8D005D4570 /* SecondSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecondSectionModel.swift; path = CustomTableViewCell/SecondSectionModel.swift; sourceTree = "<group>"; };
 		EF36AE4925DAACA8005D4570 /* ThirdSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThirdSectionModel.swift; path = CustomTableViewCell/ThirdSectionModel.swift; sourceTree = "<group>"; };
->>>>>>> main
 		EF4416C625E942ED0074F6FC /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		EF4416C925E942F30074F6FC /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		EF766C6F25CA8E7800DECE25 /* TestNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetworking.swift; sourceTree = "<group>"; };
 		EF766C7325CA8F5D00DECE25 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		EF766C7425CA8F5D00DECE25 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		EF766C7525CA8F5D00DECE25 /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
 		EF766C7625CA8F5D00DECE25 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		EF766C7725CA8F5D00DECE25 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		EF766C7825CA8F5D00DECE25 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		EF89101B25D29A2F002023CD /* HomeworkAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworkAddViewController.swift; sourceTree = "<group>"; };
 		EF89101F25D2C52D002023CD /* HomeworkOrderedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworkOrderedViewController.swift; sourceTree = "<group>"; };
 		EF89102225D2C54D002023CD /* HomeworkAssignedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworkAssignedViewController.swift; sourceTree = "<group>"; };
 		EF89102525D2C5A2002023CD /* HomeworkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworkListViewController.swift; sourceTree = "<group>"; };
->>>>>>> main
 		EFABF71C25CA8C1800E69CC4 /* GRAMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GRAMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFABF71F25CA8C1800E69CC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EFABF72325CA8C1800E69CC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EFABF72625CA8C1800E69CC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EFABF72825CA8C1900E69CC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFABF72B25CA8C1900E69CC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFABF72D25CA8C1900E69CC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EFD1061F264A958000A6E10C /* HwListResponseT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HwListResponseT.swift; sourceTree = "<group>"; };
-		EFD10620264A958000A6E10C /* HwListResponseS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HwListResponseS.swift; sourceTree = "<group>"; };
-		EFD10621264A958000A6E10C /* HwUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HwUser.swift; sourceTree = "<group>"; };
-		EFD10622264A958000A6E10C /* GetUserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserList.swift; sourceTree = "<group>"; };
-		EFD10623264A958000A6E10C /* HwContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HwContent.swift; sourceTree = "<group>"; };
 		EFD10624264A959200A6E10C /* FirstSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstSectionModel.swift; sourceTree = "<group>"; };
 		F3A525CBC151FAC4B5AEACC8 /* Pods-GRAMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.release.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +101,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		543CAF71264BC73D00D92C77 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				EF36AE3B25DAA2F9005D4570 /* SecondSectionTableViewCell.swift */,
+				EF89101B25D29A2F002023CD /* HomeworkAddViewController.swift */,
+				EF223A1C25CD903000BFB5BC /* SideMenuNavigationController.swift */,
+				EF89101F25D2C52D002023CD /* HomeworkOrderedViewController.swift */,
+				EF36AE3E25DAA30D005D4570 /* ThirdSectionTableViewCell.swift */,
+				EF223A1D25CD903000BFB5BC /* SideMenuViewController.swift */,
+				EF2239F725CD847800BFB5BC /* InfoAddViewController.swift */,
+				EF2239F025CD846000BFB5BC /* infoListModel.swift */,
+				EF36AE3825DAA2E7005D4570 /* FirstSectionTableViewCell.swift */,
+				EF2239F625CD847800BFB5BC /* InfoListViewController.swift */,
+				EF89102225D2C54D002023CD /* HomeworkAssignedViewController.swift */,
+				EF89102525D2C5A2002023CD /* HomeworkListViewController.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		546EFCDD2625842C001EC9CB /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,13 +160,10 @@
 		6D70CAE5132F91EBC6A84930 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */,
-=======
 				EF36AE4625DAAC8D005D4570 /* SecondSectionModel.swift */,
 				EFD10624264A959200A6E10C /* FirstSectionModel.swift */,
 				EF36AE4925DAACA8005D4570 /* ThirdSectionModel.swift */,
->>>>>>> main
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -191,7 +180,6 @@
 		EF766C6725CA8E0400DECE25 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				EFABF72325CA8C1800E69CC4 /* ViewController.swift */,
 				5472443B261F0C28007C1F43 /* Calendar */,
 			);
 			path = VC;
@@ -200,58 +188,12 @@
 		EF766C6825CA8E0A00DECE25 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				EF766C6F25CA8E7800DECE25 /* TestNetworking.swift */,
 				EF4416C625E942ED0074F6FC /* HTTPClient.swift */,
 				EF4416C925E942F30074F6FC /* Networking.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-=======
-		EF766C6925CA8E1A00DECE25 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				EF766C6A25CA8E4700DECE25 /* TestModel.swift */,
-				EF2239F025CD846000BFB5BC /* infoListModel.swift */,
-				EFD1061E264A958000A6E10C /* NetworkingModel */,
-				EF36AE4225DAAC60005D4570 /* homeworkModel */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		EF89101625D29969002023CD /* info */ = {
-			isa = PBXGroup;
-			children = (
-				EF2239F725CD847800BFB5BC /* InfoAddViewController.swift */,
-				EF2239F625CD847800BFB5BC /* InfoListViewController.swift */,
-				EF2239F825CD847800BFB5BC /* infoTableViewCell.swift */,
-			);
-			path = info;
-			sourceTree = "<group>";
-		};
-		EF89101725D2997E002023CD /* homework */ = {
-			isa = PBXGroup;
-			children = (
-				EF36AE3725DAA285005D4570 /* TableView */,
-				EF89102525D2C5A2002023CD /* HomeworkListViewController.swift */,
-				EF89101B25D29A2F002023CD /* HomeworkAddViewController.swift */,
-				EF89101F25D2C52D002023CD /* HomeworkOrderedViewController.swift */,
-				EF89102225D2C54D002023CD /* HomeworkAssignedViewController.swift */,
-			);
-			path = homework;
-			sourceTree = "<group>";
-		};
-		EF89101925D299B1002023CD /* SideMenu */ = {
-			isa = PBXGroup;
-			children = (
-				EF223A1C25CD903000BFB5BC /* SideMenuNavigationController.swift */,
-				EF223A1D25CD903000BFB5BC /* SideMenuViewController.swift */,
-			);
-			path = SideMenu;
-			sourceTree = "<group>";
-		};
->>>>>>> main
 		EFABF71325CA8C1700E69CC4 = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +201,7 @@
 				EFABF71D25CA8C1800E69CC4 /* Products */,
 				5C7A04D6A7943944DCEE033E /* Pods */,
 				6D70CAE5132F91EBC6A84930 /* Frameworks */,
+				543CAF71264BC73D00D92C77 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -291,18 +234,6 @@
 				5428120E260B52EF00870F94 /* Roboto-Medium.ttf */,
 			);
 			path = GRAMO;
-			sourceTree = "<group>";
-		};
-		EFD1061E264A958000A6E10C /* NetworkingModel */ = {
-			isa = PBXGroup;
-			children = (
-				EFD1061F264A958000A6E10C /* HwListResponseT.swift */,
-				EFD10620264A958000A6E10C /* HwListResponseS.swift */,
-				EFD10621264A958000A6E10C /* HwUser.swift */,
-				EFD10622264A958000A6E10C /* GetUserList.swift */,
-				EFD10623264A958000A6E10C /* HwContent.swift */,
-			);
-			path = NetworkingModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,27 +357,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				546EFCE226258883001EC9CB /* GetCalenderList.swift in Sources */,
 				548F4BB92611DB8D00A93433 /* PICUTableViewCell.swift in Sources */,
 				546EFCDF26258694001EC9CB /* GetPlan.swift in Sources */,
 				54BCBF4C26036B8200B44447 /* DetailViewController.swift in Sources */,
-=======
 				EF36AE3C25DAA2F9005D4570 /* SecondSectionTableViewCell.swift in Sources */,
 				EF36AE4725DAAC8D005D4570 /* SecondSectionModel.swift in Sources */,
 				EF89101C25D29A2F002023CD /* HomeworkAddViewController.swift in Sources */,
 				EF223A1E25CD903000BFB5BC /* SideMenuNavigationController.swift in Sources */,
->>>>>>> main
-				EFABF72425CA8C1800E69CC4 /* ViewController.swift in Sources */,
 				EF4416C725E942ED0074F6FC /* HTTPClient.swift in Sources */,
 				EF4416CA25E942F30074F6FC /* Networking.swift in Sources */,
-				EF766C7025CA8E7800DECE25 /* TestNetworking.swift in Sources */,
-<<<<<<< HEAD
 				542603762626D8F0008AE0B8 /* GetPICU.swift in Sources */,
 				54FE42C9261C2E00004C5D9B /* SpecialTableViewCell.swift in Sources */,
 				EFABF72025CA8C1800E69CC4 /* AppDelegate.swift in Sources */,
 				546F625325F8D142006DE88A /* Calendar2VC.swift in Sources */,
-=======
 				EF89102025D2C52D002023CD /* HomeworkOrderedViewController.swift in Sources */,
 				EF36AE3F25DAA30D005D4570 /* ThirdSectionTableViewCell.swift in Sources */,
 				EFD10625264A959200A6E10C /* FirstSectionModel.swift in Sources */,
@@ -458,9 +382,7 @@
 				EF36AE3925DAA2E7005D4570 /* FirstSectionTableViewCell.swift in Sources */,
 				EF2239F925CD847900BFB5BC /* InfoListViewController.swift in Sources */,
 				EF89102325D2C54D002023CD /* HomeworkAssignedViewController.swift in Sources */,
-				EF766C6B25CA8E4700DECE25 /* TestModel.swift in Sources */,
 				EF89102625D2C5A2002023CD /* HomeworkListViewController.swift in Sources */,
->>>>>>> main
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

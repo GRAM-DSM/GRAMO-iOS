@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zp6-Ak-6uE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Vo-wb-a1r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ynP-mm-GbC" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="44" width="390" height="715"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="671"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -30,13 +30,14 @@
                             <constraint firstItem="ynP-mm-GbC" firstAttribute="leading" secondItem="cnX-UR-qgi" secondAttribute="leading" id="ysH-wR-eqI"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="vBb-f3-cdh"/>
                     <connections>
                         <outlet property="calendar" destination="ynP-mm-GbC" id="hDe-ZI-Fmk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jsp-Vx-54O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1007.6923076923076" y="118.72037914691943"/>
+            <point key="canvasLocation" x="1936.9230769230769" y="118.72037914691943"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="U6X-do-Umz">
@@ -372,7 +373,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0T-WJ-cEW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1933.8461538461538" y="118.72037914691943"/>
+            <point key="canvasLocation" x="2863.0769230769229" y="118.72037914691943"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KpI-E7-0Nj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Vo-wb-a1r" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6HC-7B-25V">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zp6-Ak-6uE" kind="relationship" relationship="rootViewController" id="Q51-ON-EeP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D8w-jI-Y0C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1007.6923076923076" y="118.72037914691943"/>
         </scene>
     </scenes>
     <resources>

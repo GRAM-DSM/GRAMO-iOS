@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		542603762626D8F0008AE0B8 /* GetPICU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542603752626D8F0008AE0B8 /* GetPICU.swift */; };
+		544FD0442653AE06005F4481 /* FirstSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FD0352653AE05005F4481 /* FirstSectionModel.swift */; };
+		544FD0452653AE06005F4481 /* SecondSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FD0362653AE05005F4481 /* SecondSectionModel.swift */; };
+		544FD0462653AE06005F4481 /* ThirdSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FD0372653AE05005F4481 /* ThirdSectionModel.swift */; };
+		544FD0472653AE06005F4481 /* HwListResponseT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FD0392653AE05005F4481 /* HwListResponseT.swift */; };
+		544FD0482653AE06005F4481 /* HwListResponseS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FD03A2653AE05005F4481 /* HwListResponseS.swift */; };
+		544FD0492653AE06005F4481 /* HwUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FD03B2653AE05005F4481 /* HwUser.swift */; };
+		544FD04A2653AE06005F4481 /* GetUserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FD03C2653AE05005F4481 /* GetUserList.swift */; };
+		544FD04B2653AE06005F4481 /* HwContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FD03D2653AE05005F4481 /* HwContent.swift */; };
+		544FD04C2653AE06005F4481 /* notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FD03F2653AE05005F4481 /* notice.swift */; };
+		544FD04D2653AE06005F4481 /* GetNoticeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FD0402653AE05005F4481 /* GetNoticeDetail.swift */; };
+		544FD04E2653AE06005F4481 /* noticeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FD0412653AE06005F4481 /* noticeDetail.swift */; };
+		544FD04F2653AE06005F4481 /* GetNoticeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FD0422653AE06005F4481 /* GetNoticeList.swift */; };
+		544FD0502653AE06005F4481 /* infoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FD0432653AE06005F4481 /* infoListModel.swift */; };
 		546EFCDF26258694001EC9CB /* GetPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546EFCDE26258694001EC9CB /* GetPlan.swift */; };
 		546EFCE226258883001EC9CB /* GetCalenderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546EFCE126258883001EC9CB /* GetCalenderList.swift */; };
 		546F625025F8D04A006DE88A /* Calendar2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546F624F25F8D04A006DE88A /* Calendar2.storyboard */; };
@@ -30,12 +43,26 @@
 		EFABF72725CA8C1800E69CC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFABF72525CA8C1800E69CC4 /* Main.storyboard */; };
 		EFABF72925CA8C1900E69CC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFABF72825CA8C1900E69CC4 /* Assets.xcassets */; };
 		EFABF72C25CA8C1900E69CC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFABF72A25CA8C1900E69CC4 /* LaunchScreen.storyboard */; };
-		EFD10625264A959200A6E10C /* FirstSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD10624264A959200A6E10C /* FirstSectionModel.swift */; };
+		EFD10625264A959200A6E10C /* Model.homeworkModel.CustomTableViewCell.FirstSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD10624264A959200A6E10C /* Model.homeworkModel.CustomTableViewCell.FirstSectionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		542603752626D8F0008AE0B8 /* GetPICU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPICU.swift; sourceTree = "<group>"; };
 		5428120E260B52EF00870F94 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		544FD0352653AE05005F4481 /* FirstSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstSectionModel.swift; sourceTree = "<group>"; };
+		544FD0362653AE05005F4481 /* SecondSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondSectionModel.swift; sourceTree = "<group>"; };
+		544FD0372653AE05005F4481 /* ThirdSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdSectionModel.swift; sourceTree = "<group>"; };
+		544FD0392653AE05005F4481 /* HwListResponseT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HwListResponseT.swift; sourceTree = "<group>"; };
+		544FD03A2653AE05005F4481 /* HwListResponseS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HwListResponseS.swift; sourceTree = "<group>"; };
+		544FD03B2653AE05005F4481 /* HwUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HwUser.swift; sourceTree = "<group>"; };
+		544FD03C2653AE05005F4481 /* GetUserList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserList.swift; sourceTree = "<group>"; };
+		544FD03D2653AE05005F4481 /* HwContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HwContent.swift; sourceTree = "<group>"; };
+		544FD03F2653AE05005F4481 /* notice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = notice.swift; sourceTree = "<group>"; };
+		544FD0402653AE05005F4481 /* GetNoticeDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNoticeDetail.swift; sourceTree = "<group>"; };
+		544FD0412653AE06005F4481 /* noticeDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noticeDetail.swift; sourceTree = "<group>"; };
+		544FD0422653AE06005F4481 /* GetNoticeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNoticeList.swift; sourceTree = "<group>"; };
+		544FD0432653AE06005F4481 /* infoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoListModel.swift; sourceTree = "<group>"; };
+		544FD0532653AF36005F4481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		546EFCDE26258694001EC9CB /* GetPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlan.swift; sourceTree = "<group>"; };
 		546EFCE126258883001EC9CB /* GetCalenderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCalenderList.swift; sourceTree = "<group>"; };
 		546F624F25F8D04A006DE88A /* Calendar2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar2.storyboard; sourceTree = "<group>"; };
@@ -45,8 +72,8 @@
 		54FE42C8261C2E00004C5D9B /* SpecialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialTableViewCell.swift; sourceTree = "<group>"; };
 		9A4F5BAE346346B91B6B2835 /* Pods-GRAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.debug.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.debug.xcconfig"; sourceTree = "<group>"; };
 		B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GRAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF36AE4625DAAC8D005D4570 /* SecondSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecondSectionModel.swift; path = CustomTableViewCell/SecondSectionModel.swift; sourceTree = "<group>"; };
-		EF36AE4925DAACA8005D4570 /* ThirdSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThirdSectionModel.swift; path = CustomTableViewCell/ThirdSectionModel.swift; sourceTree = "<group>"; };
+		EF36AE4625DAAC8D005D4570 /* SecondSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecondSectionModel.swift; path = SecondSectionModel.swift; sourceTree = "<group>"; };
+		EF36AE4925DAACA8005D4570 /* ThirdSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThirdSectionModel.swift; path = ThirdSectionModel.swift; sourceTree = "<group>"; };
 		EF4416C625E942ED0074F6FC /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		EF4416C925E942F30074F6FC /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		EF766C7325CA8F5D00DECE25 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
@@ -60,8 +87,7 @@
 		EFABF72625CA8C1800E69CC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EFABF72825CA8C1900E69CC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFABF72B25CA8C1900E69CC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		EFABF72D25CA8C1900E69CC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EFD10624264A959200A6E10C /* FirstSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstSectionModel.swift; sourceTree = "<group>"; };
+		EFD10624264A959200A6E10C /* Model.homeworkModel.CustomTableViewCell.FirstSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstSectionModel.swift; sourceTree = "<group>"; };
 		F3A525CBC151FAC4B5AEACC8 /* Pods-GRAMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.release.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +103,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		544FD0322653AE05005F4481 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				544FD0332653AE05005F4481 /* homeworkModel */,
+				544FD0382653AE05005F4481 /* NetworkingModel */,
+				544FD03E2653AE05005F4481 /* Notice */,
+				544FD0432653AE06005F4481 /* infoListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		544FD0332653AE05005F4481 /* homeworkModel */ = {
+			isa = PBXGroup;
+			children = (
+				544FD0342653AE05005F4481 /* CustomTableViewCell */,
+			);
+			path = homeworkModel;
+			sourceTree = "<group>";
+		};
+		544FD0342653AE05005F4481 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				544FD0352653AE05005F4481 /* FirstSectionModel.swift */,
+				544FD0362653AE05005F4481 /* SecondSectionModel.swift */,
+				544FD0372653AE05005F4481 /* ThirdSectionModel.swift */,
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		544FD0382653AE05005F4481 /* NetworkingModel */ = {
+			isa = PBXGroup;
+			children = (
+				544FD0392653AE05005F4481 /* HwListResponseT.swift */,
+				544FD03A2653AE05005F4481 /* HwListResponseS.swift */,
+				544FD03B2653AE05005F4481 /* HwUser.swift */,
+				544FD03C2653AE05005F4481 /* GetUserList.swift */,
+				544FD03D2653AE05005F4481 /* HwContent.swift */,
+			);
+			path = NetworkingModel;
+			sourceTree = "<group>";
+		};
+		544FD03E2653AE05005F4481 /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				544FD03F2653AE05005F4481 /* notice.swift */,
+				544FD0402653AE05005F4481 /* GetNoticeDetail.swift */,
+				544FD0412653AE06005F4481 /* noticeDetail.swift */,
+				544FD0422653AE06005F4481 /* GetNoticeList.swift */,
+			);
+			path = Notice;
+			sourceTree = "<group>";
+		};
 		546EFCDD2625842C001EC9CB /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,7 +197,7 @@
 			children = (
 				B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */,
 				EF36AE4625DAAC8D005D4570 /* SecondSectionModel.swift */,
-				EFD10624264A959200A6E10C /* FirstSectionModel.swift */,
+				EFD10624264A959200A6E10C /* Model.homeworkModel.CustomTableViewCell.FirstSectionModel.swift */,
 				EF36AE4925DAACA8005D4570 /* ThirdSectionModel.swift */,
 			);
 			name = Frameworks;
@@ -174,13 +252,14 @@
 			children = (
 				546EFCDD2625842C001EC9CB /* API */,
 				548F4BBB2611DB9300A93433 /* Cell */,
-				EF766C6725CA8E0400DECE25 /* VC */,
+				544FD0322653AE05005F4481 /* Model */,
 				EF766C6825CA8E0A00DECE25 /* Networking */,
 				EF766C6625CA8DF900DECE25 /* UI */,
+				EF766C6725CA8E0400DECE25 /* VC */,
 				EFABF71F25CA8C1800E69CC4 /* AppDelegate.swift */,
 				EFABF72825CA8C1900E69CC4 /* Assets.xcassets */,
 				EFABF72A25CA8C1900E69CC4 /* LaunchScreen.storyboard */,
-				EFABF72D25CA8C1900E69CC4 /* Info.plist */,
+				544FD0532653AF36005F4481 /* Info.plist */,
 				EF766C7525CA8F5D00DECE25 /* NotoSansKR-Black.otf */,
 				EF766C7425CA8F5D00DECE25 /* NotoSansKR-Bold.otf */,
 				EF766C7725CA8F5D00DECE25 /* NotoSansKR-Light.otf */,
@@ -314,18 +393,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				546EFCE226258883001EC9CB /* GetCalenderList.swift in Sources */,
+				544FD0492653AE06005F4481 /* HwUser.swift in Sources */,
 				548F4BB92611DB8D00A93433 /* PICUTableViewCell.swift in Sources */,
 				546EFCDF26258694001EC9CB /* GetPlan.swift in Sources */,
+				544FD04A2653AE06005F4481 /* GetUserList.swift in Sources */,
+				544FD0482653AE06005F4481 /* HwListResponseS.swift in Sources */,
+				544FD04B2653AE06005F4481 /* HwContent.swift in Sources */,
 				54BCBF4C26036B8200B44447 /* DetailViewController.swift in Sources */,
 				EF36AE4725DAAC8D005D4570 /* SecondSectionModel.swift in Sources */,
+				544FD0452653AE06005F4481 /* SecondSectionModel.swift in Sources */,
 				EF4416C725E942ED0074F6FC /* HTTPClient.swift in Sources */,
 				EF4416CA25E942F30074F6FC /* Networking.swift in Sources */,
+				544FD0472653AE06005F4481 /* HwListResponseT.swift in Sources */,
+				544FD04D2653AE06005F4481 /* GetNoticeDetail.swift in Sources */,
 				542603762626D8F0008AE0B8 /* GetPICU.swift in Sources */,
 				54FE42C9261C2E00004C5D9B /* SpecialTableViewCell.swift in Sources */,
 				EFABF72025CA8C1800E69CC4 /* AppDelegate.swift in Sources */,
 				546F625325F8D142006DE88A /* Calendar2VC.swift in Sources */,
-				EFD10625264A959200A6E10C /* FirstSectionModel.swift in Sources */,
+				EFD10625264A959200A6E10C /* Model.homeworkModel.CustomTableViewCell.FirstSectionModel.swift in Sources */,
+				544FD0442653AE06005F4481 /* FirstSectionModel.swift in Sources */,
+				544FD04E2653AE06005F4481 /* noticeDetail.swift in Sources */,
+				544FD04C2653AE06005F4481 /* notice.swift in Sources */,
+				544FD0462653AE06005F4481 /* ThirdSectionModel.swift in Sources */,
 				EFABF72025CA8C1800E69CC4 /* AppDelegate.swift in Sources */,
+				544FD0502653AE06005F4481 /* infoListModel.swift in Sources */,
+				544FD04F2653AE06005F4481 /* GetNoticeList.swift in Sources */,
 				EF36AE4A25DAACA8005D4570 /* ThirdSectionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

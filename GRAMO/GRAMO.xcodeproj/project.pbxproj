@@ -3,188 +3,66 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		542603762626D8F0008AE0B8 /* GetPICU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542603752626D8F0008AE0B8 /* GetPICU.swift */; };
-		546EFCDF26258694001EC9CB /* GetPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546EFCDE26258694001EC9CB /* GetPlan.swift */; };
-		546EFCE226258883001EC9CB /* GetCalenderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546EFCE126258883001EC9CB /* GetCalenderList.swift */; };
-		546F625025F8D04A006DE88A /* Calendar2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546F624F25F8D04A006DE88A /* Calendar2.storyboard */; };
-		546F625325F8D142006DE88A /* Calendar2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546F625225F8D142006DE88A /* Calendar2VC.swift */; };
-		548F4BB92611DB8D00A93433 /* PICUTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548F4BB82611DB8D00A93433 /* PICUTableViewCell.swift */; };
-		54BCBF4C26036B8200B44447 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BCBF4B26036B8200B44447 /* DetailViewController.swift */; };
-		54FE42C9261C2E00004C5D9B /* SpecialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FE42C8261C2E00004C5D9B /* SpecialTableViewCell.swift */; };
-		B322413D00D974EC60F376D7 /* Pods_GRAMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */; };
-		EF4416C725E942ED0074F6FC /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4416C625E942ED0074F6FC /* HTTPClient.swift */; };
-		EF4416CA25E942F30074F6FC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4416C925E942F30074F6FC /* Networking.swift */; };
-		EF766C7025CA8E7800DECE25 /* TestNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF766C6F25CA8E7800DECE25 /* TestNetworking.swift */; };
-		EF766C7925CA8F6A00DECE25 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7525CA8F5D00DECE25 /* NotoSansKR-Black.otf */; };
-		EF766C7B25CA8F6D00DECE25 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7425CA8F5D00DECE25 /* NotoSansKR-Bold.otf */; };
-		EF766C7D25CA8F7000DECE25 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7725CA8F5D00DECE25 /* NotoSansKR-Light.otf */; };
-		EF766C7F25CA8F7200DECE25 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7625CA8F5D00DECE25 /* NotoSansKR-Medium.otf */; };
-		EF766C8125CA8F7500DECE25 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7325CA8F5D00DECE25 /* NotoSansKR-Regular.otf */; };
-		EF766C8325CA8F7800DECE25 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF766C7825CA8F5D00DECE25 /* NotoSansKR-Thin.otf */; };
-		EFABF72025CA8C1800E69CC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFABF71F25CA8C1800E69CC4 /* AppDelegate.swift */; };
-		EFABF72425CA8C1800E69CC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFABF72325CA8C1800E69CC4 /* ViewController.swift */; };
-		EFABF72725CA8C1800E69CC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFABF72525CA8C1800E69CC4 /* Main.storyboard */; };
-		EFABF72925CA8C1900E69CC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFABF72825CA8C1900E69CC4 /* Assets.xcassets */; };
-		EFABF72C25CA8C1900E69CC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFABF72A25CA8C1900E69CC4 /* LaunchScreen.storyboard */; };
+		54B1B83526661DC300EDEDAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1B83426661DC300EDEDAB /* AppDelegate.swift */; };
+		54B1B83726661DC300EDEDAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1B83626661DC300EDEDAB /* SceneDelegate.swift */; };
+		54B1B83926661DC300EDEDAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1B83826661DC300EDEDAB /* ViewController.swift */; };
+		54B1B83C26661DC300EDEDAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B1B83A26661DC300EDEDAB /* Main.storyboard */; };
+		54B1B83E26661DC500EDEDAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B1B83D26661DC500EDEDAB /* Assets.xcassets */; };
+		54B1B84126661DC500EDEDAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B1B83F26661DC500EDEDAB /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		542603752626D8F0008AE0B8 /* GetPICU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPICU.swift; sourceTree = "<group>"; };
-		5428120E260B52EF00870F94 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		546EFCDE26258694001EC9CB /* GetPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlan.swift; sourceTree = "<group>"; };
-		546EFCE126258883001EC9CB /* GetCalenderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCalenderList.swift; sourceTree = "<group>"; };
-		546F624F25F8D04A006DE88A /* Calendar2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar2.storyboard; sourceTree = "<group>"; };
-		546F625225F8D142006DE88A /* Calendar2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar2VC.swift; sourceTree = "<group>"; };
-		548F4BB82611DB8D00A93433 /* PICUTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PICUTableViewCell.swift; sourceTree = "<group>"; };
-		54BCBF4B26036B8200B44447 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		54FE42C8261C2E00004C5D9B /* SpecialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialTableViewCell.swift; sourceTree = "<group>"; };
-		9A4F5BAE346346B91B6B2835 /* Pods-GRAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.debug.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.debug.xcconfig"; sourceTree = "<group>"; };
-		B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GRAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF4416C625E942ED0074F6FC /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
-		EF4416C925E942F30074F6FC /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		EF766C6F25CA8E7800DECE25 /* TestNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetworking.swift; sourceTree = "<group>"; };
-		EF766C7325CA8F5D00DECE25 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
-		EF766C7425CA8F5D00DECE25 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
-		EF766C7525CA8F5D00DECE25 /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
-		EF766C7625CA8F5D00DECE25 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
-		EF766C7725CA8F5D00DECE25 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
-		EF766C7825CA8F5D00DECE25 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
-		EFABF71C25CA8C1800E69CC4 /* GRAMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GRAMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EFABF71F25CA8C1800E69CC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EFABF72325CA8C1800E69CC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EFABF72625CA8C1800E69CC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EFABF72825CA8C1900E69CC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EFABF72B25CA8C1900E69CC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		EFABF72D25CA8C1900E69CC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F3A525CBC151FAC4B5AEACC8 /* Pods-GRAMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.release.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.release.xcconfig"; sourceTree = "<group>"; };
+		54B1B83126661DC300EDEDAB /* GRAMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GRAMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		54B1B83426661DC300EDEDAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		54B1B83626661DC300EDEDAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		54B1B83826661DC300EDEDAB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		54B1B83B26661DC300EDEDAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		54B1B83D26661DC500EDEDAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		54B1B84026661DC500EDEDAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		54B1B84226661DC500EDEDAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		EFABF71925CA8C1800E69CC4 /* Frameworks */ = {
+		54B1B82E26661DC300EDEDAB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B322413D00D974EC60F376D7 /* Pods_GRAMO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		546EFCDD2625842C001EC9CB /* API */ = {
+		54B1B82826661DC300EDEDAB = {
 			isa = PBXGroup;
 			children = (
-				546EFCE126258883001EC9CB /* GetCalenderList.swift */,
-				546EFCDE26258694001EC9CB /* GetPlan.swift */,
-				542603752626D8F0008AE0B8 /* GetPICU.swift */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		5472443B261F0C28007C1F43 /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-				546F625225F8D142006DE88A /* Calendar2VC.swift */,
-				54BCBF4B26036B8200B44447 /* DetailViewController.swift */,
-			);
-			path = Calendar;
-			sourceTree = "<group>";
-		};
-		548F4BBB2611DB9300A93433 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				548F4BB82611DB8D00A93433 /* PICUTableViewCell.swift */,
-				54FE42C8261C2E00004C5D9B /* SpecialTableViewCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		5C7A04D6A7943944DCEE033E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9A4F5BAE346346B91B6B2835 /* Pods-GRAMO.debug.xcconfig */,
-				F3A525CBC151FAC4B5AEACC8 /* Pods-GRAMO.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		6D70CAE5132F91EBC6A84930 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B5D66CC17C52A252FDA7378D /* Pods_GRAMO.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		EF766C6625CA8DF900DECE25 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				EFABF72525CA8C1800E69CC4 /* Main.storyboard */,
-				546F624F25F8D04A006DE88A /* Calendar2.storyboard */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		EF766C6725CA8E0400DECE25 /* VC */ = {
-			isa = PBXGroup;
-			children = (
-				EFABF72325CA8C1800E69CC4 /* ViewController.swift */,
-				5472443B261F0C28007C1F43 /* Calendar */,
-			);
-			path = VC;
-			sourceTree = "<group>";
-		};
-		EF766C6825CA8E0A00DECE25 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				EF766C6F25CA8E7800DECE25 /* TestNetworking.swift */,
-				EF4416C625E942ED0074F6FC /* HTTPClient.swift */,
-				EF4416C925E942F30074F6FC /* Networking.swift */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		EFABF71325CA8C1700E69CC4 = {
-			isa = PBXGroup;
-			children = (
-				EFABF71E25CA8C1800E69CC4 /* GRAMO */,
-				EFABF71D25CA8C1800E69CC4 /* Products */,
-				5C7A04D6A7943944DCEE033E /* Pods */,
-				6D70CAE5132F91EBC6A84930 /* Frameworks */,
+				54B1B83326661DC300EDEDAB /* GRAMO */,
+				54B1B83226661DC300EDEDAB /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		EFABF71D25CA8C1800E69CC4 /* Products */ = {
+		54B1B83226661DC300EDEDAB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EFABF71C25CA8C1800E69CC4 /* GRAMO.app */,
+				54B1B83126661DC300EDEDAB /* GRAMO.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EFABF71E25CA8C1800E69CC4 /* GRAMO */ = {
+		54B1B83326661DC300EDEDAB /* GRAMO */ = {
 			isa = PBXGroup;
 			children = (
-				546EFCDD2625842C001EC9CB /* API */,
-				548F4BBB2611DB9300A93433 /* Cell */,
-				EF766C6725CA8E0400DECE25 /* VC */,
-				EF766C6825CA8E0A00DECE25 /* Networking */,
-				EF766C6625CA8DF900DECE25 /* UI */,
-				EFABF71F25CA8C1800E69CC4 /* AppDelegate.swift */,
-				EFABF72825CA8C1900E69CC4 /* Assets.xcassets */,
-				EFABF72A25CA8C1900E69CC4 /* LaunchScreen.storyboard */,
-				EFABF72D25CA8C1900E69CC4 /* Info.plist */,
-				EF766C7525CA8F5D00DECE25 /* NotoSansKR-Black.otf */,
-				EF766C7425CA8F5D00DECE25 /* NotoSansKR-Bold.otf */,
-				EF766C7725CA8F5D00DECE25 /* NotoSansKR-Light.otf */,
-				EF766C7625CA8F5D00DECE25 /* NotoSansKR-Medium.otf */,
-				EF766C7325CA8F5D00DECE25 /* NotoSansKR-Regular.otf */,
-				EF766C7825CA8F5D00DECE25 /* NotoSansKR-Thin.otf */,
-				5428120E260B52EF00870F94 /* Roboto-Medium.ttf */,
+				54B1B83426661DC300EDEDAB /* AppDelegate.swift */,
+				54B1B83626661DC300EDEDAB /* SceneDelegate.swift */,
+				54B1B83826661DC300EDEDAB /* ViewController.swift */,
+				54B1B83A26661DC300EDEDAB /* Main.storyboard */,
+				54B1B83D26661DC500EDEDAB /* Assets.xcassets */,
+				54B1B83F26661DC500EDEDAB /* LaunchScreen.storyboard */,
+				54B1B84226661DC500EDEDAB /* Info.plist */,
 			);
 			path = GRAMO;
 			sourceTree = "<group>";
@@ -192,15 +70,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EFABF71B25CA8C1800E69CC4 /* GRAMO */ = {
+		54B1B83026661DC300EDEDAB /* GRAMO */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EFABF73025CA8C1900E69CC4 /* Build configuration list for PBXNativeTarget "GRAMO" */;
+			buildConfigurationList = 54B1B84526661DC500EDEDAB /* Build configuration list for PBXNativeTarget "GRAMO" */;
 			buildPhases = (
-				951B6B512C11A9993F9B93F0 /* [CP] Check Pods Manifest.lock */,
-				EFABF71825CA8C1800E69CC4 /* Sources */,
-				EFABF71925CA8C1800E69CC4 /* Frameworks */,
-				EFABF71A25CA8C1800E69CC4 /* Resources */,
-				EEB397F3103B2F880A381465 /* [CP] Embed Pods Frameworks */,
+				54B1B82D26661DC300EDEDAB /* Sources */,
+				54B1B82E26661DC300EDEDAB /* Frameworks */,
+				54B1B82F26661DC300EDEDAB /* Resources */,
 			);
 			buildRules = (
 			);
@@ -208,24 +84,24 @@
 			);
 			name = GRAMO;
 			productName = GRAMO;
-			productReference = EFABF71C25CA8C1800E69CC4 /* GRAMO.app */;
+			productReference = 54B1B83126661DC300EDEDAB /* GRAMO.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		EFABF71425CA8C1700E69CC4 /* Project object */ = {
+		54B1B82926661DC300EDEDAB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
 				TargetAttributes = {
-					EFABF71B25CA8C1800E69CC4 = {
-						CreatedOnToolsVersion = 12.4;
+					54B1B83026661DC300EDEDAB = {
+						CreatedOnToolsVersion = 12.5;
 					};
 				};
 			};
-			buildConfigurationList = EFABF71725CA8C1700E69CC4 /* Build configuration list for PBXProject "GRAMO" */;
+			buildConfigurationList = 54B1B82C26661DC300EDEDAB /* Build configuration list for PBXProject "GRAMO" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -233,113 +109,55 @@
 				en,
 				Base,
 			);
-			mainGroup = EFABF71325CA8C1700E69CC4;
-			productRefGroup = EFABF71D25CA8C1800E69CC4 /* Products */;
+			mainGroup = 54B1B82826661DC300EDEDAB;
+			productRefGroup = 54B1B83226661DC300EDEDAB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EFABF71B25CA8C1800E69CC4 /* GRAMO */,
+				54B1B83026661DC300EDEDAB /* GRAMO */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		EFABF71A25CA8C1800E69CC4 /* Resources */ = {
+		54B1B82F26661DC300EDEDAB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF766C8325CA8F7800DECE25 /* NotoSansKR-Thin.otf in Resources */,
-				EF766C7D25CA8F7000DECE25 /* NotoSansKR-Light.otf in Resources */,
-				546F625025F8D04A006DE88A /* Calendar2.storyboard in Resources */,
-				EFABF72C25CA8C1900E69CC4 /* LaunchScreen.storyboard in Resources */,
-				EF766C7F25CA8F7200DECE25 /* NotoSansKR-Medium.otf in Resources */,
-				EFABF72925CA8C1900E69CC4 /* Assets.xcassets in Resources */,
-				EFABF72725CA8C1800E69CC4 /* Main.storyboard in Resources */,
-				EF766C7925CA8F6A00DECE25 /* NotoSansKR-Black.otf in Resources */,
-				EF766C8125CA8F7500DECE25 /* NotoSansKR-Regular.otf in Resources */,
-				EF766C7B25CA8F6D00DECE25 /* NotoSansKR-Bold.otf in Resources */,
+				54B1B84126661DC500EDEDAB /* LaunchScreen.storyboard in Resources */,
+				54B1B83E26661DC500EDEDAB /* Assets.xcassets in Resources */,
+				54B1B83C26661DC300EDEDAB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		951B6B512C11A9993F9B93F0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-GRAMO-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EEB397F3103B2F880A381465 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GRAMO/Pods-GRAMO-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GRAMO/Pods-GRAMO-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GRAMO/Pods-GRAMO-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		EFABF71825CA8C1800E69CC4 /* Sources */ = {
+		54B1B82D26661DC300EDEDAB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				546EFCE226258883001EC9CB /* GetCalenderList.swift in Sources */,
-				548F4BB92611DB8D00A93433 /* PICUTableViewCell.swift in Sources */,
-				546EFCDF26258694001EC9CB /* GetPlan.swift in Sources */,
-				54BCBF4C26036B8200B44447 /* DetailViewController.swift in Sources */,
-				EFABF72425CA8C1800E69CC4 /* ViewController.swift in Sources */,
-				EF4416C725E942ED0074F6FC /* HTTPClient.swift in Sources */,
-				EF4416CA25E942F30074F6FC /* Networking.swift in Sources */,
-				EF766C7025CA8E7800DECE25 /* TestNetworking.swift in Sources */,
-				542603762626D8F0008AE0B8 /* GetPICU.swift in Sources */,
-				54FE42C9261C2E00004C5D9B /* SpecialTableViewCell.swift in Sources */,
-				EFABF72025CA8C1800E69CC4 /* AppDelegate.swift in Sources */,
-				546F625325F8D142006DE88A /* Calendar2VC.swift in Sources */,
+				54B1B83926661DC300EDEDAB /* ViewController.swift in Sources */,
+				54B1B83526661DC300EDEDAB /* AppDelegate.swift in Sources */,
+				54B1B83726661DC300EDEDAB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EFABF72525CA8C1800E69CC4 /* Main.storyboard */ = {
+		54B1B83A26661DC300EDEDAB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				EFABF72625CA8C1800E69CC4 /* Base */,
+				54B1B83B26661DC300EDEDAB /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		EFABF72A25CA8C1900E69CC4 /* LaunchScreen.storyboard */ = {
+		54B1B83F26661DC500EDEDAB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				EFABF72B25CA8C1900E69CC4 /* Base */,
+				54B1B84026661DC500EDEDAB /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -347,7 +165,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		EFABF72E25CA8C1900E69CC4 /* Debug */ = {
+		54B1B84326661DC500EDEDAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -398,7 +216,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -408,7 +226,7 @@
 			};
 			name = Debug;
 		};
-		EFABF72F25CA8C1900E69CC4 /* Release */ = {
+		54B1B84426661DC500EDEDAB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -453,7 +271,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -463,9 +281,8 @@
 			};
 			name = Release;
 		};
-		EFABF73125CA8C1900E69CC4 /* Debug */ = {
+		54B1B84626661DC500EDEDAB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A4F5BAE346346B91B6B2835 /* Pods-GRAMO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -476,16 +293,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Gram.GRAMO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GRAM.GRAMO.GRAMO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		EFABF73225CA8C1900E69CC4 /* Release */ = {
+		54B1B84726661DC500EDEDAB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3A525CBC151FAC4B5AEACC8 /* Pods-GRAMO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -496,7 +312,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Gram.GRAMO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GRAM.GRAMO.GRAMO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -506,25 +322,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EFABF71725CA8C1700E69CC4 /* Build configuration list for PBXProject "GRAMO" */ = {
+		54B1B82C26661DC300EDEDAB /* Build configuration list for PBXProject "GRAMO" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EFABF72E25CA8C1900E69CC4 /* Debug */,
-				EFABF72F25CA8C1900E69CC4 /* Release */,
+				54B1B84326661DC500EDEDAB /* Debug */,
+				54B1B84426661DC500EDEDAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EFABF73025CA8C1900E69CC4 /* Build configuration list for PBXNativeTarget "GRAMO" */ = {
+		54B1B84526661DC500EDEDAB /* Build configuration list for PBXNativeTarget "GRAMO" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EFABF73125CA8C1900E69CC4 /* Debug */,
-				EFABF73225CA8C1900E69CC4 /* Release */,
+				54B1B84626661DC500EDEDAB /* Debug */,
+				54B1B84726661DC500EDEDAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = EFABF71425CA8C1700E69CC4 /* Project object */;
+	rootObject = 54B1B82926661DC300EDEDAB /* Project object */;
 }

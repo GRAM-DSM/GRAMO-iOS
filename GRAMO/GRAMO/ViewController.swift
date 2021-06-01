@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  GRAMO
 //
-//  Created by 장서영 on 2021/02/03.
+//  Created by 정창용 on 2021/06/01.
 //
 
 import UIKit

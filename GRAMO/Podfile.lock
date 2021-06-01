@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (5.4.0)
+  - DropDown (2.3.13)
+  - FSCalendar (2.8.1)
+  - SideMenu (6.5.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.2)
+  - DropDown
+  - FSCalendar
+  - SideMenu
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - DropDown
+    - FSCalendar
+    - SideMenu
+
+SPEC CHECKSUMS:
+  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
+
+PODFILE CHECKSUM: 1497ca1a178ab1ca2acb5ca8637f0f18c1f8d9cf
+
+COCOAPODS: 1.9.3

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,9 +13,17 @@
 		54B1B83C26661DC300EDEDAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B1B83A26661DC300EDEDAB /* Main.storyboard */; };
 		54B1B83E26661DC500EDEDAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B1B83D26661DC500EDEDAB /* Assets.xcassets */; };
 		54B1B84126661DC500EDEDAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B1B83F26661DC500EDEDAB /* LaunchScreen.storyboard */; };
+		54BD212B266624B600464EEE /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 54BD21252666246100464EEE /* NotoSansKR-Light.otf */; };
+		54BD212C266624B800464EEE /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 54BD21292666246200464EEE /* NotoSansKR-Bold.otf */; };
+		54BD212D266624BA00464EEE /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 54BD212A2666246200464EEE /* NotoSansKR-Black.otf */; };
+		54BD212E266624BD00464EEE /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 54BD21262666246100464EEE /* NotoSansKR-Medium.otf */; };
+		54BD212F266624BF00464EEE /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 54BD21272666246200464EEE /* NotoSansKR-Regular.otf */; };
+		54BD2130266624C200464EEE /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 54BD21282666246200464EEE /* NotoSansKR-Thin.otf */; };
+		5C651BE9FDEAF9A30DE033A5 /* Pods_GRAMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCE7674852D761097D82515C /* Pods_GRAMO.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4839AD9BA6790E84B5F90CB3 /* Pods-GRAMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.release.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.release.xcconfig"; sourceTree = "<group>"; };
 		54B1B83126661DC300EDEDAB /* GRAMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GRAMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B1B83426661DC300EDEDAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54B1B83626661DC300EDEDAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +32,14 @@
 		54B1B83D26661DC500EDEDAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54B1B84026661DC500EDEDAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54B1B84226661DC500EDEDAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54BD21252666246100464EEE /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
+		54BD21262666246100464EEE /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		54BD21272666246200464EEE /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		54BD21282666246200464EEE /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
+		54BD21292666246200464EEE /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		54BD212A2666246200464EEE /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
+		B973AABB18E56EA3106437C3 /* Pods-GRAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.debug.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.debug.xcconfig"; sourceTree = "<group>"; };
+		BCE7674852D761097D82515C /* Pods_GRAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GRAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C651BE9FDEAF9A30DE033A5 /* Pods_GRAMO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +59,8 @@
 			children = (
 				54B1B83326661DC300EDEDAB /* GRAMO */,
 				54B1B83226661DC300EDEDAB /* Products */,
+				8546423A3AC226F02537368F /* Pods */,
+				63E9C0686D8715A73ACB0780 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,9 +81,32 @@
 				54B1B83A26661DC300EDEDAB /* Main.storyboard */,
 				54B1B83D26661DC500EDEDAB /* Assets.xcassets */,
 				54B1B83F26661DC500EDEDAB /* LaunchScreen.storyboard */,
+				54BD212A2666246200464EEE /* NotoSansKR-Black.otf */,
+				54BD21292666246200464EEE /* NotoSansKR-Bold.otf */,
+				54BD21252666246100464EEE /* NotoSansKR-Light.otf */,
+				54BD21262666246100464EEE /* NotoSansKR-Medium.otf */,
+				54BD21272666246200464EEE /* NotoSansKR-Regular.otf */,
+				54BD21282666246200464EEE /* NotoSansKR-Thin.otf */,
 				54B1B84226661DC500EDEDAB /* Info.plist */,
 			);
 			path = GRAMO;
+			sourceTree = "<group>";
+		};
+		63E9C0686D8715A73ACB0780 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCE7674852D761097D82515C /* Pods_GRAMO.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8546423A3AC226F02537368F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B973AABB18E56EA3106437C3 /* Pods-GRAMO.debug.xcconfig */,
+				4839AD9BA6790E84B5F90CB3 /* Pods-GRAMO.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +116,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 54B1B84526661DC500EDEDAB /* Build configuration list for PBXNativeTarget "GRAMO" */;
 			buildPhases = (
+				062479BC318BF719A7F7F0F6 /* [CP] Check Pods Manifest.lock */,
 				54B1B82D26661DC300EDEDAB /* Sources */,
 				54B1B82E26661DC300EDEDAB /* Frameworks */,
 				54B1B82F26661DC300EDEDAB /* Resources */,
+				5DFA7CC8361A1357EC6E6721 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -124,13 +168,61 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54BD2130266624C200464EEE /* NotoSansKR-Thin.otf in Resources */,
 				54B1B84126661DC500EDEDAB /* LaunchScreen.storyboard in Resources */,
 				54B1B83E26661DC500EDEDAB /* Assets.xcassets in Resources */,
+				54BD212E266624BD00464EEE /* NotoSansKR-Medium.otf in Resources */,
+				54BD212B266624B600464EEE /* NotoSansKR-Light.otf in Resources */,
+				54BD212D266624BA00464EEE /* NotoSansKR-Black.otf in Resources */,
 				54B1B83C26661DC300EDEDAB /* Main.storyboard in Resources */,
+				54BD212F266624BF00464EEE /* NotoSansKR-Regular.otf in Resources */,
+				54BD212C266624B800464EEE /* NotoSansKR-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		062479BC318BF719A7F7F0F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GRAMO-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5DFA7CC8361A1357EC6E6721 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GRAMO/Pods-GRAMO-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GRAMO/Pods-GRAMO-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GRAMO/Pods-GRAMO-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		54B1B82D26661DC300EDEDAB /* Sources */ = {
@@ -283,6 +375,7 @@
 		};
 		54B1B84626661DC500EDEDAB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B973AABB18E56EA3106437C3 /* Pods-GRAMO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +395,7 @@
 		};
 		54B1B84726661DC500EDEDAB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4839AD9BA6790E84B5F90CB3 /* Pods-GRAMO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -20,6 +20,45 @@
 		54BD212F266624BF00464EEE /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 54BD21272666246200464EEE /* NotoSansKR-Regular.otf */; };
 		54BD2130266624C200464EEE /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 54BD21282666246200464EEE /* NotoSansKR-Thin.otf */; };
 		5C651BE9FDEAF9A30DE033A5 /* Pods_GRAMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCE7674852D761097D82515C /* Pods_GRAMO.framework */; };
+		EF71EED326676B57000F2278 /* info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF71EED126676B57000F2278 /* info.storyboard */; };
+		EF71EED426676B57000F2278 /* homework.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF71EED226676B57000F2278 /* homework.storyboard */; };
+		EF71EEDE26676BD3000F2278 /* HomeworkOrderedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEDA26676BD3000F2278 /* HomeworkOrderedViewController.swift */; };
+		EF71EEDF26676BD3000F2278 /* HomeworkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEDB26676BD3000F2278 /* HomeworkListViewController.swift */; };
+		EF71EEE026676BD3000F2278 /* HomeworkAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEDC26676BD3000F2278 /* HomeworkAddViewController.swift */; };
+		EF71EEE126676BD3000F2278 /* HomeworkAssignedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEDD26676BD3000F2278 /* HomeworkAssignedViewController.swift */; };
+		EF71EEE526676BDD000F2278 /* SecondSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEE226676BDD000F2278 /* SecondSectionTableViewCell.swift */; };
+		EF71EEE626676BDD000F2278 /* ThirdSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEE326676BDD000F2278 /* ThirdSectionTableViewCell.swift */; };
+		EF71EEE726676BDD000F2278 /* FirstSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEE426676BDD000F2278 /* FirstSectionTableViewCell.swift */; };
+		EF71EEEA26676BFA000F2278 /* SideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEE826676BFA000F2278 /* SideMenuNavigationController.swift */; };
+		EF71EEEB26676BFA000F2278 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEE926676BFA000F2278 /* SideMenuViewController.swift */; };
+		EF71EEF026676C10000F2278 /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEEC26676C10000F2278 /* InfoDetailViewController.swift */; };
+		EF71EEF126676C10000F2278 /* InfoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEED26676C10000F2278 /* InfoListViewController.swift */; };
+		EF71EEF226676C10000F2278 /* infoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEEE26676C10000F2278 /* infoTableViewCell.swift */; };
+		EF71EEF326676C10000F2278 /* InfoAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEEF26676C10000F2278 /* InfoAddViewController.swift */; };
+		EF71EEF526676C1C000F2278 /* UIextiention.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEF426676C1C000F2278 /* UIextiention.swift */; };
+		EF71EEFC26677324000F2278 /* GetPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEF926677324000F2278 /* GetPlan.swift */; };
+		EF71EEFD26677324000F2278 /* GetPICU.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEFA26677324000F2278 /* GetPICU.swift */; };
+		EF71EEFE26677324000F2278 /* GetCalenderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EEFB26677324000F2278 /* GetCalenderList.swift */; };
+		EF71EF0226677344000F2278 /* PICUTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF0026677344000F2278 /* PICUTableViewCell.swift */; };
+		EF71EF0326677344000F2278 /* SpecialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF0126677344000F2278 /* SpecialTableViewCell.swift */; };
+		EF71EF0826677377000F2278 /* infoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF0726677377000F2278 /* infoListModel.swift */; };
+		EF71EF0D2667739D000F2278 /* SecondSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF0A2667739D000F2278 /* SecondSectionModel.swift */; };
+		EF71EF0E2667739D000F2278 /* FirstSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF0B2667739D000F2278 /* FirstSectionModel.swift */; };
+		EF71EF0F2667739D000F2278 /* ThirdSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF0C2667739D000F2278 /* ThirdSectionModel.swift */; };
+		EF71EF14266773B3000F2278 /* notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF10266773B2000F2278 /* notice.swift */; };
+		EF71EF15266773B3000F2278 /* GetNoticeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF11266773B2000F2278 /* GetNoticeList.swift */; };
+		EF71EF16266773B3000F2278 /* noticeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF12266773B3000F2278 /* noticeDetail.swift */; };
+		EF71EF17266773B3000F2278 /* GetNoticeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF13266773B3000F2278 /* GetNoticeDetail.swift */; };
+		EF71EF1D266773C3000F2278 /* HwListResponseT.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF18266773C3000F2278 /* HwListResponseT.swift */; };
+		EF71EF1E266773C3000F2278 /* GetUserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF19266773C3000F2278 /* GetUserList.swift */; };
+		EF71EF1F266773C3000F2278 /* HwUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF1A266773C3000F2278 /* HwUser.swift */; };
+		EF71EF20266773C3000F2278 /* HwContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF1B266773C3000F2278 /* HwContent.swift */; };
+		EF71EF21266773C3000F2278 /* HwListResponseS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF1C266773C3000F2278 /* HwListResponseS.swift */; };
+		EF71EF242667741D000F2278 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF222667741D000F2278 /* HTTPClient.swift */; };
+		EF71EF252667741D000F2278 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF232667741D000F2278 /* Networking.swift */; };
+		EF71EF2926677441000F2278 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF2726677441000F2278 /* DetailViewController.swift */; };
+		EF71EF2A26677441000F2278 /* Calendar2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF2826677441000F2278 /* Calendar2VC.swift */; };
+		EF71EF2C266774B2000F2278 /* Calendar2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF71EF2B266774B2000F2278 /* Calendar2.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +79,45 @@
 		54BD212A2666246200464EEE /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
 		B973AABB18E56EA3106437C3 /* Pods-GRAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.debug.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.debug.xcconfig"; sourceTree = "<group>"; };
 		BCE7674852D761097D82515C /* Pods_GRAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GRAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF71EED126676B57000F2278 /* info.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = info.storyboard; sourceTree = "<group>"; };
+		EF71EED226676B57000F2278 /* homework.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = homework.storyboard; sourceTree = "<group>"; };
+		EF71EEDA26676BD3000F2278 /* HomeworkOrderedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkOrderedViewController.swift; sourceTree = "<group>"; };
+		EF71EEDB26676BD3000F2278 /* HomeworkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkListViewController.swift; sourceTree = "<group>"; };
+		EF71EEDC26676BD3000F2278 /* HomeworkAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkAddViewController.swift; sourceTree = "<group>"; };
+		EF71EEDD26676BD3000F2278 /* HomeworkAssignedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkAssignedViewController.swift; sourceTree = "<group>"; };
+		EF71EEE226676BDD000F2278 /* SecondSectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondSectionTableViewCell.swift; sourceTree = "<group>"; };
+		EF71EEE326676BDD000F2278 /* ThirdSectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdSectionTableViewCell.swift; sourceTree = "<group>"; };
+		EF71EEE426676BDD000F2278 /* FirstSectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstSectionTableViewCell.swift; sourceTree = "<group>"; };
+		EF71EEE826676BFA000F2278 /* SideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuNavigationController.swift; sourceTree = "<group>"; };
+		EF71EEE926676BFA000F2278 /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		EF71EEEC26676C10000F2278 /* InfoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
+		EF71EEED26676C10000F2278 /* InfoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoListViewController.swift; sourceTree = "<group>"; };
+		EF71EEEE26676C10000F2278 /* infoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoTableViewCell.swift; sourceTree = "<group>"; };
+		EF71EEEF26676C10000F2278 /* InfoAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoAddViewController.swift; sourceTree = "<group>"; };
+		EF71EEF426676C1C000F2278 /* UIextiention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIextiention.swift; sourceTree = "<group>"; };
+		EF71EEF926677324000F2278 /* GetPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPlan.swift; sourceTree = "<group>"; };
+		EF71EEFA26677324000F2278 /* GetPICU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPICU.swift; sourceTree = "<group>"; };
+		EF71EEFB26677324000F2278 /* GetCalenderList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCalenderList.swift; sourceTree = "<group>"; };
+		EF71EF0026677344000F2278 /* PICUTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PICUTableViewCell.swift; sourceTree = "<group>"; };
+		EF71EF0126677344000F2278 /* SpecialTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialTableViewCell.swift; sourceTree = "<group>"; };
+		EF71EF0726677377000F2278 /* infoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoListModel.swift; sourceTree = "<group>"; };
+		EF71EF0A2667739D000F2278 /* SecondSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondSectionModel.swift; sourceTree = "<group>"; };
+		EF71EF0B2667739D000F2278 /* FirstSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstSectionModel.swift; sourceTree = "<group>"; };
+		EF71EF0C2667739D000F2278 /* ThirdSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdSectionModel.swift; sourceTree = "<group>"; };
+		EF71EF10266773B2000F2278 /* notice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = notice.swift; sourceTree = "<group>"; };
+		EF71EF11266773B2000F2278 /* GetNoticeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNoticeList.swift; sourceTree = "<group>"; };
+		EF71EF12266773B3000F2278 /* noticeDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noticeDetail.swift; sourceTree = "<group>"; };
+		EF71EF13266773B3000F2278 /* GetNoticeDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNoticeDetail.swift; sourceTree = "<group>"; };
+		EF71EF18266773C3000F2278 /* HwListResponseT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HwListResponseT.swift; sourceTree = "<group>"; };
+		EF71EF19266773C3000F2278 /* GetUserList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserList.swift; sourceTree = "<group>"; };
+		EF71EF1A266773C3000F2278 /* HwUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HwUser.swift; sourceTree = "<group>"; };
+		EF71EF1B266773C3000F2278 /* HwContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HwContent.swift; sourceTree = "<group>"; };
+		EF71EF1C266773C3000F2278 /* HwListResponseS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HwListResponseS.swift; sourceTree = "<group>"; };
+		EF71EF222667741D000F2278 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		EF71EF232667741D000F2278 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		EF71EF2726677441000F2278 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		EF71EF2826677441000F2278 /* Calendar2VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar2VC.swift; sourceTree = "<group>"; };
+		EF71EF2B266774B2000F2278 /* Calendar2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar2.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +153,12 @@
 		54B1B83326661DC300EDEDAB /* GRAMO */ = {
 			isa = PBXGroup;
 			children = (
+				EF71EEFF2667732F000F2278 /* Cell */,
+				EF71EEF826677313000F2278 /* API */,
+				EF71EEF726677309000F2278 /* Model */,
+				EF71EEF6266772FC000F2278 /* Networking */,
+				EF71EED526676B5E000F2278 /* VC */,
+				EF71EED026676B3A000F2278 /* UI */,
 				54B1B83426661DC300EDEDAB /* AppDelegate.swift */,
 				54B1B83626661DC300EDEDAB /* SceneDelegate.swift */,
 				54B1B83826661DC300EDEDAB /* ViewController.swift */,
@@ -107,6 +191,159 @@
 				4839AD9BA6790E84B5F90CB3 /* Pods-GRAMO.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		EF71EED026676B3A000F2278 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EED226676B57000F2278 /* homework.storyboard */,
+				EF71EF2B266774B2000F2278 /* Calendar2.storyboard */,
+				EF71EED126676B57000F2278 /* info.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		EF71EED526676B5E000F2278 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EF262667742F000F2278 /* Calendar */,
+				EF71EEF426676C1C000F2278 /* UIextiention.swift */,
+				EF71EED826676BAD000F2278 /* info */,
+				EF71EED726676BA3000F2278 /* SideMenu */,
+				EF71EED626676B96000F2278 /* homework */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		EF71EED626676B96000F2278 /* homework */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EEDC26676BD3000F2278 /* HomeworkAddViewController.swift */,
+				EF71EEDD26676BD3000F2278 /* HomeworkAssignedViewController.swift */,
+				EF71EEDB26676BD3000F2278 /* HomeworkListViewController.swift */,
+				EF71EEDA26676BD3000F2278 /* HomeworkOrderedViewController.swift */,
+				EF71EED926676BC1000F2278 /* TableView */,
+			);
+			path = homework;
+			sourceTree = "<group>";
+		};
+		EF71EED726676BA3000F2278 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EEE826676BFA000F2278 /* SideMenuNavigationController.swift */,
+				EF71EEE926676BFA000F2278 /* SideMenuViewController.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		EF71EED826676BAD000F2278 /* info */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EEEF26676C10000F2278 /* InfoAddViewController.swift */,
+				EF71EEEC26676C10000F2278 /* InfoDetailViewController.swift */,
+				EF71EEED26676C10000F2278 /* InfoListViewController.swift */,
+				EF71EEEE26676C10000F2278 /* infoTableViewCell.swift */,
+			);
+			path = info;
+			sourceTree = "<group>";
+		};
+		EF71EED926676BC1000F2278 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EEE426676BDD000F2278 /* FirstSectionTableViewCell.swift */,
+				EF71EEE226676BDD000F2278 /* SecondSectionTableViewCell.swift */,
+				EF71EEE326676BDD000F2278 /* ThirdSectionTableViewCell.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		EF71EEF6266772FC000F2278 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EF222667741D000F2278 /* HTTPClient.swift */,
+				EF71EF232667741D000F2278 /* Networking.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		EF71EEF726677309000F2278 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EF0726677377000F2278 /* infoListModel.swift */,
+				EF71EF0626677365000F2278 /* HomeworkModel */,
+				EF71EF052667735F000F2278 /* Notice */,
+				EF71EF0426677354000F2278 /* NetworkingModel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EF71EEF826677313000F2278 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EEFB26677324000F2278 /* GetCalenderList.swift */,
+				EF71EEFA26677324000F2278 /* GetPICU.swift */,
+				EF71EEF926677324000F2278 /* GetPlan.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		EF71EEFF2667732F000F2278 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EF0026677344000F2278 /* PICUTableViewCell.swift */,
+				EF71EF0126677344000F2278 /* SpecialTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EF71EF0426677354000F2278 /* NetworkingModel */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EF19266773C3000F2278 /* GetUserList.swift */,
+				EF71EF1B266773C3000F2278 /* HwContent.swift */,
+				EF71EF1C266773C3000F2278 /* HwListResponseS.swift */,
+				EF71EF18266773C3000F2278 /* HwListResponseT.swift */,
+				EF71EF1A266773C3000F2278 /* HwUser.swift */,
+			);
+			path = NetworkingModel;
+			sourceTree = "<group>";
+		};
+		EF71EF052667735F000F2278 /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EF13266773B3000F2278 /* GetNoticeDetail.swift */,
+				EF71EF11266773B2000F2278 /* GetNoticeList.swift */,
+				EF71EF10266773B2000F2278 /* notice.swift */,
+				EF71EF12266773B3000F2278 /* noticeDetail.swift */,
+			);
+			path = Notice;
+			sourceTree = "<group>";
+		};
+		EF71EF0626677365000F2278 /* HomeworkModel */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EF0926677382000F2278 /* CustomTableViewCell */,
+			);
+			path = HomeworkModel;
+			sourceTree = "<group>";
+		};
+		EF71EF0926677382000F2278 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EF0B2667739D000F2278 /* FirstSectionModel.swift */,
+				EF71EF0A2667739D000F2278 /* SecondSectionModel.swift */,
+				EF71EF0C2667739D000F2278 /* ThirdSectionModel.swift */,
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		EF71EF262667742F000F2278 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EF2826677441000F2278 /* Calendar2VC.swift */,
+				EF71EF2726677441000F2278 /* DetailViewController.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +407,10 @@
 			files = (
 				54BD2130266624C200464EEE /* NotoSansKR-Thin.otf in Resources */,
 				54B1B84126661DC500EDEDAB /* LaunchScreen.storyboard in Resources */,
+				EF71EED326676B57000F2278 /* info.storyboard in Resources */,
+				EF71EF2C266774B2000F2278 /* Calendar2.storyboard in Resources */,
 				54B1B83E26661DC500EDEDAB /* Assets.xcassets in Resources */,
+				EF71EED426676B57000F2278 /* homework.storyboard in Resources */,
 				54BD212E266624BD00464EEE /* NotoSansKR-Medium.otf in Resources */,
 				54BD212B266624B600464EEE /* NotoSansKR-Light.otf in Resources */,
 				54BD212D266624BA00464EEE /* NotoSansKR-Black.otf in Resources */,
@@ -230,8 +470,44 @@
 			buildActionMask = 2147483647;
 			files = (
 				54B1B83926661DC300EDEDAB /* ViewController.swift in Sources */,
+				EF71EEDF26676BD3000F2278 /* HomeworkListViewController.swift in Sources */,
+				EF71EF0E2667739D000F2278 /* FirstSectionModel.swift in Sources */,
+				EF71EF0826677377000F2278 /* infoListModel.swift in Sources */,
+				EF71EF15266773B3000F2278 /* GetNoticeList.swift in Sources */,
+				EF71EEF126676C10000F2278 /* InfoListViewController.swift in Sources */,
+				EF71EEE726676BDD000F2278 /* FirstSectionTableViewCell.swift in Sources */,
+				EF71EF1E266773C3000F2278 /* GetUserList.swift in Sources */,
+				EF71EEF526676C1C000F2278 /* UIextiention.swift in Sources */,
+				EF71EEFC26677324000F2278 /* GetPlan.swift in Sources */,
+				EF71EEE026676BD3000F2278 /* HomeworkAddViewController.swift in Sources */,
+				EF71EF21266773C3000F2278 /* HwListResponseS.swift in Sources */,
+				EF71EF16266773B3000F2278 /* noticeDetail.swift in Sources */,
+				EF71EF1D266773C3000F2278 /* HwListResponseT.swift in Sources */,
+				EF71EF242667741D000F2278 /* HTTPClient.swift in Sources */,
+				EF71EF14266773B3000F2278 /* notice.swift in Sources */,
+				EF71EEEB26676BFA000F2278 /* SideMenuViewController.swift in Sources */,
+				EF71EF2A26677441000F2278 /* Calendar2VC.swift in Sources */,
+				EF71EF17266773B3000F2278 /* GetNoticeDetail.swift in Sources */,
+				EF71EEEA26676BFA000F2278 /* SideMenuNavigationController.swift in Sources */,
 				54B1B83526661DC300EDEDAB /* AppDelegate.swift in Sources */,
+				EF71EEFE26677324000F2278 /* GetCalenderList.swift in Sources */,
+				EF71EF0326677344000F2278 /* SpecialTableViewCell.swift in Sources */,
+				EF71EF0D2667739D000F2278 /* SecondSectionModel.swift in Sources */,
+				EF71EF1F266773C3000F2278 /* HwUser.swift in Sources */,
+				EF71EEF026676C10000F2278 /* InfoDetailViewController.swift in Sources */,
+				EF71EEDE26676BD3000F2278 /* HomeworkOrderedViewController.swift in Sources */,
+				EF71EEF326676C10000F2278 /* InfoAddViewController.swift in Sources */,
+				EF71EF252667741D000F2278 /* Networking.swift in Sources */,
+				EF71EEE126676BD3000F2278 /* HomeworkAssignedViewController.swift in Sources */,
+				EF71EF2926677441000F2278 /* DetailViewController.swift in Sources */,
+				EF71EEE526676BDD000F2278 /* SecondSectionTableViewCell.swift in Sources */,
+				EF71EEFD26677324000F2278 /* GetPICU.swift in Sources */,
+				EF71EF0F2667739D000F2278 /* ThirdSectionModel.swift in Sources */,
+				EF71EF0226677344000F2278 /* PICUTableViewCell.swift in Sources */,
+				EF71EEE626676BDD000F2278 /* ThirdSectionTableViewCell.swift in Sources */,
 				54B1B83726661DC300EDEDAB /* SceneDelegate.swift in Sources */,
+				EF71EF20266773C3000F2278 /* HwContent.swift in Sources */,
+				EF71EEF226676C10000F2278 /* infoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

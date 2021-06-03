@@ -9,7 +9,7 @@ import UIKit
 import FSCalendar
 
 class Calendar2VC: UIViewController {
-    @IBOutlet var calendar: FSCalendar!
+    @IBOutlet weak var calendar: FSCalendar!
     
     private var getCalendarListModel: [GetCalendarList] = []
     
@@ -69,29 +69,28 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
     func setUpCalendar() {
         calendar.dataSource = self
         calendar.delegate = self
+        
         calendar.allowsMultipleSelection = false
         
-        calendar.appearance.headerMinimumDissolvedAlpha = 0.0 // 옆에 이상한거 제거
-        calendar.appearance.headerDateFormat = "YYYY년 M월" // 헤더
-        calendar.headerHeight = 85 // 헤더 크기
-        calendar.locale = Locale(identifier: "ko_KR") // 요일 한글
-        calendar.appearance.weekdayTextColor = .black // 요일 색
-        calendar.appearance.headerTitleColor = .black // 헤더 색
+        calendar.appearance.headerMinimumDissolvedAlpha = 0.0
+        calendar.appearance.headerDateFormat = "YYYY년 M월"
+        calendar.headerHeight = 85
+        calendar.locale = Locale(identifier: "ko_KR")
+        calendar.appearance.weekdayTextColor = .black
+        calendar.appearance.headerTitleColor = .black
         calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 16)
-        calendar.appearance.eventDefaultColor = .red // 이벤트 색
-        // calendar.appearance.todaySelectionColor = .white // 오늘 선택 색
-        calendar.appearance.titleWeekendColor = .red // 주말 색
-        
-        // 스와이프 스크롤 방향 ( 버티칼로 스와이프 설정하면 좌측 우측 상단 다음달 표시 없어짐, 호리젠탈은 보임 )
+        calendar.appearance.eventDefaultColor = .red
+        calendar.appearance.titleWeekendColor = .red
         calendar.scrollDirection = .vertical
     }
     
     func setUpEvents() {
         formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "yyyy-MM"
         let current_date_string = formatter.string(from: Date())
         
         getCalendarList(date: current_date_string)
+        print(current_date_string)
     }
     
     func getCalendarList(date: String) {
@@ -103,10 +102,8 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
                     print(date)
                     
                     let data = response.data
-                    let model = try JSONDecoder().decode([GetCalendarList].self, from: data!)
+                    self.getCalendarListModel = try JSONDecoder().decode([GetCalendarList].self, from: data!)
                     var num: Int = 0
-                    
-                    self.getCalendarListModel = model
                     
                     self.events.removeAll()
                     

@@ -7,12 +7,18 @@
 
 import Foundation
 
+struct calendarContentResponse: Codable {
+    var getCalendarList = [GetCalendarList]()
+}
+
 struct GetCalendarList: Codable {
+    var id = Int()
     var date = String()
     var picuCount = Int()
     var planCount = Int()
     
-    init (date: String, picuCount: Int, planCount: Int) {
+    init (id: Int, date: String, picuCount: Int, planCount: Int) {
+        self.id = id
         self.date = date
         self.picuCount = picuCount
         self.planCount = planCount

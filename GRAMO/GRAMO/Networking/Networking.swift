@@ -12,7 +12,6 @@ let baseURINotice = "http://13.209.8.210:5000/"
 let baseURIHomework = "http://211.38.86.92:8001"
 
 public enum NetworkingAPI {
-    
     case getCalendarList(_ date: String)
     case getPICU(_ date: String)
     case getPlan(_ date: String)
@@ -110,7 +109,7 @@ public enum NetworkingAPI {
         guard let token = UserDefault.string(forKey: "justToken") else { return nil }
         
         // return ["Authorization" : "Bearer" + token]
-        return [ "Content-Type" : "application/json", "Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYxOTUxMDA1MCwianRpIjoiNTk2YzkwMmYtNDIwNC00ZWZkLWI0ZGMtYjI0YmVkY2IyMWIxIiwibmJmIjoxNjE5NTEwMDUwLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiY2hhbmd4QGdtYWlsLmNvbSIsImV4cCI6MTYxOTU5NjQ1MH0.WHcfLQ06j8953edGLColVALvLmbr__eNDzYLYhzfLVs"]
+        return [ "Content-Type" : "application/json", "Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyMjcwNjgyNywianRpIjoiZjlkNjVmOWItN2I2YS00ZGI5LWIyYTUtZTRmZGNjNzAyNjVhIiwibmJmIjoxNjIyNzA2ODI3LCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiYTAxMDk0OTAyMjE5QGdtYWlsLmNvbSIsImV4cCI6MTYyMjc5MzIyN30.UWVBXW2H5x6Z32r0XEWXY_GjCcUBjX_37Xql8mR3fYQ"]
         
     }
     

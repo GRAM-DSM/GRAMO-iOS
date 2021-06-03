@@ -37,52 +37,12 @@ class DetailViewController: ViewController, UITextViewDelegate {
     
     @IBAction func touchUpPicuAddBtn(_ sender: UIButton) {
         let cell = picuTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PICUTableViewCell
-        
-        httpClient.post(.createPICU(cell.detailTextView?.text ?? "", date)).responseJSON(completionHandler: {(response) in
-            switch response.response?.statusCode {
-            case 201:
-                print("OK - Send notice list successfully. - createPICU")
-                self.dismiss(animated: true, completion: nil)
-                
-            case 400:
-                self.showToast(message: "권한 없음")
-                
-            case 403:
-                print("403 : Token Token Token Token - createPICU")
-                    
-            case 404:
-                print("404 : NOT FOUND - Notice does not exist. - createPICU")
-                    
-            default:
-                print(response.response?.statusCode)
-                print(response.error)
-            }
-        })
+        createPICU(content: cell.detailTextView?.text ?? "", date: date)
     }
     
     @IBAction func touchUpSpecialAddBtn(_ sender: UIButton) {
         let cell = planTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! SpecialTableViewCell
-        
-        httpClient.post(.createPlan(cell.detailTextView?.text ?? "", cell.titleTextView?.text ?? "", date)).responseJSON(completionHandler: {(response) in
-            switch response.response?.statusCode {
-            case 201:
-                print("OK - Send notice list successfully. - createPlan")
-                self.dismiss(animated: true, completion: nil)
-                
-            case 400:
-                self.showToast(message: "권한 없음")
-                
-            case 403:
-                print("403 : Token Token Token Token - createPlan")
-                
-            case 404:
-                print("404 : NOT FOUND - Notice does not exist. - createPlan")
-                
-            default:
-                print(response.response?.statusCode)
-                print(response.error)
-            }
-        })
+        createPlan(title: cell.detailTextView?.text ?? "", content: cell.titleTextView?.text ?? "", date: date)
     }
     
     func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) {
@@ -248,6 +208,78 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    func initRefresh() {
+        let picuRefresh = UIRefreshControl()
+        let planRefresh = UIRefreshControl()
+        
+        picuRefresh.addTarget(self, action: #selector(picuUpdateUI(refresh:)), for: .valueChanged)
+        picuRefresh.attributedTitle = NSAttributedString(string: "새로고침")
+        
+        planRefresh.addTarget(self, action: #selector(planUpdateUI(refresh:)), for: .valueChanged)
+        planRefresh.attributedTitle = NSAttributedString(string: "새로고침")
+        
+        picuTableView.refreshControl = picuRefresh
+        planTableView.refreshControl = planRefresh
+    }
+    
+    @objc func picuUpdateUI(refresh: UIRefreshControl) {
+        refresh.endRefreshing()
+        
+        getPICU()
+    }
+    
+    @objc func planUpdateUI(refresh: UIRefreshControl) {
+        refresh.endRefreshing()
+        
+        getPlan()
+    }
+    
+    func createPICU(content: String, date: String) {
+        httpClient.post(.createPICU(content, date)).responseJSON(completionHandler: {(response) in
+            switch response.response?.statusCode {
+            case 201:
+                print("OK - Send notice list successfully. - createPICU")
+                self.dismiss(animated: true, completion: nil)
+                
+            case 400:
+                self.showToast(message: "권한 없음")
+                
+            case 403:
+                print("403 : Token Token Token Token - createPICU")
+                    
+            case 404:
+                print("404 : NOT FOUND - Notice does not exist. - createPICU")
+                    
+            default:
+                print(response.response?.statusCode)
+                print(response.error)
+            }
+        })
+    }
+    
+    func createPlan(title: String, content: String, date: String) {
+        httpClient.post(.createPlan(content, title, date)).responseJSON(completionHandler: {(response) in
+            switch response.response?.statusCode {
+            case 201:
+                print("OK - Send notice list successfully. - createPlan")
+                self.dismiss(animated: true, completion: nil)
+                
+            case 400:
+                self.showToast(message: "권한 없음")
+                
+            case 403:
+                print("403 : Token Token Token Token - createPlan")
+                
+            case 404:
+                print("404 : NOT FOUND - Notice does not exist. - createPlan")
+                
+            default:
+                print(response.response?.statusCode)
+                print(response.error)
+            }
+        })
+    }
+    
     func getPICU() {
         httpClient.get(.getPICU(date)).responseJSON(completionHandler: {(response) in
             switch response.response?.statusCode {
@@ -312,31 +344,5 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 print(response.error)
             }
         })
-    }
-    
-    func initRefresh() {
-        let picuRefresh = UIRefreshControl()
-        let planRefresh = UIRefreshControl()
-        
-        picuRefresh.addTarget(self, action: #selector(picuUpdateUI(refresh:)), for: .valueChanged)
-        picuRefresh.attributedTitle = NSAttributedString(string: "새로고침")
-        
-        planRefresh.addTarget(self, action: #selector(planUpdateUI(refresh:)), for: .valueChanged)
-        planRefresh.attributedTitle = NSAttributedString(string: "새로고침")
-        
-        picuTableView.refreshControl = picuRefresh
-        planTableView.refreshControl = planRefresh
-    }
-    
-    @objc func picuUpdateUI(refresh: UIRefreshControl) {
-        refresh.endRefreshing()
-        
-        getPICU()
-    }
-    
-    @objc func planUpdateUI(refresh: UIRefreshControl) {
-        refresh.endRefreshing()
-        
-        getPlan()
     }
 }

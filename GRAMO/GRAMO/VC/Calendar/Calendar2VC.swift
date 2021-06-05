@@ -11,7 +11,7 @@ import FSCalendar
 class Calendar2VC: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     
-    private var getCalendarListModel: [GetCalendarList] = []
+    private var getCalendarListModel = [GetCalendarList]()
     
     private var events = [Date]()
     private let formatter = DateFormatter()
@@ -101,8 +101,12 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
                     print("OK - Send notice list successfully. - getCalendarList")
                     print(date)
                     
+                    let decoder = JSONDecoder()
+                    decoder.dataDecodingStrategy = .base64
+                    
                     let data = response.data
-                    self.getCalendarListModel = try JSONDecoder().decode([GetCalendarList].self, from: data!)
+                    
+                    self.getCalendarListModel = try decoder.decode([GetCalendarList].self, from: data!)
                     var num: Int = 0
                     
                     self.events.removeAll()

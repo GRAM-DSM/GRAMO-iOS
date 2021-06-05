@@ -9,58 +9,57 @@ import Foundation
 import Alamofire
 
 protocol HTTPClientProvider {
-    func get(_ api: NetworkingAPI) -> DataRequest
-    func post(_ api: NetworkingAPI) -> DataRequest
-    func put(_ api: NetworkingAPI) -> DataRequest
-    func delete(_ api: NetworkingAPI) -> DataRequest
-    func patch(_ api: NetworkingAPI) -> DataRequest
+    func get(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest
+    func post(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest
+    func put(url: String, params: Parameters?, header: HTTPHeaders)-> DataRequest
+    func delete(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest
+    func patch(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest
 }
 
 class HTTPClient: HTTPClientProvider {
     let baseURI = "http://211.38.86.92:8001/"
-    
-    func get(_ api: NetworkingAPI) -> DataRequest {
-        return AF.request(baseURI + api.path,
-                          method: .get,
-                          parameters: api.parameters,
-                          encoding: URLEncoding.default,
-                          headers: api.headers,
-                          interceptor: nil)
+    func get(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest {
+        AF.request(baseURI + url,
+                   method: .get,
+                   parameters: params,
+                   encoding: URLEncoding.default,
+                   headers: header,
+                   interceptor: nil)
     }
     
-    func post(_ api: NetworkingAPI) -> DataRequest {
-        return AF.request(baseURI + api.path,
-                          method: .post,
-                          parameters: api.parameters,
-                          encoding: JSONEncoding.prettyPrinted,
-                          headers: api.headers,
-                          interceptor: nil)
-    }
-
-    func put(_ api: NetworkingAPI) -> DataRequest {
-        return AF.request(baseURI + api.path,
-                          method: .put,
-                          parameters: api.parameters,
-                          encoding: JSONEncoding.prettyPrinted,
-                          headers: api.headers,
-                          interceptor: nil)
+    func post(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest {
+        AF.request(baseURI + url,
+                   method: .post,
+                   parameters: params,
+                   encoding: JSONEncoding.prettyPrinted,
+                   headers: header,
+                   interceptor: nil)
     }
     
-    func delete(_ api: NetworkingAPI) -> DataRequest {
-        return AF.request(baseURI + api.path,
-                          method: .delete,
-                          parameters: api.parameters,
-                          encoding: JSONEncoding.prettyPrinted,
-                          headers: api.headers,
-                          interceptor: nil)
+    func put(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest {
+        AF.request(baseURI + url,
+                   method: .put,
+                   parameters: params,
+                   encoding: JSONEncoding.prettyPrinted,
+                   headers: header,
+                   interceptor: nil)
     }
     
-    func patch(_ api: NetworkingAPI) -> DataRequest {
-        return AF.request(baseURI + api.path,
-                          method: .patch,
-                          parameters: api.parameters,
-                          encoding: JSONEncoding.prettyPrinted,
-                          headers: api.headers,
-                          interceptor: nil)
+    func delete(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest {
+        AF.request(baseURI + url,
+                   method: .delete,
+                   parameters: params,
+                   encoding: JSONEncoding.prettyPrinted,
+                   headers: header,
+                   interceptor: nil)
+    }
+    
+    func patch(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest {
+        AF.request(baseURI + url,
+                   method: .patch,
+                   parameters: params,
+                   encoding: JSONEncoding.prettyPrinted,
+                   headers: header,
+                   interceptor: nil)
     }
 }

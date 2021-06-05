@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5477A844266A10A5009064C7 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A843266A10A5009064C7 /* APIProvider.swift */; };
+		5477A846266A10BF009064C7 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A845266A10BF009064C7 /* AuthAPI.swift */; };
+		5477A848266A120F009064C7 /* PICUAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A847266A120F009064C7 /* PICUAPI.swift */; };
+		5477A84A266A126C009064C7 /* NoticeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A849266A126C009064C7 /* NoticeAPI.swift */; };
+		5477A84C266A1465009064C7 /* HomeworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A84B266A1465009064C7 /* HomeworkAPI.swift */; };
+		5477A84F266A1532009064C7 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A84E266A1532009064C7 /* Headers.swift */; };
+		5477A851266A1784009064C7 /* HeaderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A850266A1784009064C7 /* HeaderProvider.swift */; };
 		54B1B83526661DC300EDEDAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1B83426661DC300EDEDAB /* AppDelegate.swift */; };
 		54B1B83726661DC300EDEDAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1B83626661DC300EDEDAB /* SceneDelegate.swift */; };
 		54B1B83926661DC300EDEDAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1B83826661DC300EDEDAB /* ViewController.swift */; };
@@ -63,6 +70,13 @@
 
 /* Begin PBXFileReference section */
 		4839AD9BA6790E84B5F90CB3 /* Pods-GRAMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.release.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.release.xcconfig"; sourceTree = "<group>"; };
+		5477A843266A10A5009064C7 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
+		5477A845266A10BF009064C7 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		5477A847266A120F009064C7 /* PICUAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PICUAPI.swift; sourceTree = "<group>"; };
+		5477A849266A126C009064C7 /* NoticeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeAPI.swift; sourceTree = "<group>"; };
+		5477A84B266A1465009064C7 /* HomeworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworkAPI.swift; sourceTree = "<group>"; };
+		5477A84E266A1532009064C7 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
+		5477A850266A1784009064C7 /* HeaderProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderProvider.swift; sourceTree = "<group>"; };
 		54B1B83126661DC300EDEDAB /* GRAMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GRAMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B1B83426661DC300EDEDAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54B1B83626661DC300EDEDAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +146,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5477A842266A1094009064C7 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5477A843266A10A5009064C7 /* APIProvider.swift */,
+				5477A845266A10BF009064C7 /* AuthAPI.swift */,
+				5477A847266A120F009064C7 /* PICUAPI.swift */,
+				5477A849266A126C009064C7 /* NoticeAPI.swift */,
+				5477A84B266A1465009064C7 /* HomeworkAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		5477A84D266A14BF009064C7 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				5477A84E266A1532009064C7 /* Headers.swift */,
+				5477A850266A1784009064C7 /* HeaderProvider.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		54B1B82826661DC300EDEDAB = {
 			isa = PBXGroup;
 			children = (
@@ -207,10 +242,10 @@
 			isa = PBXGroup;
 			children = (
 				EF71EF262667742F000F2278 /* Calendar */,
-				EF71EEF426676C1C000F2278 /* UIextiention.swift */,
 				EF71EED826676BAD000F2278 /* info */,
 				EF71EED726676BA3000F2278 /* SideMenu */,
 				EF71EED626676B96000F2278 /* homework */,
+				EF71EEF426676C1C000F2278 /* UIextiention.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -260,6 +295,8 @@
 		EF71EEF6266772FC000F2278 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				5477A84D266A14BF009064C7 /* Header */,
+				5477A842266A1094009064C7 /* API */,
 				EF71EF222667741D000F2278 /* HTTPClient.swift */,
 				EF71EF232667741D000F2278 /* Networking.swift */,
 			);
@@ -469,6 +506,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5477A846266A10BF009064C7 /* AuthAPI.swift in Sources */,
+				5477A851266A1784009064C7 /* HeaderProvider.swift in Sources */,
 				54B1B83926661DC300EDEDAB /* ViewController.swift in Sources */,
 				EF71EEDF26676BD3000F2278 /* HomeworkListViewController.swift in Sources */,
 				EF71EF0E2667739D000F2278 /* FirstSectionModel.swift in Sources */,
@@ -486,7 +525,9 @@
 				EF71EF242667741D000F2278 /* HTTPClient.swift in Sources */,
 				EF71EF14266773B3000F2278 /* notice.swift in Sources */,
 				EF71EEEB26676BFA000F2278 /* SideMenuViewController.swift in Sources */,
+				5477A844266A10A5009064C7 /* APIProvider.swift in Sources */,
 				EF71EF2A26677441000F2278 /* Calendar2VC.swift in Sources */,
+				5477A84F266A1532009064C7 /* Headers.swift in Sources */,
 				EF71EF17266773B3000F2278 /* GetNoticeDetail.swift in Sources */,
 				EF71EEEA26676BFA000F2278 /* SideMenuNavigationController.swift in Sources */,
 				54B1B83526661DC300EDEDAB /* AppDelegate.swift in Sources */,
@@ -497,13 +538,16 @@
 				EF71EEF026676C10000F2278 /* InfoDetailViewController.swift in Sources */,
 				EF71EEDE26676BD3000F2278 /* HomeworkOrderedViewController.swift in Sources */,
 				EF71EEF326676C10000F2278 /* InfoAddViewController.swift in Sources */,
+				5477A84C266A1465009064C7 /* HomeworkAPI.swift in Sources */,
 				EF71EF252667741D000F2278 /* Networking.swift in Sources */,
 				EF71EEE126676BD3000F2278 /* HomeworkAssignedViewController.swift in Sources */,
 				EF71EF2926677441000F2278 /* DetailViewController.swift in Sources */,
 				EF71EEE526676BDD000F2278 /* SecondSectionTableViewCell.swift in Sources */,
 				EF71EEFD26677324000F2278 /* GetPICU.swift in Sources */,
+				5477A848266A120F009064C7 /* PICUAPI.swift in Sources */,
 				EF71EF0F2667739D000F2278 /* ThirdSectionModel.swift in Sources */,
 				EF71EF0226677344000F2278 /* PICUTableViewCell.swift in Sources */,
+				5477A84A266A126C009064C7 /* NoticeAPI.swift in Sources */,
 				EF71EEE626676BDD000F2278 /* ThirdSectionTableViewCell.swift in Sources */,
 				54B1B83726661DC300EDEDAB /* SceneDelegate.swift in Sources */,
 				EF71EF20266773C3000F2278 /* HwContent.swift in Sources */,

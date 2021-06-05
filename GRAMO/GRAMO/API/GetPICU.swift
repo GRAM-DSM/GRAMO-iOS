@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct PICUListResponse: Codable {
-    var getPICU = [GetPICU]()
-}
-
 struct GetPICU: Codable {
     var picuId = Int()
     var userName = String()

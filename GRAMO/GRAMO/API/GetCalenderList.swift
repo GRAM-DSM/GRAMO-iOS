@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct calendarContentResponse: Codable {
-    var getCalendarList = [GetCalendarList]()
+struct calendarContentResponses: Codable {
+    var calendarContentResponses = [GetCalendarList]()
 }
 
 struct GetCalendarList: Codable {

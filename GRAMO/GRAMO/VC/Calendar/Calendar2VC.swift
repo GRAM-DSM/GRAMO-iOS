@@ -94,7 +94,7 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func getCalendarList(date: String) {
-        httpClient.get(.getCalendarList(date)).responseJSON(completionHandler: {(response) in
+        httpClient.get(url: PICUAPI.getCalendarList(date).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
             switch response.response?.statusCode {
             case 200:
                 do {

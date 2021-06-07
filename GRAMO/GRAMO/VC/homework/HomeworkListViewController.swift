@@ -162,7 +162,7 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
     //    }
     
     func getAssView() {
-        httpclient.get(NetworkingAPI.getAssHomeworkList).responseJSON{(response) in
+        httpclient.get(url: HomeworkAPI.getAssHomeworkList.path(), params: nil, header: Header.token.header()).responseJSON{(response) in
             switch response.response?.statusCode{
             case 200:
                 do {
@@ -184,7 +184,7 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func getSubView(){
-        httpclient.get(NetworkingAPI.getSubHomeworkList).responseJSON{(response) in
+        httpclient.get(url: HomeworkAPI.getSubHomeworkList.path(), params: nil, header: Header.token.header()).responseJSON{(response) in
             switch response.response?.statusCode{
             case 200:
                 do{
@@ -209,7 +209,7 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func getOrdView() {
-        httpclient.get(NetworkingAPI.getOrdHomeworkList).responseJSON{(response) in
+        httpclient.get(url: HomeworkAPI.getOrdHomeworkList.path(), params: nil, header: Header.token.header()).responseJSON{(response) in
             switch response.response?.statusCode{
             case 200 :
                 do {

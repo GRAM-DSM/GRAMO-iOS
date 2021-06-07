@@ -58,13 +58,13 @@ class InfoAddViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         let item : InfoList = InfoList(writer: "장서영", date: date, infotTitle: title, infoDetail: detail)
         
         infoList.append(item)
-        createNotice()
+        createNotice(title: infoTitle.text!, content: infoDetail.text!)
         
         self.navigationController?.popViewController(animated: true)
     }
     
-    func createNotice() {
-        httpClient.post(NetworkingAPI.createNotice(infoTitle.text!, infoDetail.text)).responseJSON{(res) in
+    func createNotice(title: String, content: String) {
+        httpClient.post(url: NoticeAPI.createNotice.path(), params: ["title":title, "content":content], header: Header.token.header()).responseJSON{(res) in
             switch res.response?.statusCode{
             case 200:
                 do {

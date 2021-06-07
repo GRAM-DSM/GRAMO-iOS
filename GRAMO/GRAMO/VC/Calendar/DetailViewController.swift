@@ -37,12 +37,12 @@ class DetailViewController: ViewController, UITextViewDelegate {
     
     @IBAction func touchUpPicuAddBtn(_ sender: UIButton) {
         let cell = picuTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PICUTableViewCell
-        createPICU(content: cell.detailTextView?.text ?? "", date: date)
+        createPICU(description: cell.description, date: date)
     }
     
     @IBAction func touchUpSpecialAddBtn(_ sender: UIButton) {
         let cell = planTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! SpecialTableViewCell
-        createPlan(title: cell.detailTextView?.text ?? "", content: cell.titleTextView?.text ?? "", date: date)
+        createPlan(title: cell.detailTextView.text, description: cell.description, date: date)
     }
     
     func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) {
@@ -124,7 +124,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if tableView.tag == 1 {
             if editingStyle == .delete {
-                httpClient.delete(.deletePICU(self.picu[indexPath.row].picuId)).responseJSON(completionHandler: {(response) in
+                httpClient.delete(url: PICUAPI.deletePICU(self.picu[indexPath.row].picuId).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
                     switch response.response?.statusCode {
                     case 200:
                         print("OK - Send notice list successfully. - getPICU")
@@ -153,7 +153,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         
         if tableView.tag == 2 {
             if editingStyle == .delete {
-                httpClient.delete(.deletePlan(self.plan[indexPath.row].planId)).responseJSON(completionHandler: {(response) in
+                httpClient.delete(url: PICUAPI.deletePICU(self.picu[indexPath.row].picuId).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
                     switch response.response?.statusCode {
                     case 200:
                         print("OK - Send notice list successfully. - getPICU")
@@ -234,8 +234,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         getPlan()
     }
     
-    func createPICU(content: String, date: String) {
-        httpClient.post(.createPICU(content, date)).responseJSON(completionHandler: {(response) in
+    func createPICU(description: String, date: String) {
+        httpClient.post(url: PICUAPI.createPICU.path(), params: ["description": description, "title": title, "date": date], header: Header.token.header()).responseJSON(completionHandler: {(response) in
             switch response.response?.statusCode {
             case 201:
                 print("OK - Send notice list successfully. - createPICU")
@@ -257,8 +257,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         })
     }
     
-    func createPlan(title: String, content: String, date: String) {
-        httpClient.post(.createPlan(content, title, date)).responseJSON(completionHandler: {(response) in
+    func createPlan(title: String, description: String, date: String) {
+        httpClient.post(url: PICUAPI.createPlan.path(), params: ["description": description, "title": title, "date": date], header: Header.token.header()).responseJSON(completionHandler: {(response) in
             switch response.response?.statusCode {
             case 201:
                 print("OK - Send notice list successfully. - createPlan")
@@ -281,7 +281,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func getPICU() {
-        httpClient.get(.getPICU(date)).responseJSON(completionHandler: {(response) in
+        httpClient.get(url: PICUAPI.getPICU(date).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
             switch response.response?.statusCode {
             case 200:
                 do {
@@ -314,7 +314,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func getPlan() {
-        httpClient.get(.getPlan(date)).responseJSON(completionHandler: {(response) in
+        httpClient.get(url: PICUAPI.getPlan(date).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
             switch response.response?.statusCode {
             case 200:
                 do {

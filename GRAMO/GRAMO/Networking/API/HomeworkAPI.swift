@@ -13,7 +13,7 @@ enum HomeworkAPI: API {
     case getOrdHomeworkList
     
     case getHomeworkContent(_ homeworkId: Int)
-    case createHomework(_ major: String, _ endDate: String, _ studentEmail: String, _ description: String, _ title: String)
+    case createHomework
     case deleteHomework(_ detailId: Int)
     
     case submitHomework(_ homeworkId: Int)

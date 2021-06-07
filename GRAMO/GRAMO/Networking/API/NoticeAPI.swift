@@ -10,7 +10,7 @@ import Foundation
 enum NoticeAPI: API {
     case getNoticeList(_ off_set : Int, _ limit_num : Int)
     case getNoticeDetail(_ id: Int)
-    case createNotice(_ title: String, _ content: String)
+    case createNotice
     case deleteNotice(_ id: Int)
     
     func path() -> String {

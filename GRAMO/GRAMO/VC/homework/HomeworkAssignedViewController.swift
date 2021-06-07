@@ -24,7 +24,7 @@ class HomeworkAssignedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        getContent(id)
+        getContent(id: id)
         // Do any additional setup after loading the view.
     }
     
@@ -38,11 +38,11 @@ class HomeworkAssignedViewController: UIViewController {
     
     
     @IBAction func submitButton(_ sender: UIButton){
-        submitHw(id)
+        submitHw(homeworkId: id)
     }
     
-    func getContent(_ id: Int) {
-        httpClient.get(NetworkingAPI.getHomeworkContent(id)).responseJSON {(res) in
+    func getContent(id: Int) {
+        httpClient.get(url: HomeworkAPI.getHomeworkContent(id).path(), params: nil, header: Header.token.header()).responseJSON {(res) in
             switch res.response?.statusCode {
             case 200 :
                 do{
@@ -70,8 +70,8 @@ class HomeworkAssignedViewController: UIViewController {
         
     }
     
-    func submitHw(_ id : Int) {
-        httpClient.patch(NetworkingAPI.submitHomework(id)).responseJSON {(res) in
+    func submitHw(homeworkId : Int) {
+        httpClient.patch(url: HomeworkAPI.submitHomework(id).path(), params:  ["homeworkId":homeworkId], header: Header.token.header()).responseJSON {(res) in
             switch res.response?.statusCode {
             case 201 :
                 self.navigationController?.popViewController(animated: true)

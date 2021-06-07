@@ -25,7 +25,7 @@ class HomeworkOrderedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        getContent(id)
+        getContent(id: id)
         // Do any additional setup after loading the view.
     }
     
@@ -40,7 +40,7 @@ class HomeworkOrderedViewController: UIViewController {
     @IBAction func deleteContent(_ sender: UIBarButtonItem){
         let alert = UIAlertController(title: "숙제를 삭제하시겠습니까?", message: "되돌리기는 불가능합니다.", preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-        let deleteAction = UIAlertAction(title: "예", style: .destructive) {[self] (action) in self.deleteHomework(id)}
+        let deleteAction = UIAlertAction(title: "예", style: .destructive) {[self] (action) in self.deleteHomework(deleteId: id)}
         
         alert.addAction(cancelAction)
         alert.addAction(deleteAction)
@@ -51,7 +51,7 @@ class HomeworkOrderedViewController: UIViewController {
     @IBAction func returnButton(_ sender: UIButton){
         let alert = UIAlertController(title: "숙제를 반환하시겠습니까?", message: "반환된 숙제는 숙제 할당자의 할당됨으로 되돌아갑니다.", preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-        let rejectAction = UIAlertAction(title: "예", style: .default, handler: {[self] (action) in self.rejectedHomework(id)})
+        let rejectAction = UIAlertAction(title: "예", style: .default, handler: {[self] (action) in self.rejectedHomework(homeworkId: id)})
         
         alert.addAction(cancelAction)
         alert.addAction(rejectAction)
@@ -62,7 +62,7 @@ class HomeworkOrderedViewController: UIViewController {
     @IBAction func doneButton(_ sender: UIButton){
         let alert = UIAlertController(title: "숙제를 완료하시겠습니까?", message: "완료된 숙제는 삭제됩니다.", preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-        let deleteAction = UIAlertAction(title: "예", style: .destructive, handler: {[self] (action) in self.deleteHomework(id)})
+        let deleteAction = UIAlertAction(title: "예", style: .destructive, handler: {[self] (action) in self.deleteHomework(deleteId: id)})
         
         alert.addAction(cancelAction)
         alert.addAction(deleteAction)
@@ -71,8 +71,8 @@ class HomeworkOrderedViewController: UIViewController {
     }
     
     
-    func getContent(_ id: Int) {
-        httpClient.get(NetworkingAPI.getHomeworkContent(id)).responseJSON {(res) in
+    func getContent(id: Int) {
+        httpClient.get(url: HomeworkAPI.getHomeworkContent(id).path(), params: nil, header: Header.token.header()).responseJSON {(res) in
             switch res.response?.statusCode {
             case 200 :
                 do{
@@ -101,8 +101,8 @@ class HomeworkOrderedViewController: UIViewController {
     }
     
     
-    func deleteHomework(_ id : Int) {
-        httpClient.delete(NetworkingAPI.deleteHomework(id)).responseJSON {(res) in
+    func deleteHomework(deleteId : Int) {
+        httpClient.delete(url: HomeworkAPI.deleteHomework(deleteId).path(), params: ["deleteId":deleteId], header: Header.token.header()).responseJSON {(res) in
             switch res.response?.statusCode {
             case 200 :
                 self.navigationController?.popViewController(animated: true)
@@ -114,8 +114,8 @@ class HomeworkOrderedViewController: UIViewController {
         }
     }
     
-    func rejectedHomework(_ id: Int){
-        httpClient.patch(NetworkingAPI.rejectHomework(id)).responseJSON {(res) in
+    func rejectedHomework(homeworkId: Int){
+        httpClient.patch(url: HomeworkAPI.rejectHomework(homeworkId).path(), params: ["homeworkId":homeworkId], header: Header.token.header()).responseJSON {(res) in
             switch res.response?.statusCode {
             case 201 :
                 self.navigationController?.popViewController(animated: true)

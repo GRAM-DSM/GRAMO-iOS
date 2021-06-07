@@ -11,8 +11,8 @@ enum PICUAPI : API {
     case getCalendarList(_ date: String)
     case getPICU(_ date: String)
     case getPlan(_ date: String)
-    case createPICU(_ description: String, _ date: String)
-    case createPlan(_ description: String, _ title: String, _ date: String)
+    case createPICU
+    case createPlan
     case deletePICU(_ picuId: Int)
     case deletePlan(_ planId: Int)
     

@@ -8,6 +8,9 @@
 import Foundation
 import Alamofire
 
+let baseURINotice = "http://211.38.86.92:8001/"
+let baseURIHomework = "http://211.38.86.92:8001"
+
 protocol HTTPClientProvider {
     func get(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest
     func post(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest
@@ -17,9 +20,8 @@ protocol HTTPClientProvider {
 }
 
 class HTTPClient: HTTPClientProvider {
-    let baseURI = "http://211.38.86.92:8001/"
     func get(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest {
-        AF.request(baseURI + url,
+        AF.request( url,
                    method: .get,
                    parameters: params,
                    encoding: URLEncoding.default,
@@ -28,7 +30,7 @@ class HTTPClient: HTTPClientProvider {
     }
     
     func post(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest {
-        AF.request(baseURI + url,
+        AF.request(url,
                    method: .post,
                    parameters: params,
                    encoding: JSONEncoding.prettyPrinted,
@@ -37,7 +39,7 @@ class HTTPClient: HTTPClientProvider {
     }
     
     func put(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest {
-        AF.request(baseURI + url,
+        AF.request(url,
                    method: .put,
                    parameters: params,
                    encoding: JSONEncoding.prettyPrinted,
@@ -46,7 +48,7 @@ class HTTPClient: HTTPClientProvider {
     }
     
     func delete(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest {
-        AF.request(baseURI + url,
+        AF.request(url,
                    method: .delete,
                    parameters: params,
                    encoding: JSONEncoding.prettyPrinted,
@@ -55,7 +57,7 @@ class HTTPClient: HTTPClientProvider {
     }
     
     func patch(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest {
-        AF.request(baseURI + url,
+        AF.request(url,
                    method: .patch,
                    parameters: params,
                    encoding: JSONEncoding.prettyPrinted,

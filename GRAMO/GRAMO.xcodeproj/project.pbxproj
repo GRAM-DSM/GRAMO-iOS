@@ -13,7 +13,6 @@
 		5477A84A266A126C009064C7 /* NoticeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A849266A126C009064C7 /* NoticeAPI.swift */; };
 		5477A84C266A1465009064C7 /* HomeworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A84B266A1465009064C7 /* HomeworkAPI.swift */; };
 		5477A84F266A1532009064C7 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A84E266A1532009064C7 /* Headers.swift */; };
-		5477A851266A1784009064C7 /* HeaderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A850266A1784009064C7 /* HeaderProvider.swift */; };
 		54B1B83526661DC300EDEDAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1B83426661DC300EDEDAB /* AppDelegate.swift */; };
 		54B1B83726661DC300EDEDAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1B83626661DC300EDEDAB /* SceneDelegate.swift */; };
 		54B1B83926661DC300EDEDAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1B83826661DC300EDEDAB /* ViewController.swift */; };
@@ -76,7 +75,6 @@
 		5477A849266A126C009064C7 /* NoticeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeAPI.swift; sourceTree = "<group>"; };
 		5477A84B266A1465009064C7 /* HomeworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworkAPI.swift; sourceTree = "<group>"; };
 		5477A84E266A1532009064C7 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
-		5477A850266A1784009064C7 /* HeaderProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderProvider.swift; sourceTree = "<group>"; };
 		54B1B83126661DC300EDEDAB /* GRAMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GRAMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B1B83426661DC300EDEDAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54B1B83626661DC300EDEDAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				5477A84E266A1532009064C7 /* Headers.swift */,
-				5477A850266A1784009064C7 /* HeaderProvider.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -507,7 +504,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5477A846266A10BF009064C7 /* AuthAPI.swift in Sources */,
-				5477A851266A1784009064C7 /* HeaderProvider.swift in Sources */,
 				54B1B83926661DC300EDEDAB /* ViewController.swift in Sources */,
 				EF71EEDF26676BD3000F2278 /* HomeworkListViewController.swift in Sources */,
 				EF71EF0E2667739D000F2278 /* FirstSectionModel.swift in Sources */,

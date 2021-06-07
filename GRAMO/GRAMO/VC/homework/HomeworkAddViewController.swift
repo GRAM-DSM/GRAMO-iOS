@@ -68,7 +68,7 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         }
-        addHomework()
+        addHomework(major: requestMajor, endDate: requestDate, studentEmail: studentEmail, description: detailTextView.text!, title: titleTextField.text!)
     }
     
     @IBAction func selectMajor(_ sender: UIButton){
@@ -99,7 +99,7 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
     }
     
     @IBAction func selectAllocator(_ sender: UIButton){
-        httpclient.get(NetworkingAPI.getUserList).responseJSON { [self](res) in
+        httpclient.get(url: HomeworkAPI.getUserList.path(), params: nil, header: Header.token.header()).responseJSON { [self](res) in
             switch res.response?.statusCode{
             case 200 :
                 do {
@@ -199,8 +199,8 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
     }
     
     
-    func addHomework() {
-        httpclient.post(NetworkingAPI.createHomework(requestMajor, requestDate, studentEmail, detailTextView.text!, titleTextField.text!)).responseJSON{(res) in
+    func addHomework(major: String, endDate: String, studentEmail: String, description: String, title: String) {
+        httpclient.post(url: HomeworkAPI.createHomework.path(), params: ["major":major, "endDate":endDate, "studentEmail":studentEmail, "description":description, "title":title], header: Header.token.header()).responseJSON{(res) in
             switch res.response?.statusCode{
             case 201 :
                 do{

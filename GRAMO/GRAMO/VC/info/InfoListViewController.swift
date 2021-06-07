@@ -84,7 +84,7 @@ class InfoListViewContoller
     }
     
     func getList(){
-        httpClient.get(NetworkingAPI.getNoticeList(0, 10)).responseJSON{(response) in
+        httpClient.get(url: NoticeAPI.getNoticeList(0, 10).path(), params: nil, header: Header.token.header()).responseJSON{(response) in
             switch response.response?.statusCode{
             case 200: 
                 do{
@@ -112,7 +112,7 @@ class InfoListViewContoller
     func secondGetList() {
         getOffSet()
         if nextPage == true {
-            httpClient.get(NetworkingAPI.getNoticeList(off_set, limit_num)).responseJSON{(response) in
+            httpClient.get(url: NoticeAPI.getNoticeList(off_set, limit_num).path(), params: nil, header: Header.token.header()).responseJSON{(response) in
                 switch response.response?.statusCode{
                 case 200:
                     do{

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PICUAPI : API {
+enum CalendarAPI : API {
     case getCalendarList(_ date: String)
     case getPICU(_ date: String)
     case getPlan(_ date: String)
@@ -19,25 +19,25 @@ enum PICUAPI : API {
     func path() -> String {
         switch self {
         case .getCalendarList(let date):
-            return "calendar/\(date)"
+            return baseURICalendar + "/calendar/\(date)"
             
         case .getPICU(let date):
-            return "calendar/picu/\(date)"
+            return baseURICalendar + "/calendar/picu/\(date)"
             
         case .createPICU:
-            return "calendar/picu"
+            return baseURICalendar + "/calendar/picu"
             
         case .deletePICU(let picuId):
-            return "calendar/picu/\(picuId)"
+            return baseURICalendar + "/calendar/picu/\(picuId)"
                     
         case .getPlan(let date):
-            return "calendar/plan/\(date)"
+            return baseURICalendar + "/calendar/plan/\(date)"
             
         case .createPlan:
-            return "calendar/plan"
+            return baseURICalendar + "/calendar/plan"
             
-        case .deletePlan(let picuId):
-            return "calendar/plan/\(picuId)"
+        case .deletePlan(let planId):
+            return baseURICalendar + "/calendar/plan/\(planId)"
         }
     }
 }

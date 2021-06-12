@@ -7,6 +7,14 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansKR-Medium.otf">
+            <string>NotoSansKR-Medium</string>
+        </array>
+        <array key="NotoSansKR-Regular.otf">
+            <string>NotoSansKR-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Calendar2VC-->
         <scene sceneID="ahj-Yk-HaR">
@@ -18,7 +26,25 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ynP-mm-GbC" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="44" width="390" height="715"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74P-NJ-rI9">
+                                        <rect key="frame" x="24" y="34" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="a3i-zp-2W0"/>
+                                            <constraint firstAttribute="width" constant="24" id="d3f-tI-W8M"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <state key="normal" title="Button" image="line.horizontal.3" catalog="system"/>
+                                        <connections>
+                                            <segue destination="qAK-mb-Mzs" kind="show" id="qW4-a2-nN6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="74P-NJ-rI9" firstAttribute="leading" secondItem="ynP-mm-GbC" secondAttribute="leading" constant="24" id="26l-hf-iM4"/>
+                                    <constraint firstItem="74P-NJ-rI9" firstAttribute="top" secondItem="ynP-mm-GbC" secondAttribute="top" constant="34" id="VdK-pn-yLn"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cnX-UR-qgi"/>
@@ -378,7 +404,7 @@
         <!--Navigation Controller-->
         <scene sceneID="KpI-E7-0Nj">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7Vo-wb-a1r" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigation" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7Vo-wb-a1r" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6HC-7B-25V">
                         <autoresizingMask key="autoresizingMask"/>
@@ -392,10 +418,129 @@
             </objects>
             <point key="canvasLocation" x="1007.6923076923076" y="118.72037914691943"/>
         </scene>
+        <!--Side Menu View Controller-->
+        <scene sceneID="y6y-sl-ghy">
+            <objects>
+                <viewController storyboardIdentifier="SideMenuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h6Q-zc-Egz" customClass="SideMenuViewController" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EOS-rb-sEI">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eLu-3q-Wdh">
+                                <rect key="frame" x="16" y="114.66666666666666" width="40" height="39.666666666666671"/>
+                                <color key="tintColor" red="0.76470588240000004" green="0.7843137255" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="u7Z-uZ-cUa"/>
+                                    <constraint firstAttribute="width" constant="40" id="u84-a8-px2"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="장서영" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePm-a4-y9f">
+                                <rect key="frame" x="64" y="114" width="44.666666666666657" height="24"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPQ-b6-gdY">
+                                <rect key="frame" x="64" y="134" width="23" height="21"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                                <color key="textColor" red="0.56470588239999997" green="0.56470588239999997" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9we-zo-Enr">
+                                <rect key="frame" x="41" y="221" width="67" height="39"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="18"/>
+                                <state key="normal" title="공지사항">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="info:" destination="h6Q-zc-Egz" eventType="touchUpInside" id="IxA-my-2H9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ywa-6j-mSh">
+                                <rect key="frame" x="41" y="292" width="50" height="39"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="18"/>
+                                <state key="normal" title="캘린더">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="calendar:" destination="h6Q-zc-Egz" eventType="touchUpInside" id="RoM-HN-Prr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xxs-QO-cNx">
+                                <rect key="frame" x="41" y="363" width="34" height="39"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="18"/>
+                                <state key="normal" title="숙제">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="homework:" destination="h6Q-zc-Egz" eventType="touchUpInside" id="4nl-Pi-L58"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Pp-R1-8Mo">
+                                <rect key="frame" x="41" y="691" width="59" height="36"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
+                                <state key="normal" title="로그아웃">
+                                    <color key="titleColor" red="1" green="0.19215686269999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfX-Ie-d9g">
+                                <rect key="frame" x="41" y="743" width="59" height="36"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
+                                <state key="normal" title="탈퇴하기">
+                                    <color key="titleColor" red="0.56470588239999997" green="0.56470588239999997" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dFv-Rq-gmj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ywa-6j-mSh" firstAttribute="leading" secondItem="dFv-Rq-gmj" secondAttribute="leading" constant="41" id="BG5-ML-j2h"/>
+                            <constraint firstItem="Xxs-QO-cNx" firstAttribute="top" secondItem="Ywa-6j-mSh" secondAttribute="bottom" constant="32" id="Nrc-47-30D"/>
+                            <constraint firstItem="eLu-3q-Wdh" firstAttribute="top" secondItem="dFv-Rq-gmj" secondAttribute="top" constant="25.5" id="QiZ-uP-zQN"/>
+                            <constraint firstItem="ePm-a4-y9f" firstAttribute="top" secondItem="dFv-Rq-gmj" secondAttribute="top" constant="26" id="RFc-7m-67W"/>
+                            <constraint firstItem="UfX-Ie-d9g" firstAttribute="leading" secondItem="dFv-Rq-gmj" secondAttribute="leading" constant="41" id="THb-0k-fDQ"/>
+                            <constraint firstItem="ePm-a4-y9f" firstAttribute="leading" secondItem="eLu-3q-Wdh" secondAttribute="trailing" constant="8" symbolic="YES" id="ZPN-14-u2O"/>
+                            <constraint firstItem="Xxs-QO-cNx" firstAttribute="leading" secondItem="dFv-Rq-gmj" secondAttribute="leading" constant="41" id="ZSg-RR-7Ee"/>
+                            <constraint firstItem="sPQ-b6-gdY" firstAttribute="top" secondItem="dFv-Rq-gmj" secondAttribute="top" constant="46" id="bcK-qh-5k7"/>
+                            <constraint firstItem="1Pp-R1-8Mo" firstAttribute="top" secondItem="Xxs-QO-cNx" secondAttribute="bottom" constant="289" id="gbv-aE-6lk"/>
+                            <constraint firstItem="eLu-3q-Wdh" firstAttribute="leading" secondItem="dFv-Rq-gmj" secondAttribute="leading" constant="16" id="gqM-lY-XDe"/>
+                            <constraint firstItem="UfX-Ie-d9g" firstAttribute="top" secondItem="1Pp-R1-8Mo" secondAttribute="bottom" constant="16" id="nBh-9k-WEc"/>
+                            <constraint firstItem="sPQ-b6-gdY" firstAttribute="leading" secondItem="eLu-3q-Wdh" secondAttribute="trailing" constant="8" symbolic="YES" id="ncG-pg-fll"/>
+                            <constraint firstItem="Ywa-6j-mSh" firstAttribute="top" secondItem="9we-zo-Enr" secondAttribute="bottom" constant="32" id="oKM-5f-bfs"/>
+                            <constraint firstItem="9we-zo-Enr" firstAttribute="leading" secondItem="dFv-Rq-gmj" secondAttribute="leading" constant="41" id="sgL-k4-JjF"/>
+                            <constraint firstItem="1Pp-R1-8Mo" firstAttribute="leading" secondItem="dFv-Rq-gmj" secondAttribute="leading" constant="41" id="tpj-ce-ZOB"/>
+                            <constraint firstItem="9we-zo-Enr" firstAttribute="top" secondItem="sPQ-b6-gdY" secondAttribute="bottom" constant="66" id="wpA-sJ-1Mw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0MP-Ib-IM8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8KI-sw-oXk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2863" y="827"/>
+        </scene>
+        <!--Side Menu Nav-->
+        <scene sceneID="xf9-Qc-bTp">
+            <objects>
+                <navigationController id="qAK-mb-Mzs" customClass="SideMenuNav" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="KeS-Bw-KCG"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gai-2K-57E">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="h6Q-zc-Egz" kind="relationship" relationship="rootViewController" id="1cM-G2-8m0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4iI-uc-uD6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1937" y="827"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Group 29" width="40" height="40"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+        <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

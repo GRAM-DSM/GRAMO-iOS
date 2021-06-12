@@ -24,31 +24,31 @@ enum HomeworkAPI: API {
     func path() -> String {
         switch self {
         case .getAssHomeworkList:
-            return baseURIHomework + "/homework/assign"
+            return baseURICalendar + "/homework/assign"
             
         case .getSubHomeworkList:
-            return baseURIHomework + "/homework/submit"
+            return baseURICalendar + "/homework/submit"
             
         case .getOrdHomeworkList:
-            return baseURIHomework + "/homework/order"
+            return baseURICalendar + "/homework/order"
             
         case .getHomeworkContent(let homeworkId):
-            return baseURIHomework + "/homework/\(homeworkId)"
+            return baseURICalendar + "/homework/\(homeworkId)"
             
         case .createHomework:
-            return baseURIHomework + "/homework"
+            return baseURICalendar + "/homework"
             
         case .deleteHomework(let detailId):
-            return baseURIHomework + "/homework/\(detailId)"
+            return baseURICalendar + "/homework/\(detailId)"
             
         case .submitHomework(let homeworkId):
-            return baseURIHomework + "/homework/\(homeworkId)"
+            return baseURICalendar + "/homework/\(homeworkId)"
             
         case .rejectHomework(let homeworkId):
-            return baseURIHomework + "/homework/reject/\(homeworkId)"
+            return baseURICalendar + "/homework/reject/\(homeworkId)"
             
         case .getUserList:
-            return baseURIHomework + "/user/list"
+            return baseURICalendar + "/user/list"
         }
     }
 }

@@ -8,8 +8,8 @@
 //import Foundation
 //import Alamofire
 //
-////let baseURINotice = "http://13.209.8.210:5000/"
-////let baseURIHomework = "http://211.38.86.92:8001"
+//let baseURINotice = "http://13.209.8.210:5000/"
+//let baseURIHomework = "http://211.38.86.92:8001"
 //
 //public enum NetworkingAPI {
 //    case getCalendarList(_ date: String)

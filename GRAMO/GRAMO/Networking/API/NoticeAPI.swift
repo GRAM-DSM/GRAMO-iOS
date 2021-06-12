@@ -16,13 +16,13 @@ enum NoticeAPI: API {
     func path() -> String {
         switch self {
         case .getNoticeList(let off_set, let limit_num):
-            return baseURINotice + "/notice/\(off_set)/\(limit_num)"
+            return baseURIAuth + "/notice/\(off_set)/\(limit_num)"
             
         case .createNotice:
-            return baseURINotice + "/notice"
+            return baseURIAuth + "/notice"
             
         case .getNoticeDetail(let id), .deleteNotice(let id):
-            return baseURINotice + "/notice/\(id)"
+            return baseURIAuth + "/notice/\(id)"
         }
     }
 }

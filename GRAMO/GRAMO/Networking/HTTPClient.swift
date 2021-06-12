@@ -8,8 +8,9 @@
 import Foundation
 import Alamofire
 
-let baseURINotice = "http://211.38.86.92:8001/"
-let baseURIHomework = "http://211.38.86.92:8001"
+let baseURIAuth = "http://13.209.8.210:5000"
+let baseURICalendar = "http://211.38.86.92:8001"
+
 
 protocol HTTPClientProvider {
     func get(url: String, params: Parameters?, header: HTTPHeaders) -> DataRequest

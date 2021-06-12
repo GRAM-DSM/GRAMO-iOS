@@ -8,12 +8,14 @@
 import UIKit
 
 class SideMenuViewController: UIViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
+//    @IBAction func calendar(_ sender: UIButton) {
+//        let vc =
+//    }
     
     @IBAction func info(_ sender : UIButton) {
         let vc = (storyboard?.instantiateViewController(identifier: "homework")) as! HomeworkListViewController

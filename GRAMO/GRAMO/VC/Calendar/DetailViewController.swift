@@ -37,12 +37,12 @@ class DetailViewController: ViewController, UITextViewDelegate {
     
     @IBAction func touchUpPicuAddBtn(_ sender: UIButton) {
         let cell = picuTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PICUTableViewCell
-        createPICU(description: cell.description, date: date)
+        createPICU(description: cell.detailTextView.text, date: date)
     }
     
     @IBAction func touchUpSpecialAddBtn(_ sender: UIButton) {
         let cell = planTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! SpecialTableViewCell
-        createPlan(title: cell.detailTextView.text, description: cell.description, date: date)
+        createPlan(title: cell.titleTextView.text, description: cell.detailTextView.text, date: date)
     }
     
     func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) {
@@ -124,7 +124,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if tableView.tag == 1 {
             if editingStyle == .delete {
-                httpClient.delete(url: PICUAPI.deletePICU(self.picu[indexPath.row].picuId).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
+                httpClient.delete(url: CalendarAPI.deletePICU(self.picu[indexPath.row].picuId).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
                     switch response.response?.statusCode {
                     case 200:
                         print("OK - Send notice list successfully. - getPICU")
@@ -153,11 +153,11 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         
         if tableView.tag == 2 {
             if editingStyle == .delete {
-                httpClient.delete(url: PICUAPI.deletePICU(self.picu[indexPath.row].picuId).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
+                httpClient.delete(url: CalendarAPI.deletePlan(self.plan[indexPath.row].planId).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
                     switch response.response?.statusCode {
                     case 200:
                         print("OK - Send notice list successfully. - getPICU")
-                            
+                        
                         self.plan.remove(at: indexPath.row)
                         tableView.deleteRows(at: [indexPath], with: .fade)
                             
@@ -234,54 +234,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         getPlan()
     }
     
-    func createPICU(description: String, date: String) {
-        httpClient.post(url: PICUAPI.createPICU.path(), params: ["description": description, "title": title, "date": date], header: Header.token.header()).responseJSON(completionHandler: {(response) in
-            switch response.response?.statusCode {
-            case 201:
-                print("OK - Send notice list successfully. - createPICU")
-                self.dismiss(animated: true, completion: nil)
-                
-            case 400:
-                self.showToast(message: "권한 없음")
-                
-            case 403:
-                print("403 : Token Token Token Token - createPICU")
-                    
-            case 404:
-                print("404 : NOT FOUND - Notice does not exist. - createPICU")
-                    
-            default:
-                print(response.response?.statusCode)
-                print(response.error)
-            }
-        })
-    }
-    
-    func createPlan(title: String, description: String, date: String) {
-        httpClient.post(url: PICUAPI.createPlan.path(), params: ["description": description, "title": title, "date": date], header: Header.token.header()).responseJSON(completionHandler: {(response) in
-            switch response.response?.statusCode {
-            case 201:
-                print("OK - Send notice list successfully. - createPlan")
-                self.dismiss(animated: true, completion: nil)
-                
-            case 400:
-                self.showToast(message: "권한 없음")
-                
-            case 403:
-                print("403 : Token Token Token Token - createPlan")
-                
-            case 404:
-                print("404 : NOT FOUND - Notice does not exist. - createPlan")
-                
-            default:
-                print(response.response?.statusCode)
-                print(response.error)
-            }
-        })
-    }
-    
     func getPICU() {
-        httpClient.get(url: PICUAPI.getPICU(date).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
+        httpClient.get(url: CalendarAPI.getPICU(date).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
             switch response.response?.statusCode {
             case 200:
                 do {
@@ -313,8 +267,31 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         })
     }
     
+    func createPICU(description: String, date: String) {
+        httpClient.post(url: CalendarAPI.createPICU.path(), params: ["description": description, "date": date], header: Header.token.header()).responseJSON(completionHandler: {(response) in
+            switch response.response?.statusCode {
+            case 201:
+                print("OK - Send notice list successfully. - createPICU")
+                self.dismiss(animated: true, completion: nil)
+                
+            case 400:
+                self.showToast(message: "권한 없음")
+                
+            case 403:
+                print("403 : Token Token Token Token - createPICU")
+                    
+            case 404:
+                print("404 : NOT FOUND - Notice does not exist. - createPICU")
+                    
+            default:
+                print(response.response?.statusCode)
+                print(response.error)
+            }
+        })
+    }
+    
     func getPlan() {
-        httpClient.get(url: PICUAPI.getPlan(date).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
+        httpClient.get(url: CalendarAPI.getPlan(date).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
             switch response.response?.statusCode {
             case 200:
                 do {
@@ -339,6 +316,29 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             case 404:
                 print("404 : NOT FOUND - Notice does not exist. - getPICU")
 
+            default:
+                print(response.response?.statusCode)
+                print(response.error)
+            }
+        })
+    }
+    
+    func createPlan(title: String, description: String, date: String) {
+        httpClient.post(url: CalendarAPI.createPlan.path(), params: ["description": description, "title": title, "date": date], header: Header.token.header()).responseJSON(completionHandler: {(response) in
+            switch response.response?.statusCode {
+            case 201:
+                print("OK - Send notice list successfully. - createPlan")
+                self.dismiss(animated: true, completion: nil)
+                
+            case 400:
+                self.showToast(message: "권한 없음")
+                
+            case 403:
+                print("403 : Token Token Token Token - createPlan")
+                
+            case 404:
+                print("404 : NOT FOUND - Notice does not exist. - createPlan")
+                
             default:
                 print(response.response?.statusCode)
                 print(response.error)

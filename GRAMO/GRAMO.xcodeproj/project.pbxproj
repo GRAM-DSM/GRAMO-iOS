@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		544DA1862672401400DE3C8D /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544DA1852672401400DE3C8D /* SignIn.swift */; };
+		544DA1892672440900DE3C8D /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544DA1882672440900DE3C8D /* SignInVC.swift */; };
+		544DA18B26724E5000DE3C8D /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544DA18A26724E5000DE3C8D /* SignUpVC.swift */; };
+		544DA18D267285E200DE3C8D /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 544DA18C267285E200DE3C8D /* Auth.storyboard */; };
 		5477A844266A10A5009064C7 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A843266A10A5009064C7 /* APIProvider.swift */; };
 		5477A846266A10BF009064C7 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A845266A10BF009064C7 /* AuthAPI.swift */; };
-		5477A848266A120F009064C7 /* PICUAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A847266A120F009064C7 /* PICUAPI.swift */; };
+		5477A848266A120F009064C7 /* CalendarAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A847266A120F009064C7 /* CalendarAPI.swift */; };
 		5477A84A266A126C009064C7 /* NoticeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A849266A126C009064C7 /* NoticeAPI.swift */; };
 		5477A84C266A1465009064C7 /* HomeworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A84B266A1465009064C7 /* HomeworkAPI.swift */; };
 		5477A84F266A1532009064C7 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A84E266A1532009064C7 /* Headers.swift */; };
@@ -69,9 +73,13 @@
 
 /* Begin PBXFileReference section */
 		4839AD9BA6790E84B5F90CB3 /* Pods-GRAMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.release.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.release.xcconfig"; sourceTree = "<group>"; };
+		544DA1852672401400DE3C8D /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		544DA1882672440900DE3C8D /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		544DA18A26724E5000DE3C8D /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		544DA18C267285E200DE3C8D /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		5477A843266A10A5009064C7 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		5477A845266A10BF009064C7 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
-		5477A847266A120F009064C7 /* PICUAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PICUAPI.swift; sourceTree = "<group>"; };
+		5477A847266A120F009064C7 /* CalendarAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAPI.swift; sourceTree = "<group>"; };
 		5477A849266A126C009064C7 /* NoticeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeAPI.swift; sourceTree = "<group>"; };
 		5477A84B266A1465009064C7 /* HomeworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworkAPI.swift; sourceTree = "<group>"; };
 		5477A84E266A1532009064C7 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
@@ -144,12 +152,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		544DA18426723FD600DE3C8D /* AuthModel */ = {
+			isa = PBXGroup;
+			children = (
+				544DA1852672401400DE3C8D /* SignIn.swift */,
+			);
+			path = AuthModel;
+			sourceTree = "<group>";
+		};
+		544DA1872672402E00DE3C8D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				544DA1882672440900DE3C8D /* SignInVC.swift */,
+				544DA18A26724E5000DE3C8D /* SignUpVC.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		544DA82B2670AC7D00C6C302 /* CalendarModel */ = {
+			isa = PBXGroup;
+			children = (
+				EF71EEFB26677324000F2278 /* GetCalenderList.swift */,
+				EF71EEFA26677324000F2278 /* GetPICU.swift */,
+				EF71EEF926677324000F2278 /* GetPlan.swift */,
+			);
+			path = CalendarModel;
+			sourceTree = "<group>";
+		};
 		5477A842266A1094009064C7 /* API */ = {
 			isa = PBXGroup;
 			children = (
 				5477A843266A10A5009064C7 /* APIProvider.swift */,
 				5477A845266A10BF009064C7 /* AuthAPI.swift */,
-				5477A847266A120F009064C7 /* PICUAPI.swift */,
+				5477A847266A120F009064C7 /* CalendarAPI.swift */,
 				5477A849266A126C009064C7 /* NoticeAPI.swift */,
 				5477A84B266A1465009064C7 /* HomeworkAPI.swift */,
 			);
@@ -186,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				EF71EEFF2667732F000F2278 /* Cell */,
-				EF71EEF826677313000F2278 /* API */,
 				EF71EEF726677309000F2278 /* Model */,
 				EF71EEF6266772FC000F2278 /* Networking */,
 				EF71EED526676B5E000F2278 /* VC */,
@@ -228,8 +262,9 @@
 		EF71EED026676B3A000F2278 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				EF71EED226676B57000F2278 /* homework.storyboard */,
+				544DA18C267285E200DE3C8D /* Auth.storyboard */,
 				EF71EF2B266774B2000F2278 /* Calendar2.storyboard */,
+				EF71EED226676B57000F2278 /* homework.storyboard */,
 				EF71EED126676B57000F2278 /* info.storyboard */,
 			);
 			path = UI;
@@ -238,6 +273,7 @@
 		EF71EED526676B5E000F2278 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				544DA1872672402E00DE3C8D /* Auth */,
 				EF71EF262667742F000F2278 /* Calendar */,
 				EF71EED826676BAD000F2278 /* info */,
 				EF71EED726676BA3000F2278 /* SideMenu */,
@@ -304,21 +340,13 @@
 			isa = PBXGroup;
 			children = (
 				EF71EF0726677377000F2278 /* infoListModel.swift */,
+				544DA18426723FD600DE3C8D /* AuthModel */,
+				544DA82B2670AC7D00C6C302 /* CalendarModel */,
 				EF71EF0626677365000F2278 /* HomeworkModel */,
 				EF71EF052667735F000F2278 /* Notice */,
 				EF71EF0426677354000F2278 /* NetworkingModel */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		EF71EEF826677313000F2278 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				EF71EEFB26677324000F2278 /* GetCalenderList.swift */,
-				EF71EEFA26677324000F2278 /* GetPICU.swift */,
-				EF71EEF926677324000F2278 /* GetPlan.swift */,
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		EF71EEFF2667732F000F2278 /* Cell */ = {
@@ -448,6 +476,7 @@
 				54BD212E266624BD00464EEE /* NotoSansKR-Medium.otf in Resources */,
 				54BD212B266624B600464EEE /* NotoSansKR-Light.otf in Resources */,
 				54BD212D266624BA00464EEE /* NotoSansKR-Black.otf in Resources */,
+				544DA18D267285E200DE3C8D /* Auth.storyboard in Resources */,
 				54B1B83C26661DC300EDEDAB /* Main.storyboard in Resources */,
 				54BD212F266624BF00464EEE /* NotoSansKR-Regular.otf in Resources */,
 				54BD212C266624B800464EEE /* NotoSansKR-Bold.otf in Resources */,
@@ -514,6 +543,7 @@
 				EF71EF1E266773C3000F2278 /* GetUserList.swift in Sources */,
 				EF71EEF526676C1C000F2278 /* UIextiention.swift in Sources */,
 				EF71EEFC26677324000F2278 /* GetPlan.swift in Sources */,
+				544DA1862672401400DE3C8D /* SignIn.swift in Sources */,
 				EF71EEE026676BD3000F2278 /* HomeworkAddViewController.swift in Sources */,
 				EF71EF21266773C3000F2278 /* HwListResponseS.swift in Sources */,
 				EF71EF16266773B3000F2278 /* noticeDetail.swift in Sources */,
@@ -533,6 +563,7 @@
 				EF71EF1F266773C3000F2278 /* HwUser.swift in Sources */,
 				EF71EEF026676C10000F2278 /* InfoDetailViewController.swift in Sources */,
 				EF71EEDE26676BD3000F2278 /* HomeworkOrderedViewController.swift in Sources */,
+				544DA1892672440900DE3C8D /* SignInVC.swift in Sources */,
 				EF71EEF326676C10000F2278 /* InfoAddViewController.swift in Sources */,
 				5477A84C266A1465009064C7 /* HomeworkAPI.swift in Sources */,
 				EF71EF252667741D000F2278 /* Networking.swift in Sources */,
@@ -540,7 +571,8 @@
 				EF71EF2926677441000F2278 /* DetailViewController.swift in Sources */,
 				EF71EEE526676BDD000F2278 /* SecondSectionTableViewCell.swift in Sources */,
 				EF71EEFD26677324000F2278 /* GetPICU.swift in Sources */,
-				5477A848266A120F009064C7 /* PICUAPI.swift in Sources */,
+				5477A848266A120F009064C7 /* CalendarAPI.swift in Sources */,
+				544DA18B26724E5000DE3C8D /* SignUpVC.swift in Sources */,
 				EF71EF0F2667739D000F2278 /* ThirdSectionModel.swift in Sources */,
 				EF71EF0226677344000F2278 /* PICUTableViewCell.swift in Sources */,
 				5477A84A266A126C009064C7 /* NoticeAPI.swift in Sources */,

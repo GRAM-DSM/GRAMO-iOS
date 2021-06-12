@@ -36,7 +36,8 @@ enum Header {
         
         switch self {
         case .token:
-            return HTTPHeaders(["Authorization" : "Bearer" + token, "Content-Type" : "application/json"])
+            return HTTPHeaders(["Authorization" : "Bearer " + token, "Content-Type" : "application/json"])
+            
         case .tokenIsEmpty:
             return ["Content-Type" : "application/json"]
         }

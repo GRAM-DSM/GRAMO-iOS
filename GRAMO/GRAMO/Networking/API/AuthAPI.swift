@@ -8,12 +8,30 @@
 import Foundation
 
 enum AuthAPI: API {
-    case <#case#>
-    
+    case signIn
+    case logout
+    case tokenRefresh
+    case withDrawel
+    case signUp
+    case sendEmail
+    case checkEmailCode
+
     func path() -> String {
         switch self {
-        case <#pattern#>:
-            <#code#>
+        case .signIn, .tokenRefresh, .logout:
+            return baseURIAuth + "/auth"
+        
+        case .withDrawel:
+            return baseURIAuth + "/withdrawel"
+        
+        case .signUp:
+            return baseURIAuth + "/signup"
+        
+        case .sendEmail:
+            return baseURIAuth + "/sendemail"
+        
+        case .checkEmailCode:
+            return baseURIAuth + "/checkcode"
         }
     }
 }

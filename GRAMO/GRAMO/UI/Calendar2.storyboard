@@ -36,6 +36,7 @@
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button" image="line.horizontal.3" catalog="system"/>
                                         <connections>
+                                            <action selector="sideButton:" destination="zp6-Ak-6uE" eventType="touchUpInside" id="OBY-d5-xab"/>
                                             <segue destination="qAK-mb-Mzs" kind="show" id="qW4-a2-nN6"/>
                                         </connections>
                                     </button>
@@ -59,6 +60,7 @@
                     <navigationItem key="navigationItem" id="vBb-f3-cdh"/>
                     <connections>
                         <outlet property="calendar" destination="ynP-mm-GbC" id="FpJ-zQ-dhi"/>
+                        <outlet property="sideButton" destination="74P-NJ-rI9" id="Qao-1S-5Wf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jsp-Vx-54O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

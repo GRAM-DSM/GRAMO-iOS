@@ -25,27 +25,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ynP-mm-GbC" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="44" width="390" height="715"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74P-NJ-rI9">
-                                        <rect key="frame" x="24" y="34" width="24" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="a3i-zp-2W0"/>
-                                            <constraint firstAttribute="width" constant="24" id="d3f-tI-W8M"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="labelColor"/>
-                                        <state key="normal" title="Button" image="line.horizontal.3" catalog="system"/>
-                                        <connections>
-                                            <action selector="sideButton:" destination="zp6-Ak-6uE" eventType="touchUpInside" id="OBY-d5-xab"/>
-                                            <segue destination="qAK-mb-Mzs" kind="show" id="qW4-a2-nN6"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                                <rect key="frame" x="0.0" y="88" width="390" height="671"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="74P-NJ-rI9" firstAttribute="leading" secondItem="ynP-mm-GbC" secondAttribute="leading" constant="24" id="26l-hf-iM4"/>
-                                    <constraint firstItem="74P-NJ-rI9" firstAttribute="top" secondItem="ynP-mm-GbC" secondAttribute="top" constant="34" id="VdK-pn-yLn"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cnX-UR-qgi"/>
@@ -57,10 +38,16 @@
                             <constraint firstItem="ynP-mm-GbC" firstAttribute="leading" secondItem="cnX-UR-qgi" secondAttribute="leading" id="ysH-wR-eqI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="vBb-f3-cdh"/>
+                    <navigationItem key="navigationItem" id="vBb-f3-cdh">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="MGR-wW-wpF">
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <connections>
+                                <segue destination="qAK-mb-Mzs" kind="show" id="EC7-3l-CwD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="calendar" destination="ynP-mm-GbC" id="FpJ-zQ-dhi"/>
-                        <outlet property="sideButton" destination="74P-NJ-rI9" id="Qao-1S-5Wf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jsp-Vx-54O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -406,9 +393,10 @@
         <!--Navigation Controller-->
         <scene sceneID="KpI-E7-0Nj">
             <objects>
-                <navigationController storyboardIdentifier="navigation" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7Vo-wb-a1r" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigation" automaticallyAdjustsScrollViewInsets="NO" id="7Vo-wb-a1r" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6HC-7B-25V">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -464,6 +452,9 @@
                                 <state key="normal" title="캘린더">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="calendar:" destination="h6Q-zc-Egz" eventType="touchUpInside" id="UHY-98-3zt"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xxs-QO-cNx">
                                 <rect key="frame" x="41" y="363" width="34" height="39"/>

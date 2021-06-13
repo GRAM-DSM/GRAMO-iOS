@@ -824,6 +824,9 @@
                                 <state key="normal" title="캘린더">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="calendar:" destination="qPu-9g-0ci" eventType="touchUpInside" id="hQF-Yr-SHs"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXB-qB-QxJ">
                                 <rect key="frame" x="41" y="363" width="34" height="39"/>

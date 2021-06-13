@@ -17,18 +17,22 @@ class SideMenuViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-//    @IBAction func calendar(_ sender: UIButton) {
-//        let vc =
-//    }
+    @IBAction func calendar(_ sender: UIButton) {
+        let sub = UIStoryboard(name: "Calendar2", bundle: nil)
+        let calendar = sub.instantiateViewController(withIdentifier: "Calendar2VC")
+        self.navigationController?.pushViewController(calendar, animated: true)
+    }
     
     @IBAction func info(_ sender : UIButton) {
-        let vc = (storyboard?.instantiateViewController(identifier: "homework")) as! HomeworkListViewController
-        navigationController?.pushViewController(vc, animated: true)
+        let sub = UIStoryboard(name: "info", bundle: nil)
+        let calendar = sub.instantiateViewController(withIdentifier: "infoListViewController")
+        self.navigationController?.pushViewController(calendar, animated: true)
     }
     
     @IBAction func homework(_ sender: UIButton) {
-        let vc = HomeworkListViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        let sub = UIStoryboard(name: "homework", bundle: nil)
+        let calendar = sub.instantiateViewController(withIdentifier: "homeworkVC")
+        self.navigationController?.pushViewController(calendar, animated: true)
     }
     
     @IBAction func logOut(_ sender: UIButton){
@@ -42,15 +46,4 @@ class SideMenuViewController: UIViewController {
     func getProfile(){
         
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

@@ -56,7 +56,6 @@ class SignInVC: UIViewController {
                     
                     let sub = UIStoryboard(name: "Calendar2", bundle: nil)
                     let calendar = sub.instantiateViewController(withIdentifier: "Calendar2VC")
-                    // self.present(calendar, animated: true, completion: nil)
                     self.navigationController?.pushViewController(calendar, animated: true)
                     
                 } catch {

@@ -21,13 +21,14 @@ struct Token {
         }
     }
     
+    
     static func tokenRemove() {
         token = nil
     }
 }
 
 enum Header {
-    case token, tokenIsEmpty
+    case token, tokenIsEmpty//, name, major
     
     func header() -> HTTPHeaders {
         guard let token = Token.token else {
@@ -40,6 +41,7 @@ enum Header {
             
         case .tokenIsEmpty:
             return ["Content-Type" : "application/json"]
+
         }
     }
 }

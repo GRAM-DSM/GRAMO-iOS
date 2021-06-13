@@ -16,6 +16,7 @@ class InfoAddViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     let httpClient = HTTPClient()
     var infoList = [InfoList]()
+    private var signInModel: SignIn!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,8 @@ class InfoAddViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         dateLabel.text = currentDate
         
         placeholderSetting()
+        
+        nameLabel.text = signInModel.name
         
         infoTitle.delegate = self
         infoDetail.delegate = self

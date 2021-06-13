@@ -8,6 +8,10 @@
 import UIKit
 
 class SideMenuViewController: UIViewController {
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var majorLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

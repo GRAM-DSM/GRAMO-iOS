@@ -17,6 +17,7 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
     @IBOutlet weak var allocatorButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var detailTextView: UITextView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     let datePicker = UIDatePicker()
     
@@ -29,6 +30,7 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
     
     private var userModel : [UserList] = [UserList]()
     private var userListModel : User = User()
+    private var signInModel: SignIn!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,8 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
         detailTextView.delegate = self
         
         createDatePicker()
+        
+        nameLabel.text = signInModel.name
         
         if dateLabel.adjustsFontSizeToFitWidth == false {
             dateLabel.adjustsFontSizeToFitWidth = true

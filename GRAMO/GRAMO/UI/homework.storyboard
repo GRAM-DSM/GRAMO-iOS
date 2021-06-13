@@ -736,6 +736,7 @@
                         <outlet property="dateLabel" destination="F6l-br-vOj" id="5Hi-al-83U"/>
                         <outlet property="deadLinetTextField" destination="41U-5w-Gck" id="CBd-Vp-Xsm"/>
                         <outlet property="detailTextView" destination="Taz-7j-7OX" id="5sK-64-9Uf"/>
+                        <outlet property="nameLabel" destination="RkL-iO-BVK" id="Kk6-vE-0Tm"/>
                         <outlet property="selectMajorButton" destination="WFh-oM-Qdq" id="n5c-VF-vge"/>
                         <outlet property="titleTextField" destination="7wP-fh-hhN" id="vDC-tK-Oee"/>
                     </connections>
@@ -813,6 +814,9 @@
                                 <state key="normal" title="공지사항">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="info:" destination="qPu-9g-0ci" eventType="touchUpInside" id="2f2-cu-LNL"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Un-UG-CSq">
                                 <rect key="frame" x="41" y="292" width="50" height="39"/>
@@ -827,6 +831,9 @@
                                 <state key="normal" title="숙제">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="homework:" destination="qPu-9g-0ci" eventType="touchUpInside" id="iSw-87-YIo"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8x-z9-erd">
                                 <rect key="frame" x="41" y="691" width="59" height="36"/>
@@ -871,6 +878,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="K8x-ci-Vz1"/>
+                    <connections>
+                        <outlet property="majorLabel" destination="qRb-MS-UcS" id="6aL-GC-d7l"/>
+                        <outlet property="nameLabel" destination="N27-Jj-5zA" id="Qbi-CW-Dma"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bOX-rO-Hvg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

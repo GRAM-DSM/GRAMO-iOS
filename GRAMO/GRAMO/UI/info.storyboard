@@ -158,7 +158,7 @@
         <!--Info Add View Controller-->
         <scene sceneID="hxi-0N-EDa">
             <objects>
-                <viewController id="dCh-Il-b45" customClass="InfoAddViewController" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InfoAddVC" id="dCh-Il-b45" customClass="InfoAddViewController" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rfJ-Z4-y6J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -480,6 +480,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RfU-yb-lef"/>
+                    <connections>
+                        <outlet property="majorLabel" destination="vnn-Qd-5bk" id="ZkK-zJ-1bJ"/>
+                        <outlet property="nameLabel" destination="TBm-Zc-KZc" id="xPZ-d1-T5f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Oa-bi-Ub2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

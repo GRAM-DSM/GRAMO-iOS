@@ -16,7 +16,7 @@ class SignInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setNavigationBar()
         customTxtField(emailTxtField)
         customTxtField(pwTxtField)
     }
@@ -28,7 +28,7 @@ class SignInVC: UIViewController {
     @IBAction func didTapLoginBtn(_ sender: UIButton) {
         guard let email = emailTxtField.text, !email.isEmpty else { return }
         guard let password = pwTxtField.text, !password.isEmpty else { return }
-
+        
         signIn(email: email, password: password)
     }
     
@@ -41,71 +41,78 @@ class SignInVC: UIViewController {
         
         httpClient.post(url: AuthAPI.signIn.path(), params: ["email": email, "password": password], header: Header.tokenIsEmpty.header())
             .responseJSON(completionHandler: {(response) in
-            switch response.response?.statusCode {
-            case 201:
-                do {
-                    print("OK - Send notice list successfully. - signIn")
+                switch response.response?.statusCode {
+                case 201:
+                    do {
+                        print("OK - Send notice list successfully. - signIn")
+                        
+                        let data = response.data
+                        let model = try JSONDecoder().decode(SignIn.self, from: data!)
+                        
+                        UserDefaults.standard.object(forKey: "nickname")
+                        UserDefaults.standard.setValue(model.name, forKey: "nickname")
+                        
+                        UserDefaults.standard.object(forKey: "major")
+                        UserDefaults.standard.setValue(model.major, forKey: "major")
+                        
+                        Token.token = model.access_token
+                        
+                        let sub = UIStoryboard(name: "info", bundle: nil)
+                        let info = sub.instantiateViewController(withIdentifier: "infoListViewController")
+                        
+                        
+                        self.navigationController?.pushViewController(info, animated: true)
+                        
+                        
+                        
+                    } catch {
+                        print("Error: \(error)")
+                    }
                     
-                    let data = response.data
-                    let model = try JSONDecoder().decode(SignIn.self, from: data!)
+                case 400:
+                    print("400 : BAD REQUEST - signIn")
                     
-                    self.signInModel = model
-                    Token.token = model.access_token
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.emailTxtField.frame.origin.x -= 10
+                        self.pwTxtField.frame.origin.x -= 10
+                    }, completion: { _ in
+                        UIView.animate(withDuration: 0.2, animations: {
+                            self.emailTxtField.frame.origin.x += 20
+                            self.pwTxtField.frame.origin.x += 20
+                        }, completion: { _ in
+                            UIView.animate(withDuration: 0.2, animations: {
+                                self.emailTxtField.frame.origin.x -= 10
+                                self.pwTxtField.frame.origin.x -= 10
+                            })
+                        })
+                    })
                     
-                    print(Token.token)
+                    self.failLabel.textColor = UIColor.red
                     
-                    let sub = UIStoryboard(name: "Calendar2", bundle: nil)
-                    let calendar = sub.instantiateViewController(withIdentifier: "Calendar2VC")
-                    self.navigationController?.pushViewController(calendar, animated: true)
+                case 404:
+                    print("404 : NOT FOUND - Notice does not exist. - signIn")
                     
-                } catch {
-                    print("Error: \(error)")
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.emailTxtField.frame.origin.x -= 10
+                        self.pwTxtField.frame.origin.x -= 10
+                    }, completion: { _ in
+                        UIView.animate(withDuration: 0.2, animations: {
+                            self.emailTxtField.frame.origin.x += 20
+                            self.pwTxtField.frame.origin.x += 20
+                        }, completion: { _ in
+                            UIView.animate(withDuration: 0.2, animations: {
+                                self.emailTxtField.frame.origin.x -= 10
+                                self.pwTxtField.frame.origin.x -= 10
+                            })
+                        })
+                    })
+                    
+                    self.failLabel.textColor = UIColor.red
+                    
+                default:
+                    print(response.response?.statusCode)
+                    print(response.error)
                 }
-                
-            case 400:
-                print("400 : BAD REQUEST - signIn")
-                
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.emailTxtField.frame.origin.x -= 10
-                    self.pwTxtField.frame.origin.x -= 10
-                }, completion: { _ in
-                    UIView.animate(withDuration: 0.2, animations: {
-                        self.emailTxtField.frame.origin.x += 20
-                        self.pwTxtField.frame.origin.x += 20
-                    }, completion: { _ in
-                        UIView.animate(withDuration: 0.2, animations: {
-                            self.emailTxtField.frame.origin.x -= 10
-                            self.pwTxtField.frame.origin.x -= 10
-                        })
-                    })
-                })
-
-                self.failLabel.textColor = UIColor.red
-                            
-            case 404:
-                print("404 : NOT FOUND - Notice does not exist. - signIn")
-                
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.emailTxtField.frame.origin.x -= 10
-                    self.pwTxtField.frame.origin.x -= 10
-                }, completion: { _ in
-                    UIView.animate(withDuration: 0.2, animations: {
-                        self.emailTxtField.frame.origin.x += 20
-                        self.pwTxtField.frame.origin.x += 20
-                    }, completion: { _ in
-                        UIView.animate(withDuration: 0.2, animations: {
-                            self.emailTxtField.frame.origin.x -= 10
-                            self.pwTxtField.frame.origin.x -= 10
-                        })
-                    })
-                })
-
-                self.failLabel.textColor = UIColor.red
-                
-            default:
-                print(response.response?.statusCode)
-                print(response.error)
-            }
-        })
+            })
     }
 }

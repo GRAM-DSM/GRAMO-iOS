@@ -30,6 +30,7 @@ class SignUpVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBar()
         
         customTxtField(nameTxtField)
         customTxtField(pwTxtField)

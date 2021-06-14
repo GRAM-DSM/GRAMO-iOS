@@ -192,18 +192,19 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         
         picuTableView.rowHeight = 48
         planTableView.rowHeight = 66
+
     }
     
     func appendMetadata(num: Int) {
         switch num {
         case 1:
-            picu.append(GetPICU(picuId: 0, userName: "정창용", description: "사유를 적어주세요"))
+            picu.append(GetPICU(picuId: 0, userName: UserDefaults.standard.object(forKey: "nickname") as! String, description: "사유를 적어주세요"))
             
         case 2:
             plan.append(GetPlan(planId: 0, title: "어떤 특별한 일인가요?", description: "특별한 일의 설명을 적어주세요"))
             
         default:
-            picu.append(GetPICU(picuId: 0, userName: "정창용", description: "사유를 적어주세요"))
+            picu.append(GetPICU(picuId: 0, userName: UserDefaults.standard.object(forKey: "nickname") as! String, description: "사유를 적어주세요"))
             plan.append(GetPlan(planId: 0, title: "어떤 특별한 일인가요?", description: "특별한 일의 설명을 적어주세요"))
         }
     }

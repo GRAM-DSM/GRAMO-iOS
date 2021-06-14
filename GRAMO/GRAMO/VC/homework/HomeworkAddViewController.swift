@@ -32,7 +32,7 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
     private var userListModel : User = User()
     private var signInModel: SignIn!
     
-    override func viewDidLoad() {
+    override func viewDidLoad()  {
         super.viewDidLoad()
         
         titleTextField.delegate = self
@@ -40,7 +40,7 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
         
         createDatePicker()
         
-        nameLabel.text = signInModel.name
+        nameLabel.text = UserDefaults.standard.object(forKey: "nickname") as! String
         
         if dateLabel.adjustsFontSizeToFitWidth == false {
             dateLabel.adjustsFontSizeToFitWidth = true

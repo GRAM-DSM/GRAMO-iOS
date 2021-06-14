@@ -18,6 +18,8 @@ class InfoAddViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     var infoList = [InfoList]()
     private var signInModel: SignIn!
     
+    var name = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
@@ -31,15 +33,16 @@ class InfoAddViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         let currentDate = date.string(from: Date())
         dateLabel.text = currentDate
         
-        placeholderSetting()
+        nameLabel.text = UserDefaults.standard.object(forKey: "nickname") as! String
         
-        nameLabel.text = signInModel.name
+        placeholderSetting()
         
         infoTitle.delegate = self
         infoDetail.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_ :)), name: UITextField.textDidChangeNotification, object: infoTitle)
     }
+    
     
     
     @IBAction func cancel(_ sender : UIBarButtonItem){

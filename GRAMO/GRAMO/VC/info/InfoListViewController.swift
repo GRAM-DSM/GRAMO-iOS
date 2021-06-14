@@ -79,8 +79,8 @@ class InfoListViewContoller
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        getList()
-        self.tableView.reloadData()
+        //getList()
+        //self.tableView.reloadData()
     }
     
     func getList(){

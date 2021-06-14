@@ -10,7 +10,6 @@ import FSCalendar
 
 class Calendar2VC: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
-    @IBOutlet weak var sideButton: UIButton!
     
     private var getCalendarListModel = [GetCalendarList]()
     
@@ -30,10 +29,6 @@ class Calendar2VC: UIViewController {
         if motion == .motionShake {
             setUpEvents()
         }
-    }
-    
-    @IBAction func sideButton(_ sender: UIButton){
-        print("tap")
     }
 }
 

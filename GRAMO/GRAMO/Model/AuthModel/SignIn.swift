@@ -20,3 +20,8 @@ struct SignIn: Codable {
         self.refresh_token = refresh_token
     }
 }
+
+struct Model{
+    static var name = String()
+    static var major = String()
+}

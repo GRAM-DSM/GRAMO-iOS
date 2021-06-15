@@ -49,22 +49,19 @@ class SignInVC: UIViewController {
                         let data = response.data
                         let model = try JSONDecoder().decode(SignIn.self, from: data!)
                         
+                        print(model)
+                        Token.token = model.access_token
+                        
                         UserDefaults.standard.object(forKey: "nickname")
                         UserDefaults.standard.setValue(model.name, forKey: "nickname")
                         
                         UserDefaults.standard.object(forKey: "major")
                         UserDefaults.standard.setValue(model.major, forKey: "major")
                         
-                        Token.token = model.access_token
-                        
-                        let sub = UIStoryboard(name: "info", bundle: nil)
-                        let info = sub.instantiateViewController(withIdentifier: "infoListViewController")
-                        
+                        let sub = UIStoryboard(name: "homework", bundle: nil)
+                        let info = sub.instantiateViewController(withIdentifier: "homeworkVC")
                         
                         self.navigationController?.pushViewController(info, animated: true)
-                        
-                        
-                        
                     } catch {
                         print("Error: \(error)")
                     }

@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct structure: Codable {
+    var structure = calendarContentResponses()
+}
+
 struct calendarContentResponses: Codable {
     var calendarContentResponses = [GetCalendarList]()
 }

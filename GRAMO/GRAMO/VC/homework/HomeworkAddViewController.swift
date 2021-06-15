@@ -208,6 +208,7 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
             switch res.response?.statusCode{
             case 201 :
                 do{
+                    print(res.response?.statusCode)
                     self.navigationController?.popViewController(animated: true)
                 }
                 catch {

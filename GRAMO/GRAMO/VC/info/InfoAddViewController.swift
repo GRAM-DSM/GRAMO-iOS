@@ -33,7 +33,7 @@ class InfoAddViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         let currentDate = date.string(from: Date())
         dateLabel.text = currentDate
         
-        nameLabel.text = UserDefaults.standard.object(forKey: "nickname") as! String
+        nameLabel.text = UserDefaults.standard.object(forKey: "nickname") as? String
         
         placeholderSetting()
         
@@ -72,7 +72,7 @@ class InfoAddViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     func createNotice(title: String, content: String) {
         httpClient.post(url: NoticeAPI.createNotice.path(), params: ["title":title, "content":content], header: Header.token.header()).responseJSON{(res) in
             switch res.response?.statusCode{
-            case 200:
+            case 201:
                 do {
                     self.navigationController?.popViewController(animated: true)
                 }
@@ -80,7 +80,7 @@ class InfoAddViewController: UIViewController, UITextViewDelegate, UITextFieldDe
                     print("error\(error)")
                 }
                 
-            default: print(res.response?.statusCode)
+            default: print(res.response?.statusCode ?? "default")
                 
             }
         }

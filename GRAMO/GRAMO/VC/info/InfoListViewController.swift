@@ -31,6 +31,8 @@ class InfoListViewContoller
         let finalDate = date.components(separatedBy: ["-", ":"," "])
         let formattedDate = finalDate[0] + "년 " + finalDate[1] + "월 " + finalDate[2] + "일"
         
+        cell.selectionStyle = .blue
+        
         cell.infoTitleLabel?.text = listModel.notice[indexPath.row].title
         cell.infoDetailLabel?.text = listModel.notice[indexPath.row].content
         cell.dateLabel?.text = formattedDate
@@ -46,12 +48,15 @@ class InfoListViewContoller
         detailVC.id = listModel.notice[indexPath.row].id
         self.present(detailVC, animated: true)
         
+        tableView.deselectRow(at: indexPath, animated: false)
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 130
         
+        print("asdf")
         getList()
         
         setNavigationBar()
@@ -72,34 +77,30 @@ class InfoListViewContoller
     }
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        secondGetList()
+        //secondGetList()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        //getList()
-        //self.tableView.reloadData()
+        super.viewWillAppear(animated)
+
+        print("appear")
+        getList()
     }
     
     func getList(){
         httpClient.get(url: NoticeAPI.getNoticeList(0, 10).path(), params: nil, header: Header.token.header()).responseJSON{(response) in
             switch response.response?.statusCode{
-            case 200: 
-                do{
-                    let data = response.data
-                    let model = try JSONDecoder().decode(GetNoticeList.self, from: data!)
-                    self.nextPage = model.next_page
-                    self.listModel.notice.removeAll()
-                    self.listModel.notice.append(contentsOf: model.notice)
-                    self.tableView.reloadData()
-                }
-                catch{
-                    print(error)
-                }
+            case 200:
+                print(response.data)
+                let model = try? JSONDecoder().decode(GetNoticeList.self, from: response.data!)
+                self.nextPage = model!.next_page
+                self.listModel.notice.removeAll()
+                self.listModel.notice.append(contentsOf: model!.notice)
+                self.tableView.reloadData()
             case 404: print("404 : NOT FOUND - Notice does not exist.")
-            default: print(response.response?.statusCode)
+            case 418: self.getList()
+            default: print("\(response.response?.statusCode)getlist" ?? "default")
             }
         }
     }
@@ -128,7 +129,7 @@ class InfoListViewContoller
                         print(error)
                     }
                 case 404: print("404 : NOT FOUND - Notice does not exist.")
-                default: print(response.response?.statusCode)
+                default: print(response.response?.statusCode ?? "default")
                 }
             }
         }

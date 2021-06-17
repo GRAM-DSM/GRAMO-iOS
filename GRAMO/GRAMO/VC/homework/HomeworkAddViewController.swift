@@ -40,7 +40,7 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
         
         createDatePicker()
         
-        nameLabel.text = UserDefaults.standard.object(forKey: "nickname") as! String
+        nameLabel.text = UserDefaults.standard.object(forKey: "nickname") as? String
         
         if dateLabel.adjustsFontSizeToFitWidth == false {
             dateLabel.adjustsFontSizeToFitWidth = true
@@ -138,7 +138,7 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
                     print(error)
                 }
             case 401 : print("401 - Unauthorized")
-            default : print(res.response?.statusCode)
+            default : print(res.response?.statusCode ?? "default")
             }
         }
         
@@ -208,7 +208,7 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
             switch res.response?.statusCode{
             case 201 :
                 do{
-                    print(res.response?.statusCode)
+                    print(res.response?.statusCode ?? "default")
                     self.navigationController?.popViewController(animated: true)
                 }
                 catch {
@@ -216,7 +216,7 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
                 }
             case 400 : print("400 - BAD REQUEST")
             case 404 : print("404 - NOT FOUND createHw")
-            default : print(res.response?.statusCode)
+            default : print(res.response?.statusCode ?? "default")
             }
         }
     }

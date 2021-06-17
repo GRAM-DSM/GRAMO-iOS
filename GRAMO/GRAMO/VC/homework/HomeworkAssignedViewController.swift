@@ -63,7 +63,7 @@ class HomeworkAssignedViewController: UIViewController {
             case 400 : print("400 - BAD REQUEST")
             case 401 : print("401 - Unauthorized")
             case 404 : print("404 - NOT FOUND")
-            default : print(res.response?.statusCode)
+            default : print(res.response?.statusCode ?? "default")
                 
             }
         }
@@ -78,7 +78,7 @@ class HomeworkAssignedViewController: UIViewController {
             case 400 : print("400 - BAD REQUEST")
             case 401 : print("401 - Unauthorized")
             case 404 : print("404 - NOT FOUND")
-            default : print(res.response?.statusCode)
+            default : print(res.response?.statusCode ?? "default")
             }
         }
     }

@@ -91,40 +91,40 @@ class SignUpVC: UIViewController {
             if trueEmail == true {
                 httpClient.post(url: AuthAPI.signUp.path(), params: ["email": email, "password": password, "name": name, "major": major], header: Header.tokenIsEmpty.header())
                     .responseJSON(completionHandler: {(response) in
-                    switch response.response?.statusCode {
-                    case 200:
-                        self.dismiss(animated: true, completion: nil)
-                        self.navigationController?.popViewController(animated : true)
+                        switch response.response?.statusCode {
+                        case 200:
+                            self.dismiss(animated: true, completion: nil)
+                            self.navigationController?.popViewController(animated : true)
                             
-                    case 409:
-                        print("This email is already in use. - postSignIn")
-                        
-                        if password != conformPwd {
-                            UIView.animate(withDuration: 0.2, animations: {
-                                self.pwTxtField.frame.origin.x -= 10
-                                self.pwConformTxtField.frame.origin.x -= 10
+                        case 409:
+                            print("This email is already in use. - postSignIn")
                             
-                                }, completion: { _ in
+                            if password != conformPwd {
                                 UIView.animate(withDuration: 0.2, animations: {
-                                    self.pwTxtField.frame.origin.x += 20
-                                    self.pwConformTxtField.frame.origin.x += 20
-                                
-                                    }, completion: { _ in
+                                    self.pwTxtField.frame.origin.x -= 10
+                                    self.pwConformTxtField.frame.origin.x -= 10
+                                    
+                                }, completion: { _ in
                                     UIView.animate(withDuration: 0.2, animations: {
-                                        self.pwTxtField.frame.origin.x -= 10
-                                        self.pwConformTxtField.frame.origin.x -= 10
+                                        self.pwTxtField.frame.origin.x += 20
+                                        self.pwConformTxtField.frame.origin.x += 20
+                                        
+                                    }, completion: { _ in
+                                        UIView.animate(withDuration: 0.2, animations: {
+                                            self.pwTxtField.frame.origin.x -= 10
+                                            self.pwConformTxtField.frame.origin.x -= 10
+                                        })
                                     })
                                 })
-                            })
-                        
-                            self.failLabel.text = "비밀번호가 일치하지 않습니다"
+                                
+                                self.failLabel.text = "비밀번호가 일치하지 않습니다"
+                            }
+                            
+                        default:
+                            print(response.response?.statusCode ?? "default")
+                            print(response.error ?? "default")
                         }
-                        
-                    default:
-                        print(response.response?.statusCode)
-                        print(response.error)
-                    }
-                })
+                    })
             } else {
                 failLabel.text = "인증번호가 일치하지 않습니다"
             }
@@ -136,44 +136,44 @@ class SignUpVC: UIViewController {
     func postSendEmail(email: String) {
         httpClient.post(url: AuthAPI.sendEmail.path(), params: ["email": email], header: Header.tokenIsEmpty.header())
             .responseJSON(completionHandler: {(response) in
-            switch response.response?.statusCode {
-            case 200:
-                self.failLabel.text = ""
-                
-            case 409:
-                print("This email is already in use. - postSendEmail")
-                
-                self.failLabel.text = "중복된 이메일 입니다"
-                
-            default:
-                print(response.response?.statusCode)
-                print(response.error)
-            }
-        })
+                switch response.response?.statusCode {
+                case 200:
+                    self.failLabel.text = ""
+                    
+                case 409:
+                    print("This email is already in use. - postSendEmail")
+                    
+                    self.failLabel.text = "중복된 이메일 입니다"
+                    
+                default:
+                    print(response.response?.statusCode ?? "default")
+                    print(response.error ?? "default")
+                }
+            })
     }
     
     func postCheckEmailAuthenticationCode(email: String, code: Int) {
         httpClient.post(url: AuthAPI.checkEmailCode.path(), params: ["email": email, "code": code], header: Header.tokenIsEmpty.header())
             .responseJSON(completionHandler: {(response) in
-            switch response.response?.statusCode {
-            case 200:
-                self.failLabel.text = ""
-                self.trueEmail = true
-                
-            case 404:
-                print("This email does not exist. - postCheckEmailAuthenticationCode")
-                self.failLabel.text = "올바른 이메일이 아닙니다"
-                
-                
-            case 409:
-                print("Email and code does not match. - postCheckEmailAuthenticationCode")
-                self.failLabel.text = "인증번호가 일치하지 않습니다"
-                
-            default:
-                print(response.response?.statusCode)
-                print(response.error)
-            }
-        })
+                switch response.response?.statusCode {
+                case 200:
+                    self.failLabel.text = ""
+                    self.trueEmail = true
+                    
+                case 404:
+                    print("This email does not exist. - postCheckEmailAuthenticationCode")
+                    self.failLabel.text = "올바른 이메일이 아닙니다"
+                    
+                    
+                case 409:
+                    print("Email and code does not match. - postCheckEmailAuthenticationCode")
+                    self.failLabel.text = "인증번호가 일치하지 않습니다"
+                    
+                default:
+                    print(response.response?.statusCode ?? "default")
+                    print(response.error ?? "default")
+                }
+            })
     }
     
     func customTxtField(_ txtField: UITextField) {
@@ -207,7 +207,7 @@ class SignUpVC: UIViewController {
             
         case "서버 개발자":
             return "BACKEND"
-        
+            
         case "디자이너":
             return "DESIGN"
             

@@ -93,7 +93,7 @@ class HomeworkOrderedViewController: UIViewController {
             case 400 : print("400 - BAD REQUEST")
             case 401 : print("401 - Unauthorized")
             case 404 : print("404 - NOT FOUND")
-            default : print(res.response?.statusCode)
+            default : print(res.response?.statusCode ?? "default")
                 
             }
         }
@@ -109,7 +109,7 @@ class HomeworkOrderedViewController: UIViewController {
             case 400 : print("400 - BAD REQUEST")
             case 401 : print("401 - Unauthorized")
             case 404 : print("404 - NOT FOUND")
-            default : print(res.response?.statusCode)
+            default : print(res.response?.statusCode ?? "default")
             }
         }
     }
@@ -127,7 +127,7 @@ class HomeworkOrderedViewController: UIViewController {
                 let cancelAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
-            default : print(res.response?.statusCode)
+            default : print(res.response?.statusCode ?? "default")
             }
         }
         

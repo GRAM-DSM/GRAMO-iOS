@@ -29,7 +29,8 @@ class InfoDetailViewController: UIViewController {
     @IBAction func deleteNotice(_ sender: UIButton) {
         let alert = UIAlertController(title: "삭제하시겠습니까?", message: "되돌리기는 불가능합니다.", preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-        let deleteAction = UIAlertAction(title: "예", style: .destructive) { [self](action) in self.deleteNotice(id: id)}
+        let deleteAction = UIAlertAction(title: "예", style: .destructive) { [self](action) in self.deleteNotice(id: id)
+        }
         
         alert.addAction(cancelAction)
         alert.addAction(deleteAction)
@@ -54,7 +55,7 @@ class InfoDetailViewController: UIViewController {
                     print(error)
                 }
             case 404: print("404 - Not Found")
-            default: print(res.response?.statusCode)
+            default: print(res.response?.statusCode ?? "default")
             }
         }
     }
@@ -62,7 +63,7 @@ class InfoDetailViewController: UIViewController {
     func deleteNotice(id: Int){
         httpclient.delete(url: NoticeAPI.deleteNotice(id).path(), params: nil, header: Header.token.header()).responseJSON{(res) in
             switch res.response?.statusCode{
-            case 200:
+            case 204:
                 self.dismiss(animated: true)
             case 403:
                 print("403 - Forbidden")
@@ -71,7 +72,7 @@ class InfoDetailViewController: UIViewController {
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             case 404: print("404 - Not Found")
-            default: print(res.response?.statusCode)
+            default: print(res.response?.statusCode ?? "default")
             }
         }
     }

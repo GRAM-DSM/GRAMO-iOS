@@ -104,7 +104,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 planCell.titleTextView.isSelectable = false
                 planCell.detailTextView.isSelectable = false
             }
-
+            
             return planCell
         }
     }
@@ -117,7 +117,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         if tableView.tag == 2 {
             return plan.count
         }
-
+        
         return 0
     }
     
@@ -128,10 +128,10 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                     switch response.response?.statusCode {
                     case 200:
                         print("OK - Send notice list successfully. - getPICU")
-                            
+                        
                         self.picu.remove(at: indexPath.row)
                         tableView.deleteRows(at: [indexPath], with: .fade)
-                            
+                        
                         self.showToast(message: "PICU 삭제 성공!")
                         
                     case 401:
@@ -139,13 +139,13 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                         
                     case 403:
                         print("403 : Token Token Token Token - getPICU")
-                    
+                        
                     case 404:
                         print("404 : NOT FOUND - Notice does not exist. - getPICU")
-
+                        
                     default:
-                        print(response.response?.statusCode)
-                        print(response.error)
+                        print(response.response?.statusCode ?? "default")
+                        print(response.error ?? "default")
                     }
                 })
             }
@@ -160,21 +160,21 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                         
                         self.plan.remove(at: indexPath.row)
                         tableView.deleteRows(at: [indexPath], with: .fade)
-                            
+                        
                         self.showToast(message: "Plan 삭제 성공!")
                         
                     case 401:
                         self.showToast(message: "권한이 없습니다")
-
+                        
                     case 403:
                         print("403 : Token Token Token Token - getPICU")
-                    
+                        
                     case 404:
                         print("404 : NOT FOUND - Notice does not exist. - getPICU")
-
+                        
                     default:
-                        print(response.response?.statusCode)
-                        print(response.error)
+                        print(response.response?.statusCode ?? "default")
+                        print(response.error ?? "default")
                     }
                 })
             }
@@ -192,7 +192,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         
         picuTableView.rowHeight = 48
         planTableView.rowHeight = 66
-
+        
     }
     
     func appendMetadata(num: Int) {
@@ -244,7 +244,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                     
                     let data = response.data
                     let model = try JSONDecoder().decode([GetPICU].self, from: data!)
-
+                    
                     self.picu.removeAll()
                     
                     self.appendMetadata(num: 1)
@@ -257,13 +257,13 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 
             case 403:
                 print("403 : Token Token Token Token - getPICU")
-            
+                
             case 404:
                 print("404 : NOT FOUND - Notice does not exist. - getPICU")
-
+                
             default:
-                print(response.response?.statusCode)
-                print(response.error)
+                print(response.response?.statusCode ?? "default")
+                print(response.error ?? "default")
             }
         })
     }
@@ -280,13 +280,13 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 
             case 403:
                 print("403 : Token Token Token Token - createPICU")
-                    
+                
             case 404:
                 print("404 : NOT FOUND - Notice does not exist. - createPICU")
-                    
+                
             default:
-                print(response.response?.statusCode)
-                print(response.error)
+                print(response.response?.statusCode ?? "default")
+                print(response.error ?? "default")
             }
         })
     }
@@ -300,7 +300,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                     
                     let data = response.data
                     let model = try JSONDecoder().decode([GetPlan].self, from: data!)
-
+                    
                     self.plan.removeAll()
                     
                     self.appendMetadata(num: 2)
@@ -310,16 +310,16 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 } catch {
                     print("Error: \(error)")
                 }
-
+                
             case 403:
                 print("403 : Token Token Token Token - getPICU")
-            
+                
             case 404:
                 print("404 : NOT FOUND - Notice does not exist. - getPICU")
-
+                
             default:
-                print(response.response?.statusCode)
-                print(response.error)
+                print(response.response?.statusCode ?? "default")
+                print(response.error ?? "default")
             }
         })
     }
@@ -341,8 +341,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 print("404 : NOT FOUND - Notice does not exist. - createPlan")
                 
             default:
-                print(response.response?.statusCode)
-                print(response.error)
+                print(response.response?.statusCode ?? "default")
+                print(response.error ?? "default")
             }
         })
     }

@@ -107,8 +107,8 @@ class SignInVC: UIViewController {
                     self.failLabel.textColor = UIColor.red
                     
                 default:
-                    print(response.response?.statusCode)
-                    print(response.error)
+                    print(response.response?.statusCode ?? "default")
+                    print(response.error ?? "default")
                 }
             })
     }

@@ -48,7 +48,7 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
         switch formatter.string(from: date) {
         case "2021-09-03", "2022-09-03":
             return "Bir"
-        
+            
         default:
             return nil
         }
@@ -58,11 +58,11 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
         print(formatter.string(from: date) + " 선택됨")
         
         guard let modalPresentView = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
-
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         modalPresentView.date = dateFormatter.string(from: date)
-
+        
         self.present(modalPresentView, animated: true, completion: nil)
     }
     
@@ -131,8 +131,8 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
                 print("404 : NOT FOUND - Notice does not exist. - getCalendarList")
                 
             default:
-                print(response.response?.statusCode)
-                print(response.error)
+                print(response.response?.statusCode ?? "default")
+                print(response.error ?? "default")
             }
         })
     }

@@ -15,12 +15,8 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
     
     let httpclient = HTTPClient()
     
-    
-    
     private var hwTeachherModel : [HwStudent] = [HwStudent]()
-    
     private var hwStudentModel : [HwStudent] = [HwStudent]()
-    
     private var hwOrderdModel : [HwStudent] = [HwStudent]()
     
     override func viewDidLoad() {
@@ -37,6 +33,7 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
         
         submittedTableVIew.rowHeight = 130
         submittedTableVIew.tag = 3
+        submittedTableVIew.allowsSelection = false
         
         assignedTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         allocatorTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -67,6 +64,8 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
             assignVC.id = hwTeachherModel[indexPath.row].homeworkId
             self.navigationController?.pushViewController(assignVC, animated: true)
             
+            tableView.deselectRow(at: indexPath, animated: false)
+            
         }
         
         if tableView.tag == 2{
@@ -74,8 +73,9 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
             
             orderVC.id = hwOrderdModel[indexPath.row].homeworkId
             self.navigationController?.pushViewController(orderVC, animated: true)
+            
+            tableView.deselectRow(at: indexPath, animated: false)
         }
-        
         
     }
     
@@ -107,6 +107,8 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
             let enddate = hwTeachherModel[indexPath.row].endDate
             let major = hwTeachherModel[indexPath.row].major
             
+            cell.selectionStyle = .blue
+            
             cell.myNameLabel.text = hwTeachherModel[indexPath.row].teacherName
             cell.dateLabel.text = formatStartDate(date)
             cell.detailLabel.text = hwTeachherModel[indexPath.row].description
@@ -123,6 +125,8 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
             let date = hwOrderdModel[indexPath.row].startDate
             let enddate = hwOrderdModel[indexPath.row].endDate
             let major = hwOrderdModel[indexPath.row].major
+            
+            cell.selectionStyle = .blue
             
             cell.recipientName.text = hwOrderdModel[indexPath.row].studentName
             cell.dateLabel.text = formatStartDate(date)
@@ -153,14 +157,6 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     
-    
-    //    func setNavigationBar(){
-    //        let bar:UINavigationBar! =  self.navigationController?.navigationBar
-    //        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-    //        bar.shadowImage = UIImage()
-    //        bar.backgroundColor = UIColor.clear
-    //    }
-    
     func getAssView() {
         httpclient.get(url: HomeworkAPI.getAssHomeworkList.path(), params: nil, header: Header.token.header()).responseJSON{(response) in
             switch response.response?.statusCode{
@@ -178,7 +174,7 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
                 
             case 400 : print("400 - BAD REQUEST")
             case 404 : print("404 - NOT FOUND assign")
-            default : print(response.response?.statusCode)
+            default : print(response.response?.statusCode ?? "default")
             }
         }
     }
@@ -202,7 +198,7 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
                 
             case 400: print("400 - BAD REQUEST")
             case 404 : print("404 - NOT FOUND submit")
-            default : print(response.response?.statusCode)
+            default : print(response.response?.statusCode ?? "default")
             }
         }
         
@@ -225,7 +221,7 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
                 
             case 400 : print("400 - BAD REQUEST")
             case 404 : print("404 - NOT FOUND order")
-            default : print(response.response?.statusCode)
+            default : print(response.response?.statusCode ?? "default")
             }
         }
     }

@@ -16,8 +16,13 @@ class SideMenuViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         
-        nameLabel.text = (UserDefaults.standard.object(forKey: "nickname") as! String)
-        majorLabel.text = (UserDefaults.standard.object(forKey: "major") as! String)
+        if let nickname = UserDefaults.standard.string(forKey: "nickname") {
+            nameLabel.text = nickname
+        } else {
+            print(UserDefaults.standard.string(forKey: "nickname"))
+            return
+        }
+        majorLabel.text = UserDefaults.standard.string(forKey: "major")
     }
     
     @IBAction func calendar(_ sender: UIButton) {
@@ -41,11 +46,11 @@ class SideMenuViewController: UIViewController {
     @IBAction func logOut(_ sender: UIButton){
         let alert = UIAlertController(title: "로그아웃 하시겠습니까?", message: nil, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-        let deleteAction = UIAlertAction(title: "예", style: .destructive){ [self](action) in
-            logout() }
+        let deleteAction = UIAlertAction(title: "예", style: .destructive){ (action) in
+            self.logout() }
         
         alert.addAction(cancelAction)
-        alert.delete(deleteAction)
+        alert.addAction(deleteAction)
         
         self.present(alert, animated: true, completion: nil)
     }
@@ -59,7 +64,7 @@ class SideMenuViewController: UIViewController {
                 self.navigationController?.pushViewController(calendar, animated: false)
             case 401: print("401 - could not find token user")
             default:
-                print(res.response?.statusCode)
+                print(res.response?.statusCode ?? "default")
             }
         })
     }
@@ -73,7 +78,7 @@ class SideMenuViewController: UIViewController {
                 self.navigationController?.pushViewController(calendar, animated: false)
             case 401: print("401 - could not find token user")
             default:
-                print(res.response?.statusCode)
+                print(res.response?.statusCode ?? "default")
             }
         })
     }

@@ -8,7 +8,7 @@
 import UIKit
 
 class FirstSectionTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var myNameLabel : UILabel!
     @IBOutlet weak var dateLabel : UILabel!
@@ -23,11 +23,11 @@ class FirstSectionTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

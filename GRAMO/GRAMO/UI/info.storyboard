@@ -449,6 +449,9 @@
                                 <state key="normal" title="로그아웃">
                                     <color key="titleColor" red="1" green="0.19215686269999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="logOut:" destination="ou6-TS-ObX" eventType="touchUpInside" id="tLI-Zl-WPk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5f-nq-eDG">
                                 <rect key="frame" x="41" y="743" width="59" height="36"/>
@@ -456,6 +459,9 @@
                                 <state key="normal" title="탈퇴하기">
                                     <color key="titleColor" red="0.56470588239999997" green="0.56470588239999997" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="withdrawal:" destination="ou6-TS-ObX" eventType="touchUpInside" id="sAz-e0-uCD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CxG-o4-pHq"/>
@@ -463,6 +469,7 @@
                         <constraints>
                             <constraint firstItem="PkT-8P-vX2" firstAttribute="leading" secondItem="CxG-o4-pHq" secondAttribute="leading" constant="41" id="1Ln-WD-KSh"/>
                             <constraint firstItem="3Qb-cE-iBz" firstAttribute="top" secondItem="CxG-o4-pHq" secondAttribute="top" constant="25.5" id="67N-Bp-ioH"/>
+                            <constraint firstItem="CxG-o4-pHq" firstAttribute="bottom" secondItem="x5f-nq-eDG" secondAttribute="bottom" constant="83" id="DVw-Rm-KoY"/>
                             <constraint firstItem="BEi-Wk-MJK" firstAttribute="top" secondItem="PkT-8P-vX2" secondAttribute="bottom" constant="32" id="DgE-6H-dDr"/>
                             <constraint firstItem="wNS-HD-bbl" firstAttribute="leading" secondItem="CxG-o4-pHq" secondAttribute="leading" constant="41" id="IW3-7S-mBt"/>
                             <constraint firstItem="TBm-Zc-KZc" firstAttribute="top" secondItem="CxG-o4-pHq" secondAttribute="top" constant="26" id="MEL-IE-b1K"/>
@@ -472,7 +479,7 @@
                             <constraint firstItem="x5f-nq-eDG" firstAttribute="top" secondItem="wNS-HD-bbl" secondAttribute="bottom" constant="16" id="bUA-k7-G2A"/>
                             <constraint firstItem="TBm-Zc-KZc" firstAttribute="leading" secondItem="3Qb-cE-iBz" secondAttribute="trailing" constant="8" symbolic="YES" id="elt-j9-dJ7"/>
                             <constraint firstItem="x5f-nq-eDG" firstAttribute="leading" secondItem="CxG-o4-pHq" secondAttribute="leading" constant="41" id="gz6-It-Xnp"/>
-                            <constraint firstItem="wNS-HD-bbl" firstAttribute="top" secondItem="r1V-AA-EvE" secondAttribute="bottom" constant="289" id="nto-iy-56C"/>
+                            <constraint firstItem="wNS-HD-bbl" firstAttribute="top" relation="lessThanOrEqual" secondItem="r1V-AA-EvE" secondAttribute="bottom" constant="289" id="nto-iy-56C"/>
                             <constraint firstItem="PkT-8P-vX2" firstAttribute="top" secondItem="vnn-Qd-5bk" secondAttribute="bottom" constant="66" id="p8C-bW-EGi"/>
                             <constraint firstItem="BEi-Wk-MJK" firstAttribute="leading" secondItem="CxG-o4-pHq" secondAttribute="leading" constant="41" id="tRv-Hz-zKD"/>
                             <constraint firstItem="vnn-Qd-5bk" firstAttribute="top" secondItem="CxG-o4-pHq" secondAttribute="top" constant="46" id="uSl-go-tM3"/>

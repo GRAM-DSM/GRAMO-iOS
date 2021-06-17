@@ -507,7 +507,7 @@
                                 <rect key="frame" x="24" y="238" width="370" height="529"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="529" id="lLZ-dm-4fo"/>
+                                    <constraint firstAttribute="width" constant="370" id="SPk-XG-sMQ"/>
                                 </constraints>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
@@ -529,6 +529,9 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020년 1월 1일" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqk-ON-wHr">
                                 <rect key="frame" x="72" y="86" width="79" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="EAR-Ec-KxF"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -537,25 +540,24 @@
                         <viewLayoutGuide key="safeArea" id="Rsi-gJ-CKj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="a6D-7y-7QS" firstAttribute="leading" secondItem="82H-JG-qry" secondAttribute="trailing" constant="8" symbolic="YES" id="6Gi-Y7-6Gb"/>
                             <constraint firstItem="B0N-99-oB9" firstAttribute="trailing" secondItem="Rsi-gJ-CKj" secondAttribute="trailing" id="8ZS-J9-Vi4"/>
-                            <constraint firstItem="a6D-7y-7QS" firstAttribute="top" secondItem="Rsi-gJ-CKj" secondAttribute="top" constant="16" id="8uO-5Y-PZL"/>
-                            <constraint firstItem="JMk-UM-juh" firstAttribute="top" secondItem="hjy-aJ-ciC" secondAttribute="bottom" constant="29" id="B8k-9a-g3R"/>
                             <constraint firstItem="B0N-99-oB9" firstAttribute="bottom" secondItem="Rsi-gJ-CKj" secondAttribute="bottom" id="BfF-kl-CeJ"/>
                             <constraint firstItem="Rsi-gJ-CKj" firstAttribute="trailing" secondItem="JMk-UM-juh" secondAttribute="trailing" constant="24" id="DC0-O0-gQj"/>
-                            <constraint firstItem="a6D-7y-7QS" firstAttribute="leading" secondItem="82H-JG-qry" secondAttribute="trailing" constant="8" symbolic="YES" id="EN6-gw-tz8"/>
                             <constraint firstItem="Rc7-Qi-Imr" firstAttribute="top" secondItem="4Lk-02-wqb" secondAttribute="bottom" constant="15.5" id="F8c-AW-tpc"/>
+                            <constraint firstItem="a6D-7y-7QS" firstAttribute="top" secondItem="Rsi-gJ-CKj" secondAttribute="top" constant="16" id="G9Q-kD-aoU"/>
+                            <constraint firstItem="Cqk-ON-wHr" firstAttribute="leading" secondItem="82H-JG-qry" secondAttribute="trailing" constant="8" symbolic="YES" id="M8G-qe-C6l"/>
+                            <constraint firstItem="Cqk-ON-wHr" firstAttribute="top" secondItem="a6D-7y-7QS" secondAttribute="bottom" constant="2" id="O5P-EF-iZG"/>
                             <constraint firstItem="Rsi-gJ-CKj" firstAttribute="trailing" secondItem="Rc7-Qi-Imr" secondAttribute="trailing" constant="20" id="Rla-RZ-NJ0"/>
-                            <constraint firstItem="JMk-UM-juh" firstAttribute="top" secondItem="Cqk-ON-wHr" secondAttribute="bottom" constant="29" id="VUE-pi-jJr"/>
                             <constraint firstItem="82H-JG-qry" firstAttribute="top" secondItem="Rsi-gJ-CKj" secondAttribute="top" constant="16.5" id="YLj-4Q-JN9"/>
+                            <constraint firstItem="JMk-UM-juh" firstAttribute="top" secondItem="Cqk-ON-wHr" secondAttribute="bottom" constant="29" id="a1d-Mz-wii"/>
                             <constraint firstItem="hjy-aJ-ciC" firstAttribute="top" secondItem="Rsi-gJ-CKj" secondAttribute="top" constant="24" id="cA2-6Y-ALF"/>
                             <constraint firstItem="82H-JG-qry" firstAttribute="leading" secondItem="Rsi-gJ-CKj" secondAttribute="leading" constant="24" id="cfO-ED-aK0"/>
                             <constraint firstItem="B0N-99-oB9" firstAttribute="top" secondItem="Rc7-Qi-Imr" secondAttribute="bottom" constant="47" id="cmN-Cy-LEL"/>
                             <constraint firstItem="Rc7-Qi-Imr" firstAttribute="leading" secondItem="Rsi-gJ-CKj" secondAttribute="leading" constant="24" id="cyc-F6-tbA"/>
-                            <constraint firstItem="Cqk-ON-wHr" firstAttribute="leading" secondItem="82H-JG-qry" secondAttribute="trailing" constant="8" symbolic="YES" id="dnl-DP-9hO"/>
                             <constraint firstItem="B0N-99-oB9" firstAttribute="bottom" secondItem="Rsi-gJ-CKj" secondAttribute="bottom" id="hDQ-j2-Umb"/>
                             <constraint firstItem="Rsi-gJ-CKj" firstAttribute="trailing" secondItem="4Lk-02-wqb" secondAttribute="trailing" constant="20" id="hLJ-Vq-HbD"/>
                             <constraint firstItem="JMk-UM-juh" firstAttribute="leading" secondItem="Rsi-gJ-CKj" secondAttribute="leading" constant="24" id="hXw-H9-y5v"/>
-                            <constraint firstItem="Cqk-ON-wHr" firstAttribute="top" secondItem="a6D-7y-7QS" secondAttribute="bottom" constant="2" id="jPl-BR-fmw"/>
                             <constraint firstItem="4Lk-02-wqb" firstAttribute="top" secondItem="JMk-UM-juh" secondAttribute="bottom" constant="24" id="mZN-MX-maF"/>
                             <constraint firstItem="B0N-99-oB9" firstAttribute="leading" secondItem="Rsi-gJ-CKj" secondAttribute="leading" id="pEN-lA-If4"/>
                             <constraint firstItem="4Lk-02-wqb" firstAttribute="leading" secondItem="Rsi-gJ-CKj" secondAttribute="leading" constant="28" id="rwI-KH-P0t"/>

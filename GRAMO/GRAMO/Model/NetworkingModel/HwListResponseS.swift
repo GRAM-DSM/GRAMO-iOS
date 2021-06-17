@@ -9,7 +9,7 @@ import Foundation
 
 struct HwStudent: Codable {
     var homeworkId = Int()
-    var studentName = String()
+    var studentName : String!
     var teacherName = String()
     var title = String()
     var description = String()
@@ -17,9 +17,10 @@ struct HwStudent: Codable {
     var startDate = String()
     var endDate = String()
     var isRejected = Bool()
+    var isMine = Bool()
     
-    init(homeworkId: Int, studentName: String, teacherName: String, startDate: String, endDate: String,
-         title: String, isRejected: Bool, major: String, description: String) {
+    init(homeworkId: Int, studentName: String!, teacherName: String, startDate: String, endDate: String,
+         title: String, isRejected: Bool, major: String, description: String, isMine: Bool) {
         self.homeworkId = homeworkId
         self.studentName = studentName
         self.teacherName = teacherName
@@ -29,7 +30,7 @@ struct HwStudent: Codable {
         self.startDate = startDate
         self.endDate = endDate
         self.isRejected = isRejected
-        
+        self.isMine = isMine
         
     }
 }

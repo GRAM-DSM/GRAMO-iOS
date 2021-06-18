@@ -62,9 +62,13 @@ class SideMenuViewController: UIViewController {
                 let sub = UIStoryboard(name: "Auth", bundle: nil)
                 let calendar = sub.instantiateViewController(withIdentifier: "LoginVC")
                 self.navigationController?.pushViewController(calendar, animated: false)
+                
             case 401: print("401 - could not find token user")
+                self.showAlert(title: "허가되지 않은 요청입니다.")
+                
             default:
                 print(res.response?.statusCode ?? "default")
+                self.showAlert(title: "오류가 발생했습니다.")
             }
         })
     }
@@ -76,9 +80,12 @@ class SideMenuViewController: UIViewController {
                 let sub = UIStoryboard(name: "Auth", bundle: nil)
                 let calendar = sub.instantiateViewController(withIdentifier: "LoginVC")
                 self.navigationController?.pushViewController(calendar, animated: false)
+                
             case 401: print("401 - could not find token user")
+                self.showAlert(title: "허가되지 않은 요청입니다.")
             default:
                 print(res.response?.statusCode ?? "default")
+                self.showAlert(title: "오류가 발생했습니다.")
             }
         })
     }

@@ -91,10 +91,13 @@ class HomeworkOrderedViewController: UIViewController {
                 }
                 
             case 400 : print("400 - BAD REQUEST")
+                self.showAlert(title: "잘못된 요청입니다.")
             case 401 : print("401 - Unauthorized")
+                self.showAlert(title: "허가되지 않았습니다.")
             case 404 : print("404 - NOT FOUND")
+                self.showAlert(title: "오류가 발생했습니다.")
             default : print(res.response?.statusCode ?? "default")
-                
+                self.showAlert(title: "오류가 발생했습니다.")
             }
         }
         
@@ -107,9 +110,13 @@ class HomeworkOrderedViewController: UIViewController {
             case 200 :
                 self.navigationController?.popViewController(animated: true)
             case 400 : print("400 - BAD REQUEST")
+                self.showAlert(title: "잘못된 요청입니다.")
             case 401 : print("401 - Unauthorized")
+                self.showAlert(title: "허가되지 않았습니다.")
             case 404 : print("404 - NOT FOUND")
+                self.showAlert(title: "오류가 발생했습니다.")
             default : print(res.response?.statusCode ?? "default")
+                self.showAlert(title: "오류가 발생했습니다.")
             }
         }
     }
@@ -120,14 +127,18 @@ class HomeworkOrderedViewController: UIViewController {
             case 201 :
                 self.navigationController?.popViewController(animated: true)
             case 400 : print("400 - BAD REQUEST")
+                self.showAlert(title: "잘못된 요청입니다.")
             case 401 : print("401 - Unauthorized")
+                self.showAlert(title: "허가되지 않았습니다.")
             case 404 : print("404 - NOT FOUND")
+                self.showAlert(title: "오류가 발생했습니다.")
             case 409 : print("409 - 권한이 없습니다.")
                 let alert = UIAlertController(title: "숙제가 아직 제출되지 않았습니다.", message: "숙제를 반환할 권한이 없습니다.", preferredStyle: UIAlertController.Style.alert)
                 let cancelAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             default : print(res.response?.statusCode ?? "default")
+                self.showAlert(title: "오류가 발생했습니다.")
             }
         }
         

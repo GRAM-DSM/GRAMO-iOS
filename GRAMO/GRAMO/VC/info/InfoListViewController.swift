@@ -16,8 +16,7 @@ class InfoListViewContoller
     private var getListModel: [Notice] = [Notice]()
     private var listModel : GetNoticeList = GetNoticeList()
     
-    var off_set : Int = 0
-    var limit_num : Int = 10
+    var page : Int = 0
     var nextPage = Bool()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,7 +30,7 @@ class InfoListViewContoller
         let finalDate = date.components(separatedBy: ["-", ":"," "])
         let formattedDate = finalDate[0] + "년 " + finalDate[1] + "월 " + finalDate[2] + "일"
         
-        cell.selectionStyle = .blue
+        cell.selectionStyle = .none
         
         cell.infoTitleLabel?.text = listModel.notice[indexPath.row].title
         cell.infoDetailLabel?.text = listModel.notice[indexPath.row].content
@@ -63,12 +62,20 @@ class InfoListViewContoller
         
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissPostDetailNotification(_:)), name: detailVC, object: nil)
+        
         
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
         // Do any additional setup after loading the view.
     }
     
+    @objc func didDismissPostDetailNotification(_ noti : Notification){
+        OperationQueue.main.addOperation {
+            self.getList()
+            self.tableView.reloadData()
+        }
+    }
     
     @objc func pullToRefresh(_ sender: Any) {
         getList()
@@ -77,7 +84,7 @@ class InfoListViewContoller
     }
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        //secondGetList()
+        secondGetList()
     }
     
     
@@ -89,7 +96,7 @@ class InfoListViewContoller
     }
     
     func getList(){
-        httpClient.get(url: NoticeAPI.getNoticeList(0, 10).path(), params: nil, header: Header.token.header()).responseJSON{(response) in
+        httpClient.get(url: NoticeAPI.getNoticeList(0).path(), params: nil, header: Header.token.header()).responseJSON{(response) in
             switch response.response?.statusCode{
             case 200:
                 print(response.data)
@@ -98,51 +105,52 @@ class InfoListViewContoller
                 self.listModel.notice.removeAll()
                 self.listModel.notice.append(contentsOf: model!.notice)
                 self.tableView.reloadData()
+                
             case 404: print("404 : NOT FOUND - Notice does not exist.")
+                self.showAlert(title: "오류가 발생했습니다.")
+                
             case 418: self.getList()
+                
             default: print("\(response.response?.statusCode)getlist" ?? "default")
+                self.showAlert(title: "오류가 발생했습니다.")
             }
         }
     }
     
-    func getOffSet()-> Int {
-        self.off_set += self.limit_num
-        return off_set
+    func getPage()-> Int {
+        page += 1
+        return page
     }
-    
+
     func secondGetList() {
-        getOffSet()
+        getPage()
+        
         if nextPage == true {
-            httpClient.get(url: NoticeAPI.getNoticeList(off_set, limit_num).path(), params: nil, header: Header.token.header()).responseJSON{(response) in
+            httpClient.get(url: NoticeAPI.getNoticeList(page).path(), params: nil, header: Header.token.header()).responseJSON{(response) in
                 switch response.response?.statusCode{
                 case 200:
                     do{
                         let data = response.data
                         let model = try JSONDecoder().decode(GetNoticeList.self, from: data!)
                         self.nextPage = model.next_page
-                        //                        self.listModel.notice.removeAll()
                         self.listModel.notice.append(contentsOf: model.notice)
                         self.tableView.reloadData()
                         
                     }
                     catch{
-                        print(error)
+                        
                     }
                 case 404: print("404 : NOT FOUND - Notice does not exist.")
+                    self.showAlert(title: "오류가 발생했습니다.")
+                    
                 default: print(response.response?.statusCode ?? "default")
+                    self.showAlert(title: "오류가 발생했습니다.")
                 }
             }
         }
         
-        else {
-            let alert = UIAlertController(title: "더 이상 불러올 공지사항이 없습니다.", message: nil, preferredStyle: UIAlertController.Style.alert)
-            let cancelAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
-            alert.addAction(cancelAction)
-            present(alert, animated: true, completion: nil)
-        }
-        
     }
-    
+     
     
     /*
      // MARK: - Navigation

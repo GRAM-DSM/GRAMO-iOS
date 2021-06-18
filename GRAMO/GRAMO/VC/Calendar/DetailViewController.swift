@@ -76,6 +76,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             print(self.picu)
             picuCell.nameLabel?.text = self.picu[indexPath.row].userName
             
+            picuCell.selectionStyle = .none
+            
             if indexPath.row == 0 {
                 picuCell.detailLabel?.text = ""
                 picuCell.detailTextView?.text = picu[indexPath.row].description
@@ -89,6 +91,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             return picuCell
         } else {
             let planCell: SpecialTableViewCell = tableView.dequeueReusableCell(withIdentifier: SpecialTableViewCell.specialCellIdentifier, for: indexPath) as! SpecialTableViewCell
+            
+            planCell.selectionStyle = .none
             
             if indexPath.row == 0 {
                 planCell.titleLabel?.text = ""

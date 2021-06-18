@@ -43,6 +43,31 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
         getOrdView()
         getSubView()
         
+        
+        assignedTableView.refreshControl = UIRefreshControl()
+        allocatorTableView.refreshControl = UIRefreshControl()
+        submittedTableVIew.refreshControl = UIRefreshControl()
+        assignedTableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh1(_:)), for: .valueChanged)
+        allocatorTableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh2(_:)), for: .valueChanged)
+        submittedTableVIew.refreshControl?.addTarget(self, action: #selector(pullToRefresh3(_:)), for: .valueChanged)
+    }
+    
+    @objc func pullToRefresh1(_ sender: Any) {
+        getAssView()
+        assignedTableView.endUpdates()
+        assignedTableView.refreshControl?.endRefreshing()
+    }
+    
+    @objc func pullToRefresh2(_ sender: Any) {
+        getOrdView()
+        allocatorTableView.endUpdates()
+        allocatorTableView.refreshControl?.endRefreshing()
+    }
+    
+    @objc func pullToRefresh3(_ sender: Any) {
+        getSubView()
+        submittedTableVIew.endUpdates()
+        submittedTableVIew.refreshControl?.endRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,7 +132,7 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
             let enddate = hwTeachherModel[indexPath.row].endDate
             let major = hwTeachherModel[indexPath.row].major
             
-            cell.selectionStyle = .blue
+            cell.selectionStyle = .none
             
             cell.myNameLabel.text = hwTeachherModel[indexPath.row].teacherName
             cell.dateLabel.text = formatStartDate(date)
@@ -126,7 +151,7 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
             let enddate = hwOrderdModel[indexPath.row].endDate
             let major = hwOrderdModel[indexPath.row].major
             
-            cell.selectionStyle = .blue
+            cell.selectionStyle = .none
             
             cell.recipientName.text = hwOrderdModel[indexPath.row].studentName
             cell.dateLabel.text = formatStartDate(date)
@@ -173,8 +198,11 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
                 }
                 
             case 400 : print("400 - BAD REQUEST")
+                self.showAlert(title: "잘못된 요청입니다.")
             case 404 : print("404 - NOT FOUND assign")
+                self.showAlert(title: "오류가 발생했습니다.")
             default : print(response.response?.statusCode ?? "default")
+                self.showAlert(title: "오류가 발생했습니다.")
             }
         }
     }
@@ -197,8 +225,11 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
                 }
                 
             case 400: print("400 - BAD REQUEST")
+                self.showAlert(title: "잘못된 요청입니다.")
             case 404 : print("404 - NOT FOUND submit")
+                self.showAlert(title: "오류가 발생했습니다.")
             default : print(response.response?.statusCode ?? "default")
+                self.showAlert(title: "오류가 발생했습니다.")
             }
         }
         
@@ -220,12 +251,16 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
                 }
                 
             case 400 : print("400 - BAD REQUEST")
+                self.showAlert(title: "잘못된 요청입니다.")
             case 404 : print("404 - NOT FOUND order")
+                self.showAlert(title: "오류가 발생했습니다.")
             default : print(response.response?.statusCode ?? "default")
+                self.showAlert(title: "오류가 발생했습니다.")
             }
         }
     }
     
+   
     /*
      // MARK: - Navigation
      

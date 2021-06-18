@@ -61,10 +61,13 @@ class HomeworkAssignedViewController: UIViewController {
                 }
                 
             case 400 : print("400 - BAD REQUEST")
+                self.showAlert(title: "잘못된 요청입니다.")
             case 401 : print("401 - Unauthorized")
+                self.showAlert(title: "허가되지 않았습니다.")
             case 404 : print("404 - NOT FOUND")
+                self.showAlert(title: "오류가 발생했습니다.")
             default : print(res.response?.statusCode ?? "default")
-                
+                self.showAlert(title: "오류가 발생했습니다.")
             }
         }
         
@@ -76,9 +79,13 @@ class HomeworkAssignedViewController: UIViewController {
             case 201 :
                 self.navigationController?.popViewController(animated: true)
             case 400 : print("400 - BAD REQUEST")
+                self.showAlert(title: "잘못된 요청입니다.")
             case 401 : print("401 - Unauthorized")
+                self.showAlert(title: "허가되지 않았습니다.")
             case 404 : print("404 - NOT FOUND")
+                self.showAlert(title: "오류가 발생했습니다.")
             default : print(res.response?.statusCode ?? "default")
+                self.showAlert(title: "오류가 발생했습니다.")
             }
         }
     }

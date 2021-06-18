@@ -12,8 +12,6 @@ class SignInVC: UIViewController {
     @IBOutlet weak var pwTxtField: UITextField!
     @IBOutlet weak var failLabel: UILabel!
     
-    private var signInModel: SignIn!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
@@ -58,8 +56,8 @@ class SignInVC: UIViewController {
                         UserDefaults.standard.object(forKey: "major")
                         UserDefaults.standard.setValue(model.major, forKey: "major")
                         
-                        let sub = UIStoryboard(name: "homework", bundle: nil)
-                        let info = sub.instantiateViewController(withIdentifier: "homeworkVC")
+                        let sub = UIStoryboard(name: "Calendar2", bundle: nil)
+                        let info = sub.instantiateViewController(withIdentifier: "Calendar2VC")
                         
                         self.navigationController?.pushViewController(info, animated: true)
                     } catch {

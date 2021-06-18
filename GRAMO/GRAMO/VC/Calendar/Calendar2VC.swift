@@ -11,8 +11,6 @@ import FSCalendar
 class Calendar2VC: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     
-    private var getCalendarListModel = [GetCalendarList]()
-    
     private var events = [Date]()
     private let formatter = DateFormatter()
     
@@ -34,7 +32,6 @@ class Calendar2VC: UIViewController {
 
 // MARK: Calendar
 extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
-    // 이벤트 표시 개수
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         if self.events.contains(date) {
             return 1
@@ -43,6 +40,7 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
         }
     }
     
+<<<<<<< Updated upstream
     // 숫자 글자로 바꾸기
     func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
         switch formatter.string(from: date) {
@@ -54,15 +52,24 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
         }
     }
     
+=======
+>>>>>>> Stashed changes
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print(formatter.string(from: date) + " 선택됨")
         
         guard let modalPresentView = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
+<<<<<<< Updated upstream
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         modalPresentView.date = dateFormatter.string(from: date)
         
+=======
+
+        formatter.dateFormat = "yyyy-MM-dd"
+        modalPresentView.date = formatter.string(from: date)
+
+>>>>>>> Stashed changes
         self.present(modalPresentView, animated: true, completion: nil)
     }
     
@@ -101,24 +108,17 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
                     print("OK - Send notice list successfully. - getCalendarList")
                     print(date)
                     
-                    let decoder = JSONDecoder()
-                    decoder.dataDecodingStrategy = .base64
-                    
                     let data = response.data
-                    
-                    self.getCalendarListModel = try decoder.decode([GetCalendarList].self, from: data!)
-                    var num: Int = 0
+                    let model = try JSONDecoder().decode(calendarContentResponses.self, from: data!)
                     
                     self.events.removeAll()
                     
-                    for _ in self.getCalendarListModel {
-                        if self.getCalendarListModel[num].picuCount != 0 || self.getCalendarListModel[num].planCount != 0 {
-                            self.events.append(self.formatter.date(from: self.getCalendarListModel[num].date)!)
+                    for i in model.calendarContentResponses {
+                        if i.picuCount != 0 || i.planCount != 0 {
+                            self.formatter.dateFormat = "yyyy-MM-dd"
+                            self.events.append(self.formatter.date(from: i.date)!)
                         }
-                        
-                        num += 1
                     }
-                    
                     self.calendar.reloadData()
                 } catch {
                     print("Error: \(error)")

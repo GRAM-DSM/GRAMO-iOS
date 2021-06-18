@@ -15,7 +15,6 @@ class DetailViewController: ViewController, UITextViewDelegate {
     
     private var picu = [GetPICU]()
     private var plan = [GetPlan]()
-    private var calendar = [Calendar2VC]()
     
     private let refreshControl = UIRefreshControl()
     

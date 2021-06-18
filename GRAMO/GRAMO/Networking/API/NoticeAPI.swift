@@ -8,15 +8,15 @@
 import Foundation
 
 enum NoticeAPI: API {
-    case getNoticeList(_ off_set : Int, _ limit_num : Int)
+    case getNoticeList(_ page : Int)
     case getNoticeDetail(_ id: Int)
     case createNotice
     case deleteNotice(_ id: Int)
     
     func path() -> String {
         switch self {
-        case .getNoticeList(let off_set, let limit_num):
-            return baseURIAuth + "/notice/\(off_set)/\(limit_num)"
+        case .getNoticeList(let page):
+            return baseURIAuth + "/notice/list/\(page)"
             
         case .createNotice:
             return baseURIAuth + "/notice"

@@ -45,6 +45,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R4O-DV-x4B">
                                 <rect key="frame" x="0.0" y="138" width="414" height="208"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="208" id="av6-Ny-2ZP"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell1" rowHeight="130" id="Tcf-RO-aKz" customClass="FirstSectionTableViewCell" customModule="GRAMO" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="130"/>
@@ -164,7 +167,7 @@
                                 <rect key="frame" x="0.0" y="393" width="414" height="208"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="208" id="198-9l-HbM"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="208" id="198-9l-HbM"/>
                                     <constraint firstAttribute="width" constant="414" id="RyB-SQ-CJC"/>
                                 </constraints>
                                 <prototypes>
@@ -288,7 +291,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="414" id="3i3-C7-uQ2"/>
-                                    <constraint firstAttribute="height" constant="211" id="Yqq-DE-28b"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="211" id="Yqq-DE-28b"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell3" rowHeight="130" id="EXR-lO-8L1" customClass="ThirdSectionTableViewCell" customModule="GRAMO" customModuleProvider="target">
@@ -413,12 +416,12 @@
                             <constraint firstItem="R4O-DV-x4B" firstAttribute="trailing" secondItem="wOa-5a-9HX" secondAttribute="trailing" id="2yb-iF-LPx"/>
                             <constraint firstItem="TJ8-bI-CNS" firstAttribute="leading" secondItem="wOa-5a-9HX" secondAttribute="leading" id="4Ep-xh-4DO"/>
                             <constraint firstItem="L25-5D-ejS" firstAttribute="leading" secondItem="wOa-5a-9HX" secondAttribute="leading" constant="24" id="8hd-qi-nd9"/>
-                            <constraint firstItem="cp8-74-8Rc" firstAttribute="top" secondItem="R4O-DV-x4B" secondAttribute="bottom" constant="13" id="EQy-PJ-S5w"/>
+                            <constraint firstItem="cp8-74-8Rc" firstAttribute="top" relation="lessThanOrEqual" secondItem="R4O-DV-x4B" secondAttribute="bottom" constant="13" id="EQy-PJ-S5w"/>
                             <constraint firstItem="llD-M3-Lde" firstAttribute="bottom" secondItem="wOa-5a-9HX" secondAttribute="bottom" id="FHB-9Q-c12"/>
                             <constraint firstItem="llD-M3-Lde" firstAttribute="leading" secondItem="wOa-5a-9HX" secondAttribute="leading" id="HS3-hI-Jvc"/>
                             <constraint firstItem="R4O-DV-x4B" firstAttribute="top" secondItem="L25-5D-ejS" secondAttribute="bottom" constant="7" id="PMD-ed-9n5"/>
                             <constraint firstItem="R4O-DV-x4B" firstAttribute="leading" secondItem="wOa-5a-9HX" secondAttribute="leading" id="U53-pl-atJ"/>
-                            <constraint firstItem="jh6-rv-8ci" firstAttribute="top" secondItem="TJ8-bI-CNS" secondAttribute="bottom" constant="16" id="VJ1-5D-uRd"/>
+                            <constraint firstItem="jh6-rv-8ci" firstAttribute="top" relation="lessThanOrEqual" secondItem="TJ8-bI-CNS" secondAttribute="bottom" constant="16" id="VJ1-5D-uRd"/>
                             <constraint firstItem="R4O-DV-x4B" firstAttribute="leading" secondItem="wOa-5a-9HX" secondAttribute="leading" id="ZAM-Ky-t1J"/>
                             <constraint firstItem="TJ8-bI-CNS" firstAttribute="trailing" secondItem="wOa-5a-9HX" secondAttribute="trailing" id="bBN-f9-NT9"/>
                             <constraint firstItem="L25-5D-ejS" firstAttribute="top" secondItem="wOa-5a-9HX" secondAttribute="top" constant="16" id="bbM-xV-kio"/>
@@ -909,13 +912,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="장서영" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcm-lb-gCC">
-                                <rect key="frame" x="72" y="60" width="45" height="24"/>
+                                <rect key="frame" x="72" y="60" width="44.5" height="24"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020년 1월 1일" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vps-m1-2nT">
-                                <rect key="frame" x="72" y="86" width="79" height="18"/>
+                                <rect key="frame" x="72" y="86" width="78" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="CXW-q5-pj0"/>
                                 </constraints>
@@ -951,12 +954,12 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목을 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UEJ-t2-4NP">
-                                <rect key="frame" x="28" y="191" width="366" height="31.5"/>
+                                <rect key="frame" x="28" y="191" width="366" height="30"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q6v-ev-MId">
-                                <rect key="frame" x="24" y="238" width="370" height="529"/>
+                                <rect key="frame" x="24" y="236.5" width="370" height="530.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="370" id="Tnh-aZ-8uP"/>

@@ -16,13 +16,8 @@ class SideMenuViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         
-        if let nickname = UserDefaults.standard.string(forKey: "nickname") {
-            nameLabel.text = nickname
-        } else {
-            print(UserDefaults.standard.string(forKey: "nickname"))
-            return
-        }
-        majorLabel.text = UserDefaults.standard.string(forKey: "major")
+        nameLabel?.text = UserDefaults.standard.string(forKey: "nickname")
+        majorLabel?.text = UserDefaults.standard.string(forKey: "major")
     }
     
     @IBAction func calendar(_ sender: UIButton) {

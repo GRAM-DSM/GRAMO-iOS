@@ -19,8 +19,6 @@
 		5477A84F266A1532009064C7 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A84E266A1532009064C7 /* Headers.swift */; };
 		54B1B83526661DC300EDEDAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1B83426661DC300EDEDAB /* AppDelegate.swift */; };
 		54B1B83726661DC300EDEDAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1B83626661DC300EDEDAB /* SceneDelegate.swift */; };
-		54B1B83926661DC300EDEDAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1B83826661DC300EDEDAB /* ViewController.swift */; };
-		54B1B83C26661DC300EDEDAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B1B83A26661DC300EDEDAB /* Main.storyboard */; };
 		54B1B83E26661DC500EDEDAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B1B83D26661DC500EDEDAB /* Assets.xcassets */; };
 		54B1B84126661DC500EDEDAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B1B83F26661DC500EDEDAB /* LaunchScreen.storyboard */; };
 		54BD212B266624B600464EEE /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 54BD21252666246100464EEE /* NotoSansKR-Light.otf */; };
@@ -86,8 +84,6 @@
 		54B1B83126661DC300EDEDAB /* GRAMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GRAMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B1B83426661DC300EDEDAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54B1B83626661DC300EDEDAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		54B1B83826661DC300EDEDAB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		54B1B83B26661DC300EDEDAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		54B1B83D26661DC500EDEDAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54B1B84026661DC500EDEDAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54B1B84226661DC500EDEDAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -227,8 +223,6 @@
 				EF71EED026676B3A000F2278 /* UI */,
 				54B1B83426661DC300EDEDAB /* AppDelegate.swift */,
 				54B1B83626661DC300EDEDAB /* SceneDelegate.swift */,
-				54B1B83826661DC300EDEDAB /* ViewController.swift */,
-				54B1B83A26661DC300EDEDAB /* Main.storyboard */,
 				54B1B83D26661DC500EDEDAB /* Assets.xcassets */,
 				54B1B83F26661DC500EDEDAB /* LaunchScreen.storyboard */,
 				54BD212A2666246200464EEE /* NotoSansKR-Black.otf */,
@@ -477,7 +471,6 @@
 				54BD212B266624B600464EEE /* NotoSansKR-Light.otf in Resources */,
 				54BD212D266624BA00464EEE /* NotoSansKR-Black.otf in Resources */,
 				544DA18D267285E200DE3C8D /* Auth.storyboard in Resources */,
-				54B1B83C26661DC300EDEDAB /* Main.storyboard in Resources */,
 				54BD212F266624BF00464EEE /* NotoSansKR-Regular.otf in Resources */,
 				54BD212C266624B800464EEE /* NotoSansKR-Bold.otf in Resources */,
 			);
@@ -533,7 +526,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5477A846266A10BF009064C7 /* AuthAPI.swift in Sources */,
-				54B1B83926661DC300EDEDAB /* ViewController.swift in Sources */,
 				EF71EEDF26676BD3000F2278 /* HomeworkListViewController.swift in Sources */,
 				EF71EF0E2667739D000F2278 /* FirstSectionModel.swift in Sources */,
 				EF71EF0826677377000F2278 /* infoListModel.swift in Sources */,
@@ -586,14 +578,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		54B1B83A26661DC300EDEDAB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				54B1B83B26661DC300EDEDAB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		54B1B83F26661DC500EDEDAB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

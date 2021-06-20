@@ -50,7 +50,7 @@ class InfoAddViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     }
     
     @IBAction func plus(_ sender : UIBarButtonItem){
-        if infoTitle.text == nil && infoDetail.textColor == UIColor.lightGray {
+        if infoTitle.text == nil || infoDetail.textColor == UIColor.lightGray {
             let alert = UIAlertController(title: "제목 또는 내용을 입력해주세요.", message: nil, preferredStyle: UIAlertController.Style.alert)
             let cancelAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
             alert.addAction(cancelAction)

@@ -22,6 +22,8 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var failLabel: UILabel!
     
+    @IBOutlet weak var majorView: UIView!
+    
     private let dropDown = DropDown()
     private let httpClient = HTTPClient()
     
@@ -67,7 +69,15 @@ class SignUpVC: UIViewController {
     }
     
     @IBAction func signUpBtn(_ sender: UIButton) {
-        postSignUp(name: nameTxtField.text!, email: emailTxtField.text!, password: pwTxtField.text!, major: selectMajor(majorLabel))
+        if trueMajor == true {
+            if trueEmail == true {
+                postSignUp(name: nameTxtField.text!, email: emailTxtField.text!, password: pwTxtField.text!, major: selectMajor(majorLabel))
+            } else {
+                failLabel.text = "인증번호가 일치하지 않습니다"
+            }
+        } else {
+            failLabel.text = "분야를 선택해주세요"
+        }
     }
     
     @IBAction func getSendEmailBtn(_ sender: UIButton) {
@@ -84,98 +94,6 @@ class SignUpVC: UIViewController {
         self.navigationController?.popViewController(animated : true)
     }
     
-    func postSignUp(name : String, email : String, password : String, major : String) {
-        guard let conformPwd = pwConformTxtField.text else { return }
-        
-        if trueMajor == true {
-            if trueEmail == true {
-                httpClient.post(url: AuthAPI.signUp.path(), params: ["email": email, "password": password, "name": name, "major": major], header: Header.tokenIsEmpty.header())
-                    .responseJSON(completionHandler: {(response) in
-                        switch response.response?.statusCode {
-                        case 200:
-                            self.dismiss(animated: true, completion: nil)
-                            self.navigationController?.popViewController(animated : true)
-                            
-                        case 409:
-                            print("This email is already in use. - postSignIn")
-                            
-                            if password != conformPwd {
-                                UIView.animate(withDuration: 0.2, animations: {
-                                    self.pwTxtField.frame.origin.x -= 10
-                                    self.pwConformTxtField.frame.origin.x -= 10
-                                    
-                                }, completion: { _ in
-                                    UIView.animate(withDuration: 0.2, animations: {
-                                        self.pwTxtField.frame.origin.x += 20
-                                        self.pwConformTxtField.frame.origin.x += 20
-                                        
-                                    }, completion: { _ in
-                                        UIView.animate(withDuration: 0.2, animations: {
-                                            self.pwTxtField.frame.origin.x -= 10
-                                            self.pwConformTxtField.frame.origin.x -= 10
-                                        })
-                                    })
-                                })
-                                
-                                self.failLabel.text = "비밀번호가 일치하지 않습니다"
-                            }
-                            
-                        default:
-                            print(response.response?.statusCode ?? "default")
-                            print(response.error ?? "default")
-                        }
-                    })
-            } else {
-                failLabel.text = "인증번호가 일치하지 않습니다"
-            }
-        } else {
-            failLabel.text = "분야를 선택해주세요"
-        }
-    }
-    
-    func postSendEmail(email: String) {
-        httpClient.post(url: AuthAPI.sendEmail.path(), params: ["email": email], header: Header.tokenIsEmpty.header())
-            .responseJSON(completionHandler: {(response) in
-                switch response.response?.statusCode {
-                case 200:
-                    self.failLabel.text = ""
-                    
-                case 409:
-                    print("This email is already in use. - postSendEmail")
-                    
-                    self.failLabel.text = "중복된 이메일 입니다"
-                    
-                default:
-                    print(response.response?.statusCode ?? "default")
-                    print(response.error ?? "default")
-                }
-            })
-    }
-    
-    func postCheckEmailAuthenticationCode(email: String, code: Int) {
-        httpClient.post(url: AuthAPI.checkEmailCode.path(), params: ["email": email, "code": code], header: Header.tokenIsEmpty.header())
-            .responseJSON(completionHandler: {(response) in
-                switch response.response?.statusCode {
-                case 200:
-                    self.failLabel.text = ""
-                    self.trueEmail = true
-                    
-                case 404:
-                    print("This email does not exist. - postCheckEmailAuthenticationCode")
-                    self.failLabel.text = "올바른 이메일이 아닙니다"
-                    
-                    
-                case 409:
-                    print("Email and code does not match. - postCheckEmailAuthenticationCode")
-                    self.failLabel.text = "인증번호가 일치하지 않습니다"
-                    
-                default:
-                    print(response.response?.statusCode ?? "default")
-                    print(response.error ?? "default")
-                }
-            })
-    }
-    
     func customTxtField(_ txtField: UITextField) {
         txtField.font = UIFont(name: "NotoSansKR-Regular", size: 14)
     }
@@ -183,12 +101,12 @@ class SignUpVC: UIViewController {
     func customDropDown() {
         dropDown.dataSource = ["iOS 개발자", "안드로이드 개발자", "서버 개발자", "디자이너"]
         
-        dropDown.width = 342
+        dropDown.width = majorView.fs_width
         dropDown.cellHeight = 40
-        dropDown.anchorView = dropDownBtn
-        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+        dropDown.anchorView = majorView
         dropDown.textFont = UIFont.systemFont(ofSize: 14)
-        dropDown.selectionBackgroundColor = UIColor.white
+        dropDown.selectedTextColor = UIColor.red
+        dropDown.backgroundColor = UIColor.white
         
         dropDown.show()
     }
@@ -214,5 +132,97 @@ class SignUpVC: UIViewController {
         default:
             return ""
         }
+    }
+    
+    func postSignUp(name : String, email : String, password : String, major : String) {
+        guard let conformPwd = pwConformTxtField.text else { return }
+        
+        httpClient
+            .post(url: AuthAPI.signUp.path(), params: ["email": email, "password": password, "name": name, "major": major], header: Header.tokenIsEmpty.header())
+            .responseJSON(completionHandler: {(response) in
+                switch response.response?.statusCode {
+                case 200:
+                    print("OK - postSignUp")
+                    
+                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated : true)
+                    
+                case 409:
+                    print("This email is already in use. - postSignIn")
+                    
+                    if password != conformPwd {
+                        UIView.animate(withDuration: 0.2, animations: {
+                            self.pwTxtField.frame.origin.x -= 10
+                            self.pwConformTxtField.frame.origin.x -= 10
+                            
+                        }, completion: { _ in
+                            UIView.animate(withDuration: 0.2, animations: {
+                                self.pwTxtField.frame.origin.x += 20
+                                self.pwConformTxtField.frame.origin.x += 20
+                                
+                            }, completion: { _ in
+                                UIView.animate(withDuration: 0.2, animations: {
+                                    self.pwTxtField.frame.origin.x -= 10
+                                    self.pwConformTxtField.frame.origin.x -= 10
+                                })
+                            })
+                        })
+                        
+                        self.failLabel.text = "비밀번호가 일치하지 않습니다"
+                    }
+                    
+                default:
+                    print(response.response?.statusCode ?? "default")
+                    print(response.error ?? "default")
+                }
+            })
+    }
+    
+    func postSendEmail(email: String) {
+        httpClient
+            .post(url: AuthAPI.sendEmail.path(), params: ["email": email], header: Header.tokenIsEmpty.header())
+            .responseJSON(completionHandler: {(response) in
+                switch response.response?.statusCode {
+                case 200:
+                    print("OK - postSendEmail")
+                    self.failLabel.text = ""
+                    
+                case 409:
+                    print("This email is already in use. - postSendEmail")
+                    
+                    self.failLabel.text = "중복된 이메일 입니다"
+                    
+                default:
+                    print(response.response?.statusCode ?? "default")
+                    print(response.error ?? "default")
+                }
+            })
+    }
+    
+    func postCheckEmailAuthenticationCode(email: String, code: Int) {
+        httpClient
+            .post(url: AuthAPI.checkEmailCode.path(), params: ["email": email, "code": code], header: Header.tokenIsEmpty.header())
+            .responseJSON(completionHandler: {(response) in
+                switch response.response?.statusCode {
+                case 200:
+                    print("OK - postCheckEmailAuthenticationCode")
+                    
+                    self.failLabel.text = ""
+                    self.trueEmail = true
+                    
+                case 404:
+                    print("This email does not exist. - postCheckEmailAuthenticationCode")
+                    self.failLabel.text = "올바른 이메일이 아닙니다"
+                    
+                    
+                case 409:
+                    print("Email and code does not match. - postCheckEmailAuthenticationCode")
+                    self.failLabel.text = "인증번호가 일치하지 않습니다"
+                    
+                default:
+                    print(response.response?.statusCode ?? "default")
+                    print(response.error ?? "default")
+                }
+            })
     }
 }

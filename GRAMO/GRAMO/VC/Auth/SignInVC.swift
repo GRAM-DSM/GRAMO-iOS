@@ -37,12 +37,13 @@ class SignInVC: UIViewController {
     func signIn(email : String, password : String) {
         let httpClient = HTTPClient()
         
-        httpClient.post(url: AuthAPI.signIn.path(), params: ["email": email, "password": password], header: Header.tokenIsEmpty.header())
+        httpClient
+            .post(url: AuthAPI.signIn.path(), params: ["email": email, "password": password], header: Header.tokenIsEmpty.header())
             .responseJSON(completionHandler: {(response) in
                 switch response.response?.statusCode {
                 case 201:
                     do {
-                        print("OK - Send notice list successfully. - signIn")
+                        print("OK - signIn")
                         
                         let data = response.data
                         let model = try JSONDecoder().decode(SignIn.self, from: data!)

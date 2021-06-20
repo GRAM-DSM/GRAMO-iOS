@@ -7,14 +7,14 @@
 
 import UIKit
 
-class DetailViewController: ViewController, UITextViewDelegate {
+class DetailViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var picuTableView: UITableView!
     @IBOutlet weak var planTableView: UITableView!
     
     private let httpClient = HTTPClient()
     
-    private var picu = [GetPICU]()
-    private var plan = [GetPlan]()
+    private var picu = picuContentResponses()
+    private var plan = planContentResponses()
     
     private let refreshControl = UIRefreshControl()
     
@@ -66,22 +66,22 @@ class DetailViewController: ViewController, UITextViewDelegate {
     }
 }
 
-// MARK: tableView
+// MARK: UITableView
 extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 1 {
             let picuCell: PICUTableViewCell = tableView.dequeueReusableCell(withIdentifier: PICUTableViewCell.picuCellIdentifier, for: indexPath) as! PICUTableViewCell
             
             print(self.picu)
-            picuCell.nameLabel?.text = self.picu[indexPath.row].userName
+            picuCell.nameLabel?.text = self.picu.picuContentResponses[indexPath.row].userName
             
             picuCell.selectionStyle = .none
             
             if indexPath.row == 0 {
                 picuCell.detailLabel?.text = ""
-                picuCell.detailTextView?.text = picu[indexPath.row].description
+                picuCell.detailTextView?.text = picu.picuContentResponses[indexPath.row].description
             } else {
-                picuCell.detailLabel?.text = self.picu[indexPath.row].description
+                picuCell.detailLabel?.text = self.picu.picuContentResponses[indexPath.row].description
                 picuCell.detailTextView?.text.removeAll()
                 
                 picuCell.detailTextView?.isSelectable = false
@@ -96,11 +96,11 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 planCell.titleLabel?.text = ""
                 planCell.detailLabel?.text = ""
-                planCell.titleTextView?.text = self.plan[indexPath.row].description
-                planCell.detailTextView?.text = self.plan[indexPath.row].description
+                planCell.titleTextView?.text = self.plan.planContentResponses[indexPath.row].description
+                planCell.detailTextView?.text = self.plan.planContentResponses[indexPath.row].description
             } else {
-                planCell.titleLabel?.text = self.plan[indexPath.row].title
-                planCell.detailLabel?.text = self.plan[indexPath.row].description
+                planCell.titleLabel?.text = self.plan.planContentResponses[indexPath.row].title
+                planCell.detailLabel?.text = self.plan.planContentResponses[indexPath.row].description
                 planCell.titleTextView?.text = ""
                 planCell.detailTextView?.text  = ""
                 
@@ -114,11 +114,11 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView.tag == 1 {
-            return picu.count
+            return picu.picuContentResponses.count
         }
         
         if tableView.tag == 2 {
-            return plan.count
+            return plan.planContentResponses.count
         }
         
         return 0
@@ -127,59 +127,59 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if tableView.tag == 1 {
             if editingStyle == .delete {
-                httpClient.delete(url: CalendarAPI.deletePICU(self.picu[indexPath.row].picuId).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
-                    switch response.response?.statusCode {
-                    case 200:
-                        print("OK - Send notice list successfully. - getPICU")
-                        
-                        self.picu.remove(at: indexPath.row)
-                        tableView.deleteRows(at: [indexPath], with: .fade)
-                        
-                        self.showToast(message: "PICU 삭제 성공!")
-                        
-                    case 401:
-                        self.showToast(message: "권한이 없습니다")
-                        
-                    case 403:
-                        print("403 : Token Token Token Token - getPICU")
-                        
-                    case 404:
-                        print("404 : NOT FOUND - Notice does not exist. - getPICU")
-                        
-                    default:
-                        print(response.response?.statusCode ?? "default")
-                        print(response.error ?? "default")
-                    }
-                })
+                httpClient
+                    .delete(url: CalendarAPI.deletePICU(self.picu.picuContentResponses[indexPath.row].picuId).path(), params: nil, header: Header.token.header())
+                    .responseJSON(completionHandler: {(response) in
+                        switch response.response?.statusCode {
+                        case 200:
+                            print("OK - getPICU")
+                            
+                            self.picu.picuContentResponses.remove(at: indexPath.row)
+                            tableView.deleteRows(at: [indexPath], with: .fade)
+                            
+                            self.showToast(message: "PICU 삭제 성공!")
+                            
+                        case 403:
+                            print("403 : Forbidden - getPICU")
+                            self.showToast(message: "권한이 없습니다")
+                            
+                        case 404:
+                            print("404 : NOT FOUND - Notice does not exist. - getPICU")
+                            
+                        default:
+                            print(response.response?.statusCode ?? "default")
+                            print(response.error ?? "default")
+                        }
+                    })
             }
         }
         
         if tableView.tag == 2 {
             if editingStyle == .delete {
-                httpClient.delete(url: CalendarAPI.deletePlan(self.plan[indexPath.row].planId).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
-                    switch response.response?.statusCode {
-                    case 200:
-                        print("OK - Send notice list successfully. - getPICU")
-                        
-                        self.plan.remove(at: indexPath.row)
-                        tableView.deleteRows(at: [indexPath], with: .fade)
-                        
-                        self.showToast(message: "Plan 삭제 성공!")
-                        
-                    case 401:
-                        self.showToast(message: "권한이 없습니다")
-                        
-                    case 403:
-                        print("403 : Token Token Token Token - getPICU")
-                        
-                    case 404:
-                        print("404 : NOT FOUND - Notice does not exist. - getPICU")
-                        
-                    default:
-                        print(response.response?.statusCode ?? "default")
-                        print(response.error ?? "default")
-                    }
-                })
+                httpClient
+                    .delete(url: CalendarAPI.deletePlan(self.plan.planContentResponses[indexPath.row].planId).path(), params: nil, header: Header.token.header())
+                    .responseJSON(completionHandler: {(response) in
+                        switch response.response?.statusCode {
+                        case 200:
+                            print("OK - getPICU")
+                            
+                            self.plan.planContentResponses.remove(at: indexPath.row)
+                            tableView.deleteRows(at: [indexPath], with: .fade)
+                            
+                            self.showToast(message: "Plan 삭제 성공!")
+                            
+                        case 403:
+                            print("403 : Forbidden - getPICU")
+                            self.showToast(message: "권한이 없습니다")
+                            
+                        case 404:
+                            print("404 : NOT FOUND - Notice does not exist. - getPICU")
+                            
+                        default:
+                            print(response.response?.statusCode ?? "default")
+                            print(response.error ?? "default")
+                        }
+                    })
             }
         }
     }
@@ -201,14 +201,14 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func appendMetadata(num: Int) {
         switch num {
         case 1:
-            picu.append(GetPICU(picuId: 0, userName: UserDefaults.standard.object(forKey: "nickname") as! String, description: "사유를 적어주세요"))
+            picu.picuContentResponses.append(GetPICU(picuId: 0, userName: UserDefaults.standard.object(forKey: "nickname") as! String, description: "사유를 적어주세요"))
             
         case 2:
-            plan.append(GetPlan(planId: 0, title: "어떤 특별한 일인가요?", description: "특별한 일의 설명을 적어주세요"))
+            plan.planContentResponses.append(GetPlan(planId: 0, title: "어떤 특별한 일인가요?", description: "특별한 일의 설명을 적어주세요"))
             
         default:
-            picu.append(GetPICU(picuId: 0, userName: UserDefaults.standard.object(forKey: "nickname") as! String, description: "사유를 적어주세요"))
-            plan.append(GetPlan(planId: 0, title: "어떤 특별한 일인가요?", description: "특별한 일의 설명을 적어주세요"))
+            picu.picuContentResponses.append(GetPICU(picuId: 0, userName: UserDefaults.standard.object(forKey: "nickname") as! String, description: "사유를 적어주세요"))
+            plan.planContentResponses.append(GetPlan(planId: 0, title: "어떤 특별한 일인가요?", description: "특별한 일의 설명을 적어주세요"))
         }
     }
     
@@ -239,50 +239,52 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func getPICU() {
-        httpClient.get(url: CalendarAPI.getPICU(date).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
-            switch response.response?.statusCode {
-            case 200:
-                do {
-                    print("OK - Send notice list successfully. - getPICU")
+        httpClient
+            .get(url: CalendarAPI.getPICU(date).path(), params: nil, header: Header.token.header())
+            .responseJSON(completionHandler: {(response) in
+                switch response.response?.statusCode {
+                case 200:
+                    do {
+                        print("OK - getPICU")
+                        
+                        let data = response.data
+                        let model = try JSONDecoder().decode(picuContentResponses.self, from: data!)
+                        
+                        self.picu.picuContentResponses.removeAll()
+                        
+                        self.appendMetadata(num: 1)
+                        
+                        self.picu.picuContentResponses.append(contentsOf: model.picuContentResponses)
+                        self.picuTableView.reloadData()
+                    } catch {
+                        print("Error: \(error)")
+                    }
                     
-                    let data = response.data
-                    let model = try JSONDecoder().decode([GetPICU].self, from: data!)
+                case 403:
+                    print("403 : Forbidden - getPICU")
                     
-                    self.picu.removeAll()
+                case 404:
+                    print("404 : NOT FOUND - Notice does not exist. - getPICU")
                     
-                    self.appendMetadata(num: 1)
-                    
-                    self.picu.append(contentsOf: model)
-                    self.picuTableView.reloadData()
-                } catch {
-                    print("Error: \(error)")
+                default:
+                    print(response.response?.statusCode ?? "default")
+                    print(response.error ?? "default")
                 }
-                
-            case 403:
-                print("403 : Token Token Token Token - getPICU")
-                
-            case 404:
-                print("404 : NOT FOUND - Notice does not exist. - getPICU")
-                
-            default:
-                print(response.response?.statusCode ?? "default")
-                print(response.error ?? "default")
-            }
-        })
+            })
     }
     
     func createPICU(description: String, date: String) {
         httpClient.post(url: CalendarAPI.createPICU.path(), params: ["description": description, "date": date], header: Header.token.header()).responseJSON(completionHandler: {(response) in
             switch response.response?.statusCode {
             case 201:
-                print("OK - Send notice list successfully. - createPICU")
+                print("OK - createPICU")
                 self.dismiss(animated: true, completion: nil)
                 
             case 400:
                 self.showToast(message: "권한 없음")
                 
             case 403:
-                print("403 : Token Token Token Token - createPICU")
+                print("403 : Forbidden - createPICU")
                 
             case 404:
                 print("404 : NOT FOUND - Notice does not exist. - createPICU")
@@ -295,58 +297,62 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func getPlan() {
-        httpClient.get(url: CalendarAPI.getPlan(date).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
-            switch response.response?.statusCode {
-            case 200:
-                do {
-                    print("OK - Send notice list successfully. - getPICU")
+        httpClient
+            .get(url: CalendarAPI.getPlan(date).path(), params: nil, header: Header.token.header())
+            .responseJSON(completionHandler: {(response) in
+                switch response.response?.statusCode {
+                case 200:
+                    do {
+                        print("OK - getPICU")
+                        
+                        let data = response.data
+                        let model = try JSONDecoder().decode(planContentResponses.self, from: data!)
+                        
+                        self.plan.planContentResponses.removeAll()
+                        
+                        self.appendMetadata(num: 2)
+                        
+                        self.plan.planContentResponses.append(contentsOf: model.planContentResponses)
+                        self.planTableView.reloadData()
+                    } catch {
+                        print("Error: \(error)")
+                    }
                     
-                    let data = response.data
-                    let model = try JSONDecoder().decode([GetPlan].self, from: data!)
+                case 403:
+                    print("403 : Forbidden - getPICU")
                     
-                    self.plan.removeAll()
+                case 404:
+                    print("404 : NOT FOUND - Notice does not exist. - getPICU")
                     
-                    self.appendMetadata(num: 2)
-                    
-                    self.plan.append(contentsOf: model)
-                    self.planTableView.reloadData()
-                } catch {
-                    print("Error: \(error)")
+                default:
+                    print(response.response?.statusCode ?? "default")
+                    print(response.error ?? "default")
                 }
-                
-            case 403:
-                print("403 : Token Token Token Token - getPICU")
-                
-            case 404:
-                print("404 : NOT FOUND - Notice does not exist. - getPICU")
-                
-            default:
-                print(response.response?.statusCode ?? "default")
-                print(response.error ?? "default")
-            }
-        })
+            })
     }
     
     func createPlan(title: String, description: String, date: String) {
-        httpClient.post(url: CalendarAPI.createPlan.path(), params: ["description": description, "title": title, "date": date], header: Header.token.header()).responseJSON(completionHandler: {(response) in
-            switch response.response?.statusCode {
-            case 201:
-                print("OK - Send notice list successfully. - createPlan")
-                self.dismiss(animated: true, completion: nil)
-                
-            case 400:
-                self.showToast(message: "권한 없음")
-                
-            case 403:
-                print("403 : Token Token Token Token - createPlan")
-                
-            case 404:
-                print("404 : NOT FOUND - Notice does not exist. - createPlan")
-                
-            default:
-                print(response.response?.statusCode ?? "default")
-                print(response.error ?? "default")
-            }
-        })
+        httpClient
+            .post(url: CalendarAPI.createPlan.path(), params: ["description": description, "title": title, "date": date], header: Header.token.header())
+            .responseJSON(completionHandler: {(response) in
+                switch response.response?.statusCode {
+                case 201:
+                    print("OK - createPlan")
+                    self.dismiss(animated: true, completion: nil)
+                    
+                case 400:
+                    self.showToast(message: "권한 없음")
+                    
+                case 403:
+                    print("403 : Forbidden - createPlan")
+                    
+                case 404:
+                    print("404 : NOT FOUND - Notice does not exist. - createPlan")
+                    
+                default:
+                    print(response.response?.statusCode ?? "default")
+                    print(response.error ?? "default")
+                }
+            })
     }
 }

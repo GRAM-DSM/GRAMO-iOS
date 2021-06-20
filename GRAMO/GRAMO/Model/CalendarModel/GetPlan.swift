@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct planContentResponses: Codable {
+    var planContentResponses = [GetPlan]()
+}
+
 struct GetPlan: Codable {
     var planId = Int()
     var title = String()

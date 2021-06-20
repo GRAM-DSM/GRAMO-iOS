@@ -30,7 +30,7 @@ class Calendar2VC: UIViewController {
     }
 }
 
-// MARK: Calendar
+// MARK: FSCalendar
 extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         if self.events.contains(date) {
@@ -40,36 +40,13 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
         }
     }
     
-<<<<<<< Updated upstream
-    // 숫자 글자로 바꾸기
-    func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
-        switch formatter.string(from: date) {
-        case "2021-09-03", "2022-09-03":
-            return "Bir"
-            
-        default:
-            return nil
-        }
-    }
-    
-=======
->>>>>>> Stashed changes
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print(formatter.string(from: date) + " 선택됨")
+        formatter.dateFormat = "yyyy-MM-dd"
         
         guard let modalPresentView = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
-<<<<<<< Updated upstream
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        modalPresentView.date = dateFormatter.string(from: date)
-        
-=======
-
-        formatter.dateFormat = "yyyy-MM-dd"
         modalPresentView.date = formatter.string(from: date)
-
->>>>>>> Stashed changes
         self.present(modalPresentView, animated: true, completion: nil)
     }
     
@@ -101,39 +78,41 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func getCalendarList(date: String) {
-        httpClient.get(url: CalendarAPI.getCalendarList(date).path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: {(response) in
-            switch response.response?.statusCode {
-            case 200:
-                do {
-                    print("OK - Send notice list successfully. - getCalendarList")
-                    print(date)
-                    
-                    let data = response.data
-                    let model = try JSONDecoder().decode(calendarContentResponses.self, from: data!)
-                    
-                    self.events.removeAll()
-                    
-                    for i in model.calendarContentResponses {
-                        if i.picuCount != 0 || i.planCount != 0 {
-                            self.formatter.dateFormat = "yyyy-MM-dd"
-                            self.events.append(self.formatter.date(from: i.date)!)
+        httpClient
+            .get(url: CalendarAPI.getCalendarList(date).path(), params: nil, header: Header.token.header())
+            .responseJSON(completionHandler: {(response) in
+                switch response.response?.statusCode {
+                case 200:
+                    do {
+                        print("OK - getCalendarList")
+                        print(date)
+                        
+                        let data = response.data
+                        let model = try JSONDecoder().decode(calendarContentResponses.self, from: data!)
+                        
+                        self.events.removeAll()
+                        
+                        for i in model.calendarContentResponses {
+                            if i.picuCount != 0 || i.planCount != 0 {
+                                self.formatter.dateFormat = "yyyy-MM-dd"
+                                self.events.append(self.formatter.date(from: i.date)!)
+                            }
                         }
+                        self.calendar.reloadData()
+                    } catch {
+                        print("Error: \(error)")
                     }
-                    self.calendar.reloadData()
-                } catch {
-                    print("Error: \(error)")
+                    
+                case 403:
+                    print("403 : Forbidden - getCalendarList")
+                    
+                case 404:
+                    print("404 : NOT FOUND - Notice does not exist. - getCalendarList")
+                    
+                default:
+                    print(response.response?.statusCode ?? "default")
+                    print(response.error ?? "default")
                 }
-                
-            case 403:
-                print("403 : Token Token Token Token - getCalendarList")
-                
-            case 404:
-                print("404 : NOT FOUND - Notice does not exist. - getCalendarList")
-                
-            default:
-                print(response.response?.statusCode ?? "default")
-                print(response.error ?? "default")
-            }
-        })
+            })
     }
 }

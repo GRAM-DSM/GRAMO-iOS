@@ -7,10 +7,10 @@
 
 import UIKit
 
-class SideMenuViewController: UIViewController {
+final class SideMenuViewController: UIViewController {
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var majorLabel: UILabel!
+    @IBOutlet weak private var nameLabel: UILabel!
+    @IBOutlet weak private var majorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,31 +39,23 @@ class SideMenuViewController: UIViewController {
     }
     
     @IBAction func logOut(_ sender: UIButton){
-        let alert = UIAlertController(title: "로그아웃 하시겠습니까?", message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-        let deleteAction = UIAlertAction(title: "예", style: .destructive){ (action) in
-            self.logout() }
-        
-        alert.addAction(cancelAction)
-        alert.addAction(deleteAction)
-        
-        self.present(alert, animated: true, completion: nil)
+        showDeleteAlert(title: "로그아웃 하시겠습니까?", action: { [self](action) in logout() }, message: nil)
     }
     
     @IBAction func withdrawal(_ sender: UIButton){
         HTTPClient().delete(url: AuthAPI.withDrawel.path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: { res in
             switch res.response?.statusCode {
-            case 204 : print("OK")
+            case 204 :
                 let sub = UIStoryboard(name: "Auth", bundle: nil)
                 let calendar = sub.instantiateViewController(withIdentifier: "LoginVC")
                 self.navigationController?.pushViewController(calendar, animated: false)
                 
             case 401: print("401 - could not find token user")
-                self.showAlert(title: "허가되지 않은 요청입니다.")
+                self.showAlert(title: "허가되지 않은 요청입니다.",message: nil)
                 
             default:
                 print(res.response?.statusCode ?? "default")
-                self.showAlert(title: "오류가 발생했습니다.")
+                self.showAlert(title: "오류가 발생했습니다.", message: nil)
             }
         })
     }
@@ -71,16 +63,16 @@ class SideMenuViewController: UIViewController {
     func logout() {
         HTTPClient().delete(url: AuthAPI.logout.path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: { res in
             switch res.response?.statusCode {
-            case 204 : print("OK")
+            case 204 :
                 let sub = UIStoryboard(name: "Auth", bundle: nil)
                 let calendar = sub.instantiateViewController(withIdentifier: "LoginVC")
                 self.navigationController?.pushViewController(calendar, animated: false)
                 
             case 401: print("401 - could not find token user")
-                self.showAlert(title: "허가되지 않은 요청입니다.")
+                self.showAlert(title: "허가되지 않은 요청입니다.", message: nil)
             default:
                 print(res.response?.statusCode ?? "default")
-                self.showAlert(title: "오류가 발생했습니다.")
+                self.showAlert(title: "오류가 발생했습니다.", message: nil)
             }
         })
     }

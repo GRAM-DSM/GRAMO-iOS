@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ThirdSectionTableViewCell: UITableViewCell {
+final class ThirdSectionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var myNameLabel : UILabel!

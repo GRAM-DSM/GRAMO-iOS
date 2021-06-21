@@ -7,12 +7,12 @@
 
 import UIKit
 
-class InfoAddViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+final class InfoAddViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
-    @IBOutlet weak var nameLabel : UILabel!
-    @IBOutlet weak var dateLabel : UILabel!
-    @IBOutlet weak var infoTitle: UITextField!
-    @IBOutlet weak var infoDetail: UITextView!
+    @IBOutlet weak private var nameLabel : UILabel!
+    @IBOutlet weak private var dateLabel : UILabel!
+    @IBOutlet weak private var infoTitle: UITextField!
+    @IBOutlet weak private var infoDetail: UITextView!
     
     let httpClient = HTTPClient()
     var infoList = [InfoList]()
@@ -43,18 +43,13 @@ class InfoAddViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_ :)), name: UITextField.textDidChangeNotification, object: infoTitle)
     }
     
-    
-    
     @IBAction func cancel(_ sender : UIBarButtonItem){
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func plus(_ sender : UIBarButtonItem){
+    @IBAction func createNoticeButton(_ sender : UIBarButtonItem){
         if infoTitle.text == nil || infoDetail.textColor == UIColor.lightGray {
-            let alert = UIAlertController(title: "제목 또는 내용을 입력해주세요.", message: nil, preferredStyle: UIAlertController.Style.alert)
-            let cancelAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)
+            showAlert(title: "제목 또는 내용을 입력해주세요.", message: nil)
         }
         
         let title = infoTitle.text!
@@ -75,7 +70,7 @@ class InfoAddViewController: UIViewController, UITextViewDelegate, UITextFieldDe
                 self.navigationController?.popViewController(animated: true)
                 
             default: print(res.response?.statusCode ?? "default")
-                self.showAlert(title: "오류가 발생했습니다.")
+                self.showAlert(title: "오류가 발생했습니다.", message: nil)
             }
         }
     }
@@ -128,15 +123,4 @@ class InfoAddViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             }
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

@@ -7,79 +7,17 @@
 
 import UIKit
 
-class HomeworkListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class HomeworkListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var assignedTableView : UITableView!
-    @IBOutlet weak var allocatorTableView: UITableView!
-    @IBOutlet weak var submittedTableVIew: UITableView!
+    @IBOutlet weak private var assignedTableView : UITableView!
+    @IBOutlet weak private var allocatorTableView: UITableView!
+    @IBOutlet weak private var submittedTableVIew: UITableView!
     
     let httpclient = HTTPClient()
     
     private var hwTeachherModel : [HwStudent] = [HwStudent]()
     private var hwStudentModel : [HwStudent] = [HwStudent]()
     private var hwOrderdModel : [HwStudent] = [HwStudent]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        setNavigationBar()
-        
-        assignedTableView.rowHeight = 130
-        assignedTableView.tag = 1
-        
-        allocatorTableView.rowHeight = 130
-        allocatorTableView.tag = 2
-        
-        submittedTableVIew.rowHeight = 130
-        submittedTableVIew.tag = 3
-        submittedTableVIew.allowsSelection = false
-        
-        assignedTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        allocatorTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        submittedTableVIew.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
-        getAssView()
-        getOrdView()
-        getSubView()
-        
-        
-        assignedTableView.refreshControl = UIRefreshControl()
-        allocatorTableView.refreshControl = UIRefreshControl()
-        submittedTableVIew.refreshControl = UIRefreshControl()
-        assignedTableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh1(_:)), for: .valueChanged)
-        allocatorTableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh2(_:)), for: .valueChanged)
-        submittedTableVIew.refreshControl?.addTarget(self, action: #selector(pullToRefresh3(_:)), for: .valueChanged)
-    }
-    
-    @objc func pullToRefresh1(_ sender: Any) {
-        getAssView()
-        assignedTableView.endUpdates()
-        assignedTableView.refreshControl?.endRefreshing()
-    }
-    
-    @objc func pullToRefresh2(_ sender: Any) {
-        getOrdView()
-        allocatorTableView.endUpdates()
-        allocatorTableView.refreshControl?.endRefreshing()
-    }
-    
-    @objc func pullToRefresh3(_ sender: Any) {
-        getSubView()
-        submittedTableVIew.endUpdates()
-        submittedTableVIew.refreshControl?.endRefreshing()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        getAssView()
-        getOrdView()
-        getSubView()
-        
-        self.assignedTableView.reloadData()
-        self.allocatorTableView.reloadData()
-        self.submittedTableVIew.reloadData()
-    }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -182,6 +120,49 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setNavigationBar()
+        
+        assignedTableView.rowHeight = 130
+        assignedTableView.tag = 1
+        
+        allocatorTableView.rowHeight = 130
+        allocatorTableView.tag = 2
+        
+        submittedTableVIew.rowHeight = 130
+        submittedTableVIew.tag = 3
+        submittedTableVIew.allowsSelection = false
+        
+        assignedTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        allocatorTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        submittedTableVIew.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
+        getAssView()
+        getOrdView()
+        getSubView()
+        
+        
+        assignedTableView.refreshControl = UIRefreshControl()
+        allocatorTableView.refreshControl = UIRefreshControl()
+        submittedTableVIew.refreshControl = UIRefreshControl()
+        assignedTableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh1(_:)), for: .valueChanged)
+        allocatorTableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh2(_:)), for: .valueChanged)
+        submittedTableVIew.refreshControl?.addTarget(self, action: #selector(pullToRefresh3(_:)), for: .valueChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getAssView()
+        getOrdView()
+        getSubView()
+        
+        self.assignedTableView.reloadData()
+        self.allocatorTableView.reloadData()
+        self.submittedTableVIew.reloadData()
+    }
+    
+    
     func getAssView() {
         httpclient.get(url: HomeworkAPI.getAssHomeworkList.path(), params: nil, header: Header.token.header()).responseJSON{(response) in
             switch response.response?.statusCode{
@@ -198,11 +179,11 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
                 }
                 
             case 400 : print("400 - BAD REQUEST")
-                self.showAlert(title: "잘못된 요청입니다.")
+                self.showAlert(title: "잘못된 요청입니다.", message: nil)
             case 404 : print("404 - NOT FOUND assign")
-                self.showAlert(title: "오류가 발생했습니다.")
+                self.showAlert(title: "오류가 발생했습니다.", message: nil)
             default : print(response.response?.statusCode ?? "default")
-                self.showAlert(title: "오류가 발생했습니다.")
+                self.showAlert(title: "오류가 발생했습니다.", message: nil)
             }
         }
     }
@@ -225,11 +206,11 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
                 }
                 
             case 400: print("400 - BAD REQUEST")
-                self.showAlert(title: "잘못된 요청입니다.")
+                self.showAlert(title: "잘못된 요청입니다.", message: nil)
             case 404 : print("404 - NOT FOUND submit")
-                self.showAlert(title: "오류가 발생했습니다.")
+                self.showAlert(title: "오류가 발생했습니다.", message: nil)
             default : print(response.response?.statusCode ?? "default")
-                self.showAlert(title: "오류가 발생했습니다.")
+                self.showAlert(title: "오류가 발생했습니다.", message: nil)
             }
         }
         
@@ -251,25 +232,31 @@ class HomeworkListViewController: UIViewController, UITableViewDelegate, UITable
                 }
                 
             case 400 : print("400 - BAD REQUEST")
-                self.showAlert(title: "잘못된 요청입니다.")
+                self.showAlert(title: "잘못된 요청입니다.", message: nil)
             case 404 : print("404 - NOT FOUND order")
-                self.showAlert(title: "오류가 발생했습니다.")
+                self.showAlert(title: "오류가 발생했습니다.", message: nil)
             default : print(response.response?.statusCode ?? "default")
-                self.showAlert(title: "오류가 발생했습니다.")
+                self.showAlert(title: "오류가 발생했습니다.", message: nil)
             }
         }
     }
     
-   
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    @objc func pullToRefresh1(_ sender: Any) {
+        getAssView()
+        assignedTableView.endUpdates()
+        assignedTableView.refreshControl?.endRefreshing()
+    }
     
+    @objc func pullToRefresh2(_ sender: Any) {
+        getOrdView()
+        allocatorTableView.endUpdates()
+        allocatorTableView.refreshControl?.endRefreshing()
+    }
+    
+    @objc func pullToRefresh3(_ sender: Any) {
+        getSubView()
+        submittedTableVIew.endUpdates()
+        submittedTableVIew.refreshControl?.endRefreshing()
+    }
 }
 

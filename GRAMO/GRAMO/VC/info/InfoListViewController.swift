@@ -7,10 +7,9 @@
 
 import UIKit
 
-class InfoListViewContoller
-: UIViewController, UITableViewDataSource, UITableViewDelegate {
+final class InfoListViewContoller: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak private var tableView: UITableView!
     
     let httpClient = HTTPClient()
     private var getListModel: [Notice] = [Notice]()
@@ -55,7 +54,6 @@ class InfoListViewContoller
         super.viewDidLoad()
         tableView.rowHeight = 130
         
-        print("asdf")
         getList()
         
         setNavigationBar()
@@ -67,7 +65,66 @@ class InfoListViewContoller
         
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getList()
+    }
+    
+    func getList(){
+        httpClient.get(url: NoticeAPI.getNoticeList(0).path(), params: nil, header: Header.token.header()).responseJSON{(response) in
+            switch response.response?.statusCode{
+            case 200:
+                let model = try? JSONDecoder().decode(GetNoticeList.self, from: response.data!)
+                self.nextPage = model!.next_page
+                self.listModel.notice.removeAll()
+                self.listModel.notice.append(contentsOf: model!.notice)
+                self.tableView.reloadData()
+                
+            case 404: print("404 : NOT FOUND - Notice does not exist.")
+                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                
+            case 418: self.getList()
+                
+            default: print(response.response?.statusCode ?? "default")
+                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+            }
+        }
+    }
+    
+    
+    func secondGetList() {
+        getPage()
+        if nextPage == true {
+            httpClient.get(url: NoticeAPI.getNoticeList(page).path(), params: nil, header: Header.token.header()).responseJSON{(response) in
+                switch response.response?.statusCode{
+                case 200:
+                    do{
+                        let data = response.data
+                        let model = try JSONDecoder().decode(GetNoticeList.self, from: data!)
+                        self.nextPage = model.next_page
+                        self.listModel.notice.append(contentsOf: model.notice)
+                        self.tableView.reloadData()
+                        
+                    }
+                    catch{
+                        
+                    }
+                case 404: print("404 : NOT FOUND - Notice does not exist.")
+                    self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                    
+                default: print(response.response?.statusCode ?? "default")
+                    self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                }
+            }
+        }
+        
+    }
+    
+    func getPage()-> Int {
+        page += 1
+        return page
     }
     
     @objc func didDismissPostDetailNotification(_ noti : Notification){
@@ -86,79 +143,5 @@ class InfoListViewContoller
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         secondGetList()
     }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        print("appear")
-        getList()
-    }
-    
-    func getList(){
-        httpClient.get(url: NoticeAPI.getNoticeList(0).path(), params: nil, header: Header.token.header()).responseJSON{(response) in
-            switch response.response?.statusCode{
-            case 200:
-                print(response.data)
-                let model = try? JSONDecoder().decode(GetNoticeList.self, from: response.data!)
-                self.nextPage = model!.next_page
-                self.listModel.notice.removeAll()
-                self.listModel.notice.append(contentsOf: model!.notice)
-                self.tableView.reloadData()
-                
-            case 404: print("404 : NOT FOUND - Notice does not exist.")
-                self.showAlert(title: "오류가 발생했습니다.")
-                
-            case 418: self.getList()
-                
-            default: print("\(response.response?.statusCode)getlist" ?? "default")
-                self.showAlert(title: "오류가 발생했습니다.")
-            }
-        }
-    }
-    
-    func getPage()-> Int {
-        page += 1
-        return page
-    }
-
-    func secondGetList() {
-        getPage()
-        
-        if nextPage == true {
-            httpClient.get(url: NoticeAPI.getNoticeList(page).path(), params: nil, header: Header.token.header()).responseJSON{(response) in
-                switch response.response?.statusCode{
-                case 200:
-                    do{
-                        let data = response.data
-                        let model = try JSONDecoder().decode(GetNoticeList.self, from: data!)
-                        self.nextPage = model.next_page
-                        self.listModel.notice.append(contentsOf: model.notice)
-                        self.tableView.reloadData()
-                        
-                    }
-                    catch{
-                        
-                    }
-                case 404: print("404 : NOT FOUND - Notice does not exist.")
-                    self.showAlert(title: "오류가 발생했습니다.")
-                    
-                default: print(response.response?.statusCode ?? "default")
-                    self.showAlert(title: "오류가 발생했습니다.")
-                }
-            }
-        }
-        
-    }
-     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }    */
     
 }

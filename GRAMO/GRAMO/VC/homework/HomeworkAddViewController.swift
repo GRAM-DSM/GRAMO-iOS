@@ -9,15 +9,15 @@ import UIKit
 import DropDown
 import Alamofire
 
-class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+final class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var selectMajorButton: UIButton!
-    @IBOutlet weak var deadLinetTextField: UITextField!
-    @IBOutlet weak var allocatorButton: UIButton!
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var detailTextView: UITextView!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak private var dateLabel: UILabel!
+    @IBOutlet weak private var selectMajorButton: UIButton!
+    @IBOutlet weak private var deadLinetTextField: UITextField!
+    @IBOutlet weak private var allocatorButton: UIButton!
+    @IBOutlet weak private var titleTextField: UITextField!
+    @IBOutlet weak private var detailTextView: UITextView!
+    @IBOutlet weak private var nameLabel: UILabel!
     
     let datePicker = UIDatePicker()
     
@@ -57,8 +57,6 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
         setNavigationBar()
         
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_ :)), name: UITextField.textDidChangeNotification, object: titleTextField)
-        
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem){
@@ -67,10 +65,7 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         if titleTextField.textColor == UIColor.lightGray || detailTextView.textColor == UIColor.lightGray {
-            let alert = UIAlertController(title: "제목 또는 내용을 입력해주세요.", message: nil, preferredStyle: UIAlertController.Style.alert)
-            let cancelAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)
+            showAlert(title: "제목 또는 내용을 입력해주세요.", message: nil)
         }
         addHomework(major: requestMajor, endDate: requestDate, studentEmail: studentEmail, description: detailTextView.text!, title: titleTextField.text!)
     }
@@ -94,12 +89,10 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
             case "서버" : requestMajor = "BACKEND"
             case "디자인" : requestMajor = "DESIGN"
             default:
-                print("TTI YONG")
+                print("error")
             }
         }
-        
         dropdown.anchorView = selectMajorButton
-        
     }
     
     @IBAction func selectAllocator(_ sender: UIButton){
@@ -130,20 +123,34 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
                         allocatorButton.setTitle("\(item)", for: .normal)
                         self.studentEmail = model.userInfoResponses[index].email
                     }
-                    
                     dropDown.anchorView = allocatorButton
-                    
                 }
                 catch {
                     print(error)
                 }
             case 401 : print("401 - Unauthorized")
+                self.showAlert(title: "허가되지 않은 요청입니다.",message: nil)
             default : print(res.response?.statusCode ?? "default")
             }
         }
-        
-        
     }
+    
+    func addHomework(major: String, endDate: String, studentEmail: String, description: String, title: String) {
+        httpclient.post(url: HomeworkAPI.createHomework.path(), params: ["major":major, "endDate":endDate, "studentEmail":studentEmail, "description":description, "title":title], header: Header.token.header()).responseJSON{(res) in
+            switch res.response?.statusCode{
+            case 201 :
+                self.navigationController?.popViewController(animated: true)
+                
+            case 400 : print("400 - BAD REQUEST")
+                self.showAlert(title: "잘못된 요청입니다.", message: nil)
+            case 404 : print("404 - NOT FOUND createHw")
+                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+            default : print(res.response?.statusCode ?? "default")
+                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+            }
+        }
+    }
+    
     func placeholderSetting() {
         detailTextView.delegate = self
         detailTextView.text = "내용을 입력하세요"
@@ -202,29 +209,6 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
         self.view.endEditing(true)
     }
     
-    
-    func addHomework(major: String, endDate: String, studentEmail: String, description: String, title: String) {
-        httpclient.post(url: HomeworkAPI.createHomework.path(), params: ["major":major, "endDate":endDate, "studentEmail":studentEmail, "description":description, "title":title], header: Header.token.header()).responseJSON{(res) in
-            switch res.response?.statusCode{
-            case 201 :
-                do{
-                    print(res.response?.statusCode ?? "default")
-                    self.navigationController?.popViewController(animated: true)
-                }
-                catch {
-                    print("error: \(error)")
-                }
-            case 400 : print("400 - BAD REQUEST")
-                self.showAlert(title: "잘못된 요청입니다.")
-            case 404 : print("404 - NOT FOUND createHw")
-                self.showAlert(title: "오류가 발생했습니다.")
-            default : print(res.response?.statusCode ?? "default")
-                self.showAlert(title: "오류가 발생했습니다.")
-            }
-        }
-    }
-    
-    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let currentText = textView.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
@@ -250,16 +234,4 @@ class HomeworkAddViewController: UIViewController, UITextViewDelegate, UITextFie
             }
         }
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

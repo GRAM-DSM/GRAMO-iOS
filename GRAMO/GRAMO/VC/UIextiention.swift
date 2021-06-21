@@ -47,10 +47,19 @@ extension UIViewController {
         bar.backgroundColor = UIColor.clear
     }
     
-    func showAlert(title : String) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: UIAlertController.Style.alert)
+    func showAlert(title : String, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showDeleteAlert(title: String, action: ((UIAlertAction) -> Void)?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "예", style: .destructive, handler: action)
+        alert.addAction(cancelAction)
+        alert.addAction(deleteAction)
         self.present(alert, animated: true, completion: nil)
     }
     

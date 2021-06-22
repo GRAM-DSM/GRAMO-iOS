@@ -63,7 +63,6 @@
 		EF71EF20266773C3000F2278 /* HwContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF1B266773C3000F2278 /* HwContent.swift */; };
 		EF71EF21266773C3000F2278 /* HwListResponseS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF1C266773C3000F2278 /* HwListResponseS.swift */; };
 		EF71EF242667741D000F2278 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF222667741D000F2278 /* HTTPClient.swift */; };
-		EF71EF252667741D000F2278 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF232667741D000F2278 /* Networking.swift */; };
 		EF71EF2926677441000F2278 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF2726677441000F2278 /* DetailViewController.swift */; };
 		EF71EF2A26677441000F2278 /* Calendar2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF2826677441000F2278 /* Calendar2VC.swift */; };
 		EF71EF2C266774B2000F2278 /* Calendar2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF71EF2B266774B2000F2278 /* Calendar2.storyboard */; };
@@ -130,7 +129,6 @@
 		EF71EF1B266773C3000F2278 /* HwContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HwContent.swift; sourceTree = "<group>"; };
 		EF71EF1C266773C3000F2278 /* HwListResponseS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HwListResponseS.swift; sourceTree = "<group>"; };
 		EF71EF222667741D000F2278 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
-		EF71EF232667741D000F2278 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		EF71EF2726677441000F2278 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EF71EF2826677441000F2278 /* Calendar2VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar2VC.swift; sourceTree = "<group>"; };
 		EF71EF2B266774B2000F2278 /* Calendar2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar2.storyboard; sourceTree = "<group>"; };
@@ -325,7 +323,6 @@
 				5477A84D266A14BF009064C7 /* Header */,
 				5477A842266A1094009064C7 /* API */,
 				EF71EF222667741D000F2278 /* HTTPClient.swift */,
-				EF71EF232667741D000F2278 /* Networking.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -558,7 +555,6 @@
 				544DA1892672440900DE3C8D /* SignInVC.swift in Sources */,
 				EF71EEF326676C10000F2278 /* InfoAddViewController.swift in Sources */,
 				5477A84C266A1465009064C7 /* HomeworkAPI.swift in Sources */,
-				EF71EF252667741D000F2278 /* Networking.swift in Sources */,
 				EF71EEE126676BD3000F2278 /* HomeworkAssignedViewController.swift in Sources */,
 				EF71EF2926677441000F2278 /* DetailViewController.swift in Sources */,
 				EF71EEE526676BDD000F2278 /* SecondSectionTableViewCell.swift in Sources */,

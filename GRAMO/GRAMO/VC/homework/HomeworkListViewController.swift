@@ -147,6 +147,7 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
         assignedTableView.refreshControl = UIRefreshControl()
         allocatorTableView.refreshControl = UIRefreshControl()
         submittedTableVIew.refreshControl = UIRefreshControl()
+        
         assignedTableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh1(_:)), for: .valueChanged)
         allocatorTableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh2(_:)), for: .valueChanged)
         submittedTableVIew.refreshControl?.addTarget(self, action: #selector(pullToRefresh3(_:)), for: .valueChanged)
@@ -157,58 +158,47 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
         getOrdView()
         getSubView()
         
-        self.assignedTableView.reloadData()
-        self.allocatorTableView.reloadData()
-        self.submittedTableVIew.reloadData()
+        assignedTableView.reloadData()
+        allocatorTableView.reloadData()
+        submittedTableVIew.reloadData()
     }
     
     
-    func getAssView() {
-        httpclient.get(url: HomeworkAPI.getAssHomeworkList.path(), params: nil, header: Header.token.header()).responseJSON{(response) in
+    private func getAssView() {
+        httpclient.get(url: HomeworkAPI.getAssHomeworkList.path(), params: nil, header: Header.token.header()).responseJSON{[unowned self](response) in
             switch response.response?.statusCode{
             case 200:
-                do {
-                    let data = response.data
-                    let model = try JSONDecoder().decode([HwStudent].self, from: data!)
-                    self.hwTeachherModel.removeAll()
-                    self.hwTeachherModel.append(contentsOf: model)
-                    self.assignedTableView.reloadData()
-                }
-                catch {
-                    print(error)
-                }
+                let model = try? JSONDecoder().decode([HwStudent].self, from: response.data!)
+                hwTeachherModel.removeAll()
+                hwTeachherModel.append(contentsOf: model!)
+                assignedTableView.reloadData()
                 
-            case 400 : print("400 - BAD REQUEST")
-                self.showAlert(title: "잘못된 요청입니다.", message: nil)
-            case 404 : print("404 - NOT FOUND assign")
-                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+            case 400 :
+                showAlert(title: "잘못된 요청입니다.", message: nil)
+            case 404 :
+                showAlert(title: "오류가 발생했습니다.", message: nil)
             default : print(response.response?.statusCode ?? "default")
-                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                showAlert(title: "오류가 발생했습니다.", message: nil)
             }
         }
     }
     
-    func getSubView(){
-        httpclient.get(url: HomeworkAPI.getSubHomeworkList.path(), params: nil, header: Header.token.header()).responseJSON{(response) in
+    private func getSubView(){
+        httpclient.get(url: HomeworkAPI.getSubHomeworkList.path(), params: nil, header: Header.token.header()).responseJSON{[unowned self](response) in
             switch response.response?.statusCode{
             case 200:
-                do{
-                    let decoder = JSONDecoder()
-                    decoder.dataDecodingStrategy = .base64
-                    let data = response.data
-                    let model = try decoder.decode([HwStudent].self, from: data!)
-                    self.hwStudentModel.removeAll()
-                    self.hwStudentModel.append(contentsOf: model)
-                    self.submittedTableVIew.reloadData()
-                }
-                catch{
-                    print(error)
-                }
                 
-            case 400: print("400 - BAD REQUEST")
-                self.showAlert(title: "잘못된 요청입니다.", message: nil)
-            case 404 : print("404 - NOT FOUND submit")
-                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                let decoder = JSONDecoder()
+                decoder.dataDecodingStrategy = .base64
+                let model = try? decoder.decode([HwStudent].self, from: response.data!)
+                self.hwStudentModel.removeAll()
+                self.hwStudentModel.append(contentsOf: model!)
+                self.submittedTableVIew.reloadData()
+                
+            case 400:
+                showAlert(title: "잘못된 요청입니다.", message: nil)
+            case 404 :
+                showAlert(title: "오류가 발생했습니다.", message: nil)
             default : print(response.response?.statusCode ?? "default")
                 self.showAlert(title: "오류가 발생했습니다.", message: nil)
             }
@@ -216,44 +206,40 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
         
     }
     
-    func getOrdView() {
-        httpclient.get(url: HomeworkAPI.getOrdHomeworkList.path(), params: nil, header: Header.token.header()).responseJSON{(response) in
+    private func getOrdView() {
+        httpclient.get(url: HomeworkAPI.getOrdHomeworkList.path(), params: nil, header: Header.token.header()).responseJSON{[unowned self](response) in
             switch response.response?.statusCode{
             case 200 :
-                do {
-                    let data = response.data
-                    let model = try JSONDecoder().decode([HwStudent].self, from: data!)
-                    self.hwOrderdModel.removeAll()
-                    self.hwOrderdModel.append(contentsOf: model)
-                    self.allocatorTableView.reloadData()
-                }
-                catch {
-                    print(error)
-                }
                 
-            case 400 : print("400 - BAD REQUEST")
-                self.showAlert(title: "잘못된 요청입니다.", message: nil)
-            case 404 : print("404 - NOT FOUND order")
-                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                let model = try? JSONDecoder().decode([HwStudent].self, from: response.data!)
+                hwOrderdModel.removeAll()
+                hwOrderdModel.append(contentsOf: model!)
+                allocatorTableView.reloadData()
+                
+                
+            case 400 :
+                showAlert(title: "잘못된 요청입니다.", message: nil)
+            case 404 :
+                showAlert(title: "오류가 발생했습니다.", message: nil)
             default : print(response.response?.statusCode ?? "default")
-                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                showAlert(title: "오류가 발생했습니다.", message: nil)
             }
         }
     }
     
-    @objc func pullToRefresh1(_ sender: Any) {
+    @objc private func pullToRefresh1(_ sender: Any) {
         getAssView()
         assignedTableView.endUpdates()
         assignedTableView.refreshControl?.endRefreshing()
     }
     
-    @objc func pullToRefresh2(_ sender: Any) {
+    @objc private func pullToRefresh2(_ sender: Any) {
         getOrdView()
         allocatorTableView.endUpdates()
         allocatorTableView.refreshControl?.endRefreshing()
     }
     
-    @objc func pullToRefresh3(_ sender: Any) {
+    @objc private func pullToRefresh3(_ sender: Any) {
         getSubView()
         submittedTableVIew.endUpdates()
         submittedTableVIew.refreshControl?.endRefreshing()

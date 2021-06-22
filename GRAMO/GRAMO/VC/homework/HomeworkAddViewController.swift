@@ -59,18 +59,18 @@ final class HomeworkAddViewController: UIViewController, UITextViewDelegate, UIT
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_ :)), name: UITextField.textDidChangeNotification, object: titleTextField)
     }
     
-    @IBAction func cancelButton(_ sender: UIBarButtonItem){
+    @IBAction private func cancelButton(_ sender: UIBarButtonItem){
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func addButton(_ sender: UIBarButtonItem) {
+    @IBAction private func addButton(_ sender: UIBarButtonItem) {
         if titleTextField.textColor == UIColor.lightGray || detailTextView.textColor == UIColor.lightGray {
             showAlert(title: "제목 또는 내용을 입력해주세요.", message: nil)
         }
         addHomework(major: requestMajor, endDate: requestDate, studentEmail: studentEmail, description: detailTextView.text!, title: titleTextField.text!)
     }
     
-    @IBAction func selectMajor(_ sender: UIButton){
+    @IBAction private func selectMajor(_ sender: UIButton){
         let dropdown = DropDown()
         
         DropDown.appearance().backgroundColor = UIColor.white
@@ -95,63 +95,59 @@ final class HomeworkAddViewController: UIViewController, UITextViewDelegate, UIT
         dropdown.anchorView = selectMajorButton
     }
     
-    @IBAction func selectAllocator(_ sender: UIButton){
-        httpclient.get(url: HomeworkAPI.getUserList.path(), params: nil, header: Header.token.header()).responseJSON { [self](res) in
+    @IBAction private func selectAllocator(_ sender: UIButton){
+        httpclient.get(url: HomeworkAPI.getUserList.path(), params: nil, header: Header.token.header()).responseJSON { [unowned self](res) in
             switch res.response?.statusCode{
             case 200 :
-                do {
-                    let data = res.data
-                    let model = try JSONDecoder().decode(User.self, from: data!)
-                    self.userListModel.userInfoResponses.removeAll()
-                    self.userListModel.userInfoResponses.append(contentsOf: model.userInfoResponses)
-                    
-                    var studentItems = [String]()
-                    
-                    for i in 0..<model.userInfoResponses.count{
-                        studentItems.append(model.userInfoResponses[i].name + "(" + model.userInfoResponses[i].major + ")")
-                    }
-                    
-                    let dropDown = DropDown()
-                    
-                    DropDown.appearance().backgroundColor = UIColor.white
-                    DropDown.appearance().selectionBackgroundColor = UIColor.lightGray
-                    DropDown.appearance().textColor = UIColor.black
-                    
-                    dropDown.dataSource = studentItems
-                    dropDown.show()
-                    dropDown.selectionAction = {[unowned self] (index: Int, item: String) in
-                        allocatorButton.setTitle("\(item)", for: .normal)
-                        self.studentEmail = model.userInfoResponses[index].email
-                    }
-                    dropDown.anchorView = allocatorButton
+                
+                let model = try? JSONDecoder().decode(User.self, from: res.data!)
+                userListModel.userInfoResponses.removeAll()
+                userListModel.userInfoResponses.append(contentsOf: model!.userInfoResponses)
+                
+                var studentItems = [String]()
+                
+                for i in 0..<model!.userInfoResponses.count{
+                    studentItems.append(model!.userInfoResponses[i].name + "(" + model!.userInfoResponses[i].major + ")")
                 }
-                catch {
-                    print(error)
+                
+                let dropDown = DropDown()
+                
+                DropDown.appearance().backgroundColor = UIColor.white
+                DropDown.appearance().selectionBackgroundColor = UIColor.lightGray
+                DropDown.appearance().textColor = UIColor.black
+                
+                dropDown.dataSource = studentItems
+                dropDown.show()
+                dropDown.selectionAction = {[unowned self] (index: Int, item: String) in
+                    allocatorButton.setTitle("\(item)", for: .normal)
+                    studentEmail = model!.userInfoResponses[index].email
                 }
-            case 401 : print("401 - Unauthorized")
-                self.showAlert(title: "허가되지 않은 요청입니다.",message: nil)
+                dropDown.anchorView = allocatorButton
+                
+            case 401 :
+                showAlert(title: "허가되지 않은 요청입니다.",message: nil)
             default : print(res.response?.statusCode ?? "default")
             }
         }
     }
     
-    func addHomework(major: String, endDate: String, studentEmail: String, description: String, title: String) {
-        httpclient.post(url: HomeworkAPI.createHomework.path(), params: ["major":major, "endDate":endDate, "studentEmail":studentEmail, "description":description, "title":title], header: Header.token.header()).responseJSON{(res) in
+    private func addHomework(major: String, endDate: String, studentEmail: String, description: String, title: String) {
+        httpclient.post(url: HomeworkAPI.createHomework.path(), params: ["major":major, "endDate":endDate, "studentEmail":studentEmail, "description":description, "title":title], header: Header.token.header()).responseJSON{[unowned self](res) in
             switch res.response?.statusCode{
             case 201 :
-                self.navigationController?.popViewController(animated: true)
+                navigationController?.popViewController(animated: true)
                 
-            case 400 : print("400 - BAD REQUEST")
-                self.showAlert(title: "잘못된 요청입니다.", message: nil)
-            case 404 : print("404 - NOT FOUND createHw")
-                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+            case 400 :
+                showAlert(title: "잘못된 요청입니다.", message: nil)
+            case 404 : 
+                showAlert(title: "오류가 발생했습니다.", message: nil)
             default : print(res.response?.statusCode ?? "default")
-                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                showAlert(title: "오류가 발생했습니다.", message: nil)
             }
         }
     }
     
-    func placeholderSetting() {
+    private func placeholderSetting() {
         detailTextView.delegate = self
         detailTextView.text = "내용을 입력하세요"
         detailTextView.textColor = UIColor.lightGray
@@ -171,7 +167,7 @@ final class HomeworkAddViewController: UIViewController, UITextViewDelegate, UIT
         }
     }
     
-    func createDatePicker() {
+    private func createDatePicker() {
         
         deadLinetTextField.textAlignment = .center
         
@@ -192,7 +188,7 @@ final class HomeworkAddViewController: UIViewController, UITextViewDelegate, UIT
         datePicker.locale = Locale(identifier: "ko-KR")
     }
     
-    @objc func donePressed() {
+    @objc private func donePressed() {
         let formatter = DateFormatter()
         
         formatter.dateStyle = .medium
@@ -218,7 +214,7 @@ final class HomeworkAddViewController: UIViewController, UITextViewDelegate, UIT
         return changedText.count <= 1000
     }
     
-    @objc func textDidChange(_ notification: Notification) {
+    @objc private func textDidChange(_ notification: Notification) {
         if let textField = notification.object as? UITextField {
             if let text = textField.text {
                 

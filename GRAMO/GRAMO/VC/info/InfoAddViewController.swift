@@ -43,39 +43,39 @@ final class InfoAddViewController: UIViewController, UITextViewDelegate, UITextF
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_ :)), name: UITextField.textDidChangeNotification, object: infoTitle)
     }
     
-    @IBAction func cancel(_ sender : UIBarButtonItem){
+    @IBAction private func cancel(_ sender : UIBarButtonItem){
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func createNoticeButton(_ sender : UIBarButtonItem){
+    @IBAction private func createNoticeButton(_ sender : UIBarButtonItem){
         if infoTitle.text == nil || infoDetail.textColor == UIColor.lightGray {
             showAlert(title: "제목 또는 내용을 입력해주세요.", message: nil)
         }
         
-        let title = infoTitle.text!
-        let detail = infoDetail.text!
-        let date = dateLabel.text!
-        
-        let item : InfoList = InfoList(writer: "장서영", date: date, infotTitle: title, infoDetail: detail)
-        
-        infoList.append(item)
+        //        let title = infoTitle.text!
+        //        let detail = infoDetail.text!
+        //        let date = dateLabel.text!
+        //
+        //        let item : InfoList = InfoList(writer: "장서영", date: date, infotTitle: title, infoDetail: detail)
+        //
+        //        infoList.append(item)
         createNotice(title: infoTitle.text!, content: infoDetail.text!)
     }
     
-    func createNotice(title: String, content: String) {
-        httpClient.post(url: NoticeAPI.createNotice.path(), params: ["title":title, "content":content], header: Header.token.header()).responseJSON{(res) in
+    private func createNotice(title: String, content: String) {
+        httpClient.post(url: NoticeAPI.createNotice.path(), params: ["title":title, "content":content], header: Header.token.header()).responseJSON{[unowned self](res) in
             switch res.response?.statusCode{
             case 201:
                 sleep(UInt32(0.1))
-                self.navigationController?.popViewController(animated: true)
+                navigationController?.popViewController(animated: true)
                 
             default: print(res.response?.statusCode ?? "default")
-                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                showAlert(title: "오류가 발생했습니다.", message: nil)
             }
         }
     }
     
-    func placeholderSetting() {
+    private func placeholderSetting() {
         infoDetail.delegate = self
         infoDetail.text = "내용을 입력하세요"
         infoDetail.textColor = UIColor.lightGray
@@ -107,7 +107,7 @@ final class InfoAddViewController: UIViewController, UITextViewDelegate, UITextF
         return changedText.count <= 1000
     }
     
-    @objc func textDidChange(_ notification: Notification) {
+    @objc private func textDidChange(_ notification: Notification) {
         if let textField = notification.object as? UITextField {
             if let text = textField.text {
                 

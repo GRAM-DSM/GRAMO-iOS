@@ -29,48 +29,47 @@ final class InfoDetailViewController: UIViewController {
         self.isModalInPresentation = false
     }
     
-    @IBAction func deleteNotice(_ sender: UIButton) {
-        showDeleteAlert(title: "삭제하시겠습니까?", action: { [self](action) in deleteNotice(id: id)}, message: "되돌리기는 불가능합니다.")
+    @IBAction private func deleteNotice(_ sender: UIButton) {
+        showDeleteAlert(title: "삭제하시겠습니까?", action: { [unowned self](action) in deleteNotice(id: id)}, message: "되돌리기는 불가능합니다.")
         
     }
     
-    func detailNotice(id: Int){
-        httpclient.get(url: NoticeAPI.getNoticeDetail(id).path(), params: ["id":id], header: Header.token.header()).responseJSON {(res) in
+    private func detailNotice(id: Int){
+        httpclient.get(url: NoticeAPI.getNoticeDetail(id).path(), params: ["id":id], header: Header.token.header()).responseJSON {[unowned self](res) in
             switch res.response?.statusCode{
             case 200:
                 
-                guard let data = res.data else {return}
-                guard let model = try? JSONDecoder().decode(GetNoticeDetail.self, from: data) else { return}
-                self.nameLabel.text = model.notice.name
-                self.dateLabel.text = self.formatStartDate(model.notice.created_at)
-                self.titleTxt.text = model.notice.title
-                self.detailTxt.text = model.notice.content
+                let model = try? JSONDecoder().decode(GetNoticeDetail.self, from: res.data!)
+                nameLabel.text = model!.notice.name
+                dateLabel.text = formatStartDate(model!.notice.created_at)
+                titleTxt.text = model!.notice.title
+                detailTxt.text = model!.notice.content
                 
             case 404: print("404 - Not Found")
-                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                showAlert(title: "오류가 발생했습니다.", message: nil)
                 
             default: print(res.response?.statusCode ?? "default")
-                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                showAlert(title: "오류가 발생했습니다.", message: nil)
             }
         }
     }
     
-    func deleteNotice(id: Int){
-        httpclient.delete(url: NoticeAPI.deleteNotice(id).path(), params: nil, header: Header.token.header()).responseJSON{(res) in
+    private func deleteNotice(id: Int){
+        httpclient.delete(url: NoticeAPI.deleteNotice(id).path(), params: nil, header: Header.token.header()).responseJSON{[unowned self](res) in
             switch res.response?.statusCode{
             case 204:
-                self.dismiss(animated: true)
+                dismiss(animated: true)
                 NotificationCenter.default.post(name: detailVC, object: nil, userInfo: nil)
                 
             case 403:
                 print("403 - Forbidden")
-                self.showAlert(title: "권한이 없습니다.", message: "타인의 게시물을 삭제할 수 없습니다.")
-    
+                showAlert(title: "권한이 없습니다.", message: "타인의 게시물을 삭제할 수 없습니다.")
+                
             case 404: print("404 - Not Found")
-                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                showAlert(title: "오류가 발생했습니다.", message: nil)
                 
             default: print(res.response?.statusCode ?? "default")
-                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                showAlert(title: "오류가 발생했습니다.", message: nil)
             }
         }
     }

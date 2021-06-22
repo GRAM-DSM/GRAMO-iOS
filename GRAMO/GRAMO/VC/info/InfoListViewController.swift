@@ -72,69 +72,63 @@ final class InfoListViewContoller: UIViewController, UITableViewDataSource, UITa
         getList()
     }
     
-    func getList(){
-        httpClient.get(url: NoticeAPI.getNoticeList(0).path(), params: nil, header: Header.token.header()).responseJSON{(response) in
+    private func getList(){
+        httpClient.get(url: NoticeAPI.getNoticeList(0).path(), params: nil, header: Header.token.header()).responseJSON{[unowned self](response) in
             switch response.response?.statusCode{
             case 200:
                 let model = try? JSONDecoder().decode(GetNoticeList.self, from: response.data!)
-                self.nextPage = model!.next_page
-                self.listModel.notice.removeAll()
-                self.listModel.notice.append(contentsOf: model!.notice)
-                self.tableView.reloadData()
+                nextPage = model!.next_page
+                listModel.notice.removeAll()
+                listModel.notice.append(contentsOf: model!.notice)
+                tableView.reloadData()
                 
             case 404: print("404 : NOT FOUND - Notice does not exist.")
-                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                showAlert(title: "오류가 발생했습니다.", message: nil)
                 
-            case 418: self.getList()
+            case 418: getList()
                 
             default: print(response.response?.statusCode ?? "default")
-                self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                showAlert(title: "오류가 발생했습니다.", message: nil)
             }
         }
     }
     
     
-    func secondGetList() {
+    private func secondGetList() {
         getPage()
         if nextPage == true {
-            httpClient.get(url: NoticeAPI.getNoticeList(page).path(), params: nil, header: Header.token.header()).responseJSON{(response) in
+            httpClient.get(url: NoticeAPI.getNoticeList(page).path(), params: nil, header: Header.token.header()).responseJSON{[unowned self](response) in
                 switch response.response?.statusCode{
                 case 200:
-                    do{
-                        let data = response.data
-                        let model = try JSONDecoder().decode(GetNoticeList.self, from: data!)
-                        self.nextPage = model.next_page
-                        self.listModel.notice.append(contentsOf: model.notice)
-                        self.tableView.reloadData()
-                        
-                    }
-                    catch{
-                        
-                    }
-                case 404: print("404 : NOT FOUND - Notice does not exist.")
-                    self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                    let model = try? JSONDecoder().decode(GetNoticeList.self, from: response.data!)
+                    nextPage = model!.next_page
+                    listModel.notice.append(contentsOf: model!.notice)
+                    tableView.reloadData()
                     
-                default: print(response.response?.statusCode ?? "default")
-                    self.showAlert(title: "오류가 발생했습니다.", message: nil)
+                case 404:
+                    showAlert(title: "오류가 발생했습니다.", message: nil)
+                    
+                default:
+                    showAlert(title: "오류가 발생했습니다.", message: nil)
                 }
             }
         }
         
     }
     
-    func getPage()-> Int {
+    private func getPage()-> Int {
         page += 1
         return page
     }
     
-    @objc func didDismissPostDetailNotification(_ noti : Notification){
+    @objc private func didDismissPostDetailNotification(_ noti : Notification){
         OperationQueue.main.addOperation {
             self.getList()
             self.tableView.reloadData()
         }
     }
     
-    @objc func pullToRefresh(_ sender: Any) {
+    @objc private func pullToRefresh(_ sender: Any) {
         getList()
         tableView.endUpdates()
         tableView.refreshControl?.endRefreshing()

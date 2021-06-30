@@ -63,4 +63,20 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func animationTxtField(firstTxtField: UITextField, secondTxtField: UITextField) {
+        UIView.animate(withDuration: 0.2, animations: {
+            firstTxtField.frame.origin.x -= 10
+            secondTxtField.frame.origin.x -= 10
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.2, animations: {
+                firstTxtField.frame.origin.x += 20
+                secondTxtField.frame.origin.x += 20
+            }, completion: { _ in
+                UIView.animate(withDuration: 0.2, animations: {
+                    firstTxtField.frame.origin.x -= 10
+                    secondTxtField.frame.origin.x -= 10
+                })
+            })
+        })
+    }
 }

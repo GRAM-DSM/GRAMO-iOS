@@ -8,8 +8,8 @@
 import UIKit
 import FSCalendar
 
-class Calendar2VC: UIViewController {
-    @IBOutlet weak var calendar: FSCalendar!
+class CalendarViewController: UIViewController {
+    @IBOutlet private weak var calendar: FSCalendar!
     
     private var events = [Date]()
     private let formatter = DateFormatter()
@@ -19,19 +19,12 @@ class Calendar2VC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpCalendar()
-        setUpEvents()
-    }
-    
-    override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        if motion == .motionShake {
-            setUpEvents()
-        }
+        customCalendar()
+        customEvents()
     }
 }
 
-// MARK: FSCalendar
-extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
+extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         if self.events.contains(date) {
             return 1
@@ -50,7 +43,7 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
         self.present(modalPresentView, animated: true, completion: nil)
     }
     
-    func setUpCalendar() {
+    func customCalendar() {
         calendar.dataSource = self
         calendar.delegate = self
         
@@ -68,7 +61,7 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
         calendar.scrollDirection = .vertical
     }
     
-    func setUpEvents() {
+    func customEvents() {
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy-MM"
         let current_date_string = formatter.string(from: Date())
@@ -80,7 +73,7 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
     func getCalendarList(date: String) {
         httpClient
             .get(url: CalendarAPI.getCalendarList(date).path(), params: nil, header: Header.token.header())
-            .responseJSON(completionHandler: {(response) in
+            .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 200:
                     do {
@@ -90,15 +83,16 @@ extension Calendar2VC: FSCalendarDelegate, FSCalendarDataSource {
                         let data = response.data
                         let model = try JSONDecoder().decode(calendarContentResponses.self, from: data!)
                         
-                        self.events.removeAll()
+                        events.removeAll()
                         
                         for i in model.calendarContentResponses {
                             if i.picuCount != 0 || i.planCount != 0 {
-                                self.formatter.dateFormat = "yyyy-MM-dd"
-                                self.events.append(self.formatter.date(from: i.date)!)
+                                formatter.dateFormat = "yyyy-MM-dd"
+                                events.append(self.formatter.date(from: i.date)!)
                             }
                         }
-                        self.calendar.reloadData()
+                        
+                        calendar.reloadData()
                     } catch {
                         print("Error: \(error)")
                     }

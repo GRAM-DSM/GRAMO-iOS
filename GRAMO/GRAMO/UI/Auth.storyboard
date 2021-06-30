@@ -16,10 +16,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Sign InVC-->
+        <!--Sign In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" id="BYZ-38-t0r" customClass="SignInVC" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="BYZ-38-t0r" customClass="SignInViewController" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,10 +161,10 @@
             </objects>
             <point key="canvasLocation" x="1887.6923076923076" y="88.862559241706151"/>
         </scene>
-        <!--Sign UpVC-->
+        <!--Sign Up View Controller-->
         <scene sceneID="Ifo-c4-y6Z">
             <objects>
-                <viewController storyboardIdentifier="signUpVC" id="L3a-Rd-mH2" customClass="SignUpVC" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUpVC" id="L3a-Rd-mH2" customClass="SignUpViewController" customModule="GRAMO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N5p-HL-hgf">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -395,10 +395,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="authenticationBtn" destination="v2R-7r-GdV" id="DTE-Ny-wh1"/>
-                        <outlet property="checkBtn" destination="iVY-jf-xge" id="g9H-Tu-gdL"/>
+                        <outlet property="authenticationButton" destination="v2R-7r-GdV" id="bbe-fK-wDY"/>
+                        <outlet property="checkButton" destination="iVY-jf-xge" id="1aC-FP-cgV"/>
                         <outlet property="checkTxtField" destination="lU1-bO-psC" id="Hof-yc-sSl"/>
-                        <outlet property="dropDownBtn" destination="CAf-DX-4Pm" id="nRt-71-sRt"/>
+                        <outlet property="dropDownButton" destination="CAf-DX-4Pm" id="Ksi-qm-ooi"/>
                         <outlet property="emailTxtField" destination="aHV-u2-RtQ" id="fMb-fu-stf"/>
                         <outlet property="failLabel" destination="yva-3B-O2g" id="JSc-Tu-pX8"/>
                         <outlet property="majorLabel" destination="qg4-x0-JMr" id="BUz-i6-5rV"/>

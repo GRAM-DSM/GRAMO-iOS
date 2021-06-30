@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		544DA1862672401400DE3C8D /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544DA1852672401400DE3C8D /* SignIn.swift */; };
-		544DA1892672440900DE3C8D /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544DA1882672440900DE3C8D /* SignInVC.swift */; };
-		544DA18B26724E5000DE3C8D /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544DA18A26724E5000DE3C8D /* SignUpVC.swift */; };
+		544DA1892672440900DE3C8D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544DA1882672440900DE3C8D /* SignInViewController.swift */; };
+		544DA18B26724E5000DE3C8D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544DA18A26724E5000DE3C8D /* SignUpViewController.swift */; };
 		544DA18D267285E200DE3C8D /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 544DA18C267285E200DE3C8D /* Auth.storyboard */; };
 		5477A844266A10A5009064C7 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A843266A10A5009064C7 /* APIProvider.swift */; };
 		5477A846266A10BF009064C7 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5477A845266A10BF009064C7 /* AuthAPI.swift */; };
@@ -64,15 +64,15 @@
 		EF71EF21266773C3000F2278 /* HwListResponseS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF1C266773C3000F2278 /* HwListResponseS.swift */; };
 		EF71EF242667741D000F2278 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF222667741D000F2278 /* HTTPClient.swift */; };
 		EF71EF2926677441000F2278 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF2726677441000F2278 /* DetailViewController.swift */; };
-		EF71EF2A26677441000F2278 /* Calendar2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF2826677441000F2278 /* Calendar2VC.swift */; };
+		EF71EF2A26677441000F2278 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF2826677441000F2278 /* CalendarViewController.swift */; };
 		EF71EF2C266774B2000F2278 /* Calendar2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF71EF2B266774B2000F2278 /* Calendar2.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4839AD9BA6790E84B5F90CB3 /* Pods-GRAMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.release.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.release.xcconfig"; sourceTree = "<group>"; };
 		544DA1852672401400DE3C8D /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
-		544DA1882672440900DE3C8D /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
-		544DA18A26724E5000DE3C8D /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		544DA1882672440900DE3C8D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		544DA18A26724E5000DE3C8D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		544DA18C267285E200DE3C8D /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		5477A843266A10A5009064C7 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		5477A845266A10BF009064C7 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		EF71EF1C266773C3000F2278 /* HwListResponseS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HwListResponseS.swift; sourceTree = "<group>"; };
 		EF71EF222667741D000F2278 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		EF71EF2726677441000F2278 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		EF71EF2826677441000F2278 /* Calendar2VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar2VC.swift; sourceTree = "<group>"; };
+		EF71EF2826677441000F2278 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		EF71EF2B266774B2000F2278 /* Calendar2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar2.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,8 +157,8 @@
 		544DA1872672402E00DE3C8D /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				544DA1882672440900DE3C8D /* SignInVC.swift */,
-				544DA18A26724E5000DE3C8D /* SignUpVC.swift */,
+				544DA1882672440900DE3C8D /* SignInViewController.swift */,
+				544DA18A26724E5000DE3C8D /* SignUpViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -393,7 +393,7 @@
 		EF71EF262667742F000F2278 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				EF71EF2826677441000F2278 /* Calendar2VC.swift */,
+				EF71EF2826677441000F2278 /* CalendarViewController.swift */,
 				EF71EF2726677441000F2278 /* DetailViewController.swift */,
 			);
 			path = Calendar;
@@ -541,7 +541,7 @@
 				EF71EF14266773B3000F2278 /* notice.swift in Sources */,
 				EF71EEEB26676BFA000F2278 /* SideMenuViewController.swift in Sources */,
 				5477A844266A10A5009064C7 /* APIProvider.swift in Sources */,
-				EF71EF2A26677441000F2278 /* Calendar2VC.swift in Sources */,
+				EF71EF2A26677441000F2278 /* CalendarViewController.swift in Sources */,
 				5477A84F266A1532009064C7 /* Headers.swift in Sources */,
 				EF71EF17266773B3000F2278 /* GetNoticeDetail.swift in Sources */,
 				EF71EEEA26676BFA000F2278 /* SideMenuNavigationController.swift in Sources */,
@@ -552,7 +552,7 @@
 				EF71EF1F266773C3000F2278 /* HwUser.swift in Sources */,
 				EF71EEF026676C10000F2278 /* InfoDetailViewController.swift in Sources */,
 				EF71EEDE26676BD3000F2278 /* HomeworkOrderedViewController.swift in Sources */,
-				544DA1892672440900DE3C8D /* SignInVC.swift in Sources */,
+				544DA1892672440900DE3C8D /* SignInViewController.swift in Sources */,
 				EF71EEF326676C10000F2278 /* InfoAddViewController.swift in Sources */,
 				5477A84C266A1465009064C7 /* HomeworkAPI.swift in Sources */,
 				EF71EEE126676BD3000F2278 /* HomeworkAssignedViewController.swift in Sources */,
@@ -560,7 +560,7 @@
 				EF71EEE526676BDD000F2278 /* SecondSectionTableViewCell.swift in Sources */,
 				EF71EEFD26677324000F2278 /* GetPICU.swift in Sources */,
 				5477A848266A120F009064C7 /* CalendarAPI.swift in Sources */,
-				544DA18B26724E5000DE3C8D /* SignUpVC.swift in Sources */,
+				544DA18B26724E5000DE3C8D /* SignUpViewController.swift in Sources */,
 				EF71EF0F2667739D000F2278 /* ThirdSectionModel.swift in Sources */,
 				EF71EF0226677344000F2278 /* PICUTableViewCell.swift in Sources */,
 				5477A84A266A126C009064C7 /* NoticeAPI.swift in Sources */,

@@ -8,8 +8,8 @@
 import UIKit
 
 class DetailViewController: UIViewController, UITextViewDelegate {
-    @IBOutlet weak var picuTableView: UITableView!
-    @IBOutlet weak var planTableView: UITableView!
+    @IBOutlet private weak var picuTableView: UITableView!
+    @IBOutlet private weak var planTableView: UITableView!
     
     private let httpClient = HTTPClient()
     
@@ -66,7 +66,6 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     }
 }
 
-// MARK: UITableView
 extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 1 {
@@ -128,20 +127,20 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         if tableView.tag == 1 {
             if editingStyle == .delete {
                 httpClient
-                    .delete(url: CalendarAPI.deletePICU(self.picu.picuContentResponses[indexPath.row].picuId).path(), params: nil, header: Header.token.header())
-                    .responseJSON(completionHandler: {(response) in
+                    .delete(url: CalendarAPI.deletePICU(picu.picuContentResponses[indexPath.row].picuId).path(), params: nil, header: Header.token.header())
+                    .responseJSON(completionHandler: {[unowned self](response) in
                         switch response.response?.statusCode {
                         case 200:
                             print("OK - getPICU")
                             
-                            self.picu.picuContentResponses.remove(at: indexPath.row)
+                            picu.picuContentResponses.remove(at: indexPath.row)
                             tableView.deleteRows(at: [indexPath], with: .fade)
                             
-                            self.showToast(message: "PICU 삭제 성공!")
+                            showToast(message: "PICU 삭제 성공!")
                             
                         case 403:
                             print("403 : Forbidden - getPICU")
-                            self.showToast(message: "권한이 없습니다")
+                            showToast(message: "권한이 없습니다")
                             
                         case 404:
                             print("404 : NOT FOUND - Notice does not exist. - getPICU")
@@ -157,20 +156,20 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         if tableView.tag == 2 {
             if editingStyle == .delete {
                 httpClient
-                    .delete(url: CalendarAPI.deletePlan(self.plan.planContentResponses[indexPath.row].planId).path(), params: nil, header: Header.token.header())
-                    .responseJSON(completionHandler: {(response) in
+                    .delete(url: CalendarAPI.deletePlan(plan.planContentResponses[indexPath.row].planId).path(), params: nil, header: Header.token.header())
+                    .responseJSON(completionHandler: {[unowned self](response) in
                         switch response.response?.statusCode {
                         case 200:
                             print("OK - getPICU")
                             
-                            self.plan.planContentResponses.remove(at: indexPath.row)
+                            plan.planContentResponses.remove(at: indexPath.row)
                             tableView.deleteRows(at: [indexPath], with: .fade)
                             
-                            self.showToast(message: "Plan 삭제 성공!")
+                            showToast(message: "Plan 삭제 성공!")
                             
                         case 403:
                             print("403 : Forbidden - getPICU")
-                            self.showToast(message: "권한이 없습니다")
+                            showToast(message: "권한이 없습니다")
                             
                         case 404:
                             print("404 : NOT FOUND - Notice does not exist. - getPICU")
@@ -241,7 +240,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func getPICU() {
         httpClient
             .get(url: CalendarAPI.getPICU(date).path(), params: nil, header: Header.token.header())
-            .responseJSON(completionHandler: {(response) in
+            .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 200:
                     do {
@@ -250,12 +249,12 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                         let data = response.data
                         let model = try JSONDecoder().decode(picuContentResponses.self, from: data!)
                         
-                        self.picu.picuContentResponses.removeAll()
+                        picu.picuContentResponses.removeAll()
                         
-                        self.appendMetadata(num: 1)
+                        appendMetadata(num: 1)
                         
-                        self.picu.picuContentResponses.append(contentsOf: model.picuContentResponses)
-                        self.picuTableView.reloadData()
+                        picu.picuContentResponses.append(contentsOf: model.picuContentResponses)
+                        picuTableView.reloadData()
                     } catch {
                         print("Error: \(error)")
                     }
@@ -274,14 +273,16 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func createPICU(description: String, date: String) {
-        httpClient.post(url: CalendarAPI.createPICU.path(), params: ["description": description, "date": date], header: Header.token.header()).responseJSON(completionHandler: {(response) in
+        httpClient
+            .post(url: CalendarAPI.createPICU.path(), params: ["description": description, "date": date], header: Header.token.header())
+            .responseJSON(completionHandler: {[unowned self](response) in
             switch response.response?.statusCode {
             case 201:
                 print("OK - createPICU")
-                self.dismiss(animated: true, completion: nil)
+                dismiss(animated: true, completion: nil)
                 
             case 400:
-                self.showToast(message: "권한 없음")
+                showToast(message: "권한 없음")
                 
             case 403:
                 print("403 : Forbidden - createPICU")
@@ -299,7 +300,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func getPlan() {
         httpClient
             .get(url: CalendarAPI.getPlan(date).path(), params: nil, header: Header.token.header())
-            .responseJSON(completionHandler: {(response) in
+            .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 200:
                     do {
@@ -308,12 +309,12 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                         let data = response.data
                         let model = try JSONDecoder().decode(planContentResponses.self, from: data!)
                         
-                        self.plan.planContentResponses.removeAll()
+                        plan.planContentResponses.removeAll()
                         
-                        self.appendMetadata(num: 2)
+                        appendMetadata(num: 2)
                         
-                        self.plan.planContentResponses.append(contentsOf: model.planContentResponses)
-                        self.planTableView.reloadData()
+                        plan.planContentResponses.append(contentsOf: model.planContentResponses)
+                        planTableView.reloadData()
                     } catch {
                         print("Error: \(error)")
                     }
@@ -334,14 +335,14 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func createPlan(title: String, description: String, date: String) {
         httpClient
             .post(url: CalendarAPI.createPlan.path(), params: ["description": description, "title": title, "date": date], header: Header.token.header())
-            .responseJSON(completionHandler: {(response) in
+            .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 201:
                     print("OK - createPlan")
-                    self.dismiss(animated: true, completion: nil)
+                    dismiss(animated: true, completion: nil)
                     
                 case 400:
-                    self.showToast(message: "권한 없음")
+                    showToast(message: "권한 없음")
                     
                 case 403:
                     print("403 : Forbidden - createPlan")

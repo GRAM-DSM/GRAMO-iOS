@@ -7,10 +7,10 @@
 
 import UIKit
 
-class SignInVC: UIViewController {
-    @IBOutlet weak var emailTxtField: UITextField!
-    @IBOutlet weak var pwTxtField: UITextField!
-    @IBOutlet weak var failLabel: UILabel!
+class SignInViewController: UIViewController {
+    @IBOutlet weak private var emailTxtField: UITextField!
+    @IBOutlet weak private var pwTxtField: UITextField!
+    @IBOutlet weak private var failLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class SignInVC: UIViewController {
         
         httpClient
             .post(url: AuthAPI.signIn.path(), params: ["email": email, "password": password], header: Header.tokenIsEmpty.header())
-            .responseJSON(completionHandler: {(response) in
+            .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 201:
                     do {
@@ -60,50 +60,22 @@ class SignInVC: UIViewController {
                         let sub = UIStoryboard(name: "Calendar2", bundle: nil)
                         let info = sub.instantiateViewController(withIdentifier: "Calendar2VC")
                         
-                        self.navigationController?.pushViewController(info, animated: true)
+                        navigationController?.pushViewController(info, animated: true)
                     } catch {
                         print("Error: \(error)")
                     }
                     
                 case 400:
                     print("400 : BAD REQUEST - signIn")
+                    animationTxtField(firstTxtField: emailTxtField, secondTxtField: pwTxtField)
                     
-                    UIView.animate(withDuration: 0.2, animations: {
-                        self.emailTxtField.frame.origin.x -= 10
-                        self.pwTxtField.frame.origin.x -= 10
-                    }, completion: { _ in
-                        UIView.animate(withDuration: 0.2, animations: {
-                            self.emailTxtField.frame.origin.x += 20
-                            self.pwTxtField.frame.origin.x += 20
-                        }, completion: { _ in
-                            UIView.animate(withDuration: 0.2, animations: {
-                                self.emailTxtField.frame.origin.x -= 10
-                                self.pwTxtField.frame.origin.x -= 10
-                            })
-                        })
-                    })
-                    
-                    self.failLabel.textColor = UIColor.red
+                    failLabel.textColor = UIColor.red
                     
                 case 404:
                     print("404 : NOT FOUND - Notice does not exist. - signIn")
+                    animationTxtField(firstTxtField: emailTxtField, secondTxtField: pwTxtField)
                     
-                    UIView.animate(withDuration: 0.2, animations: {
-                        self.emailTxtField.frame.origin.x -= 10
-                        self.pwTxtField.frame.origin.x -= 10
-                    }, completion: { _ in
-                        UIView.animate(withDuration: 0.2, animations: {
-                            self.emailTxtField.frame.origin.x += 20
-                            self.pwTxtField.frame.origin.x += 20
-                        }, completion: { _ in
-                            UIView.animate(withDuration: 0.2, animations: {
-                                self.emailTxtField.frame.origin.x -= 10
-                                self.pwTxtField.frame.origin.x -= 10
-                            })
-                        })
-                    })
-                    
-                    self.failLabel.textColor = UIColor.red
+                    failLabel.textColor = UIColor.red
                     
                 default:
                     print(response.response?.statusCode ?? "default")

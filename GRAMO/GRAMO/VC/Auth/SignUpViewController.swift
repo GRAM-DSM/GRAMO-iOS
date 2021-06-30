@@ -8,27 +8,27 @@
 import UIKit
 import DropDown
 
-class SignUpVC: UIViewController {
-    @IBOutlet weak var nameTxtField: UITextField!
-    @IBOutlet weak var emailTxtField: UITextField!
-    @IBOutlet weak var checkTxtField: UITextField!
-    @IBOutlet weak var pwTxtField: UITextField!
-    @IBOutlet weak var pwConformTxtField: UITextField!
+class SignUpViewController: UIViewController {
+    @IBOutlet weak private var nameTxtField: UITextField!
+    @IBOutlet weak private var emailTxtField: UITextField!
+    @IBOutlet weak private var checkTxtField: UITextField!
+    @IBOutlet weak private var pwTxtField: UITextField!
+    @IBOutlet weak private var pwConformTxtField: UITextField!
     
-    @IBOutlet weak var authenticationBtn: UIButton!
-    @IBOutlet weak var checkBtn: UIButton!
-    @IBOutlet weak var dropDownBtn: UIButton!
+    @IBOutlet weak private var authenticationButton: UIButton!
+    @IBOutlet weak private var checkButton: UIButton!
+    @IBOutlet weak private var dropDownButton: UIButton!
     
-    @IBOutlet weak var majorLabel: UILabel!
-    @IBOutlet weak var failLabel: UILabel!
+    @IBOutlet weak private var majorLabel: UILabel!
+    @IBOutlet weak private var failLabel: UILabel!
     
-    @IBOutlet weak var majorView: UIView!
+    @IBOutlet weak private var majorView: UIView!
     
     private let dropDown = DropDown()
     private let httpClient = HTTPClient()
     
-    var trueEmail: Bool = false
-    var trueMajor: Bool = false
+    private var trueEmail: Bool = false
+    private var trueMajor: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +40,8 @@ class SignUpVC: UIViewController {
         customTxtField(emailTxtField)
         customTxtField(checkTxtField)
         
-        customBtn(authenticationBtn)
-        customBtn(checkBtn)
+        customBtn(authenticationButton)
+        customBtn(checkButton)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -53,7 +53,7 @@ class SignUpVC: UIViewController {
         
         customDropDown()
         
-        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+        dropDown.selectionAction = {[unowned self] (index: Int, item: String) in
             print("선택한 아이템 : \(item)")
             print("인덱스 : \(index)")
             
@@ -139,36 +139,20 @@ class SignUpVC: UIViewController {
         
         httpClient
             .post(url: AuthAPI.signUp.path(), params: ["email": email, "password": password, "name": name, "major": major], header: Header.tokenIsEmpty.header())
-            .responseJSON(completionHandler: {(response) in
+            .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 200:
                     print("OK - postSignUp")
                     
-                    self.dismiss(animated: true, completion: nil)
-                    self.navigationController?.popViewController(animated : true)
+                    dismiss(animated: true, completion: nil)
+                    navigationController?.popViewController(animated : true)
                     
                 case 409:
                     print("This email is already in use. - postSignIn")
                     
                     if password != conformPwd {
-                        UIView.animate(withDuration: 0.2, animations: {
-                            self.pwTxtField.frame.origin.x -= 10
-                            self.pwConformTxtField.frame.origin.x -= 10
-                            
-                        }, completion: { _ in
-                            UIView.animate(withDuration: 0.2, animations: {
-                                self.pwTxtField.frame.origin.x += 20
-                                self.pwConformTxtField.frame.origin.x += 20
-                                
-                            }, completion: { _ in
-                                UIView.animate(withDuration: 0.2, animations: {
-                                    self.pwTxtField.frame.origin.x -= 10
-                                    self.pwConformTxtField.frame.origin.x -= 10
-                                })
-                            })
-                        })
-                        
-                        self.failLabel.text = "비밀번호가 일치하지 않습니다"
+                        animationTxtField(firstTxtField: pwTxtField, secondTxtField: pwConformTxtField)
+                        failLabel.text = "비밀번호가 일치하지 않습니다"
                     }
                     
                 default:
@@ -181,16 +165,16 @@ class SignUpVC: UIViewController {
     func postSendEmail(email: String) {
         httpClient
             .post(url: AuthAPI.sendEmail.path(), params: ["email": email], header: Header.tokenIsEmpty.header())
-            .responseJSON(completionHandler: {(response) in
+            .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 200:
                     print("OK - postSendEmail")
-                    self.failLabel.text = ""
+                    failLabel.text = ""
                     
                 case 409:
                     print("This email is already in use. - postSendEmail")
                     
-                    self.failLabel.text = "중복된 이메일 입니다"
+                    failLabel.text = "중복된 이메일 입니다"
                     
                 default:
                     print(response.response?.statusCode ?? "default")
@@ -202,23 +186,22 @@ class SignUpVC: UIViewController {
     func postCheckEmailAuthenticationCode(email: String, code: Int) {
         httpClient
             .post(url: AuthAPI.checkEmailCode.path(), params: ["email": email, "code": code], header: Header.tokenIsEmpty.header())
-            .responseJSON(completionHandler: {(response) in
+            .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 200:
                     print("OK - postCheckEmailAuthenticationCode")
                     
-                    self.failLabel.text = ""
-                    self.trueEmail = true
+                    failLabel.text = ""
+                    trueEmail = true
                     
                 case 404:
                     print("This email does not exist. - postCheckEmailAuthenticationCode")
-                    self.failLabel.text = "올바른 이메일이 아닙니다"
-                    
+                    failLabel.text = "올바른 이메일이 아닙니다"
                     
                 case 409:
                     print("Email and code does not match. - postCheckEmailAuthenticationCode")
-                    self.failLabel.text = "인증번호가 일치하지 않습니다"
-                    
+                    failLabel.text = "인증번호가 일치하지 않습니다"
+                
                 default:
                     print(response.response?.statusCode ?? "default")
                     print(response.error ?? "default")

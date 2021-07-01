@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UITextViewDelegate {
+final class DetailViewController: UIViewController, UITextViewDelegate {
     @IBOutlet private weak var picuTableView: UITableView!
     @IBOutlet private weak var planTableView: UITableView!
     
@@ -34,17 +34,17 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         self.view.endEditing(true)
     }
     
-    @IBAction func touchUpPicuAddBtn(_ sender: UIButton) {
+    @IBAction private func touchUpPicuAddBtn(_ sender: UIButton) {
         let cell = picuTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PICUTableViewCell
         createPICU(description: cell.detailTextView.text, date: date)
     }
     
-    @IBAction func touchUpSpecialAddBtn(_ sender: UIButton) {
+    @IBAction private func touchUpSpecialAddBtn(_ sender: UIButton) {
         let cell = planTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! SpecialTableViewCell
         createPlan(title: cell.titleTextView.text, description: cell.detailTextView.text, date: date)
     }
     
-    func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) {
+    private func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) {
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width / 2 - 75,
                                                y: self.view.frame.size.height - 100,
                                                width: 150,
@@ -183,7 +183,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    func setTableView() {
+    private func setTableView() {
         picuTableView.dataSource = self
         picuTableView.delegate = self
         picuTableView.tag = 1
@@ -197,7 +197,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         
     }
     
-    func appendMetadata(num: Int) {
+    private func appendMetadata(num: Int) {
         switch num {
         case 1:
             picu.picuContentResponses.append(GetPICU(picuId: 0, userName: UserDefaults.standard.object(forKey: "nickname") as! String, description: "사유를 적어주세요"))
@@ -211,7 +211,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    func initRefresh() {
+    private func initRefresh() {
         let picuRefresh = UIRefreshControl()
         let planRefresh = UIRefreshControl()
         
@@ -225,19 +225,19 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         planTableView.refreshControl = planRefresh
     }
     
-    @objc func picuUpdateUI(refresh: UIRefreshControl) {
+    @objc private func picuUpdateUI(refresh: UIRefreshControl) {
         refresh.endRefreshing()
         
         getPICU()
     }
     
-    @objc func planUpdateUI(refresh: UIRefreshControl) {
+    @objc private func planUpdateUI(refresh: UIRefreshControl) {
         refresh.endRefreshing()
         
         getPlan()
     }
     
-    func getPICU() {
+    private func getPICU() {
         httpClient
             .get(url: CalendarAPI.getPICU(date).path(), params: nil, header: Header.token.header())
             .responseJSON(completionHandler: {[unowned self](response) in
@@ -272,7 +272,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             })
     }
     
-    func createPICU(description: String, date: String) {
+    private func createPICU(description: String, date: String) {
         httpClient
             .post(url: CalendarAPI.createPICU.path(), params: ["description": description, "date": date], header: Header.token.header())
             .responseJSON(completionHandler: {[unowned self](response) in
@@ -297,7 +297,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         })
     }
     
-    func getPlan() {
+    private func getPlan() {
         httpClient
             .get(url: CalendarAPI.getPlan(date).path(), params: nil, header: Header.token.header())
             .responseJSON(completionHandler: {[unowned self](response) in
@@ -332,7 +332,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             })
     }
     
-    func createPlan(title: String, description: String, date: String) {
+    private func createPlan(title: String, description: String, date: String) {
         httpClient
             .post(url: CalendarAPI.createPlan.path(), params: ["description": description, "title": title, "date": date], header: Header.token.header())
             .responseJSON(completionHandler: {[unowned self](response) in

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignInViewController: UIViewController {
+final class SignInViewController: UIViewController {
     @IBOutlet weak private var emailTxtField: UITextField!
     @IBOutlet weak private var pwTxtField: UITextField!
     @IBOutlet weak private var failLabel: UILabel!
@@ -23,18 +23,18 @@ class SignInViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @IBAction func didTapLoginBtn(_ sender: UIButton) {
+    @IBAction private func didTapLoginBtn(_ sender: UIButton) {
         guard let email = emailTxtField.text, !email.isEmpty else { return }
         guard let password = pwTxtField.text, !password.isEmpty else { return }
         
         signIn(email: email, password: password)
     }
     
-    func customTxtField(_ txtField: UITextField) {
+    private func customTxtField(_ txtField: UITextField) {
         txtField.font = UIFont(name: "NotoSansKR-Regular", size: 14)
     }
     
-    func signIn(email : String, password : String) {
+    private func signIn(email : String, password : String) {
         let httpClient = HTTPClient()
         
         httpClient

@@ -8,7 +8,7 @@
 import UIKit
 import FSCalendar
 
-class CalendarViewController: UIViewController {
+final class CalendarViewController: UIViewController {
     @IBOutlet private weak var calendar: FSCalendar!
     
     private var events = [Date]()
@@ -43,7 +43,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
         self.present(modalPresentView, animated: true, completion: nil)
     }
     
-    func customCalendar() {
+    private func customCalendar() {
         calendar.dataSource = self
         calendar.delegate = self
         
@@ -61,7 +61,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
         calendar.scrollDirection = .vertical
     }
     
-    func customEvents() {
+    private func customEvents() {
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy-MM"
         let current_date_string = formatter.string(from: Date())
@@ -70,7 +70,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
         print(current_date_string)
     }
     
-    func getCalendarList(date: String) {
+    private func getCalendarList(date: String) {
         httpClient
             .get(url: CalendarAPI.getCalendarList(date).path(), params: nil, header: Header.token.header())
             .responseJSON(completionHandler: {[unowned self](response) in

@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-class SignUpViewController: UIViewController {
+final class SignUpViewController: UIViewController {
     @IBOutlet weak private var nameTxtField: UITextField!
     @IBOutlet weak private var emailTxtField: UITextField!
     @IBOutlet weak private var checkTxtField: UITextField!
@@ -48,7 +48,7 @@ class SignUpViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @IBAction func didTapDropDownBtn(_ sender: UIButton) {
+    @IBAction private func didTapDropDownBtn(_ sender: UIButton) {
         var selection = String()
         
         customDropDown()
@@ -68,7 +68,7 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    @IBAction func signUpBtn(_ sender: UIButton) {
+    @IBAction private func signUpBtn(_ sender: UIButton) {
         if trueMajor == true {
             if trueEmail == true {
                 postSignUp(name: nameTxtField.text!, email: emailTxtField.text!, password: pwTxtField.text!, major: selectMajor(majorLabel))
@@ -80,25 +80,25 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    @IBAction func getSendEmailBtn(_ sender: UIButton) {
+    @IBAction private func getSendEmailBtn(_ sender: UIButton) {
         postSendEmail(email: self.emailTxtField.text!)
     }
     
-    @IBAction func checkEmailBtn(_ sender: UIButton) {
+    @IBAction private func checkEmailBtn(_ sender: UIButton) {
         postCheckEmailAuthenticationCode(email: self.emailTxtField.text!, code: Int(self.checkTxtField.text!)!)
     }
     
-    @IBAction func didTapExitButton(_ sender: UIButton) {
+    @IBAction private func didTapExitButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
         
         self.navigationController?.popViewController(animated : true)
     }
     
-    func customTxtField(_ txtField: UITextField) {
+    private func customTxtField(_ txtField: UITextField) {
         txtField.font = UIFont(name: "NotoSansKR-Regular", size: 14)
     }
     
-    func customDropDown() {
+    private func customDropDown() {
         dropDown.dataSource = ["iOS 개발자", "안드로이드 개발자", "서버 개발자", "디자이너"]
         
         dropDown.width = majorView.fs_width
@@ -111,11 +111,11 @@ class SignUpViewController: UIViewController {
         dropDown.show()
     }
     
-    func customBtn(_ btn: UIButton) {
+    private func customBtn(_ btn: UIButton) {
         btn.layer.cornerRadius = 8
     }
     
-    func selectMajor(_ label: UILabel) -> String {
+    private func selectMajor(_ label: UILabel) -> String {
         switch label.text! {
         case "iOS 개발자":
             return "IOS"
@@ -134,7 +134,7 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    func postSignUp(name : String, email : String, password : String, major : String) {
+    private func postSignUp(name : String, email : String, password : String, major : String) {
         guard let conformPwd = pwConformTxtField.text else { return }
         
         httpClient
@@ -162,7 +162,7 @@ class SignUpViewController: UIViewController {
             })
     }
     
-    func postSendEmail(email: String) {
+    private func postSendEmail(email: String) {
         httpClient
             .post(url: AuthAPI.sendEmail.path(), params: ["email": email], header: Header.tokenIsEmpty.header())
             .responseJSON(completionHandler: {[unowned self](response) in
@@ -183,7 +183,7 @@ class SignUpViewController: UIViewController {
             })
     }
     
-    func postCheckEmailAuthenticationCode(email: String, code: Int) {
+    private func postCheckEmailAuthenticationCode(email: String, code: Int) {
         httpClient
             .post(url: AuthAPI.checkEmailCode.path(), params: ["email": email, "code": code], header: Header.tokenIsEmpty.header())
             .responseJSON(completionHandler: {[unowned self](response) in

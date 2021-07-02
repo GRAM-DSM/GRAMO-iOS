@@ -15,7 +15,11 @@ final class SideMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        
+        nameLabel?.text = UserDefaults.standard.string(forKey: "nickname")
+        majorLabel?.text = UserDefaults.standard.string(forKey: "major")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         nameLabel?.text = UserDefaults.standard.string(forKey: "nickname")
         majorLabel?.text = UserDefaults.standard.string(forKey: "major")
     }

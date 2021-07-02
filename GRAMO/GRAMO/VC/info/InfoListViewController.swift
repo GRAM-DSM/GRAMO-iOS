@@ -67,6 +67,8 @@ final class InfoListViewContoller: UIViewController, UITableViewDataSource, UITa
         tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getList()

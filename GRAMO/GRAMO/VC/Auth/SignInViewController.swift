@@ -51,6 +51,9 @@ final class SignInViewController: UIViewController {
                         print(model)
                         Token.token = model.access_token
                         
+                        UserDefaults.standard.set(email, forKey: "email")
+                        UserDefaults.standard.set(password, forKey: "password")
+                        
                         UserDefaults.standard.object(forKey: "nickname")
                         UserDefaults.standard.setValue(model.name, forKey: "nickname")
                         

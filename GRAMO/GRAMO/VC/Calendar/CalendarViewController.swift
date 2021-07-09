@@ -21,7 +21,6 @@ final class CalendarViewController: UIViewController {
         
         customCalendar()
         customEvents()
-        print(UserDefaults.standard.string(forKey: "nickname"))
     }
 }
 

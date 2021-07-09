@@ -12,6 +12,8 @@ final class SignInViewController: UIViewController {
     @IBOutlet weak private var pwTxtField: UITextField!
     @IBOutlet weak private var failLabel: UILabel!
     
+    var token = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
@@ -32,13 +34,18 @@ final class SignInViewController: UIViewController {
     
     private func customTxtField(_ txtField: UITextField) {
         txtField.font = UIFont(name: "NotoSansKR-Regular", size: 14)
+        txtField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
     }
     
     private func signIn(email : String, password : String) {
         let httpClient = HTTPClient()
         
         httpClient
+<<<<<<< HEAD
             .post(url: AuthAPI.signIn.path(), params: ["email": email, "password": password, "token": fcm_token], header: Header.tokenIsEmpty.header())
+=======
+            .post(url: AuthAPI.signIn.path(), params: ["email": email, "password": password, "token": token], header: Header.tokenIsEmpty.header())
+>>>>>>> develop
             .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 201:
@@ -50,9 +57,6 @@ final class SignInViewController: UIViewController {
                         
                         print(model)
                         Token.token = model.access_token
-                        
-                        UserDefaults.standard.set(email, forKey: "email")
-                        UserDefaults.standard.set(password, forKey: "password")
                         
                         UserDefaults.standard.object(forKey: "nickname")
                         UserDefaults.standard.setValue(model.name, forKey: "nickname")
@@ -87,3 +91,4 @@ final class SignInViewController: UIViewController {
             })
     }
 }
+

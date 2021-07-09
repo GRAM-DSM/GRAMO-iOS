@@ -42,7 +42,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="   이메일을 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kKU-Fc-Jkr">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="이메일을 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kKU-Fc-Jkr">
                                 <rect key="frame" x="24" y="415" width="342" height="48"/>
                                 <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -51,7 +51,7 @@
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="   비밀번호를 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oy9-XZ-njZ">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="비밀번호를 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oy9-XZ-njZ">
                                 <rect key="frame" x="24" y="479" width="342" height="48"/>
                                 <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -169,7 +169,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  이름을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pf9-Vc-ee9">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이름을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pf9-Vc-ee9">
                                 <rect key="frame" x="24" y="159" width="342" height="48"/>
                                 <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -178,7 +178,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  인증번호를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lU1-bO-psC">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="인증번호를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lU1-bO-psC">
                                 <rect key="frame" x="24" y="351" width="342" height="48"/>
                                 <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -187,7 +187,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  이메일을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-u2-RtQ">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-u2-RtQ">
                                 <rect key="frame" x="24" y="287" width="342" height="48"/>
                                 <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -196,7 +196,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  비밀번호를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FUG-Mo-9Qu">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FUG-Mo-9Qu">
                                 <rect key="frame" x="24" y="415" width="342" height="48"/>
                                 <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -227,7 +227,7 @@
                                     <constraint firstAttribute="height" constant="48" id="RxI-Bf-4LH"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  비밀번호를 다시 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wgl-X8-BkN">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호를 다시 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wgl-X8-BkN">
                                 <rect key="frame" x="24" y="479" width="342" height="48"/>
                                 <color key="backgroundColor" red="0.94516831639999999" green="0.94476515049999998" blue="0.96079522370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -328,9 +328,8 @@
                                     <action selector="getSendEmailBtn:" destination="L3a-Rd-mH2" eventType="touchUpInside" id="wTP-m6-x3r"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yva-3B-O2g">
-                                <rect key="frame" x="24" y="583" width="342" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yva-3B-O2g">
+                                <rect key="frame" x="24" y="531" width="342" height="21"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
                                 <color key="textColor" red="0.99813598390000002" green="0.0068380823360000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -344,12 +343,15 @@
                             <constraint firstItem="lU1-bO-psC" firstAttribute="leading" secondItem="Qff-Xd-I9Y" secondAttribute="leading" constant="24" id="13n-oD-AW8"/>
                             <constraint firstItem="e1h-EN-cO4" firstAttribute="leading" secondItem="Qff-Xd-I9Y" secondAttribute="leading" constant="160" id="1WM-QF-iAw"/>
                             <constraint firstItem="Qff-Xd-I9Y" firstAttribute="trailing" secondItem="iVY-jf-xge" secondAttribute="trailing" constant="40" id="52c-EB-jYe"/>
+                            <constraint firstItem="hUU-Ur-3CA" firstAttribute="top" secondItem="yva-3B-O2g" secondAttribute="bottom" constant="31" id="5w0-En-ty6"/>
                             <constraint firstItem="lU1-bO-psC" firstAttribute="top" secondItem="aHV-u2-RtQ" secondAttribute="bottom" constant="16" id="6wd-ox-IfV"/>
                             <constraint firstItem="lU1-bO-psC" firstAttribute="top" secondItem="v2R-7r-GdV" secondAttribute="bottom" constant="24" id="8qY-8P-TKd"/>
                             <constraint firstItem="Qff-Xd-I9Y" firstAttribute="trailing" secondItem="v2R-7r-GdV" secondAttribute="trailing" constant="40" id="AR7-WG-UTM"/>
                             <constraint firstItem="Pf9-Vc-ee9" firstAttribute="leading" secondItem="Qff-Xd-I9Y" secondAttribute="leading" constant="24" id="Cs2-w6-gLf"/>
                             <constraint firstItem="FUG-Mo-9Qu" firstAttribute="top" secondItem="lU1-bO-psC" secondAttribute="bottom" constant="16" id="F5E-ky-VcQ"/>
+                            <constraint firstAttribute="trailing" secondItem="yva-3B-O2g" secondAttribute="trailing" constant="24" id="GUh-mP-0iH"/>
                             <constraint firstItem="Qff-Xd-I9Y" firstAttribute="trailing" secondItem="wgl-X8-BkN" secondAttribute="trailing" constant="24" id="JR0-Ld-ES8"/>
+                            <constraint firstItem="yva-3B-O2g" firstAttribute="leading" secondItem="N5p-HL-hgf" secondAttribute="leading" constant="24" id="Jy7-6N-r4Z"/>
                             <constraint firstItem="wgl-X8-BkN" firstAttribute="top" secondItem="FUG-Mo-9Qu" secondAttribute="bottom" constant="16" id="Nzu-6M-TsG"/>
                             <constraint firstItem="Qff-Xd-I9Y" firstAttribute="trailing" secondItem="e1h-EN-cO4" secondAttribute="trailing" constant="160" id="QrZ-13-Jg6"/>
                             <constraint firstItem="aHV-u2-RtQ" firstAttribute="top" secondItem="PJZ-qS-1tm" secondAttribute="bottom" constant="16" id="RYp-uy-wpe"/>
@@ -362,6 +364,7 @@
                             <constraint firstItem="Qff-Xd-I9Y" firstAttribute="trailing" secondItem="PJZ-qS-1tm" secondAttribute="trailing" constant="24" id="e8B-sy-5o1"/>
                             <constraint firstItem="Qff-Xd-I9Y" firstAttribute="bottom" secondItem="e1h-EN-cO4" secondAttribute="bottom" constant="43" id="hsC-yf-22F"/>
                             <constraint firstItem="hUU-Ur-3CA" firstAttribute="leading" secondItem="Qff-Xd-I9Y" secondAttribute="leading" constant="24" id="lbw-xm-3SH"/>
+                            <constraint firstItem="yva-3B-O2g" firstAttribute="top" secondItem="wgl-X8-BkN" secondAttribute="bottom" constant="4" id="n6n-zQ-qDx"/>
                             <constraint firstItem="Pf9-Vc-ee9" firstAttribute="top" secondItem="Qff-Xd-I9Y" secondAttribute="top" constant="71" id="oud-Mr-h27"/>
                             <constraint firstItem="aHV-u2-RtQ" firstAttribute="top" secondItem="CAf-DX-4Pm" secondAttribute="bottom" constant="30" id="p4p-OM-5JD"/>
                             <constraint firstItem="hUU-Ur-3CA" firstAttribute="top" secondItem="wgl-X8-BkN" secondAttribute="bottom" constant="56" id="rP3-7k-3NF"/>

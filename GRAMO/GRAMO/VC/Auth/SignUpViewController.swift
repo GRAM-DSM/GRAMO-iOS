@@ -71,7 +71,12 @@ final class SignUpViewController: UIViewController {
     @IBAction private func signUpBtn(_ sender: UIButton) {
         if trueMajor == true {
             if trueEmail == true {
-                postSignUp(name: nameTxtField.text!, email: emailTxtField.text!, password: pwTxtField.text!, major: selectMajor(majorLabel))
+                if pwTxtField.text!.count > 4 {
+                    postSignUp(name: nameTxtField.text!, email: emailTxtField.text!, password: pwTxtField.text!, major: selectMajor(majorLabel))
+                } else {
+                    animationTxtField(firstTxtField: pwTxtField, secondTxtField: pwConformTxtField)
+                    failLabel.text = "비밀번호는 5자리 이상이어야 합니다"
+                }
             } else {
                 failLabel.text = "인증번호가 일치하지 않습니다"
             }
@@ -96,6 +101,7 @@ final class SignUpViewController: UIViewController {
     
     private func customTxtField(_ txtField: UITextField) {
         txtField.font = UIFont(name: "NotoSansKR-Regular", size: 14)
+        txtField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
     }
     
     private func customDropDown() {
@@ -134,14 +140,14 @@ final class SignUpViewController: UIViewController {
         }
     }
     
-    private func postSignUp(name : String, email : String, password : String, major : String) {
+    private func postSignUp(name: String, email: String, password: String, major: String) {
         guard let conformPwd = pwConformTxtField.text else { return }
         
         httpClient
             .post(url: AuthAPI.signUp.path(), params: ["email": email, "password": password, "name": name, "major": major], header: Header.tokenIsEmpty.header())
             .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
-                case 200:
+                case 201:
                     print("OK - postSignUp")
                     
                     dismiss(animated: true, completion: nil)
@@ -169,7 +175,9 @@ final class SignUpViewController: UIViewController {
                 switch response.response?.statusCode {
                 case 200:
                     print("OK - postSendEmail")
+                    
                     failLabel.text = ""
+                    showToast(message: "이메일 전송 성공!")
                     
                 case 409:
                     print("This email is already in use. - postSendEmail")
@@ -192,6 +200,7 @@ final class SignUpViewController: UIViewController {
                     print("OK - postCheckEmailAuthenticationCode")
                     
                     failLabel.text = ""
+                    showToast(message: "이메일 인증 성공!")
                     trueEmail = true
                     
                 case 404:

@@ -41,7 +41,11 @@ final class SignInViewController: UIViewController {
         let httpClient = HTTPClient()
         
         httpClient
+<<<<<<< HEAD
+            .post(url: AuthAPI.signIn.path(), params: ["email": email, "password": password, "token": fcm_token], header: Header.tokenIsEmpty.header())
+=======
             .post(url: AuthAPI.signIn.path(), params: ["email": email, "password": password, "token": token], header: Header.tokenIsEmpty.header())
+>>>>>>> develop
             .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 201:

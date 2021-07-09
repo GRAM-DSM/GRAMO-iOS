@@ -10,4 +10,6 @@ target 'GRAMO' do
   pod 'Alamofire', '~> 5.2'
   pod 'SideMenu'
   pod 'DropDown'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
 end

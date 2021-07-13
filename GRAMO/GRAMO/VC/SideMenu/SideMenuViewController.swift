@@ -47,7 +47,7 @@ final class SideMenuViewController: UIViewController {
     }
     
     @IBAction private func withdrawal(_ sender: UIButton){
-        HTTPClient().delete(url: AuthAPI.withDrawel.path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: { [unowned self]res in
+        HTTPClient().delete(url: AuthAPI.withDrawel.path(), params: nil, header: Header.accessToken.header()).responseJSON(completionHandler: { [unowned self]res in
             switch res.response?.statusCode {
             case 204 :
                 let sub = UIStoryboard(name: "Auth", bundle: nil)
@@ -65,7 +65,7 @@ final class SideMenuViewController: UIViewController {
     }
     
     private func logout() {
-        HTTPClient().delete(url: AuthAPI.logout.path(), params: nil, header: Header.token.header()).responseJSON(completionHandler: { [unowned self]res in
+        HTTPClient().delete(url: AuthAPI.logout.path(), params: nil, header: Header.accessToken.header()).responseJSON(completionHandler: { [unowned self]res in
             switch res.response?.statusCode {
             case 204 :
                 let sub = UIStoryboard(name: "Auth", bundle: nil)

@@ -19,6 +19,7 @@ final class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationBar()
         customCalendar()
         customEvents()
     }
@@ -70,9 +71,9 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
         print(current_date_string)
     }
     
-    private func getCalendarList(date: String) {
+    func getCalendarList(date: String) {
         httpClient
-            .get(url: CalendarAPI.getCalendarList(date).path(), params: nil, header: Header.token.header())
+            .get(url: CalendarAPI.getCalendarList(date).path(), params: nil, header: Header.accessToken.header())
             .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 200:
@@ -96,6 +97,27 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
                     } catch {
                         print("Error: \(error)")
                     }
+                    
+                case 401:
+                    print("401 - getCalendarList")
+                    
+                    httpClient
+                        .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                        .responseJSON(completionHandler: {(response) in
+                            switch response.response?.statusCode {
+                            case 201:
+                                print("OK - refreshToken")
+                                
+                            case 401:
+                                print("401 - refreshToken")
+                                
+                                showAlert(title: "로그인이 필요합니다.", message: nil)
+                            
+                            default:
+                                print(response.response?.statusCode ?? "default")
+                                print(response.error ?? "default")
+                            }
+                        })
                     
                 case 403:
                     print("403 : Forbidden - getCalendarList")

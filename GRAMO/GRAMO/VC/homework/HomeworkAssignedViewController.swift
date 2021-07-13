@@ -41,7 +41,7 @@ final class HomeworkAssignedViewController: UIViewController {
     }
     
     private func getContent(id: Int) {
-        httpClient.get(url: HomeworkAPI.getHomeworkContent(id).path(), params: nil, header: Header.token.header()).responseJSON { [unowned self](res) in
+        httpClient.get(url: HomeworkAPI.getHomeworkContent(id).path(), params: nil, header: Header.accessToken.header()).responseJSON { [unowned self](res) in
             switch res.response?.statusCode {
             case 200 :
                 
@@ -55,8 +55,28 @@ final class HomeworkAssignedViewController: UIViewController {
                 
             case 400 :
                 showAlert(title: "잘못된 요청입니다.", message: nil)
-            case 401 :
-                showAlert(title: "허가되지 않았습니다.", message: nil)
+            
+            case 401:
+                print("401 - getHomeworkContent")
+                
+                httpClient
+                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                    .responseJSON(completionHandler: {(response) in
+                        switch response.response?.statusCode {
+                        case 201:
+                            print("OK - refreshToken")
+                            
+                        case 401:
+                            print("401 - refreshToken")
+                            
+                            showAlert(title: "로그인이 필요합니다.", message: nil)
+                        
+                        default:
+                            print(response.response?.statusCode ?? "default")
+                            print(response.error ?? "default")
+                        }
+                    })
+                
             case 404 :
                 showAlert(title: "오류가 발생했습니다.", message: nil)
             default : print(res.response?.statusCode ?? "default")
@@ -67,14 +87,34 @@ final class HomeworkAssignedViewController: UIViewController {
     }
     
     private func submitHw(homeworkId : Int) {
-        httpClient.patch(url: HomeworkAPI.submitHomework(id).path(), params:  ["homeworkId":homeworkId], header: Header.token.header()).responseJSON {[unowned self](res) in
+        httpClient.patch(url: HomeworkAPI.submitHomework(id).path(), params:  ["homeworkId":homeworkId], header: Header.accessToken.header()).responseJSON {[unowned self](res) in
             switch res.response?.statusCode {
             case 201 :
                 navigationController?.popViewController(animated: true)
             case 400 :
                 showAlert(title: "잘못된 요청입니다.", message: nil)
-            case 401 :
-                showAlert(title: "허가되지 않았습니다.", message: nil)
+            
+            case 401:
+                print("401 - submitHomework")
+                
+                httpClient
+                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                    .responseJSON(completionHandler: {(response) in
+                        switch response.response?.statusCode {
+                        case 201:
+                            print("OK - refreshToken")
+                            
+                        case 401:
+                            print("401 - refreshToken")
+                            
+                            showAlert(title: "로그인이 필요합니다.", message: nil)
+                        
+                        default:
+                            print(response.response?.statusCode ?? "default")
+                            print(response.error ?? "default")
+                        }
+                    })
+                
             case 404 :
                 showAlert(title: "오류가 발생했습니다.", message: nil)
             default : print(res.response?.statusCode ?? "default")

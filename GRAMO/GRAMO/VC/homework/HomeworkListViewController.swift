@@ -165,7 +165,7 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
     
     
     private func getAssView() {
-        httpclient.get(url: HomeworkAPI.getAssHomeworkList.path(), params: nil, header: Header.token.header()).responseJSON{[unowned self](response) in
+        httpclient.get(url: HomeworkAPI.getAssHomeworkList.path(), params: nil, header: Header.accessToken.header()).responseJSON{[unowned self](response) in
             switch response.response?.statusCode{
             case 200:
                 let model = try? JSONDecoder().decode([HwStudent].self, from: response.data!)
@@ -175,6 +175,28 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
                 
             case 400 :
                 showAlert(title: "잘못된 요청입니다.", message: nil)
+                
+            case 401:
+                print("401 - getAssHomeworkList")
+                
+                httpclient
+                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                    .responseJSON(completionHandler: {(response) in
+                        switch response.response?.statusCode {
+                        case 201:
+                            print("OK - refreshToken")
+                            
+                        case 401:
+                            print("401 - refreshToken")
+                            
+                            showAlert(title: "로그인이 필요합니다.", message: nil)
+                        
+                        default:
+                            print(response.response?.statusCode ?? "default")
+                            print(response.error ?? "default")
+                        }
+                    })
+                
             case 404 :
                 showAlert(title: "오류가 발생했습니다.", message: nil)
             default : print(response.response?.statusCode ?? "default")
@@ -184,7 +206,7 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
     }
     
     private func getSubView(){
-        httpclient.get(url: HomeworkAPI.getSubHomeworkList.path(), params: nil, header: Header.token.header()).responseJSON{[unowned self](response) in
+        httpclient.get(url: HomeworkAPI.getSubHomeworkList.path(), params: nil, header: Header.accessToken.header()).responseJSON{[unowned self](response) in
             switch response.response?.statusCode{
             case 200:
                 
@@ -197,6 +219,28 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
                 
             case 400:
                 showAlert(title: "잘못된 요청입니다.", message: nil)
+                
+            case 401:
+                print("401 - getSubHomeworkList")
+                
+                httpclient
+                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                    .responseJSON(completionHandler: {(response) in
+                        switch response.response?.statusCode {
+                        case 201:
+                            print("OK - refreshToken")
+                            
+                        case 401:
+                            print("401 - refreshToken")
+                            
+                            showAlert(title: "로그인이 필요합니다.", message: nil)
+                        
+                        default:
+                            print(response.response?.statusCode ?? "default")
+                            print(response.error ?? "default")
+                        }
+                    })
+                
             case 404 :
                 showAlert(title: "오류가 발생했습니다.", message: nil)
             default : print(response.response?.statusCode ?? "default")
@@ -207,7 +251,7 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
     }
     
     private func getOrdView() {
-        httpclient.get(url: HomeworkAPI.getOrdHomeworkList.path(), params: nil, header: Header.token.header()).responseJSON{[unowned self](response) in
+        httpclient.get(url: HomeworkAPI.getOrdHomeworkList.path(), params: nil, header: Header.accessToken.header()).responseJSON{[unowned self](response) in
             switch response.response?.statusCode{
             case 200 :
                 
@@ -219,6 +263,28 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
                 
             case 400 :
                 showAlert(title: "잘못된 요청입니다.", message: nil)
+                
+            case 401:
+                print("401 - getOrdHomeworkList")
+                
+                httpclient
+                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                    .responseJSON(completionHandler: {(response) in
+                        switch response.response?.statusCode {
+                        case 201:
+                            print("OK - refreshToken")
+                            
+                        case 401:
+                            print("401 - refreshToken")
+                            
+                            showAlert(title: "로그인이 필요합니다.", message: nil)
+                        
+                        default:
+                            print(response.response?.statusCode ?? "default")
+                            print(response.error ?? "default")
+                        }
+                    })
+                
             case 404 :
                 showAlert(title: "오류가 발생했습니다.", message: nil)
             default : print(response.response?.statusCode ?? "default")

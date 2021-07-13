@@ -63,11 +63,32 @@ final class InfoAddViewController: UIViewController, UITextViewDelegate, UITextF
     }
     
     private func createNotice(title: String, content: String) {
-        httpClient.post(url: NoticeAPI.createNotice.path(), params: ["title":title, "content":content], header: Header.token.header()).responseJSON{[unowned self](res) in
+        httpClient.post(url: NoticeAPI.createNotice.path(), params: ["title":title, "content":content], header: Header.accessToken.header()).responseJSON{[unowned self](res) in
             switch res.response?.statusCode{
             case 201:
                 sleep(UInt32(0.1))
                 navigationController?.popViewController(animated: true)
+                
+            case 401:
+                print("401 - createNotice")
+                
+                httpClient
+                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                    .responseJSON(completionHandler: {(response) in
+                        switch response.response?.statusCode {
+                        case 201:
+                            print("OK - refreshToken")
+                            
+                        case 401:
+                            print("401 - refreshToken")
+                            
+                            showAlert(title: "로그인이 필요합니다.", message: nil)
+                        
+                        default:
+                            print(response.response?.statusCode ?? "default")
+                            print(response.error ?? "default")
+                        }
+                    })
                 
             default: print(res.response?.statusCode ?? "default")
                 showAlert(title: "오류가 발생했습니다.", message: nil)

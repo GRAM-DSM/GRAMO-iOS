@@ -96,7 +96,7 @@ final class HomeworkAddViewController: UIViewController, UITextViewDelegate, UIT
     }
     
     @IBAction private func selectAllocator(_ sender: UIButton){
-        httpclient.get(url: HomeworkAPI.getUserList.path(), params: nil, header: Header.token.header()).responseJSON { [unowned self](res) in
+        httpclient.get(url: HomeworkAPI.getUserList.path(), params: nil, header: Header.accessToken.header()).responseJSON { [unowned self](res) in
             switch res.response?.statusCode{
             case 200 :
                 
@@ -124,21 +124,62 @@ final class HomeworkAddViewController: UIViewController, UITextViewDelegate, UIT
                 }
                 dropDown.anchorView = allocatorButton
                 
-            case 401 :
-                showAlert(title: "허가되지 않은 요청입니다.",message: nil)
+            case 401:
+                print("401 - getUserList")
+                
+                httpclient
+                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                    .responseJSON(completionHandler: {(response) in
+                        switch response.response?.statusCode {
+                        case 201:
+                            print("OK - refreshToken")
+                            
+                        case 401:
+                            print("401 - refreshToken")
+                            
+                            showAlert(title: "로그인이 필요합니다.", message: nil)
+                        
+                        default:
+                            print(response.response?.statusCode ?? "default")
+                            print(response.error ?? "default")
+                        }
+                    })
+                
             default : print(res.response?.statusCode ?? "default")
             }
         }
     }
     
     private func addHomework(major: String, endDate: String, studentEmail: String, description: String, title: String) {
-        httpclient.post(url: HomeworkAPI.createHomework.path(), params: ["major":major, "endDate":endDate, "studentEmail":studentEmail, "description":description, "title":title], header: Header.token.header()).responseJSON{[unowned self](res) in
+        httpclient.post(url: HomeworkAPI.createHomework.path(), params: ["major":major, "endDate":endDate, "studentEmail":studentEmail, "description":description, "title":title], header: Header.accessToken.header()).responseJSON{[unowned self](res) in
             switch res.response?.statusCode{
             case 201 :
                 navigationController?.popViewController(animated: true)
                 
             case 400 :
                 showAlert(title: "잘못된 요청입니다.", message: nil)
+                
+            case 401:
+                print("401 - createHomework")
+                
+                httpclient
+                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                    .responseJSON(completionHandler: {(response) in
+                        switch response.response?.statusCode {
+                        case 201:
+                            print("OK - refreshToken")
+                            
+                        case 401:
+                            print("401 - refreshToken")
+                            
+                            showAlert(title: "로그인이 필요합니다.", message: nil)
+                        
+                        default:
+                            print(response.response?.statusCode ?? "default")
+                            print(response.error ?? "default")
+                        }
+                    })
+                
             case 404 : 
                 showAlert(title: "오류가 발생했습니다.", message: nil)
             default : print(res.response?.statusCode ?? "default")

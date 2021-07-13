@@ -106,23 +106,44 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         if tableView.tag == 1 {
             if editingStyle == .delete {
                 httpClient
-                    .delete(url: CalendarAPI.deletePICU(picu.picuContentResponses[indexPath.row].picuId).path(), params: nil, header: Header.token.header())
+                    .delete(url: CalendarAPI.deletePICU(picu.picuContentResponses[indexPath.row].picuId).path(), params: nil, header: Header.accessToken.header())
                     .responseJSON(completionHandler: {[unowned self](response) in
                         switch response.response?.statusCode {
                         case 200:
-                            print("OK - getPICU")
+                            print("OK - deletePICU")
                             
                             picu.picuContentResponses.remove(at: indexPath.row)
                             tableView.deleteRows(at: [indexPath], with: .fade)
                             
                             showToast(message: "PICU 삭제 성공!")
                             
+                        case 401:
+                            print("401 - deletePICU")
+                            
+                            httpClient
+                                .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                                .responseJSON(completionHandler: {(response) in
+                                    switch response.response?.statusCode {
+                                    case 201:
+                                        print("OK - refreshToken")
+                                        
+                                    case 401:
+                                        print("401 - refreshToken")
+                                        
+                                        showAlert(title: "로그인이 필요합니다.", message: nil)
+                                    
+                                    default:
+                                        print(response.response?.statusCode ?? "default")
+                                        print(response.error ?? "default")
+                                    }
+                                })
+                            
                         case 403:
-                            print("403 : Forbidden - getPICU")
+                            print("403 : Forbidden - deletePICU")
                             showToast(message: "권한이 없습니다")
                             
                         case 404:
-                            print("404 : NOT FOUND - Notice does not exist. - getPICU")
+                            print("404 : NOT FOUND - Notice does not exist. - deletePICU")
                             
                         default:
                             print(response.response?.statusCode ?? "default")
@@ -135,23 +156,44 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         if tableView.tag == 2 {
             if editingStyle == .delete {
                 httpClient
-                    .delete(url: CalendarAPI.deletePlan(plan.planContentResponses[indexPath.row].planId).path(), params: nil, header: Header.token.header())
+                    .delete(url: CalendarAPI.deletePlan(plan.planContentResponses[indexPath.row].planId).path(), params: nil, header: Header.accessToken.header())
                     .responseJSON(completionHandler: {[unowned self](response) in
                         switch response.response?.statusCode {
                         case 200:
-                            print("OK - getPICU")
+                            print("OK - deletePlan")
                             
                             plan.planContentResponses.remove(at: indexPath.row)
                             tableView.deleteRows(at: [indexPath], with: .fade)
                             
                             showToast(message: "Plan 삭제 성공!")
                             
+                        case 401:
+                            print("401 - deletePlan")
+                            
+                            httpClient
+                                .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                                .responseJSON(completionHandler: {(response) in
+                                    switch response.response?.statusCode {
+                                    case 201:
+                                        print("OK - refreshToken")
+                                        
+                                    case 401:
+                                        print("401 - refreshToken")
+                                        
+                                        showAlert(title: "로그인이 필요합니다.", message: nil)
+                                    
+                                    default:
+                                        print(response.response?.statusCode ?? "default")
+                                        print(response.error ?? "default")
+                                    }
+                                })
+                            
                         case 403:
-                            print("403 : Forbidden - getPICU")
+                            print("403 : Forbidden - deletePlan")
                             showToast(message: "권한이 없습니다")
                             
                         case 404:
-                            print("404 : NOT FOUND - Notice does not exist. - getPICU")
+                            print("404 : NOT FOUND - Notice does not exist. - deletePlan")
                             
                         default:
                             print(response.response?.statusCode ?? "default")
@@ -218,7 +260,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     private func getPICU() {
         httpClient
-            .get(url: CalendarAPI.getPICU(date).path(), params: nil, header: Header.token.header())
+            .get(url: CalendarAPI.getPICU(date).path(), params: nil, header: Header.accessToken.header())
             .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 200:
@@ -238,6 +280,27 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                         print("Error: \(error)")
                     }
                     
+                case 401:
+                    print("401 - getPICU")
+                    
+                    httpClient
+                        .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                        .responseJSON(completionHandler: {(response) in
+                            switch response.response?.statusCode {
+                            case 201:
+                                print("OK - refreshToken")
+                                
+                            case 401:
+                                print("401 - refreshToken")
+                                
+                                showAlert(title: "로그인이 필요합니다.", message: nil)
+                            
+                            default:
+                                print(response.response?.statusCode ?? "default")
+                                print(response.error ?? "default")
+                            }
+                        })
+                    
                 case 403:
                     print("403 : Forbidden - getPICU")
                     
@@ -253,7 +316,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     private func createPICU(description: String, date: String) {
         httpClient
-            .post(url: CalendarAPI.createPICU.path(), params: ["description": description, "date": date], header: Header.token.header())
+            .post(url: CalendarAPI.createPICU.path(), params: ["description": description, "date": date], header: Header.accessToken.header())
             .responseJSON(completionHandler: {[unowned self](response) in
             switch response.response?.statusCode {
             case 201:
@@ -262,6 +325,27 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 
             case 400:
                 showToast(message: "권한 없음")
+                
+            case 401:
+                print("401 - createPICU")
+                
+                httpClient
+                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                    .responseJSON(completionHandler: {(response) in
+                        switch response.response?.statusCode {
+                        case 201:
+                            print("OK - refreshToken")
+                            
+                        case 401:
+                            print("401 - refreshToken")
+                            
+                            showAlert(title: "로그인이 필요합니다.", message: nil)
+                        
+                        default:
+                            print(response.response?.statusCode ?? "default")
+                            print(response.error ?? "default")
+                        }
+                    })
                 
             case 403:
                 print("403 : Forbidden - createPICU")
@@ -278,12 +362,12 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     private func getPlan() {
         httpClient
-            .get(url: CalendarAPI.getPlan(date).path(), params: nil, header: Header.token.header())
+            .get(url: CalendarAPI.getPlan(date).path(), params: nil, header: Header.accessToken.header())
             .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 200:
                     do {
-                        print("OK - getPICU")
+                        print("OK - getPlan")
                         
                         let data = response.data
                         let model = try JSONDecoder().decode(planContentResponses.self, from: data!)
@@ -298,11 +382,32 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                         print("Error: \(error)")
                     }
                     
+                case 401:
+                    print("401 - getPlan")
+                    
+                    httpClient
+                        .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                        .responseJSON(completionHandler: {(response) in
+                            switch response.response?.statusCode {
+                            case 201:
+                                print("OK - refreshToken")
+                                
+                            case 401:
+                                print("401 - refreshToken")
+                                
+                                showAlert(title: "로그인이 필요합니다.", message: nil)
+                            
+                            default:
+                                print(response.response?.statusCode ?? "default")
+                                print(response.error ?? "default")
+                            }
+                        })
+                    
                 case 403:
-                    print("403 : Forbidden - getPICU")
+                    print("403 : Forbidden - getPlan")
                     
                 case 404:
-                    print("404 : NOT FOUND - Notice does not exist. - getPICU")
+                    print("404 : NOT FOUND - Notice does not exist. - getPlan")
                     
                 default:
                     print(response.response?.statusCode ?? "default")
@@ -313,7 +418,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     private func createPlan(title: String, description: String, date: String) {
         httpClient
-            .post(url: CalendarAPI.createPlan.path(), params: ["description": description, "title": title, "date": date], header: Header.token.header())
+            .post(url: CalendarAPI.createPlan.path(), params: ["description": description, "title": title, "date": date], header: Header.accessToken.header())
             .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 201:
@@ -322,6 +427,27 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                     
                 case 400:
                     showToast(message: "권한 없음")
+                    
+                case 401:
+                    print("401 - createPlan")
+                    
+                    httpClient
+                        .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                        .responseJSON(completionHandler: {(response) in
+                            switch response.response?.statusCode {
+                            case 201:
+                                print("OK - refreshToken")
+                                
+                            case 401:
+                                print("401 - refreshToken")
+                                
+                                showAlert(title: "로그인이 필요합니다.", message: nil)
+                            
+                            default:
+                                print(response.response?.statusCode ?? "default")
+                                print(response.error ?? "default")
+                            }
+                        })
                     
                 case 403:
                     print("403 : Forbidden - createPlan")

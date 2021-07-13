@@ -35,7 +35,7 @@ final class InfoDetailViewController: UIViewController {
     }
     
     private func detailNotice(id: Int){
-        httpclient.get(url: NoticeAPI.getNoticeDetail(id).path(), params: ["id":id], header: Header.token.header()).responseJSON {[unowned self](res) in
+        httpclient.get(url: NoticeAPI.getNoticeDetail(id).path(), params: ["id":id], header: Header.accessToken.header()).responseJSON {[unowned self](res) in
             switch res.response?.statusCode{
             case 200:
                 
@@ -44,6 +44,27 @@ final class InfoDetailViewController: UIViewController {
                 dateLabel.text = formatStartDate(model!.notice.created_at)
                 titleTxt.text = model!.notice.title
                 detailTxt.text = model!.notice.content
+                
+            case 401:
+                print("401 - getNoticeDetail")
+                
+                httpclient
+                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                    .responseJSON(completionHandler: {(response) in
+                        switch response.response?.statusCode {
+                        case 201:
+                            print("OK - refreshToken")
+                            
+                        case 401:
+                            print("401 - refreshToken")
+                            
+                            showAlert(title: "로그인이 필요합니다.", message: nil)
+                        
+                        default:
+                            print(response.response?.statusCode ?? "default")
+                            print(response.error ?? "default")
+                        }
+                    })
                 
             case 404: print("404 - Not Found")
                 showAlert(title: "오류가 발생했습니다.", message: nil)
@@ -55,11 +76,32 @@ final class InfoDetailViewController: UIViewController {
     }
     
     private func deleteNotice(id: Int){
-        httpclient.delete(url: NoticeAPI.deleteNotice(id).path(), params: nil, header: Header.token.header()).responseJSON{[unowned self](res) in
+        httpclient.delete(url: NoticeAPI.deleteNotice(id).path(), params: nil, header: Header.accessToken.header()).responseJSON{[unowned self](res) in
             switch res.response?.statusCode{
             case 204:
                 dismiss(animated: true)
                 NotificationCenter.default.post(name: detailVC, object: nil, userInfo: nil)
+                
+            case 401:
+                print("401 - deleteNotice")
+                
+                httpclient
+                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                    .responseJSON(completionHandler: {(response) in
+                        switch response.response?.statusCode {
+                        case 201:
+                            print("OK - refreshToken")
+                            
+                        case 401:
+                            print("401 - refreshToken")
+                            
+                            showAlert(title: "로그인이 필요합니다.", message: nil)
+                        
+                        default:
+                            print(response.response?.statusCode ?? "default")
+                            print(response.error ?? "default")
+                        }
+                    })
                 
             case 403:
                 print("403 - Forbidden")

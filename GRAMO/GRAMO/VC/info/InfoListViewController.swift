@@ -75,7 +75,7 @@ final class InfoListViewContoller: UIViewController, UITableViewDataSource, UITa
     }
     
     private func getList(){
-        httpClient.get(url: NoticeAPI.getNoticeList(0).path(), params: nil, header: Header.token.header()).responseJSON{[unowned self](response) in
+        httpClient.get(url: NoticeAPI.getNoticeList(0).path(), params: nil, header: Header.accessToken.header()).responseJSON{[unowned self](response) in
             switch response.response?.statusCode{
             case 200:
                 let model = try? JSONDecoder().decode(GetNoticeList.self, from: response.data!)
@@ -83,6 +83,27 @@ final class InfoListViewContoller: UIViewController, UITableViewDataSource, UITa
                 listModel.notice.removeAll()
                 listModel.notice.append(contentsOf: model!.notice)
                 tableView.reloadData()
+                
+            case 401:
+                print("401 - getNoticeList")
+                
+                httpClient
+                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                    .responseJSON(completionHandler: {(response) in
+                        switch response.response?.statusCode {
+                        case 201:
+                            print("OK - refreshToken")
+                            
+                        case 401:
+                            print("401 - refreshToken")
+                            
+                            showAlert(title: "로그인이 필요합니다.", message: nil)
+                        
+                        default:
+                            print(response.response?.statusCode ?? "default")
+                            print(response.error ?? "default")
+                        }
+                    })
                 
             case 404: print("404 : NOT FOUND - Notice does not exist.")
                 showAlert(title: "오류가 발생했습니다.", message: nil)
@@ -99,13 +120,34 @@ final class InfoListViewContoller: UIViewController, UITableViewDataSource, UITa
     private func secondGetList() {
         getPage()
         if nextPage == true {
-            httpClient.get(url: NoticeAPI.getNoticeList(page).path(), params: nil, header: Header.token.header()).responseJSON{[unowned self](response) in
+            httpClient.get(url: NoticeAPI.getNoticeList(page).path(), params: nil, header: Header.accessToken.header()).responseJSON{[unowned self](response) in
                 switch response.response?.statusCode{
                 case 200:
                     let model = try? JSONDecoder().decode(GetNoticeList.self, from: response.data!)
                     nextPage = model!.next_page
                     listModel.notice.append(contentsOf: model!.notice)
                     tableView.reloadData()
+                    
+                case 401:
+                    print("401 - getNoticeList")
+                    
+                    httpClient
+                        .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+                        .responseJSON(completionHandler: {(response) in
+                            switch response.response?.statusCode {
+                            case 201:
+                                print("OK - refreshToken")
+                                
+                            case 401:
+                                print("401 - refreshToken")
+                                
+                                showAlert(title: "로그인이 필요합니다.", message: nil)
+                            
+                            default:
+                                print(response.response?.statusCode ?? "default")
+                                print(response.error ?? "default")
+                            }
+                        })
                     
                 case 404:
                     showAlert(title: "오류가 발생했습니다.", message: nil)

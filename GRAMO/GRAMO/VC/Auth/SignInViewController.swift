@@ -19,6 +19,8 @@ final class SignInViewController: UIViewController {
         setNavigationBar()
         customTxtField(emailTxtField)
         customTxtField(pwTxtField)
+        
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -41,14 +43,10 @@ final class SignInViewController: UIViewController {
         let httpClient = HTTPClient()
         
         httpClient
-<<<<<<< HEAD
-            .post(url: AuthAPI.signIn.path(), params: ["email": email, "password": password, "token": fcm_token], header: Header.tokenIsEmpty.header())
-=======
-            .post(url: AuthAPI.signIn.path(), params: ["email": email, "password": password, "token": token], header: Header.tokenIsEmpty.header())
->>>>>>> develop
+            .post(url: AuthAPI.signIn.path(), params: ["email": email, "password": password, "token": "dafewfae"], header: Header.tokenIsEmpty.header())
             .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
-                case 201:
+                case 200:
                     do {
                         print("OK - signIn")
                         
@@ -56,7 +54,9 @@ final class SignInViewController: UIViewController {
                         let model = try JSONDecoder().decode(SignIn.self, from: data!)
                         
                         print(model)
-                        Token.token = model.access_token
+                        
+                        Token.accessToken = model.access_token
+                        Token.refreshToken = model.refresh_token
                         
                         UserDefaults.standard.object(forKey: "nickname")
                         UserDefaults.standard.setValue(model.name, forKey: "nickname")

@@ -9,39 +9,55 @@ import Foundation
 import Alamofire
 
 struct Token {
-    static var _token: String?
-    static var token: String? {
+    static var _accessToken: String?
+    static var accessToken: String? {
         get {
-            _token = UserDefaults.standard.string(forKey: "token")
-            return _token
-        }
-        set(newToken) {
-            UserDefaults.standard.setValue(newToken, forKey: "token")
-            _token = UserDefaults.standard.string(forKey: "token")
+            _accessToken = UserDefaults.standard.string(forKey: "accessToken")
+            return _accessToken
+        } set(newAccessToken) {
+            UserDefaults.standard.setValue(newAccessToken, forKey: "accessToken")
+            _accessToken = UserDefaults.standard.string(forKey: "accessToken")
         }
     }
     
+    static var _refreshToken: String?
+    static var refreshToken: String? {
+        get {
+            _refreshToken = UserDefaults.standard.string(forKey: "refreshToken")
+            return _refreshToken
+        } set(newRefreshToken) {
+            UserDefaults.standard.setValue(newRefreshToken, forKey: "refreshToken")
+            _refreshToken = UserDefaults.standard.string(forKey: "refreshToken")
+            print("a")
+        }
+    }
     
     static func tokenRemove() {
-        token = nil
+        accessToken = nil
     }
 }
 
 enum Header {
-    case token, tokenIsEmpty//, name, major
+    case accessToken, refreshToken, tokenIsEmpty
     
     func header() -> HTTPHeaders {
-        guard let token = Token.token else {
+        guard let accessToken = Token.accessToken else {
+            return ["Content-Type" : "application/json"]
+        }
+        
+        guard let refreshToken = Token.refreshToken else {
             return ["Content-Type" : "application/json"]
         }
         
         switch self {
-        case .token:
-            return HTTPHeaders(["Authorization" : "Bearer " + token, "Content-Type" : "application/json"])
+        case .accessToken:
+            return HTTPHeaders(["Authorization" : "Bearer " + accessToken, "Content-Type" : "application/json"])
+            
+        case .refreshToken:
+            return HTTPHeaders(["Authorization" : "Bearer " + refreshToken, "Content-Type" : "application/json"])
             
         case .tokenIsEmpty:
             return ["Content-Type" : "application/json"]
-
         }
     }
 }

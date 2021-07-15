@@ -100,30 +100,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
                     
                 case 401:
                     print("401 - getCalendarList")
-                    
-                    httpClient
-                        .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
-                        .responseJSON(completionHandler: {(response) in
-                            switch response.response?.statusCode {
-                            case 201:
-                                print("OK - refreshToken")
-                                
-                            case 401:
-                                print("401 - refreshToken")
-                                
-                                showAlert(title: "로그인이 필요합니다.", message: nil)
-                            
-                            default:
-                                print(response.response?.statusCode ?? "default")
-                                print(response.error ?? "default")
-                            }
-                        })
-                    
-                case 403:
-                    print("403 : Forbidden - getCalendarList")
-                    
-                case 404:
-                    print("404 : NOT FOUND - Notice does not exist. - getCalendarList")
+                    tokenRefresh()
                     
                 default:
                     print(response.response?.statusCode ?? "default")

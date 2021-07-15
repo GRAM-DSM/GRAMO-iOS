@@ -28,12 +28,7 @@ struct Token {
         } set(newRefreshToken) {
             UserDefaults.standard.setValue(newRefreshToken, forKey: "refreshToken")
             _refreshToken = UserDefaults.standard.string(forKey: "refreshToken")
-            print("a")
         }
-    }
-    
-    static func tokenRemove() {
-        accessToken = nil
     }
 }
 

@@ -178,24 +178,7 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
                 
             case 401:
                 print("401 - getAssHomeworkList")
-                
-                httpclient
-                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
-                    .responseJSON(completionHandler: {(response) in
-                        switch response.response?.statusCode {
-                        case 201:
-                            print("OK - refreshToken")
-                            
-                        case 401:
-                            print("401 - refreshToken")
-                            
-                            showAlert(title: "로그인이 필요합니다.", message: nil)
-                        
-                        default:
-                            print(response.response?.statusCode ?? "default")
-                            print(response.error ?? "default")
-                        }
-                    })
+                tokenRefresh()
                 
             case 404 :
                 showAlert(title: "오류가 발생했습니다.", message: nil)
@@ -222,24 +205,7 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
                 
             case 401:
                 print("401 - getSubHomeworkList")
-                
-                httpclient
-                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
-                    .responseJSON(completionHandler: {(response) in
-                        switch response.response?.statusCode {
-                        case 201:
-                            print("OK - refreshToken")
-                            
-                        case 401:
-                            print("401 - refreshToken")
-                            
-                            showAlert(title: "로그인이 필요합니다.", message: nil)
-                        
-                        default:
-                            print(response.response?.statusCode ?? "default")
-                            print(response.error ?? "default")
-                        }
-                    })
+                tokenRefresh()
                 
             case 404 :
                 showAlert(title: "오류가 발생했습니다.", message: nil)
@@ -266,24 +232,7 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
                 
             case 401:
                 print("401 - getOrdHomeworkList")
-                
-                httpclient
-                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
-                    .responseJSON(completionHandler: {(response) in
-                        switch response.response?.statusCode {
-                        case 201:
-                            print("OK - refreshToken")
-                            
-                        case 401:
-                            print("401 - refreshToken")
-                            
-                            showAlert(title: "로그인이 필요합니다.", message: nil)
-                        
-                        default:
-                            print(response.response?.statusCode ?? "default")
-                            print(response.error ?? "default")
-                        }
-                    })
+                tokenRefresh()
                 
             case 404 :
                 showAlert(title: "오류가 발생했습니다.", message: nil)

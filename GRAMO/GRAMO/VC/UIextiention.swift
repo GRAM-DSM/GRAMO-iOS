@@ -100,4 +100,26 @@ extension UIViewController {
             toastLabel.removeFromSuperview()
         })
     }
+    
+    public func tokenRefresh() {
+        HTTPClient()
+            .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
+            .responseJSON(completionHandler: {[unowned self](response) in
+                switch response.response?.statusCode {
+                case 201:
+                    print("OK - refreshToken")
+                    
+                case 401:
+                    print("401 - refreshToken")
+                    
+                    showAlert(title: "로그인이 필요합니다.", message: nil)
+                    navigationController?.pushViewController(UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "SignInVC"), animated: true)
+                    UserDefaults.standard.setValue("", forKey: "refreshToken")
+                
+                default:
+                    print(response.response?.statusCode ?? "default")
+                    print(response.error ?? "default")
+                }
+            })
+    }
 }

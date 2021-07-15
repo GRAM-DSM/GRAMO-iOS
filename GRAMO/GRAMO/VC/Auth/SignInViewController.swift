@@ -12,14 +12,14 @@ final class SignInViewController: UIViewController {
     @IBOutlet weak private var pwTxtField: UITextField!
     @IBOutlet weak private var failLabel: UILabel!
     
-    var token = String()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         customTxtField(emailTxtField)
         customTxtField(pwTxtField)
+        saveAccount()
         
+        navigationController?.viewControllers = [self]
         
     }
     
@@ -37,6 +37,11 @@ final class SignInViewController: UIViewController {
     private func customTxtField(_ txtField: UITextField) {
         txtField.font = UIFont(name: "NotoSansKR-Regular", size: 14)
         txtField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+    }
+    
+    private func saveAccount() {
+        emailTxtField.text = UserDefaults.standard.string(forKey: "email") ?? ""
+        pwTxtField.text = UserDefaults.standard.string(forKey: "password") ?? ""
     }
     
     private func signIn(email : String, password : String) {
@@ -63,6 +68,9 @@ final class SignInViewController: UIViewController {
                         
                         UserDefaults.standard.object(forKey: "major")
                         UserDefaults.standard.setValue(model.major, forKey: "major")
+                        
+                        UserDefaults.standard.setValue(emailTxtField.text, forKey: "email")
+                        UserDefaults.standard.setValue(pwTxtField.text, forKey: "password")
                         
                         let sub = UIStoryboard(name: "Calendar2", bundle: nil)
                         let info = sub.instantiateViewController(withIdentifier: "Calendar2VC")

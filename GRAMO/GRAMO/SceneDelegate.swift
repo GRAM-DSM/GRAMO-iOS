@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
 
-        if UserDefaults.standard.string(forKey: "refreshToken") == nil {
+        if UserDefaults.standard.string(forKey: "refreshToken") == "" {
             window?.rootViewController = UINavigationController.init(rootViewController: UIStoryboard.init(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "SignInVC"))
         } else {
             window?.rootViewController = UINavigationController.init(rootViewController: UIStoryboard.init(name: "Calendar2", bundle: nil).instantiateViewController(withIdentifier: "Calendar2VC"))

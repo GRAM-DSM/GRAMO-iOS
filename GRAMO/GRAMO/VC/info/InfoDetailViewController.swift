@@ -47,24 +47,7 @@ final class InfoDetailViewController: UIViewController {
                 
             case 401:
                 print("401 - getNoticeDetail")
-                
-                httpclient
-                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
-                    .responseJSON(completionHandler: {(response) in
-                        switch response.response?.statusCode {
-                        case 201:
-                            print("OK - refreshToken")
-                            
-                        case 401:
-                            print("401 - refreshToken")
-                            
-                            showAlert(title: "로그인이 필요합니다.", message: nil)
-                        
-                        default:
-                            print(response.response?.statusCode ?? "default")
-                            print(response.error ?? "default")
-                        }
-                    })
+                tokenRefresh()
                 
             case 404: print("404 - Not Found")
                 showAlert(title: "오류가 발생했습니다.", message: nil)
@@ -84,24 +67,7 @@ final class InfoDetailViewController: UIViewController {
                 
             case 401:
                 print("401 - deleteNotice")
-                
-                httpclient
-                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
-                    .responseJSON(completionHandler: {(response) in
-                        switch response.response?.statusCode {
-                        case 201:
-                            print("OK - refreshToken")
-                            
-                        case 401:
-                            print("401 - refreshToken")
-                            
-                            showAlert(title: "로그인이 필요합니다.", message: nil)
-                        
-                        default:
-                            print(response.response?.statusCode ?? "default")
-                            print(response.error ?? "default")
-                        }
-                    })
+                tokenRefresh()
                 
             case 403:
                 print("403 - Forbidden")

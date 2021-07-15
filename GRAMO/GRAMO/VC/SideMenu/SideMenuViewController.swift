@@ -67,10 +67,11 @@ final class SideMenuViewController: UIViewController {
     private func logout() {
         HTTPClient().delete(url: AuthAPI.logout.path(), params: nil, header: Header.accessToken.header()).responseJSON(completionHandler: { [unowned self]res in
             switch res.response?.statusCode {
-            case 204 :
+            case 200 :
                 let sub = UIStoryboard(name: "Auth", bundle: nil)
-                let calendar = sub.instantiateViewController(withIdentifier: "LoginVC")
+                let calendar = sub.instantiateViewController(withIdentifier: "SignInVC")
                 navigationController?.pushViewController(calendar, animated: false)
+                UserDefaults.standard.setValue("", forKey: "refreshToken")
                 
             case 401: print("401 - could not find token user")
                 showAlert(title: "허가되지 않은 요청입니다.", message: nil)

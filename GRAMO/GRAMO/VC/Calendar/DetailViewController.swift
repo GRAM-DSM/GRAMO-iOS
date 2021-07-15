@@ -119,31 +119,11 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                             
                         case 401:
                             print("401 - deletePICU")
-                            
-                            httpClient
-                                .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
-                                .responseJSON(completionHandler: {(response) in
-                                    switch response.response?.statusCode {
-                                    case 201:
-                                        print("OK - refreshToken")
-                                        
-                                    case 401:
-                                        print("401 - refreshToken")
-                                        
-                                        showAlert(title: "로그인이 필요합니다.", message: nil)
-                                    
-                                    default:
-                                        print(response.response?.statusCode ?? "default")
-                                        print(response.error ?? "default")
-                                    }
-                                })
+                            tokenRefresh()
                             
                         case 403:
                             print("403 : Forbidden - deletePICU")
                             showToast(message: "권한이 없습니다")
-                            
-                        case 404:
-                            print("404 : NOT FOUND - Notice does not exist. - deletePICU")
                             
                         default:
                             print(response.response?.statusCode ?? "default")
@@ -169,31 +149,11 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                             
                         case 401:
                             print("401 - deletePlan")
-                            
-                            httpClient
-                                .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
-                                .responseJSON(completionHandler: {(response) in
-                                    switch response.response?.statusCode {
-                                    case 201:
-                                        print("OK - refreshToken")
-                                        
-                                    case 401:
-                                        print("401 - refreshToken")
-                                        
-                                        showAlert(title: "로그인이 필요합니다.", message: nil)
-                                    
-                                    default:
-                                        print(response.response?.statusCode ?? "default")
-                                        print(response.error ?? "default")
-                                    }
-                                })
+                            tokenRefresh()
                             
                         case 403:
                             print("403 : Forbidden - deletePlan")
                             showToast(message: "권한이 없습니다")
-                            
-                        case 404:
-                            print("404 : NOT FOUND - Notice does not exist. - deletePlan")
                             
                         default:
                             print(response.response?.statusCode ?? "default")
@@ -276,33 +236,15 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                         
                         picu.picuContentResponses.append(contentsOf: model.picuContentResponses)
                         picuTableView.reloadData()
+                        
+                        print()
                     } catch {
                         print("Error: \(error)")
                     }
                     
                 case 401:
                     print("401 - getPICU")
-                    
-                    httpClient
-                        .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
-                        .responseJSON(completionHandler: {(response) in
-                            switch response.response?.statusCode {
-                            case 201:
-                                print("OK - refreshToken")
-                                
-                            case 401:
-                                print("401 - refreshToken")
-                                
-                                showAlert(title: "로그인이 필요합니다.", message: nil)
-                            
-                            default:
-                                print(response.response?.statusCode ?? "default")
-                                print(response.error ?? "default")
-                            }
-                        })
-                    
-                case 403:
-                    print("403 : Forbidden - getPICU")
+                    tokenRefresh()
                     
                 case 404:
                     print("404 : NOT FOUND - Notice does not exist. - getPICU")
@@ -328,30 +270,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                 
             case 401:
                 print("401 - createPICU")
-                
-                httpClient
-                    .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
-                    .responseJSON(completionHandler: {(response) in
-                        switch response.response?.statusCode {
-                        case 201:
-                            print("OK - refreshToken")
-                            
-                        case 401:
-                            print("401 - refreshToken")
-                            
-                            showAlert(title: "로그인이 필요합니다.", message: nil)
-                        
-                        default:
-                            print(response.response?.statusCode ?? "default")
-                            print(response.error ?? "default")
-                        }
-                    })
-                
-            case 403:
-                print("403 : Forbidden - createPICU")
-                
-            case 404:
-                print("404 : NOT FOUND - Notice does not exist. - createPICU")
+                tokenRefresh()
                 
             default:
                 print(response.response?.statusCode ?? "default")
@@ -384,30 +303,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                     
                 case 401:
                     print("401 - getPlan")
-                    
-                    httpClient
-                        .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
-                        .responseJSON(completionHandler: {(response) in
-                            switch response.response?.statusCode {
-                            case 201:
-                                print("OK - refreshToken")
-                                
-                            case 401:
-                                print("401 - refreshToken")
-                                
-                                showAlert(title: "로그인이 필요합니다.", message: nil)
-                            
-                            default:
-                                print(response.response?.statusCode ?? "default")
-                                print(response.error ?? "default")
-                            }
-                        })
-                    
-                case 403:
-                    print("403 : Forbidden - getPlan")
-                    
-                case 404:
-                    print("404 : NOT FOUND - Notice does not exist. - getPlan")
+                    tokenRefresh()
                     
                 default:
                     print(response.response?.statusCode ?? "default")
@@ -430,30 +326,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                     
                 case 401:
                     print("401 - createPlan")
-                    
-                    httpClient
-                        .get(url: AuthAPI.tokenRefresh.path(), params: nil, header: Header.refreshToken.header())
-                        .responseJSON(completionHandler: {(response) in
-                            switch response.response?.statusCode {
-                            case 201:
-                                print("OK - refreshToken")
-                                
-                            case 401:
-                                print("401 - refreshToken")
-                                
-                                showAlert(title: "로그인이 필요합니다.", message: nil)
-                            
-                            default:
-                                print(response.response?.statusCode ?? "default")
-                                print(response.error ?? "default")
-                            }
-                        })
-                    
-                case 403:
-                    print("403 : Forbidden - createPlan")
-                    
-                case 404:
-                    print("404 : NOT FOUND - Notice does not exist. - createPlan")
+                    tokenRefresh()
                     
                 default:
                     print(response.response?.statusCode ?? "default")

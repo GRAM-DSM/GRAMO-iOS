@@ -46,9 +46,9 @@ final class SignInViewController: UIViewController {
     
     private func signIn(email : String, password : String) {
         let httpClient = HTTPClient()
-        
+        print(UserDefaults.standard.string(forKey: "fcmToken"))
         httpClient
-            .post(url: AuthAPI.signIn.path(), params: ["email": email, "password": password, "token": "dafewfae"], header: Header.tokenIsEmpty.header())
+            .post(url: AuthAPI.signIn.path(), params: ["email": email, "password": password, "token": UserDefaults.standard.string(forKey: "fcmToken")], header: Header.tokenIsEmpty.header())
             .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 200:

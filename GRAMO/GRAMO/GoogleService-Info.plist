@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>136871267569-1farch34a5bso9gv74h1g698npd607gd.apps.googleusercontent.com</string>
+	<string>311429595007-u8iis0b6amcso29qun6oeubdf18ih27f.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.136871267569-1farch34a5bso9gv74h1g698npd607gd</string>
+	<string>com.googleusercontent.apps.311429595007-u8iis0b6amcso29qun6oeubdf18ih27f</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDZZL-qpyDmdmgWNXPcF03IP3b_ZdDbxik</string>
+	<string>AIzaSyD2-Bm4HnQ6OvUeJk4BIZYD7DIQteOVlMQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>136871267569</string>
+	<string>311429595007</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.GRAM.GRAMO.GRAMO</string>
+	<string>com.GRAM.OMARG</string>
 	<key>PROJECT_ID</key>
-	<string>gramo-9c885</string>
+	<string>gramo-1460b</string>
 	<key>STORAGE_BUCKET</key>
-	<string>gramo-9c885.appspot.com</string>
+	<string>gramo-1460b.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:136871267569:ios:53db3ad5f54d7256592d50</string>
+	<string>1:311429595007:ios:67987980e3e469bb82a44a</string>
 </dict>
 </plist>

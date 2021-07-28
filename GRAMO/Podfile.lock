@@ -99,6 +99,7 @@ DEPENDENCIES:
   - Alamofire (~> 5.2)
   - DropDown
   - Firebase/Analytics
+  - Firebase/Core
   - Firebase/Messaging
   - FSCalendar
   - SideMenu
@@ -138,6 +139,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: 7f0010e0c7ea51aab24fbb5febe00d0e6a4e1b67
+PODFILE CHECKSUM: 6a0dc3ade7a617e85f2e6e463f55a59856ede204
 
 COCOAPODS: 1.10.1

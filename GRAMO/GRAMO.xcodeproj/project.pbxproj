@@ -66,7 +66,7 @@
 		EF71EF2926677441000F2278 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF2726677441000F2278 /* DetailViewController.swift */; };
 		EF71EF2A26677441000F2278 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71EF2826677441000F2278 /* CalendarViewController.swift */; };
 		EF71EF2C266774B2000F2278 /* Calendar2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF71EF2B266774B2000F2278 /* Calendar2.storyboard */; };
-		EF7BF66726959395003C519E /* GoogleService-Info-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF7BF66626959395003C519E /* GoogleService-Info-3.plist */; };
+		EFBB6AB226B03FC6005E1F1D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFBB6AB126B03FC6005E1F1D /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,7 +133,7 @@
 		EF71EF2726677441000F2278 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EF71EF2826677441000F2278 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		EF71EF2B266774B2000F2278 /* Calendar2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar2.storyboard; sourceTree = "<group>"; };
-		EF7BF66626959395003C519E /* GoogleService-Info-3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-3.plist"; sourceTree = "<group>"; };
+		EFBB6AB126B03FC6005E1F1D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,7 +232,7 @@
 				54BD21272666246200464EEE /* NotoSansKR-Regular.otf */,
 				54BD21282666246200464EEE /* NotoSansKR-Thin.otf */,
 				54B1B84226661DC500EDEDAB /* Info.plist */,
-				EF7BF66626959395003C519E /* GoogleService-Info-3.plist */,
+				EFBB6AB126B03FC6005E1F1D /* GoogleService-Info.plist */,
 			);
 			path = GRAMO;
 			sourceTree = "<group>";
@@ -461,12 +461,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFBB6AB226B03FC6005E1F1D /* GoogleService-Info.plist in Resources */,
 				54BD2130266624C200464EEE /* NotoSansKR-Thin.otf in Resources */,
 				54B1B84126661DC500EDEDAB /* LaunchScreen.storyboard in Resources */,
 				EF71EED326676B57000F2278 /* info.storyboard in Resources */,
 				EF71EF2C266774B2000F2278 /* Calendar2.storyboard in Resources */,
 				54B1B83E26661DC500EDEDAB /* Assets.xcassets in Resources */,
-				EF7BF66726959395003C519E /* GoogleService-Info-3.plist in Resources */,
 				EF71EED426676B57000F2278 /* homework.storyboard in Resources */,
 				54BD212E266624BD00464EEE /* NotoSansKR-Medium.otf in Resources */,
 				54BD212B266624B600464EEE /* NotoSansKR-Light.otf in Resources */,
@@ -711,14 +711,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GRAMO/GRAMO.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FSLGTDRXYN;
+				DEVELOPMENT_TEAM = APN5U5HZ7G;
 				INFOPLIST_FILE = GRAMO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.GRAM.GRAMO.GRAMO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GRAM.OMARG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -731,14 +732,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GRAMO/GRAMO.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FSLGTDRXYN;
+				DEVELOPMENT_TEAM = APN5U5HZ7G;
 				INFOPLIST_FILE = GRAMO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.GRAM.GRAMO.GRAMO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GRAM.OMARG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

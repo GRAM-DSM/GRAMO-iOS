@@ -107,13 +107,28 @@ extension UIViewController {
             .responseJSON(completionHandler: {[unowned self](response) in
                 switch response.response?.statusCode {
                 case 201:
-                    print("OK - refreshToken")
+                    do {
+                        print("OK - refreshToken")
+                    
+                        let data = response.data
+                        let model = try JSONDecoder().decode(TokenRefresh.self, from: data!)
+                        
+                        Token.accessToken = model.access_token
+                        
+                    } catch {
+                        print("Error: \(error)")
+                    }
                     
                 case 401:
                     print("401 - refreshToken")
                     
-                    showAlert(title: "로그인이 필요합니다.", message: nil)
-                    navigationController?.pushViewController(UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "SignInVC"), animated: true)
+                    let alert = UIAlertController(title: "로그인이 필요합니다", message: nil, preferredStyle: UIAlertController.Style.alert)
+                    let cancelAction = UIAlertAction(title: "확인", style: .cancel) {_ in
+                        navigationController?.pushViewController(UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "SignInVC"), animated: true)
+                    }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                    
                     UserDefaults.standard.setValue("", forKey: "refreshToken")
                 
                 default:

@@ -22,6 +22,8 @@ final class CalendarViewController: UIViewController {
         setNavigationBar()
         customCalendar()
         customEvents()
+        
+        //   Token.refreshToken = ""
     }
 }
 
@@ -101,6 +103,8 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
                 case 401:
                     print("401 - getCalendarList")
                     tokenRefresh()
+                    
+                    print(Token.refreshToken)
                     
                 default:
                     print(response.response?.statusCode ?? "default")

@@ -49,8 +49,6 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 1 {
             let picuCell: PICUTableViewCell = tableView.dequeueReusableCell(withIdentifier: PICUTableViewCell.picuCellIdentifier, for: indexPath) as! PICUTableViewCell
-            
-            print(self.picu)
             picuCell.nameLabel?.text = self.picu.picuContentResponses[indexPath.row].userName
             
             picuCell.selectionStyle = .none
@@ -236,8 +234,6 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
                         
                         picu.picuContentResponses.append(contentsOf: model.picuContentResponses)
                         picuTableView.reloadData()
-                        
-                        print()
                     } catch {
                         print("Error: \(error)")
                     }

@@ -27,6 +27,7 @@
 		54BD212E266624BD00464EEE /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 54BD21262666246100464EEE /* NotoSansKR-Medium.otf */; };
 		54BD212F266624BF00464EEE /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 54BD21272666246200464EEE /* NotoSansKR-Regular.otf */; };
 		54BD2130266624C200464EEE /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 54BD21282666246200464EEE /* NotoSansKR-Thin.otf */; };
+		54F0C33526E0D8CC000F55E7 /* TokenRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F0C33426E0D8CC000F55E7 /* TokenRefresh.swift */; };
 		5C651BE9FDEAF9A30DE033A5 /* Pods_GRAMO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCE7674852D761097D82515C /* Pods_GRAMO.framework */; };
 		EF71EED326676B57000F2278 /* info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF71EED126676B57000F2278 /* info.storyboard */; };
 		EF71EED426676B57000F2278 /* homework.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF71EED226676B57000F2278 /* homework.storyboard */; };
@@ -93,6 +94,7 @@
 		54BD21282666246200464EEE /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
 		54BD21292666246200464EEE /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		54BD212A2666246200464EEE /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
+		54F0C33426E0D8CC000F55E7 /* TokenRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefresh.swift; sourceTree = "<group>"; };
 		B973AABB18E56EA3106437C3 /* Pods-GRAMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRAMO.debug.xcconfig"; path = "Target Support Files/Pods-GRAMO/Pods-GRAMO.debug.xcconfig"; sourceTree = "<group>"; };
 		BCE7674852D761097D82515C /* Pods_GRAMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GRAMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF71EED126676B57000F2278 /* info.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = info.storyboard; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				544DA1852672401400DE3C8D /* SignIn.swift */,
+				54F0C33426E0D8CC000F55E7 /* TokenRefresh.swift */,
 			);
 			path = AuthModel;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				EF71EF2926677441000F2278 /* DetailViewController.swift in Sources */,
 				EF71EEE526676BDD000F2278 /* SecondSectionTableViewCell.swift in Sources */,
 				EF71EEFD26677324000F2278 /* GetPICU.swift in Sources */,
+				54F0C33526E0D8CC000F55E7 /* TokenRefresh.swift in Sources */,
 				5477A848266A120F009064C7 /* CalendarAPI.swift in Sources */,
 				544DA18B26724E5000DE3C8D /* SignUpViewController.swift in Sources */,
 				EF71EF0F2667739D000F2278 /* ThirdSectionModel.swift in Sources */,

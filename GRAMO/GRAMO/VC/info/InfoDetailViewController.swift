@@ -26,6 +26,12 @@ final class InfoDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         detailNotice(id: id)
+        
+//        nameLabel.text = "장서영"
+//        dateLabel.text = "2021년 11월 17일"
+//        titleTxt.text = "성과전시회"
+//        detailTxt.text = "성과전시회에 GRAMO 낼게요"
+        
         self.isModalInPresentation = false
     }
     
@@ -61,7 +67,7 @@ final class InfoDetailViewController: UIViewController {
     private func deleteNotice(id: Int){
         httpclient.delete(url: NoticeAPI.deleteNotice(id).path(), params: nil, header: Header.accessToken.header()).responseJSON{[unowned self](res) in
             switch res.response?.statusCode{
-            case 204:
+            case 200:
                 dismiss(animated: true)
                 NotificationCenter.default.post(name: detailVC, object: nil, userInfo: nil)
                 

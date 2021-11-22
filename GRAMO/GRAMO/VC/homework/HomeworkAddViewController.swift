@@ -68,6 +68,10 @@ final class HomeworkAddViewController: UIViewController, UITextViewDelegate, UIT
             showAlert(title: "제목 또는 내용을 입력해주세요.", message: nil)
         }
         addHomework(major: requestMajor, endDate: requestDate, studentEmail: studentEmail, description: detailTextView.text!, title: titleTextField.text!)
+        
+//        hidden = 3
+//
+//        navigationController?.popViewController(animated: true)
     }
     
     @IBAction private func selectMajor(_ sender: UIButton){
@@ -96,26 +100,42 @@ final class HomeworkAddViewController: UIViewController, UITextViewDelegate, UIT
     }
     
     @IBAction private func selectAllocator(_ sender: UIButton){
+        
+//        var studentItems = ["이가영(iOS)", "윤준기(BackEnd)", "정창용(iOS)", "박동행(Android)", "박나연(Android)", "김승진(BackEnd)", "양지원(Android)", "김준호(Android)", "하혜령(BackEnd)", "안병헌(Android)", "김동현(BackEnd)"]
+//        let dropDown = DropDown()
+//
+//        DropDown.appearance().backgroundColor = UIColor.white
+//        DropDown.appearance().selectionBackgroundColor = UIColor.lightGray
+//        DropDown.appearance().textColor = UIColor.black
+//
+//        dropDown.dataSource = studentItems
+//        dropDown.show()
+//        dropDown.selectionAction = {[unowned self] (index: Int, item: String) in
+//            allocatorButton.setTitle("\(item)", for: .normal)
+//        }
+//        dropDown.anchorView = allocatorButton
+        
         httpclient.get(url: HomeworkAPI.getUserList.path(), params: nil, header: Header.accessToken.header()).responseJSON { [unowned self](res) in
+            print(res.response?.statusCode)
             switch res.response?.statusCode{
             case 200 :
-                
+
                 let model = try? JSONDecoder().decode(User.self, from: res.data!)
                 userListModel.userInfoResponses.removeAll()
                 userListModel.userInfoResponses.append(contentsOf: model!.userInfoResponses)
-                
+
                 var studentItems = [String]()
-                
+
                 for i in 0..<model!.userInfoResponses.count{
                     studentItems.append(model!.userInfoResponses[i].name + "(" + model!.userInfoResponses[i].major + ")")
                 }
-                
+
                 let dropDown = DropDown()
-                
+
                 DropDown.appearance().backgroundColor = UIColor.white
                 DropDown.appearance().selectionBackgroundColor = UIColor.lightGray
                 DropDown.appearance().textColor = UIColor.black
-                
+
                 dropDown.dataSource = studentItems
                 dropDown.show()
                 dropDown.selectionAction = {[unowned self] (index: Int, item: String) in
@@ -123,11 +143,11 @@ final class HomeworkAddViewController: UIViewController, UITextViewDelegate, UIT
                     studentEmail = model!.userInfoResponses[index].email
                 }
                 dropDown.anchorView = allocatorButton
-                
+
             case 401:
                 print("401 - getUserList")
                 tokenRefresh()
-                
+
             default : print(res.response?.statusCode ?? "default")
             }
         }
@@ -135,6 +155,7 @@ final class HomeworkAddViewController: UIViewController, UITextViewDelegate, UIT
     
     private func addHomework(major: String, endDate: String, studentEmail: String, description: String, title: String) {
         httpclient.post(url: HomeworkAPI.createHomework.path(), params: ["major":major, "endDate":endDate, "studentEmail":studentEmail, "description":description, "title":title], header: Header.accessToken.header()).responseJSON{[unowned self](res) in
+            print(res.response?.statusCode)
             switch res.response?.statusCode{
             case 201 :
                 navigationController?.popViewController(animated: true)

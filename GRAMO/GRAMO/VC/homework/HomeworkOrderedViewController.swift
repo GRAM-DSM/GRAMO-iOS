@@ -26,6 +26,13 @@ final class HomeworkOrderedViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         getContent(id: id)
+        
+//        nameLabel.text = "정창용"
+//        dateLabel.text = "2021년 11월 17일"
+//        contentTextView.text = "로그인 회원가입 부분 빼고 코드리뷰해주세요"
+//        titleTextField.text = "컬러 끝내오기"
+//        selectDeadLineTextField.text = "2021년 11월 20일"
+//        majorButton.setTitle("iOS", for: .normal)
     }
     
     @IBAction private func backButton1(_ sender: UIBarButtonItem){
@@ -51,6 +58,7 @@ final class HomeworkOrderedViewController: UIViewController {
     
     private func getContent(id: Int) {
         httpClient.get(url: HomeworkAPI.getHomeworkContent(id).path(), params: nil, header: Header.accessToken.header()).responseJSON { [unowned self](res) in
+            print(res.response?.statusCode)
             switch res.response?.statusCode {
             case 200 :
                 

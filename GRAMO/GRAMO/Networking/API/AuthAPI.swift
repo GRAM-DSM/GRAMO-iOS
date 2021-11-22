@@ -11,7 +11,7 @@ enum AuthAPI: API {
     case signIn
     case logout
     case tokenRefresh
-    case withDrawel
+    case withDrawal
     case signUp
     case sendEmail
     case checkEmailCode
@@ -21,8 +21,8 @@ enum AuthAPI: API {
         case .signIn, .tokenRefresh, .logout:
             return baseURIAuth + "/auth"
         
-        case .withDrawel:
-            return baseURIAuth + "/withdrawel"
+        case .withDrawal:
+            return baseURIAuth + "/withdrawal"
         
         case .signUp:
             return baseURIAuth + "/signup"

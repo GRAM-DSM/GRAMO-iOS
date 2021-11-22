@@ -30,6 +30,10 @@ struct Token {
             _refreshToken = UserDefaults.standard.string(forKey: "refreshToken")
         }
     }
+    
+    static func remove() {
+            accessToken = nil
+        }
 }
 
 enum Header {

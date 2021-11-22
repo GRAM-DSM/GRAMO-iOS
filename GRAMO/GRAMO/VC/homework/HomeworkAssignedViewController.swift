@@ -25,6 +25,13 @@ final class HomeworkAssignedViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         getContent(id: id)
+        
+//        nameLabel.text = "이가영"
+//        dateLabel.text = "2021년 11월 14일"
+//        contentTextView.text = "RxSwift 공부해오기"
+//        titleTextField.text = "11월 둘째주 숙제"
+//        selectDeadLineTextField.text = "2021년 11월 21일"
+//        majorButton.setTitle("iOS", for: .normal)
     }
     
     @IBAction private func backButton1(_ sender: UIBarButtonItem){
@@ -71,6 +78,7 @@ final class HomeworkAssignedViewController: UIViewController {
     
     private func submitHw(homeworkId : Int) {
         httpClient.patch(url: HomeworkAPI.submitHomework(id).path(), params:  ["homeworkId":homeworkId], header: Header.accessToken.header()).responseJSON {[unowned self](res) in
+            print(res.response?.statusCode)
             switch res.response?.statusCode {
             case 201 :
                 navigationController?.popViewController(animated: true)

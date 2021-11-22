@@ -48,22 +48,27 @@ final class InfoAddViewController: UIViewController, UITextViewDelegate, UITextF
     }
     
     @IBAction private func createNoticeButton(_ sender : UIBarButtonItem){
+        print("tapcreate")
         if infoTitle.text == nil || infoDetail.textColor == UIColor.lightGray {
             showAlert(title: "제목 또는 내용을 입력해주세요.", message: nil)
         }
         
-        //        let title = infoTitle.text!
-        //        let detail = infoDetail.text!
-        //        let date = dateLabel.text!
-        //
-        //        let item : InfoList = InfoList(writer: "장서영", date: date, infotTitle: title, infoDetail: detail)
-        //
-        //        infoList.append(item)
+//                let title = infoTitle.text!
+//                let detail = infoDetail.text!
+//                let date = dateLabel.text!
+//
+//                let item : InfoList = InfoList(writer: "장서영", date: date, infotTitle: title, infoDetail: detail)
+//
+//                infoList.append(item)
         createNotice(title: infoTitle.text!, content: infoDetail.text!)
+        
+//        hidden = 1
+//        navigationController?.popViewController(animated: true)
     }
     
     private func createNotice(title: String, content: String) {
         httpClient.post(url: NoticeAPI.createNotice.path(), params: ["title":title, "content":content], header: Header.accessToken.header()).responseJSON{[unowned self](res) in
+            print(res.response?.statusCode)
             switch res.response?.statusCode{
             case 201:
                 sleep(UInt32(0.1))

@@ -79,6 +79,13 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
             cell.endDateLabel.text = formatEndDate(enddate)
             cell.majorLabel.text = setMajor(major)
             
+//            cell.myNameLabel.text = "이가영"
+//            cell.dateLabel.text = "2021년 11월 14일"
+//            cell.detailLabel.text = "RxSwift 공부해오기"
+//            cell.titleLabel.text = "11월 둘째주 숙제"
+//            cell.endDateLabel.text = "2021년 11월 21일"
+//            cell.majorLabel.text = "iOS"
+            
             return cell
         }
         
@@ -98,6 +105,13 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
             cell.endDateLabel.text = formatEndDate(enddate)
             cell.majorLabel.text = setMajor(major)
             
+//            cell.recipientName.text = "정창용"
+//            cell.dateLabel.text = "2021년 11월 17일"
+//            cell.detailLabel.text = "로그인 회원가입 부분 빼고 코드리뷰해주세요"
+//            cell.titleLabel.text = "컬러 끝내오기"
+//            cell.endDateLabel.text = "2021년 11월 20일"
+//            cell.majorLabel.text = "iOS"
+            
             return cell
         }
         
@@ -114,6 +128,13 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
             cell.titleLabel.text = hwStudentModel[indexPath.row].title
             cell.endDateLabel.text = formatEndDate(enddate)
             cell.majorLabel.text = setMajor(major)
+//            
+//            cell.myNameLabel.text = "이가영"
+//            cell.dateLabel.text = "2021년 11월 10일"
+//            cell.detailLabel.text = "코드리뷰 수정해오기"
+//            cell.titleLabel.text = "PR에 달아놓은 코드리뷰 바탕으로 수정해오기"
+//            cell.endDateLabel.text = "2021년 11월 12일"
+//            cell.majorLabel.text = "iOS"
             
             return cell
         }
@@ -143,6 +164,7 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
         getOrdView()
         getSubView()
         
+        //allocatorTableView.isHidden = true
         
         assignedTableView.refreshControl = UIRefreshControl()
         allocatorTableView.refreshControl = UIRefreshControl()
@@ -161,11 +183,16 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
         assignedTableView.reloadData()
         allocatorTableView.reloadData()
         submittedTableVIew.reloadData()
+        
+//        if hidden == 3 {
+//            allocatorTableView.isHidden = false
+//        }
     }
     
     
     private func getAssView() {
         httpclient.get(url: HomeworkAPI.getAssHomeworkList.path(), params: nil, header: Header.accessToken.header()).responseJSON{[unowned self](response) in
+            print(response.response?.statusCode)
             switch response.response?.statusCode{
             case 200:
                 let model = try? JSONDecoder().decode([HwStudent].self, from: response.data!)
@@ -190,6 +217,7 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
     
     private func getSubView(){
         httpclient.get(url: HomeworkAPI.getSubHomeworkList.path(), params: nil, header: Header.accessToken.header()).responseJSON{[unowned self](response) in
+            print(response.response?.statusCode)
             switch response.response?.statusCode{
             case 200:
                 
@@ -218,6 +246,7 @@ final class HomeworkListViewController: UIViewController, UITableViewDelegate, U
     
     private func getOrdView() {
         httpclient.get(url: HomeworkAPI.getOrdHomeworkList.path(), params: nil, header: Header.accessToken.header()).responseJSON{[unowned self](response) in
+            print(response.response?.statusCode)
             switch response.response?.statusCode{
             case 200 :
                 

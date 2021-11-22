@@ -46,10 +46,16 @@ final class SignInViewController: UIViewController {
     
     private func signIn(email : String, password : String) {
         let httpClient = HTTPClient()
-        print(UserDefaults.standard.string(forKey: "fcmToken"))
+        print("\(UserDefaults.standard.string(forKey: "fcmToken")!)아아아아아아아아아아아아")
+        let sub = UIStoryboard(name: "Calendar2", bundle: nil)
+        let info = sub.instantiateViewController(withIdentifier: "Calendar2VC")
+        
+//        navigationController?.pushViewController(info, animated: true)
         httpClient
-            .post(url: AuthAPI.signIn.path(), params: ["email": email, "password": password, "token": UserDefaults.standard.string(forKey: "fcmToken")], header: Header.tokenIsEmpty.header())
+            .post(url: AuthAPI.signIn.path(), params: ["email": email, "password": password, "token": (UserDefaults.standard.string(forKey: "fcmToken"))!], header: Header.tokenIsEmpty.header())
             .responseJSON(completionHandler: {[unowned self](response) in
+                print(response.response?.statusCode)
+                
                 switch response.response?.statusCode {
                 case 200:
                     do {
